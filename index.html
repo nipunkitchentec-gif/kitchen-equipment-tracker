@@ -1126,64 +1126,44 @@
         return String(val ?? '')
           .replace(/&/g, '&amp;')
           .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;')
-          .replace(/'/g, '&#39;');
-      }
+          const DEFAULT_FIREBASE_CONFIG = {
+  apiKey: "AIzaSyDtiUkPqg4wUo1E-m4K1CgCLDFUDOQZQEg",
+  authDomain: "kitchen-equipment-db.firebaseapp.com",
+  projectId: "kitchen-equipment-db",
+  storageBucket: "kitchen-equipment-db.firebasestorage.app",
+  messagingSenderId: "714787916376",
+  appId: "1:714787916376:web:5b2edb6d627bd90bddd82d",
+  measurementId: "G-8VHF5V1DYE"
+};
 
-      // =========================================================================
-      // 3. LOCAL STORAGE ENGINE & SAMPLE SEEDING (INSTANT ZERO-BLOCK STARTUP)
-      // =========================================================================
-      function getInitialSampleRecords() {
-        return [
-          {
-            id: 'sample_rational_01',
-            serialNumber: 'E21MH2408159042',
-            brand: 'RATIONAL',
-            model: 'iCombi Pro 10-1/1 Electric',
-            installDate: offsetDateString(-4, -10),
-            warrantyMonths: 12,
-            siteName: 'Al Majaz Waterfront Hotel - Main Kitchen',
-            location: 'Sharjah, Al Majaz',
-            technicianName: 'Kasun Perera',
-            notes: '3-phase 400V supply verified, water softener & drain connection tested OK.',
-            nameplatePhoto: '',
-            machinePhoto: '',
-            createdAt: Date.now() - 86400000 * 130,
-            updatedAt: Date.now() - 86400000 * 130
-          },
-          {
-            id: 'sample_hobart_02',
-            serialNumber: 'HB864209117',
-            brand: 'Hobart',
-            model: 'AMX-10A Hood Dishwasher',
-            installDate: offsetDateString(-14, -5),
-            warrantyMonths: 12,
-            siteName: 'Marina Bay Seafood Restaurant',
-            location: 'Dubai Marina',
-            technicianName: 'Nuwan Silva',
-            notes: 'Rinse aid & detergent dosing pumps calibrated during commissioning.',
-            nameplatePhoto: '',
-            machinePhoto: '',
-            createdAt: Date.now() - 86400000 * 425,
-            updatedAt: Date.now() - 86400000 * 425
-          }
-        ];
-      }
+function getSavedFirebaseConfig() {
+  try {
+    if (typeof __firebase_config !== 'undefined' && __firebase_config) {
+      const parsed = typeof __firebase_config === 'string'
+        ? JSON.parse(__firebase_config)
+        : __firebase_config;
 
-      function loadLocalRecords() {
-        try {
-          const raw = localStorage.getItem(LOCAL_RECORDS_KEY);
-          if (raw) {
-            const parsed = JSON.parse(raw);
-            if (Array.isArray(parsed)) {
-              records = parsed;
-              return;
-            }
-          }
-          if (!localStorage.getItem(LOCAL_SEEDED_KEY)) {
-            records = getInitialSampleRecords();
-            saveLocalRecords();
+      if (parsed && parsed.apiKey && parsed.projectId) return parsed;
+    }
+  } catch (_) {}
+
+  try {
+    const saved = localStorage.getItem(FIREBASE_CONFIG_STORAGE_KEY);
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      if (parsed && parsed.apiKey && parsed.projectId) return parsed;
+    }
+  } catch (_) {}
+
+  if (
+    DEFAULT_FIREBASE_CONFIG.apiKey &&
+    DEFAULT_FIREBASE_CONFIG.projectId
+  ) {
+    return DEFAULT_FIREBASE_CONFIG;
+  }
+
+  return null;
+}
             localStorage.setItem(LOCAL_SEEDED_KEY, '1');
           } else {
             records = [];
