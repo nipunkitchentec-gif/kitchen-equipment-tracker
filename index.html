@@ -1228,6 +1228,42 @@
       // =========================================================================
       // 4. NON-BLOCKING OPTIONAL FIREBASE CLOUD SYNC (WITH 3.5-SECOND TIMEOUT)
       // =========================================================================
+            const DEFAULT_FIREBASE_CONFIG = {
+        apiKey: "AIzaSyDtiUkPqg4wUo1E-m4K1CgCLDFUDOQZQEg",
+        authDomain: "kitchen-equipment-db.firebaseapp.com",
+        projectId: "kitchen-equipment-db",
+        storageBucket: "kitchen-equipment-db.firebasestorage.app",
+        messagingSenderId: "714787916376",
+        appId: "1:714787916376:web:5b2edb6d627bd90bddd82d",
+        measurementId: "G-8VHF5V1DYE"
+      };
+
+      function getSavedFirebaseConfig() {
+        if (typeof __firebase_config !== 'undefined' && __firebase_config) {
+          try {
+                  const DEFAULT_FIREBASE_CONFIG = {
+        apiKey: "AIzaSyDtiUkPqg4wUo1E-m4K1CgCLDFUDOQZQEg",
+        authDomain: "kitchen-equipment-db.firebaseapp.com",
+        projectId: "kitchen-equipment-db",
+        storageBucket: "kitchen-equipment-db.firebasestorage.app",
+        messagingSenderId: "714787916376",
+        appId: "1:714787916376:web:5b2edb6d627bd90bddd82d",
+        measurementId: "G-8VHF5V1DYE"
+      };
+
+      function getSavedFirebaseConfig() {
+        if (typeof __firebase_config !== 'undefined' && __firebase_config) {
+          try {
+                  const DEFAULT_FIREBASE_CONFIG = {
+        apiKey: "AIzaSyDtiUkPqg4wUo1E-m4K1CgCLDFUDOQZQEg",
+        authDomain: "kitchen-equipment-db.firebaseapp.com",
+        projectId: "kitchen-equipment-db",
+        storageBucket: "kitchen-equipment-db.firebasestorage.app",
+        messagingSenderId: "714787916376",
+        appId: "1:714787916376:web:5b2edb6d627bd90bddd82d",
+        measurementId: "G-8VHF5V1DYE"
+      };
+
       function getSavedFirebaseConfig() {
         if (typeof __firebase_config !== 'undefined' && __firebase_config) {
           try {
@@ -1242,12 +1278,22 @@
             if (parsed && parsed.apiKey && parsed.projectId) return parsed;
           }
         } catch (_) {}
+        if (
+          DEFAULT_FIREBASE_CONFIG &&
+          DEFAULT_FIREBASE_CONFIG.apiKey &&
+          !DEFAULT_FIREBASE_CONFIG.apiKey.startsWith("AIzaSy...") &&
+          DEFAULT_FIREBASE_CONFIG.projectId &&
+          DEFAULT_FIREBASE_CONFIG.projectId !== "your-project"
+        ) {
+          return DEFAULT_FIREBASE_CONFIG;
+        }
         return null;
       }
 
       function parseUserFirebaseConfigInput(rawInput) {
         const trimmed = (rawInput || '').trim();
         if (!trimmed) throw new Error('Please paste your Firebase configuration JSON.');
+
 
         const firstBrace = trimmed.indexOf('{');
         const lastBrace = trimmed.lastIndexOf('}');
