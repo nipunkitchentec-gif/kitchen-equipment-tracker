@@ -1,0 +1,17 @@
+{
+  "name": "KitchenEquip Pro",
+  "short_name": "KitchenEquip",
+  "start_url": "/kitchen-equipment-tracker/",
+  "scope": "/kitchen-equipment-tracker/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230f172a'/%3E%3Crect x='6' y='6' width='52' height='52' rx='12' fill='%23f59e0b'/%3E%3Cpath d='M39.5 18.5a3 3 0 0 0-4.2 0l-4.2 4.2a3 3 0 0 0 0 4.2l1.1 1.1-13.7 13.7a4.2 4.2 0 1 0 6 6l13.7-13.7 1.1 1.1a3 3 0 0 0 4.2 0l4.2-4.2a3 3 0 0 0 0-4.2l-2.3-2.3 3.2-3.2-2.8-2.8-3.2 3.2-1.6-1.6z' fill='%230f172a'/%3E%3C/svg%3E",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
