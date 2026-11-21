@@ -9,7 +9,8 @@
   <!-- Embedded SVG App Icon (Favicon & Apple Touch Icon) -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230f172a'/%3E%3Crect x='6' y='6' width='52' height='52' rx='12' fill='%23f59e0b'/%3E%3Cpath d='M39.5 18.5a3 3 0 0 0-4.2 0l-4.2 4.2a3 3 0 0 0 0 4.2l1.1 1.1-13.7 13.7a4.2 4.2 0 1 0 6 6l13.7-13.7 1.1 1.1a3 3 0 0 0 4.2 0l4.2-4.2a3 3 0 0 0 0-4.2l-2.3-2.3 3.2-3.2-2.8-2.8-3.2 3.2-1.6-1.6z' fill='%230f172a'/%3E%3C/svg%3E" />
   <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230f172a'/%3E%3Crect x='6' y='6' width='52' height='52' rx='12' fill='%23f59e0b'/%3E%3Cpath d='M39.5 18.5a3 3 0 0 0-4.2 0l-4.2 4.2a3 3 0 0 0 0 4.2l1.1 1.1-13.7 13.7a4.2 4.2 0 1 0 6 6l13.7-13.7 1.1 1.1a3 3 0 0 0 4.2 0l4.2-4.2a3 3 0 0 0 0-4.2l-2.3-2.3 3.2-3.2-2.8-2.8-3.2 3.2-1.6-1.6z' fill='%230f172a'/%3E%3C/svg%3E" />
-<link rel="manifest" href="./manifest.json" />
+  <link rel="manifest" href="./manifest.json" />
+
   <!-- Load Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Load Inter & JetBrains Mono Fonts -->
@@ -220,7 +221,7 @@
       <button type="button" id="closeToastBtn" class="px-2 py-1 rounded-lg text-xs opacity-75 hover:opacity-100 cursor-pointer">✕</button>
     </div>
 
-    <!-- Local Mode Info Callout (Dismissible or clickable to setup shared cloud sync) -->
+    <!-- Local Mode Info Callout -->
     <div id="localModeBanner" class="bg-amber-50 border border-amber-200 rounded-2xl px-4 py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 text-xs sm:text-sm text-amber-950">
       <div class="flex items-start sm:items-center gap-2.5">
         <span class="text-base shrink-0">💾</span>
@@ -320,9 +321,7 @@
 
     <!-- Equipment Records Grid / List -->
     <section aria-label="Equipment Registry List" class="space-y-3">
-      <div id="recordsContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <!-- Equipment Cards rendered immediately -->
-      </div>
+      <div id="recordsContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
 
       <!-- Empty State -->
       <div id="emptyStateBox" class="hidden bg-white rounded-2xl p-10 border border-slate-200 text-center">
@@ -363,7 +362,6 @@
   <!-- Add / Edit Equipment Modal -->
   <div id="equipmentModal" class="hidden fixed inset-0 z-40 bg-slate-950/60 backdrop-blur-xs flex items-end sm:items-center justify-center p-0 sm:p-4 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="bg-white w-full max-w-xl rounded-t-3xl sm:rounded-2xl shadow-2xl border border-slate-200 max-h-[92vh] flex flex-col overflow-hidden animate-card">
-      <!-- Modal Header -->
       <div class="px-5 py-4 bg-slate-900 text-white flex items-center justify-between shrink-0">
         <div>
           <h2 id="modalTitle" class="text-base sm:text-lg font-bold">Register New Installation</h2>
@@ -374,11 +372,9 @@
         </button>
       </div>
 
-      <!-- Modal Form Body -->
       <form id="equipmentForm" class="p-5 overflow-y-auto space-y-4">
         <input type="hidden" id="recordIdInput" value="" />
 
-        <!-- Serial Number -->
         <div>
           <div class="flex items-center justify-between mb-1">
             <label for="serialNumberInput" class="block text-xs font-bold uppercase tracking-wider text-slate-700">
@@ -399,7 +395,6 @@
           />
         </div>
 
-        <!-- Brand & Quick Brand Chips -->
         <div>
           <label for="brandInput" class="block text-xs font-bold text-slate-700 mb-1">
             Machine Brand *
@@ -422,7 +417,6 @@
           </div>
         </div>
 
-        <!-- Model -->
         <div>
           <label for="modelInput" class="block text-xs font-bold text-slate-700 mb-1">
             Machine Model *
@@ -436,7 +430,6 @@
           />
         </div>
 
-        <!-- Installation Date & Warranty Period -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
           <div>
             <label for="installDateInput" class="block text-xs font-bold text-slate-700 mb-1">
@@ -468,7 +461,6 @@
           </div>
         </div>
 
-        <!-- Custom Warranty Months Field -->
         <div id="customWarrantyWrapper" class="hidden bg-amber-50 border border-amber-200 rounded-xl p-3">
           <label for="customWarrantyMonthsInput" class="block text-xs font-bold text-amber-900 mb-1">
             Custom Warranty Duration (in Months) *
@@ -483,13 +475,11 @@
           />
         </div>
 
-        <!-- Live Warranty Preview Banner inside Modal -->
         <div id="modalWarrantyPreview" class="rounded-xl px-3.5 py-2.5 text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200 flex items-center justify-between">
           <span>Calculated Warranty Expiry:</span>
           <span id="modalWarrantyPreviewText" class="font-bold">—</span>
         </div>
 
-        <!-- Site Name & Install Location -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
           <div>
             <label for="siteNameInput" class="block text-xs font-bold text-slate-700 mb-1">
@@ -518,7 +508,6 @@
           </div>
         </div>
 
-        <!-- Installed Technician Name -->
         <div>
           <label for="technicianInput" class="block text-xs font-bold text-slate-700 mb-1">
             Installed Technician Name *
@@ -532,7 +521,6 @@
           />
         </div>
 
-        <!-- Equipment Photos (Nameplate & Full Machine) -->
         <div class="pt-1">
           <div class="flex items-center justify-between mb-2">
             <span class="block text-xs font-bold uppercase tracking-wider text-slate-700">
@@ -542,7 +530,6 @@
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-            <!-- 1. Machine Nameplate Photo -->
             <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 flex flex-col justify-between">
               <div class="flex items-center justify-between gap-1 mb-2">
                 <span class="text-xs font-bold text-slate-800">1. Machine Nameplate</span>
@@ -576,7 +563,6 @@
               </div>
             </div>
 
-            <!-- 2. Full Machine Photo -->
             <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 flex flex-col justify-between">
               <div class="flex items-center justify-between gap-1 mb-2">
                 <span class="text-xs font-bold text-slate-800">2. Full Machine Photo</span>
@@ -612,7 +598,6 @@
           </div>
         </div>
 
-        <!-- Optional Notes / Remarks -->
         <div>
           <label for="notesInput" class="block text-xs font-bold text-slate-700 mb-1">
             Notes / Remarks (Optional)
@@ -626,7 +611,6 @@
           ></textarea>
         </div>
 
-        <!-- Modal Footer Actions -->
         <div class="pt-2 flex items-center justify-end gap-2.5 border-t border-slate-100">
           <button
             type="button"
@@ -673,19 +657,8 @@
             id="firebaseConfigJsonInput"
             rows="6"
             spellcheck="false"
-            placeholder='{
-  "apiKey": "AIzaSy...",
-  "authDomain": "your-project.firebaseapp.com",
-  "projectId": "your-project",
-  "storageBucket": "your-project.appspot.com",
-  "messagingSenderId": "123456789",
-  "appId": "1:123456789:web:abcdef"
-}'
             class="w-full font-mono text-xs bg-slate-50 border border-slate-300 focus:border-slate-900 focus:bg-white rounded-xl p-3 text-slate-900 focus:outline-none"
           ></textarea>
-          <p class="text-[11px] text-slate-500 mt-1.5">
-            Tip: You can paste either the pure JSON object or the full <code class="bg-slate-100 px-1 rounded">const firebaseConfig = { ... };</code> snippet from Firebase. Enable <strong>Anonymous Auth</strong> and <strong>Firestore Database</strong> in your Firebase project.
-          </p>
         </div>
 
         <div id="cloudSetupErrorBox" class="hidden rounded-xl p-3 text-xs font-semibold bg-rose-50 border border-rose-200 text-rose-700"></div>
@@ -786,20 +759,30 @@
     </div>
   </div>
 
-  <!-- Application Script (Immediate Local Load + Non-Blocking Dynamic Cloud Sync) -->
+  <!-- Application Script -->
   <script>
     (function () {
       const LOCAL_RECORDS_KEY = 'kitchen_tracker_records_v1';
       const LOCAL_SEEDED_KEY = 'kitchen_tracker_seeded_v1';
       const FIREBASE_CONFIG_STORAGE_KEY = 'kitchen_tracker_firebase_config';
       const SESSION_AUTH_KEY = 'kitchen_tracker_auth_session_v1';
-      const TEAM_ACCESS_PIN = '1234'; // Change this to your preferred team PIN
+      const TEAM_ACCESS_PIN = '1234';
       const APP_COLLECTION_ID = typeof __app_id !== 'undefined' ? __app_id : 'kitchen-equip-tracker';
+
+      const DEFAULT_FIREBASE_CONFIG = {
+        apiKey: "AIzaSyDtiUkPqg4wUo1E-m4K1CgCLDFUDOQZQEg",
+        authDomain: "kitchen-equipment-db.firebaseapp.com",
+        projectId: "kitchen-equipment-db",
+        storageBucket: "kitchen-equipment-db.firebasestorage.app",
+        messagingSenderId: "714787916376",
+        appId: "1:714787916376:web:5b2edb6d627bd90bddd82d",
+        measurementId: "G-8VHF5V1DYE"
+      };
 
       // Application State
       let records = [];
       let searchQuery = '';
-      let statusFilter = 'all'; // 'all' | 'active' | 'expiring' | 'expired'
+      let statusFilter = 'all';
       let pendingDeleteRecord = null;
       let toastTimeout = null;
       let currentNameplateDataUrl = '';
@@ -855,7 +838,6 @@
         mobileFabAddBtn: document.getElementById('mobileFabAddBtn'),
         exportCsvBtn: document.getElementById('exportCsvBtn'),
 
-        // Equipment Modal
         equipmentModal: document.getElementById('equipmentModal'),
         modalTitle: document.getElementById('modalTitle'),
         modalSubtitle: document.getElementById('modalSubtitle'),
@@ -879,7 +861,6 @@
         notesInput: document.getElementById('notesInput'),
         saveRecordBtn: document.getElementById('saveRecordBtn'),
 
-        // Photos
         nameplateCameraInput: document.getElementById('nameplateCameraInput'),
         nameplateGalleryInput: document.getElementById('nameplateGalleryInput'),
         nameplatePreviewWrapper: document.getElementById('nameplatePreviewWrapper'),
@@ -896,7 +877,6 @@
         machineSizeBadge: document.getElementById('machineSizeBadge'),
         removeMachineBtn: document.getElementById('removeMachineBtn'),
 
-        // Cloud Setup Modal
         cloudSetupModal: document.getElementById('cloudSetupModal'),
         closeCloudSetupBtn: document.getElementById('closeCloudSetupBtn'),
         cloudModalStatusLabel: document.getElementById('cloudModalStatusLabel'),
@@ -905,14 +885,12 @@
         resetLocalModeBtn: document.getElementById('resetLocalModeBtn'),
         testAndSaveCloudBtn: document.getElementById('testAndSaveCloudBtn'),
 
-        // Delete Modal
         deleteConfirmModal: document.getElementById('deleteConfirmModal'),
         deleteTargetSerial: document.getElementById('deleteTargetSerial'),
         deleteConfirmInput: document.getElementById('deleteConfirmInput'),
         cancelDeleteBtn: document.getElementById('cancelDeleteBtn'),
         confirmDeleteBtn: document.getElementById('confirmDeleteBtn'),
 
-        // Lightbox
         photoLightboxModal: document.getElementById('photoLightboxModal'),
         lightboxTitle: document.getElementById('lightboxTitle'),
         lightboxSubtitle: document.getElementById('lightboxSubtitle'),
@@ -1122,85 +1100,95 @@
         }
       }
 
-      
-function escapeHtml(val) {
-  return String(val ?? '')
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
-}
-
-const DEFAULT_FIREBASE_CONFIG = {
-  apiKey: "AIzaSyDtiUkPqg4wUo1E-m4K1CgCLDFUDOQZQEg",
-  authDomain: "kitchen-equipment-db.firebaseapp.com",
-  projectId: "kitchen-equipment-db",
-  storageBucket: "kitchen-equipment-db.firebasestorage.app",
-  messagingSenderId: "714787916376",
-  appId: "1:714787916376:web:5b2edb6d627bd90bddd82d",
-  measurementId: "G-8VHF5V1DYE"
-};
-
-function getSavedFirebaseConfig() {
-  try {
-    if (typeof __firebase_config !== 'undefined' && __firebase_config) {
-      const parsed = typeof __firebase_config === 'string'
-        ? JSON.parse(__firebase_config)
-        : __firebase_config;
-
-      if (parsed && parsed.apiKey && parsed.projectId) return parsed;
-    }
-  } catch (_) {}
-
-  try {
-    const saved = localStorage.getItem(FIREBASE_CONFIG_STORAGE_KEY);
-    if (saved) {
-      const parsed = JSON.parse(saved);
-      if (parsed && parsed.apiKey && parsed.projectId) return parsed;
-    }
-  } catch (_) {}
-
-  return DEFAULT_FIREBASE_CONFIG;
-}
-
-      const DEFAULT_FIREBASE_CONFIG = {
-        apiKey: "AIzaSyDtiUkPqg4wUo1E-m4K1CgCLDFUDOQZQEg",
-        authDomain: "kitchen-equipment-db.firebaseapp.com",
-        projectId: "kitchen-equipment-db",
-        storageBucket: "kitchen-equipment-db.firebasestorage.app",
-        messagingSenderId: "714787916376",
-        appId: "1:714787916376:web:5b2edb6d627bd90bddd82d",
-        measurementId: "G-8VHF5V1DYE"
-      };
-
-      
-function getSavedFirebaseConfig() {
-  try {
-    if (typeof __firebase_config !== 'undefined' && __firebase_config) {
-      const parsed = typeof __firebase_config === 'string'
-        ? JSON.parse(__firebase_config)
-        : __firebase_config;
-
-      if (parsed && parsed.apiKey && parsed.projectId) {
-        return parsed;
+      function escapeHtml(val) {
+        return String(val ?? '')
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
       }
-    }
-  } catch (_) {}
 
-  try {
-    const saved = localStorage.getItem(FIREBASE_CONFIG_STORAGE_KEY);
-    if (saved) {
-      const parsed = JSON.parse(saved);
-      if (parsed && parsed.apiKey && parsed.projectId) {
-        return parsed;
+      // =========================================================================
+      // 3. INSTANT LOCAL STORAGE ENGINE & CONFIG HELPERS
+      // =========================================================================
+      function getSavedFirebaseConfig() {
+        if (typeof __firebase_config !== 'undefined' && __firebase_config) {
+          try {
+            const parsed = typeof __firebase_config === 'string' ? JSON.parse(__firebase_config) : __firebase_config;
+            if (parsed && parsed.apiKey && parsed.projectId) return parsed;
+          } catch (_) {}
+        }
+        try {
+          const saved = localStorage.getItem(FIREBASE_CONFIG_STORAGE_KEY);
+          if (saved) {
+            const parsed = JSON.parse(saved);
+            if (parsed && parsed.apiKey && parsed.projectId) return parsed;
+          }
+        } catch (_) {}
+        if (
+          DEFAULT_FIREBASE_CONFIG &&
+          DEFAULT_FIREBASE_CONFIG.apiKey &&
+          !DEFAULT_FIREBASE_CONFIG.apiKey.startsWith("AIzaSy...") &&
+          DEFAULT_FIREBASE_CONFIG.projectId &&
+          DEFAULT_FIREBASE_CONFIG.projectId !== "your-project"
+        ) {
+          return DEFAULT_FIREBASE_CONFIG;
+        }
+        return null;
       }
-    }
-  } catch (_) {}
 
-  return DEFAULT_FIREBASE_CONFIG;
-}
+      function getStarterSampleRecords() {
+        return [
+          {
+            id: 'sample_1',
+            serialNumber: 'E21MH21092931521',
+            brand: 'RATIONAL',
+            model: 'iCombi Pro 10-1/1',
+            installDate: offsetDateString(-5, -10),
+            warrantyMonths: 12,
+            siteName: 'Grand Marina Hotel — Main Kitchen',
+            location: 'Sharjah Al Majaz',
+            technicianName: 'Kasun Perera',
+            notes: '3-phase power checked, water softener & filtration commissioned.',
+            nameplatePhoto: '',
+            machinePhoto: '',
+            createdAt: Date.now() - 86400000 * 2,
+            updatedAt: Date.now() - 86400000 * 2
+          },
+          {
+            id: 'sample_2',
+            serialNumber: 'HB8847201944',
+            brand: 'Hobart',
+            model: 'UXL-11A Dishwasher',
+            installDate: offsetDateString(-14, 0),
+            warrantyMonths: 12,
+            siteName: 'Al Noor Grill & Bistro',
+            location: 'Dubai Marina',
+            technicianName: 'Nimal Silva',
+            notes: 'Standard 12-month warranty completed.',
+            nameplatePhoto: '',
+            machinePhoto: '',
+            createdAt: Date.now() - 86400000,
+            updatedAt: Date.now() - 86400000
+          }
+        ];
+      }
 
+      function loadLocalRecords() {
+        try {
+          const raw = localStorage.getItem(LOCAL_RECORDS_KEY);
+          if (raw) {
+            const parsed = JSON.parse(raw);
+            if (Array.isArray(parsed)) {
+              records = parsed;
+              return;
+            }
+          }
+          const alreadySeeded = localStorage.getItem(LOCAL_SEEDED_KEY);
+          if (!alreadySeeded) {
+            records = getStarterSampleRecords();
+            localStorage.setItem(LOCAL_RECORDS_KEY, JSON.stringify(records));
             localStorage.setItem(LOCAL_SEEDED_KEY, '1');
           } else {
             records = [];
@@ -1243,74 +1231,11 @@ function getSavedFirebaseConfig() {
       }
 
       // =========================================================================
-      // 4. NON-BLOCKING OPTIONAL FIREBASE CLOUD SYNC (WITH 3.5-SECOND TIMEOUT)
+      // 4. NON-BLOCKING OPTIONAL FIREBASE CLOUD SYNC
       // =========================================================================
-            const DEFAULT_FIREBASE_CONFIG = {
-        apiKey: "AIzaSyDtiUkPqg4wUo1E-m4K1CgCLDFUDOQZQEg",
-        authDomain: "kitchen-equipment-db.firebaseapp.com",
-        projectId: "kitchen-equipment-db",
-        storageBucket: "kitchen-equipment-db.firebasestorage.app",
-        messagingSenderId: "714787916376",
-        appId: "1:714787916376:web:5b2edb6d627bd90bddd82d",
-        measurementId: "G-8VHF5V1DYE"
-      };
-
-      function getSavedFirebaseConfig() {
-        if (typeof __firebase_config !== 'undefined' && __firebase_config) {
-          try {
-                  const DEFAULT_FIREBASE_CONFIG = {
-        apiKey: "AIzaSyDtiUkPqg4wUo1E-m4K1CgCLDFUDOQZQEg",
-        authDomain: "kitchen-equipment-db.firebaseapp.com",
-        projectId: "kitchen-equipment-db",
-        storageBucket: "kitchen-equipment-db.firebasestorage.app",
-        messagingSenderId: "714787916376",
-        appId: "1:714787916376:web:5b2edb6d627bd90bddd82d",
-        measurementId: "G-8VHF5V1DYE"
-      };
-
-      function getSavedFirebaseConfig() {
-        if (typeof __firebase_config !== 'undefined' && __firebase_config) {
-          try {
-                  const DEFAULT_FIREBASE_CONFIG = {
-        apiKey: "AIzaSyDtiUkPqg4wUo1E-m4K1CgCLDFUDOQZQEg",
-        authDomain: "kitchen-equipment-db.firebaseapp.com",
-        projectId: "kitchen-equipment-db",
-        storageBucket: "kitchen-equipment-db.firebasestorage.app",
-        messagingSenderId: "714787916376",
-        appId: "1:714787916376:web:5b2edb6d627bd90bddd82d",
-        measurementId: "G-8VHF5V1DYE"
-      };
-
-      function getSavedFirebaseConfig() {
-        if (typeof __firebase_config !== 'undefined' && __firebase_config) {
-          try {
-            const parsed = typeof __firebase_config === 'string' ? JSON.parse(__firebase_config) : __firebase_config;
-            if (parsed && parsed.apiKey && parsed.projectId) return parsed;
-          } catch (_) {}
-        }
-        try {
-          const saved = localStorage.getItem(FIREBASE_CONFIG_STORAGE_KEY);
-          if (saved) {
-            const parsed = JSON.parse(saved);
-            if (parsed && parsed.apiKey && parsed.projectId) return parsed;
-          }
-        } catch (_) {}
-        if (
-          DEFAULT_FIREBASE_CONFIG &&
-          DEFAULT_FIREBASE_CONFIG.apiKey &&
-          !DEFAULT_FIREBASE_CONFIG.apiKey.startsWith("AIzaSy...") &&
-          DEFAULT_FIREBASE_CONFIG.projectId &&
-          DEFAULT_FIREBASE_CONFIG.projectId !== "your-project"
-        ) {
-          return DEFAULT_FIREBASE_CONFIG;
-        }
-        return null;
-      }
-
       function parseUserFirebaseConfigInput(rawInput) {
         const trimmed = (rawInput || '').trim();
         if (!trimmed) throw new Error('Please paste your Firebase configuration JSON.');
-
 
         const firstBrace = trimmed.indexOf('{');
         const lastBrace = trimmed.lastIndexOf('}');
@@ -1343,7 +1268,7 @@ function getSavedFirebaseConfig() {
         }
 
         const timeoutPromise = new Promise((_, reject) =>
-          setTimeout(() => reject(new Error('Connection timed out. Using Local Mode.')), 3500)
+          setTimeout(() => reject(new Error('Connection timed out. Using Local Mode.')), 4500)
         );
 
         const connectTask = (async () => {
@@ -1418,7 +1343,7 @@ function getSavedFirebaseConfig() {
       }
 
       // =========================================================================
-      // 5. CRUD OPERATIONS (WORKS IN BOTH LOCAL MODE & CLOUD SYNC MODE)
+      // 5. CRUD OPERATIONS
       // =========================================================================
       async function saveEquipmentRecord(payload, existingId = null) {
         els.saveRecordBtn.disabled = true;
@@ -2090,7 +2015,6 @@ function getSavedFirebaseConfig() {
       // 9. EVENT LISTENERS & INSTANT STARTUP
       // =========================================================================
       function bindEvents() {
-        // PWA Install Prompt Events
         window.addEventListener('beforeinstallprompt', (e) => {
           e.preventDefault();
           deferredInstallPrompt = e;
@@ -2104,7 +2028,6 @@ function getSavedFirebaseConfig() {
         els.installAppBtn.addEventListener('click', triggerInstallAppFlow);
         els.loginScreenInstallBtn.addEventListener('click', triggerInstallAppFlow);
 
-        // Login & Lock Events
         els.loginForm.addEventListener('submit', (e) => {
           e.preventDefault();
           const enteredName = els.loginUserNameInput.value.trim();
@@ -2136,7 +2059,6 @@ function getSavedFirebaseConfig() {
 
         els.closeToastBtn.addEventListener('click', () => els.toastBanner.classList.add('hidden'));
 
-        // Search input
         els.searchInput.addEventListener('input', (e) => {
           searchQuery = e.target.value;
           renderApp();
@@ -2149,7 +2071,6 @@ function getSavedFirebaseConfig() {
           renderApp();
         });
 
-        // Status filter buttons
         els.statusFilterBtns.forEach((btn) => {
           btn.addEventListener('click', () => {
             statusFilter = btn.getAttribute('data-status-filter') || 'all';
@@ -2163,7 +2084,6 @@ function getSavedFirebaseConfig() {
           });
         });
 
-        // Add / Export / Cloud Setup buttons
         els.openAddModalBtn.addEventListener('click', () => openAddModal(searchQuery.trim()));
         els.mobileFabAddBtn.addEventListener('click', () => openAddModal(searchQuery.trim()));
         els.emptyAddBtn.addEventListener('click', () => openAddModal(searchQuery.trim()));
@@ -2173,7 +2093,6 @@ function getSavedFirebaseConfig() {
         els.bannerConnectCloudBtn.addEventListener('click', openCloudSetupModal);
         els.closeCloudSetupBtn.addEventListener('click', closeCloudSetupModal);
 
-        // Quick Brand Chips
         document.querySelectorAll('.quick-brand-chip').forEach((chip) => {
           chip.addEventListener('click', () => {
             els.brandInput.value = chip.getAttribute('data-quick-brand') || '';
@@ -2181,7 +2100,6 @@ function getSavedFirebaseConfig() {
           });
         });
 
-        // Equipment Modal controls
         els.closeModalBtn.addEventListener('click', closeEquipmentModal);
         els.cancelModalBtn.addEventListener('click', closeEquipmentModal);
 
@@ -2199,7 +2117,6 @@ function getSavedFirebaseConfig() {
         });
         els.customWarrantyMonthsInput.addEventListener('input', updateModalWarrantyPreview);
 
-        // Equipment Form Submit
         els.equipmentForm.addEventListener('submit', async (e) => {
           e.preventDefault();
 
@@ -2250,7 +2167,6 @@ function getSavedFirebaseConfig() {
           );
         });
 
-        // Photo Upload & Remove Listeners
         els.nameplateCameraInput.addEventListener('change', () => handlePhotoInputChange('nameplate', els.nameplateCameraInput));
         els.nameplateGalleryInput.addEventListener('change', () => handlePhotoInputChange('nameplate', els.nameplateGalleryInput));
         els.removeNameplateBtn.addEventListener('click', () => setPhotoPreviewUI('nameplate', ''));
@@ -2259,7 +2175,6 @@ function getSavedFirebaseConfig() {
         els.machineGalleryInput.addEventListener('change', () => handlePhotoInputChange('machine', els.machineGalleryInput));
         els.removeMachineBtn.addEventListener('click', () => setPhotoPreviewUI('machine', ''));
 
-        // Card Action Delegation
         const handleCardActionClick = (e) => {
           const btn = e.target.closest('button[data-action]');
           if (!btn) return;
@@ -2284,7 +2199,6 @@ function getSavedFirebaseConfig() {
         els.recordsContainer.addEventListener('click', handleCardActionClick);
         els.exactMatchSpotlight.addEventListener('click', handleCardActionClick);
 
-        // Lightbox Controls
         els.closeLightboxBtn.addEventListener('click', closePhotoLightbox);
         els.lightboxZoomToggleBtn.addEventListener('click', () => setLightboxZoom(!isLightboxZoomed));
         els.lightboxImage.addEventListener('click', () => setLightboxZoom(!isLightboxZoomed));
@@ -2294,7 +2208,6 @@ function getSavedFirebaseConfig() {
           }
         });
 
-        // Delete Modal Controls
         els.deleteConfirmInput.addEventListener('input', () => {
           els.confirmDeleteBtn.disabled = els.deleteConfirmInput.value.trim().toUpperCase() !== 'DELETE';
         });
@@ -2306,7 +2219,6 @@ function getSavedFirebaseConfig() {
           await deleteEquipmentRecord(idToDelete);
         });
 
-        // Cloud Setup Modal Actions
         els.testAndSaveCloudBtn.addEventListener('click', async () => {
           els.cloudSetupErrorBox.classList.add('hidden');
           els.testAndSaveCloudBtn.disabled = true;
