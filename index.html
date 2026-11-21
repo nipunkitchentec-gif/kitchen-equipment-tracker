@@ -61,54 +61,62 @@
         </div>
         <div>
           <h2 id="loginGateTitle" class="text-lg sm:text-xl font-extrabold tracking-tight">KitchenEquip Pro</h2>
-          <p class="text-xs text-slate-400">Field Service & Office Warranty Portal</p>
+          <p class="text-xs text-slate-400">Multi-Company Field & Delivery Registry</p>
         </div>
       </div>
 
       <form id="loginForm" class="space-y-4">
         <div>
           <label for="loginUserNameInput" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">
-            Technician / Staff Name *
+            Name (Admin or Assigned Staff/Driver) *
           </label>
           <input
             type="text"
             id="loginUserNameInput"
             required
             autocomplete="name"
-            placeholder="e.g. Nipun / Kasun / Office Desk"
+            placeholder="e.g. Nipun / Driver Name / Staff Name"
             class="w-full bg-slate-800 border border-slate-700 focus:border-amber-400 rounded-xl px-4 py-3 text-sm font-medium text-white placeholder:text-slate-500 focus:outline-none"
           />
         </div>
 
         <div>
           <label for="loginPinInput" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">
-            Team Access PIN / Password *
+            Access PIN / Key *
           </label>
           <input
             type="password"
             id="loginPinInput"
             required
-            inputmode="numeric"
             autocomplete="current-password"
-            placeholder="Enter team PIN"
+            placeholder="Enter Admin or Staff Access PIN"
             class="w-full font-mono text-base tracking-widest bg-slate-800 border border-slate-700 focus:border-amber-400 rounded-xl px-4 py-3 text-white placeholder:text-slate-500 focus:outline-none"
           />
         </div>
 
+        <label class="flex items-center gap-2.5 select-none cursor-pointer pt-0.5">
+          <input
+            type="checkbox"
+            id="keepMeLoggedInCheckbox"
+            class="w-4 h-4 rounded accent-amber-500 bg-slate-800 border-slate-600 cursor-pointer"
+          />
+          <span class="text-xs font-semibold text-slate-300">Keep Me Logged In</span>
+        </label>
+
         <div id="loginErrorBox" class="hidden rounded-xl px-3.5 py-2.5 text-xs font-bold bg-rose-500/15 border border-rose-500/40 text-rose-300">
-          Invalid team PIN. Please check with your supervisor and try again.
+          Invalid credentials or access revoked. Contact Admin.
         </div>
 
         <button
           type="submit"
           class="w-full py-3.5 rounded-xl text-sm font-extrabold bg-amber-500 hover:bg-amber-400 active:scale-[0.99] text-slate-950 shadow-lg transition cursor-pointer"
         >
-          Unlock Warranty Registry
+          Unlock Registry
         </button>
       </form>
 
       <div class="mt-5 pt-4 border-t border-slate-800 flex items-center justify-between text-[11px] text-slate-400">
-        <span>Shared Team Access Protected</span>
+        <span>Role & Access Controlled</span>
         <button
           type="button"
           id="loginScreenInstallBtn"
@@ -131,29 +139,33 @@
         </div>
         <div class="min-w-0">
           <div class="flex flex-wrap items-center gap-2">
-            <h1 class="text-base sm:text-lg font-bold tracking-tight truncate">KitchenEquip Tracker</h1>
-            <!-- Clickable Sync Mode Status Pill -->
+            <h1 class="text-base sm:text-lg font-bold tracking-tight truncate">KitchenEquip Pro</h1>
             <button
               type="button"
               id="openCloudSetupBtn"
-              title="Click to configure shared Cloud Sync (Firebase)"
+              title="Cloud Sync Status"
               class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-400/40 transition cursor-pointer"
             >
               <span id="syncStatusDot" class="w-2 h-2 rounded-full bg-amber-400"></span>
               <span id="syncStatusText">Local Mode</span>
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 opacity-80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="3"/>
-                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
-              </svg>
             </button>
           </div>
-          <p id="activeUserSubtitle" class="text-xs text-slate-400 truncate">Field Service & Office Warranty Registry</p>
+          <p id="activeUserSubtitle" class="text-xs text-slate-400 truncate">Multi-Company Equipment & Delivery Registry</p>
         </div>
       </div>
 
       <!-- Header Action Buttons -->
       <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
-        <!-- In-App Install Button -->
+        <!-- Admin Board Button (Visible only to Admin) -->
+        <button
+          type="button"
+          id="openAdminBoardBtn"
+          class="hidden items-center gap-1.5 px-2.5 sm:px-3 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-indigo-600 hover:bg-indigo-500 text-white transition cursor-pointer"
+        >
+          <span>🛡</span>
+          <span class="hidden sm:inline">Admin Board</span>
+        </button>
+
         <button
           type="button"
           id="installAppBtn"
@@ -179,7 +191,7 @@
             <polyline points="7 10 12 15 17 10"/>
             <line x1="12" y1="15" x2="12" y2="3"/>
           </svg>
-          <span class="hidden sm:inline">Export CSV</span>
+          <span class="hidden sm:inline">CSV</span>
         </button>
 
         <button
@@ -191,10 +203,9 @@
             <line x1="12" y1="5" x2="12" y2="19"/>
             <line x1="5" y1="12" x2="19" y2="12"/>
           </svg>
-          <span>Add Equipment</span>
+          <span>Add Entry</span>
         </button>
 
-        <!-- Lock / Logout Button -->
         <button
           type="button"
           id="logoutBtn"
@@ -226,8 +237,8 @@
       <div class="flex items-start sm:items-center gap-2.5">
         <span class="text-base shrink-0">💾</span>
         <div>
-          <span class="font-bold">Running in Instant Local Mode:</span>
-          <span class="text-amber-900">Records & photos save immediately on this device. Want live sync with office staff & other technicians?</span>
+          <span class="font-bold">Local Mode Active:</span>
+          <span class="text-amber-900">Connect Firebase Cloud Sync for real-time team & delivery sharing.</span>
         </div>
       </div>
       <button
@@ -262,7 +273,7 @@
       </div>
     </section>
 
-    <!-- Prominent Serial Number Search & Filter Bar -->
+    <!-- Search, Company Filter & Status Filter Bar -->
     <section aria-label="Serial Number Lookup" class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-sm space-y-3.5">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
         <label for="searchInput" class="text-sm sm:text-base font-bold text-slate-900 flex items-center gap-2">
@@ -270,9 +281,20 @@
             <circle cx="11" cy="11" r="8"/>
             <line x1="21" y1="21" x2="16.65" y2="16.65"/>
           </svg>
-          <span>Instant Serial Number Lookup</span>
+          <span>Instant Serial / Delivery Lookup</span>
         </label>
-        <span class="text-xs text-slate-500">Type Serial No, Site Name, Brand, Model, or Location</span>
+        <div class="w-full sm:w-72">
+          <select
+            id="companyFilterSelect"
+            aria-label="Filter by Company"
+            class="w-full bg-slate-50 border border-slate-300 focus:border-slate-900 rounded-xl px-3 py-2 text-xs font-bold text-slate-800 focus:outline-none"
+          >
+            <option value="all">All Companies (3)</option>
+            <option value="SMART KITCHENS FZE">SMART KITCHENS FZE</option>
+            <option value="Al Fursan Kitchen Equip Ind LLC SP">Al Fursan Kitchen Equip Ind LLC SP</option>
+            <option value="Al Zahrah Kitchen Equip Tr LLC SP">Al Zahrah Kitchen Equip Tr LLC SP</option>
+          </select>
+        </div>
       </div>
 
       <div class="relative flex items-center">
@@ -281,7 +303,7 @@
           id="searchInput"
           autocomplete="off"
           spellcheck="false"
-          placeholder="Enter Serial Number (e.g., E21MH21092931521)..."
+          placeholder="Enter Serial Number, Site Name, Brand, Model, Driver or Technician..."
           class="w-full font-mono text-base sm:text-lg font-semibold uppercase tracking-wide bg-slate-50 border-2 border-slate-300 focus:border-slate-900 focus:bg-white rounded-xl pl-4 pr-20 py-3.5 text-slate-900 placeholder:font-sans placeholder:normal-case placeholder:font-normal placeholder:text-slate-400 focus:outline-none transition"
         />
         <button
@@ -293,7 +315,6 @@
         </button>
       </div>
 
-      <!-- Status Filter Pills -->
       <div class="flex flex-wrap items-center justify-between gap-2 pt-0.5">
         <div class="flex flex-wrap items-center gap-1.5">
           <button type="button" data-status-filter="all" class="status-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-900 text-white transition cursor-pointer">
@@ -330,21 +351,21 @@
         </div>
         <h3 id="emptyStateTitle" class="text-base font-bold text-slate-900">No equipment records found</h3>
         <p id="emptyStateSubtitle" class="text-xs sm:text-sm text-slate-500 mt-1 max-w-md mx-auto">
-          Add your first installed commercial kitchen machine to start tracking warranties across the team.
+          Add an installation or driver plug-in delivery record to begin tracking.
         </p>
         <button
           type="button"
           id="emptyAddBtn"
           class="mt-4 inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-slate-900 hover:bg-slate-800 text-white transition cursor-pointer"
         >
-          <span>+ Register New Installation</span>
+          <span>+ Register New Entry</span>
         </button>
       </div>
     </section>
 
   </main>
 
-  <!-- Mobile Floating Bottom Action Button for Quick On-Site Entry -->
+  <!-- Mobile Floating Bottom Action Button -->
   <div class="fixed bottom-4 right-4 sm:hidden z-20">
     <button
       type="button"
@@ -355,17 +376,17 @@
         <line x1="12" y1="5" x2="12" y2="19"/>
         <line x1="5" y1="12" x2="19" y2="12"/>
       </svg>
-      <span>New Install</span>
+      <span>New Entry</span>
     </button>
   </div>
 
-  <!-- Add / Edit Equipment Modal -->
+  <!-- Add / Edit Equipment & Delivery Modal -->
   <div id="equipmentModal" class="hidden fixed inset-0 z-40 bg-slate-950/60 backdrop-blur-xs flex items-end sm:items-center justify-center p-0 sm:p-4 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="bg-white w-full max-w-xl rounded-t-3xl sm:rounded-2xl shadow-2xl border border-slate-200 max-h-[92vh] flex flex-col overflow-hidden animate-card">
       <div class="px-5 py-4 bg-slate-900 text-white flex items-center justify-between shrink-0">
         <div>
-          <h2 id="modalTitle" class="text-base sm:text-lg font-bold">Register New Installation</h2>
-          <p id="modalSubtitle" class="text-xs text-slate-400">Saves immediately to your registry</p>
+          <h2 id="modalTitle" class="text-base sm:text-lg font-bold">Register Installation / Delivery</h2>
+          <p id="modalSubtitle" class="text-xs text-slate-400">Once saved, records are locked against unauthorized edit/delete</p>
         </div>
         <button type="button" id="closeModalBtn" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center font-bold transition cursor-pointer" aria-label="Close modal">
           ✕
@@ -375,10 +396,27 @@
       <form id="equipmentForm" class="p-5 overflow-y-auto space-y-4">
         <input type="hidden" id="recordIdInput" value="" />
 
+        <!-- Company Selector -->
+        <div>
+          <label for="companySelectInput" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
+            Company Entity *
+          </label>
+          <select
+            id="companySelectInput"
+            required
+            class="w-full bg-slate-50 border-2 border-slate-300 focus:border-slate-900 focus:bg-white rounded-xl px-3.5 py-2.5 text-sm font-bold text-slate-900 focus:outline-none"
+          >
+            <option value="SMART KITCHENS FZE">SMART KITCHENS FZE</option>
+            <option value="Al Fursan Kitchen Equip Ind LLC SP">Al Fursan Kitchen Equip Ind LLC SP</option>
+            <option value="Al Zahrah Kitchen Equip Tr LLC SP">Al Zahrah Kitchen Equip Tr LLC SP</option>
+          </select>
+        </div>
+
+        <!-- Serial Number -->
         <div>
           <div class="flex items-center justify-between mb-1">
             <label for="serialNumberInput" class="block text-xs font-bold uppercase tracking-wider text-slate-700">
-              Serial Number *
+              Serial Number / Item Code *
             </label>
             <span id="duplicateSerialWarning" class="hidden text-xs font-bold text-amber-700 bg-amber-100 px-2 py-0.5 rounded-md">
               ⚠ Serial number already exists!
@@ -390,11 +428,12 @@
             required
             autocomplete="off"
             spellcheck="false"
-            placeholder="e.g. E21MH21092931521"
+            placeholder="e.g. E21MH21092931521 or PLUG-0045"
             class="w-full font-mono text-base font-bold uppercase tracking-wider bg-slate-50 border-2 border-slate-300 focus:border-slate-900 focus:bg-white rounded-xl px-3.5 py-3 text-slate-900 focus:outline-none"
           />
         </div>
 
+        <!-- Brand & Quick Brand Chips -->
         <div>
           <label for="brandInput" class="block text-xs font-bold text-slate-700 mb-1">
             Machine Brand *
@@ -417,23 +456,50 @@
           </div>
         </div>
 
+        <!-- Model -->
         <div>
           <label for="modelInput" class="block text-xs font-bold text-slate-700 mb-1">
-            Machine Model *
+            Machine Model / Plug-in Unit *
           </label>
           <input
             type="text"
             id="modelInput"
             required
-            placeholder="e.g. iCombi Pro 10-1/1"
+            placeholder="e.g. iCombi Pro 10-1/1 or Countertop Blender"
             class="w-full bg-slate-50 border border-slate-300 focus:border-slate-900 focus:bg-white rounded-xl px-3.5 py-2.5 text-sm font-medium text-slate-900 focus:outline-none"
           />
         </div>
 
+        <!-- Working Conditions Checkboxes -->
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-3.5 space-y-2.5">
+          <div class="text-xs font-bold uppercase tracking-wider text-slate-700">
+            Working Conditions & Handover Checklist
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs font-bold text-slate-800">
+            <label class="flex items-center gap-2 bg-white border border-slate-200 rounded-xl px-3 py-2 cursor-pointer">
+              <input type="checkbox" id="wcInstallation" class="w-4 h-4 accent-slate-900 rounded cursor-pointer" />
+              <span>INSTALLATION</span>
+            </label>
+            <label class="flex items-center gap-2 bg-white border border-slate-200 rounded-xl px-3 py-2 cursor-pointer">
+              <input type="checkbox" id="wcDeliveryOnly" class="w-4 h-4 accent-slate-900 rounded cursor-pointer" />
+              <span>DELIVERY ONLY</span>
+            </label>
+            <label class="flex items-center gap-2 bg-white border border-slate-200 rounded-xl px-3 py-2 cursor-pointer">
+              <input type="checkbox" id="wcPlugInMachine" class="w-4 h-4 accent-slate-900 rounded cursor-pointer" />
+              <span>PLUG-IN MACHINE (DRIVER)</span>
+            </label>
+            <label class="flex items-center gap-2 bg-white border border-slate-200 rounded-xl px-3 py-2 cursor-pointer">
+              <input type="checkbox" id="wcGoodsConditionGood" class="w-4 h-4 accent-emerald-600 rounded cursor-pointer" />
+              <span>GOODS CONDITION GOOD</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Date & Warranty Period -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
           <div>
             <label for="installDateInput" class="block text-xs font-bold text-slate-700 mb-1">
-              Installation Date *
+              Installation / Delivery Date *
             </label>
             <input
               type="date"
@@ -480,47 +546,50 @@
           <span id="modalWarrantyPreviewText" class="font-bold">—</span>
         </div>
 
+        <!-- Site Name & Location -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
           <div>
             <label for="siteNameInput" class="block text-xs font-bold text-slate-700 mb-1">
-              Site Name (Hotel / Restaurant / Kitchen) *
+              Site / Customer Name *
             </label>
             <input
               type="text"
               id="siteNameInput"
               required
-              placeholder="e.g. Grand Marina Hotel - Main Kitchen"
+              placeholder="e.g. Grand Marina Hotel"
               class="w-full bg-slate-50 border border-slate-300 focus:border-slate-900 focus:bg-white rounded-xl px-3.5 py-2.5 text-sm font-medium text-slate-900 focus:outline-none"
             />
           </div>
 
           <div>
             <label for="locationInput" class="block text-xs font-bold text-slate-700 mb-1">
-              Install Location / Area *
+              Location / Area *
             </label>
             <input
               type="text"
               id="locationInput"
               required
-              placeholder="e.g. Sharjah Al Majaz, Dubai Marina"
+              placeholder="e.g. Sharjah / Dubai"
               class="w-full bg-slate-50 border border-slate-300 focus:border-slate-900 focus:bg-white rounded-xl px-3.5 py-2.5 text-sm font-medium text-slate-900 focus:outline-none"
             />
           </div>
         </div>
 
+        <!-- Technician / Driver Name -->
         <div>
           <label for="technicianInput" class="block text-xs font-bold text-slate-700 mb-1">
-            Installed Technician Name *
+            Technician / Driver Name *
           </label>
           <input
             type="text"
             id="technicianInput"
             required
-            placeholder="e.g. Kasun Perera"
+            placeholder="e.g. Kasun / Driver Name"
             class="w-full bg-slate-50 border border-slate-300 focus:border-slate-900 focus:bg-white rounded-xl px-3.5 py-2.5 text-sm font-medium text-slate-900 focus:outline-none"
           />
         </div>
 
+        <!-- Equipment Photos -->
         <div class="pt-1">
           <div class="flex items-center justify-between mb-2">
             <span class="block text-xs font-bold uppercase tracking-wider text-slate-700">
@@ -538,17 +607,13 @@
 
               <div id="nameplatePreviewWrapper" class="hidden relative mb-2.5 rounded-lg overflow-hidden border border-slate-300 bg-slate-900 aspect-video">
                 <img id="nameplatePreviewImg" src="" alt="Nameplate Preview" class="w-full h-full object-contain" />
-                <button
-                  type="button"
-                  id="removeNameplateBtn"
-                  class="absolute top-1.5 right-1.5 px-2 py-1 rounded-md text-[11px] font-bold bg-rose-600 hover:bg-rose-700 text-white shadow transition cursor-pointer"
-                >
+                <button type="button" id="removeNameplateBtn" class="absolute top-1.5 right-1.5 px-2 py-1 rounded-md text-[11px] font-bold bg-rose-600 hover:bg-rose-700 text-white shadow transition cursor-pointer">
                   Remove
                 </button>
               </div>
 
               <div id="nameplatePlaceholder" class="mb-2.5 rounded-lg border-2 border-dashed border-slate-300 bg-white py-5 px-3 text-center">
-                <div class="text-slate-400 text-xs font-medium">Serial / Voltage Plate Photo</div>
+                <div class="text-slate-400 text-xs font-medium">Serial / Label Photo</div>
               </div>
 
               <div class="grid grid-cols-2 gap-1.5">
@@ -565,23 +630,19 @@
 
             <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 flex flex-col justify-between">
               <div class="flex items-center justify-between gap-1 mb-2">
-                <span class="text-xs font-bold text-slate-800">2. Full Machine Photo</span>
+                <span class="text-xs font-bold text-slate-800">2. Full Machine / Delivery</span>
                 <span id="machineSizeBadge" class="hidden text-[10px] font-mono font-semibold px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800"></span>
               </div>
 
               <div id="machinePreviewWrapper" class="hidden relative mb-2.5 rounded-lg overflow-hidden border border-slate-300 bg-slate-900 aspect-video">
                 <img id="machinePreviewImg" src="" alt="Full Machine Preview" class="w-full h-full object-contain" />
-                <button
-                  type="button"
-                  id="removeMachineBtn"
-                  class="absolute top-1.5 right-1.5 px-2 py-1 rounded-md text-[11px] font-bold bg-rose-600 hover:bg-rose-700 text-white shadow transition cursor-pointer"
-                >
+                <button type="button" id="removeMachineBtn" class="absolute top-1.5 right-1.5 px-2 py-1 rounded-md text-[11px] font-bold bg-rose-600 hover:bg-rose-700 text-white shadow transition cursor-pointer">
                   Remove
                 </button>
               </div>
 
               <div id="machinePlaceholder" class="mb-2.5 rounded-lg border-2 border-dashed border-slate-300 bg-white py-5 px-3 text-center">
-                <div class="text-slate-400 text-xs font-medium">Installed Unit Overview Photo</div>
+                <div class="text-slate-400 text-xs font-medium">Unit / Handover Photo</div>
               </div>
 
               <div class="grid grid-cols-2 gap-1.5">
@@ -598,36 +659,108 @@
           </div>
         </div>
 
+        <!-- Notes -->
         <div>
           <label for="notesInput" class="block text-xs font-bold text-slate-700 mb-1">
-            Notes / Remarks (Optional)
+            Notes / Delivery Remarks (Optional)
           </label>
           <textarea
             id="notesInput"
             rows="2"
             maxlength="300"
-            placeholder="e.g. 3-phase power checked, water softener connected, commissioned OK"
+            placeholder="e.g. Delivered by driver, plug-in tested, handed over to kitchen manager"
             class="w-full bg-slate-50 border border-slate-300 focus:border-slate-900 focus:bg-white rounded-xl px-3.5 py-2 text-sm text-slate-900 focus:outline-none"
           ></textarea>
         </div>
 
         <div class="pt-2 flex items-center justify-end gap-2.5 border-t border-slate-100">
-          <button
-            type="button"
-            id="cancelModalBtn"
-            class="px-4 py-2.5 rounded-xl text-sm font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 transition cursor-pointer"
-          >
+          <button type="button" id="cancelModalBtn" class="px-4 py-2.5 rounded-xl text-sm font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 transition cursor-pointer">
             Cancel
           </button>
-          <button
-            type="submit"
-            id="saveRecordBtn"
-            class="px-5 py-2.5 rounded-xl text-sm font-bold bg-slate-900 hover:bg-slate-800 text-white shadow-sm transition cursor-pointer"
-          >
-            Save Installation
+          <button type="submit" id="saveRecordBtn" class="px-5 py-2.5 rounded-xl text-sm font-bold bg-slate-900 hover:bg-slate-800 text-white shadow-sm transition cursor-pointer">
+            Save Entry
           </button>
         </div>
       </form>
+    </div>
+  </div>
+
+  <!-- Admin Board Modal (User Access, Responsibilities & Grant/Revoke) -->
+  <div id="adminBoardModal" class="hidden fixed inset-0 z-50 bg-slate-950/65 backdrop-blur-xs flex items-end sm:items-center justify-center p-0 sm:p-4 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="adminBoardTitle">
+    <div class="bg-white w-full max-w-2xl rounded-t-3xl sm:rounded-2xl shadow-2xl border border-slate-200 max-h-[92vh] flex flex-col overflow-hidden animate-card">
+      <div class="px-5 py-4 bg-slate-900 text-white flex items-center justify-between shrink-0">
+        <div>
+          <h3 id="adminBoardTitle" class="text-base sm:text-lg font-bold">Admin Control Board</h3>
+          <p class="text-xs text-slate-400">Manage Staff/Driver PINs, Responsibilities & Access Rights</p>
+        </div>
+        <button type="button" id="closeAdminBoardBtn" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center font-bold transition cursor-pointer">
+          ✕
+        </button>
+      </div>
+
+      <div class="p-5 overflow-y-auto space-y-5">
+        <div class="rounded-xl p-3 text-xs bg-indigo-50 border border-indigo-200 text-indigo-950">
+          <span class="font-bold">Admin Rule Active:</span> Standard users/drivers cannot edit or delete saved records. Only Admin can edit, delete, or manage user access.
+        </div>
+
+        <!-- Add Team Member / Driver / Staff Form -->
+        <form id="addTeamUserForm" class="bg-slate-50 border border-slate-200 rounded-2xl p-4 space-y-3">
+          <div class="text-xs font-bold uppercase tracking-wider text-slate-800">
+            Add Team Member / Driver / Staff
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div>
+              <label for="newUserNameInput" class="block text-[11px] font-bold text-slate-600 mb-1">Full Name *</label>
+              <input
+                type="text"
+                id="newUserNameInput"
+                required
+                placeholder="e.g. Driver Sunil"
+                class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs font-semibold text-slate-900 focus:outline-none focus:border-slate-900"
+              />
+            </div>
+            <div>
+              <label for="newUserRoleInput" class="block text-[11px] font-bold text-slate-600 mb-1">Responsibility *</label>
+              <select
+                id="newUserRoleInput"
+                class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs font-semibold text-slate-900 focus:outline-none focus:border-slate-900"
+              >
+                <option value="Field Technician">Field Technician</option>
+                <option value="Driver / Delivery">Driver / Delivery</option>
+                <option value="Office Coordinator">Office Coordinator</option>
+                <option value="Viewer Only">Viewer Only</option>
+              </select>
+            </div>
+            <div>
+              <label for="newUserPinInput" class="block text-[11px] font-bold text-slate-600 mb-1">Staff PIN / Key *</label>
+              <input
+                type="text"
+                id="newUserPinInput"
+                required
+                placeholder="e.g. 2026"
+                class="w-full font-mono bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs font-bold text-slate-900 focus:outline-none focus:border-slate-900"
+              />
+            </div>
+          </div>
+          <div class="flex justify-end">
+            <button
+              type="submit"
+              class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 hover:bg-slate-800 text-white transition cursor-pointer"
+            >
+              + Grant Access
+            </button>
+          </div>
+        </form>
+
+        <!-- Existing Team Users List -->
+        <div class="space-y-2.5">
+          <div class="flex items-center justify-between">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-700">Assigned Users & Access Status</h4>
+            <span id="teamUsersCountBadge" class="text-xs font-semibold text-slate-500">0 users</span>
+          </div>
+          <div id="teamUsersListContainer" class="space-y-2"></div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -637,7 +770,7 @@
       <div class="px-5 py-4 bg-slate-900 text-white flex items-center justify-between">
         <div>
           <h3 id="cloudSetupTitle" class="text-base font-bold">Shared Office & Technician Sync</h3>
-          <p class="text-xs text-slate-400">Connect Firebase Firestore for real-time team sharing</p>
+          <p class="text-xs text-slate-400">Firebase Firestore Cloud Database</p>
         </div>
         <button type="button" id="closeCloudSetupBtn" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center font-bold transition cursor-pointer">
           ✕
@@ -651,7 +784,7 @@
 
         <div>
           <label for="firebaseConfigJsonInput" class="block text-xs font-bold text-slate-700 mb-1">
-            Paste Firebase Config JSON (from Firebase Console → Project Settings)
+            Firebase Config JSON
           </label>
           <textarea
             id="firebaseConfigJsonInput"
@@ -763,11 +896,20 @@
   <script>
     (function () {
       const LOCAL_RECORDS_KEY = 'kitchen_tracker_records_v1';
-      const LOCAL_SEEDED_KEY = 'kitchen_tracker_seeded_v1';
+      const LOCAL_USERS_KEY = 'kitchen_tracker_team_users_v1';
       const FIREBASE_CONFIG_STORAGE_KEY = 'kitchen_tracker_firebase_config';
       const SESSION_AUTH_KEY = 'kitchen_tracker_auth_session_v1';
-      const TEAM_ACCESS_PIN = '1234';
+      const PERSIST_ADMIN_AUTH_KEY = 'kitchen_tracker_admin_persist_v1';
+
+      // Temporary Admin PIN (Change later as needed)
+      const ADMIN_ACCESS_PIN = 'TECLEVEL';
       const APP_COLLECTION_ID = typeof __app_id !== 'undefined' ? __app_id : 'kitchen-equip-tracker';
+
+      const COMPANIES = [
+        'SMART KITCHENS FZE',
+        'Al Fursan Kitchen Equip Ind LLC SP',
+        'Al Zahrah Kitchen Equip Tr LLC SP'
+      ];
 
       const DEFAULT_FIREBASE_CONFIG = {
         apiKey: "AIzaSyDtiUkPqg4wUo1E-m4K1CgCLDFUDOQZQEg",
@@ -779,9 +921,12 @@
         measurementId: "G-8VHF5V1DYE"
       };
 
-      // Application State
+      // State
       let records = [];
+      let teamUsers = [];
+      let currentSession = null; // { name, role, isAdmin }
       let searchQuery = '';
+      let companyFilter = 'all';
       let statusFilter = 'all';
       let pendingDeleteRecord = null;
       let toastTimeout = null;
@@ -790,22 +935,24 @@
       let isLightboxZoomed = false;
       let deferredInstallPrompt = null;
 
-      // Cloud Sync State
+      // Cloud State
       let isCloudConnected = false;
       let firestoreDb = null;
       let firestoreModule = null;
-      let unsubscribeFirestore = null;
+      let unsubscribeRecords = null;
+      let unsubscribeUsers = null;
 
-      // DOM References
       const els = {
         loginGateScreen: document.getElementById('loginGateScreen'),
         loginForm: document.getElementById('loginForm'),
         loginUserNameInput: document.getElementById('loginUserNameInput'),
         loginPinInput: document.getElementById('loginPinInput'),
+        keepMeLoggedInCheckbox: document.getElementById('keepMeLoggedInCheckbox'),
         loginErrorBox: document.getElementById('loginErrorBox'),
         loginScreenInstallBtn: document.getElementById('loginScreenInstallBtn'),
         activeUserSubtitle: document.getElementById('activeUserSubtitle'),
         logoutBtn: document.getElementById('logoutBtn'),
+        openAdminBoardBtn: document.getElementById('openAdminBoardBtn'),
         installAppBtn: document.getElementById('installAppBtn'),
 
         openCloudSetupBtn: document.getElementById('openCloudSetupBtn'),
@@ -823,6 +970,7 @@
         statExpiringSoonCount: document.getElementById('statExpiringSoonCount'),
         statExpiredCount: document.getElementById('statExpiredCount'),
 
+        companyFilterSelect: document.getElementById('companyFilterSelect'),
         searchInput: document.getElementById('searchInput'),
         clearSearchBtn: document.getElementById('clearSearchBtn'),
         statusFilterBtns: document.querySelectorAll('.status-filter-btn'),
@@ -845,10 +993,15 @@
         cancelModalBtn: document.getElementById('cancelModalBtn'),
         equipmentForm: document.getElementById('equipmentForm'),
         recordIdInput: document.getElementById('recordIdInput'),
+        companySelectInput: document.getElementById('companySelectInput'),
         serialNumberInput: document.getElementById('serialNumberInput'),
         duplicateSerialWarning: document.getElementById('duplicateSerialWarning'),
         brandInput: document.getElementById('brandInput'),
         modelInput: document.getElementById('modelInput'),
+        wcInstallation: document.getElementById('wcInstallation'),
+        wcDeliveryOnly: document.getElementById('wcDeliveryOnly'),
+        wcPlugInMachine: document.getElementById('wcPlugInMachine'),
+        wcGoodsConditionGood: document.getElementById('wcGoodsConditionGood'),
         installDateInput: document.getElementById('installDateInput'),
         warrantySelect: document.getElementById('warrantySelect'),
         customWarrantyWrapper: document.getElementById('customWarrantyWrapper'),
@@ -877,6 +1030,15 @@
         machineSizeBadge: document.getElementById('machineSizeBadge'),
         removeMachineBtn: document.getElementById('removeMachineBtn'),
 
+        adminBoardModal: document.getElementById('adminBoardModal'),
+        closeAdminBoardBtn: document.getElementById('closeAdminBoardBtn'),
+        addTeamUserForm: document.getElementById('addTeamUserForm'),
+        newUserNameInput: document.getElementById('newUserNameInput'),
+        newUserRoleInput: document.getElementById('newUserRoleInput'),
+        newUserPinInput: document.getElementById('newUserPinInput'),
+        teamUsersCountBadge: document.getElementById('teamUsersCountBadge'),
+        teamUsersListContainer: document.getElementById('teamUsersListContainer'),
+
         cloudSetupModal: document.getElementById('cloudSetupModal'),
         closeCloudSetupBtn: document.getElementById('closeCloudSetupBtn'),
         cloudModalStatusLabel: document.getElementById('cloudModalStatusLabel'),
@@ -901,29 +1063,129 @@
       };
 
       // =========================================================================
-      // 0. TEAM LOGIN SESSION & INSTALL PROMPT HELPERS
+      // 0. AUTHENTICATION, ROLE & SESSION MANAGEMENT
       // =========================================================================
-      function getSavedSessionUser() {
+      function isAdminUser() {
+        return Boolean(currentSession && currentSession.isAdmin);
+      }
+
+      function loadTeamUsersFromLocal() {
         try {
-          const raw = sessionStorage.getItem(SESSION_AUTH_KEY);
-          if (!raw) return null;
-          const parsed = JSON.parse(raw);
-          return parsed && parsed.name ? parsed.name : null;
+          const raw = localStorage.getItem(LOCAL_USERS_KEY);
+          if (raw) {
+            const parsed = JSON.parse(raw);
+            if (Array.isArray(parsed)) {
+              teamUsers = parsed;
+              return;
+            }
+          }
+          teamUsers = [];
         } catch (_) {
-          return null;
+          teamUsers = [];
         }
       }
 
-      function applyAuthGateState() {
-        const userName = getSavedSessionUser();
-        if (userName) {
+      function saveTeamUsersToLocal() {
+        try {
+          localStorage.setItem(LOCAL_USERS_KEY, JSON.stringify(teamUsers));
+        } catch (_) {}
+      }
+
+      function authenticateLogin(nameInput, pinInput, keepLoggedIn) {
+        const cleanName = (nameInput || '').trim();
+        const cleanPin = (pinInput || '').trim();
+        if (!cleanName || !cleanPin) return null;
+
+        if (cleanPin === ADMIN_ACCESS_PIN) {
+          return {
+            name: cleanName,
+            role: 'Admin / Developer',
+            isAdmin: true,
+            keepLoggedIn: Boolean(keepLoggedIn)
+          };
+        }
+
+        const matchedUser = teamUsers.find(
+          (u) =>
+            String(u.pin || '').trim() === cleanPin &&
+            String(u.name || '').trim().toLowerCase() === cleanName.toLowerCase()
+        );
+
+        if (matchedUser && matchedUser.active !== false) {
+          return {
+            name: matchedUser.name,
+            role: matchedUser.role || 'Field Technician',
+            isAdmin: false,
+            keepLoggedIn: false
+          };
+        }
+
+        return null;
+      }
+
+      function persistSession(sessionObj) {
+        currentSession = sessionObj;
+        try {
+          sessionStorage.setItem(SESSION_AUTH_KEY, JSON.stringify(sessionObj));
+          if (sessionObj && sessionObj.isAdmin && sessionObj.keepLoggedIn) {
+            localStorage.setItem(PERSIST_ADMIN_AUTH_KEY, JSON.stringify(sessionObj));
+          } else if (!sessionObj || !sessionObj.keepLoggedIn) {
+            localStorage.removeItem(PERSIST_ADMIN_AUTH_KEY);
+          }
+        } catch (_) {}
+      }
+
+      function restoreSession() {
+        try {
+          const persistedAdmin = localStorage.getItem(PERSIST_ADMIN_AUTH_KEY);
+          if (persistedAdmin) {
+            const parsed = JSON.parse(persistedAdmin);
+            if (parsed && parsed.isAdmin && parsed.name) {
+              currentSession = parsed;
+              sessionStorage.setItem(SESSION_AUTH_KEY, JSON.stringify(parsed));
+              return;
+            }
+          }
+        } catch (_) {}
+
+        try {
+          const raw = sessionStorage.getItem(SESSION_AUTH_KEY);
+          if (raw) {
+            const parsed = JSON.parse(raw);
+            if (parsed && parsed.name) {
+              if (!parsed.isAdmin) {
+                const stillActive = teamUsers.some(
+                  (u) => String(u.name || '').toLowerCase() === String(parsed.name).toLowerCase() && u.active !== false
+                );
+                if (!stillActive) {
+                  sessionStorage.removeItem(SESSION_AUTH_KEY);
+                  currentSession = null;
+                  return;
+                }
+              }
+              currentSession = parsed;
+              return;
+            }
+          }
+        } catch (_) {}
+        currentSession = null;
+      }
+
+      function applyRoleAndAuthUI() {
+        if (currentSession) {
           els.loginGateScreen.classList.add('hidden');
-          els.activeUserSubtitle.textContent = `Logged in: ${userName} • Field & Office Registry`;
+          const adminFlag = currentSession.isAdmin ? ' • ADMIN ACCESS' : ` • ${currentSession.role}`;
+          els.activeUserSubtitle.textContent = `${currentSession.name}${adminFlag}`;
+          els.openAdminBoardBtn.classList.toggle('hidden', !currentSession.isAdmin);
+          els.openAdminBoardBtn.classList.toggle('inline-flex', currentSession.isAdmin);
         } else {
           els.loginGateScreen.classList.remove('hidden');
-          els.activeUserSubtitle.textContent = 'Field Service & Office Warranty Registry';
+          els.openAdminBoardBtn.classList.add('hidden');
+          els.openAdminBoardBtn.classList.remove('inline-flex');
+          els.activeUserSubtitle.textContent = 'Multi-Company Equipment & Delivery Registry';
           setTimeout(() => els.loginUserNameInput.focus(), 50);
         }
+        renderApp();
       }
 
       function isStandaloneApp() {
@@ -931,47 +1193,32 @@
       }
 
       function updateInstallButtonsVisibility() {
-        if (isStandaloneApp()) {
-          els.installAppBtn.classList.add('hidden');
-          els.loginScreenInstallBtn.classList.add('hidden');
-        } else {
-          els.installAppBtn.classList.remove('hidden');
-          els.loginScreenInstallBtn.classList.remove('hidden');
-        }
+        const hidden = isStandaloneApp();
+        els.installAppBtn.classList.toggle('hidden', hidden);
+        els.loginScreenInstallBtn.classList.toggle('hidden', hidden);
       }
 
       async function triggerInstallAppFlow() {
         if (isStandaloneApp()) {
-          showToast('KitchenEquip Tracker is already installed on this device.', 'info');
+          showToast('KitchenEquip Pro is already installed on this device.', 'info');
           return;
         }
         if (deferredInstallPrompt) {
           deferredInstallPrompt.prompt();
           const { outcome } = await deferredInstallPrompt.userChoice;
           deferredInstallPrompt = null;
-          if (outcome === 'accepted') {
-            showToast('Installing KitchenEquip Tracker...', 'success');
-          } else {
-            showToast('Install prompt dismissed.', 'info');
-          }
+          if (outcome === 'accepted') showToast('Installing KitchenEquip Pro...', 'success');
         } else {
-          showToast('Tap Browser Menu (⋮) → "Add to Home screen" or "Install app" to save on your phone.', 'info');
+          showToast('Tap Browser Menu (⋮) → "Install app" or "Add to Home screen".', 'info');
         }
       }
 
       // =========================================================================
-      // 1. DATE & WARRANTY CALCULATION HELPERS
+      // 1. DATE & WARRANTY HELPERS
       // =========================================================================
       function getTodayDateString() {
         const now = new Date();
         return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
-      }
-
-      function offsetDateString(monthsDelta, daysDelta = 0) {
-        const d = new Date();
-        d.setMonth(d.getMonth() + monthsDelta);
-        d.setDate(d.getDate() + daysDelta);
-        return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
       }
 
       function parseLocalYMD(ymd) {
@@ -983,22 +1230,16 @@
 
       function formatDisplayDate(dateObj) {
         if (!(dateObj instanceof Date) || isNaN(dateObj.getTime())) return 'N/A';
-        return dateObj.toLocaleDateString('en-GB', {
-          day: '2-digit',
-          month: 'short',
-          year: 'numeric'
-        });
+        return dateObj.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
       }
 
       function addMonthsClamped(dateObj, monthsToAdd) {
         const year = dateObj.getFullYear();
         const month = dateObj.getMonth();
         const day = dateObj.getDate();
-
         const targetMonthTotal = month + Number(monthsToAdd || 12);
         const targetYear = year + Math.floor(targetMonthTotal / 12);
         const targetMonth = ((targetMonthTotal % 12) + 12) % 12;
-
         const lastDayOfTargetMonth = new Date(targetYear, targetMonth + 1, 0).getDate();
         const clampedDay = Math.min(day, lastDayOfTargetMonth);
         return new Date(targetYear, targetMonth, clampedDay, 23, 59, 59, 999);
@@ -1007,81 +1248,53 @@
       function evaluateWarranty(installDateStr, warrantyMonths) {
         const installDate = parseLocalYMD(installDateStr);
         const months = Math.max(1, parseInt(warrantyMonths, 10) || 12);
-
         if (!installDate) {
           return {
-            isActive: false,
-            isExpiringSoon: false,
-            expiryDate: null,
-            expiryFormatted: 'Invalid Date',
-            installFormatted: installDateStr || 'N/A',
-            daysDiff: 0,
-            remainingText: 'Invalid installation date'
+            isActive: false, isExpiringSoon: false, expiryDate: null,
+            expiryFormatted: 'Invalid Date', installFormatted: installDateStr || 'N/A',
+            daysDiff: 0, remainingText: 'Invalid date'
           };
         }
-
         const expiryDate = addMonthsClamped(installDate, months);
         const now = new Date();
         const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0, 0);
         const expiryStart = new Date(expiryDate.getFullYear(), expiryDate.getMonth(), expiryDate.getDate(), 0, 0, 0, 0);
-
-        const msPerDay = 1000 * 60 * 60 * 24;
-        const daysDiff = Math.round((expiryStart.getTime() - todayStart.getTime()) / msPerDay);
+        const daysDiff = Math.round((expiryStart.getTime() - todayStart.getTime()) / (1000 * 60 * 60 * 24));
         const isActive = daysDiff >= 0;
         const isExpiringSoon = isActive && daysDiff <= 30;
 
         let remainingText = '';
-        if (daysDiff === 0) {
-          remainingText = 'Expires Today (0 days left)';
-        } else if (daysDiff > 0) {
-          const approxMonths = Math.floor(daysDiff / 30);
-          const remDays = daysDiff % 30;
-          if (approxMonths >= 1) {
-            remainingText = `${approxMonths} mo, ${remDays} d remaining (${daysDiff} days)`;
-          } else {
-            remainingText = `${daysDiff} ${daysDiff === 1 ? 'day' : 'days'} remaining`;
-          }
+        if (daysDiff === 0) remainingText = 'Expires Today (0 days left)';
+        else if (daysDiff > 0) {
+          const m = Math.floor(daysDiff / 30);
+          const d = daysDiff % 30;
+          remainingText = m >= 1 ? `${m} mo, ${d} d remaining (${daysDiff} days)` : `${daysDiff} ${daysDiff === 1 ? 'day' : 'days'} remaining`;
         } else {
-          const overdueDays = Math.abs(daysDiff);
-          const approxMonths = Math.floor(overdueDays / 30);
-          if (approxMonths >= 1) {
-            remainingText = `Expired ${approxMonths} mo, ${overdueDays % 30} d ago (${overdueDays} days)`;
-          } else {
-            remainingText = `Expired ${overdueDays} ${overdueDays === 1 ? 'day' : 'days'} ago`;
-          }
+          const od = Math.abs(daysDiff);
+          const m = Math.floor(od / 30);
+          remainingText = m >= 1 ? `Expired ${m} mo, ${od % 30} d ago (${od} days)` : `Expired ${od} ${od === 1 ? 'day' : 'days'} ago`;
         }
 
         return {
-          isActive,
-          isExpiringSoon,
-          expiryDate,
+          isActive, isExpiringSoon, expiryDate,
           expiryFormatted: formatDisplayDate(expiryDate),
           installFormatted: formatDisplayDate(installDate),
-          daysDiff,
-          remainingText
+          daysDiff, remainingText
         };
       }
 
       // =========================================================================
-      // 2. UI NOTIFICATIONS, CLIPBOARD & SANITIZATION
+      // 2. TOAST, CLIPBOARD & SANITIZATION
       // =========================================================================
       function showToast(message, type = 'success') {
         clearTimeout(toastTimeout);
         els.toastMessage.textContent = message;
         els.toastBanner.className = 'rounded-xl px-4 py-3 text-sm font-semibold border shadow-sm flex items-center justify-between gap-3';
-
-        if (type === 'error') {
-          els.toastBanner.classList.add('bg-rose-50', 'border-rose-200', 'text-rose-800');
-        } else if (type === 'info') {
-          els.toastBanner.classList.add('bg-slate-800', 'border-slate-700', 'text-white');
-        } else {
-          els.toastBanner.classList.add('bg-emerald-50', 'border-emerald-200', 'text-emerald-900');
-        }
-
+        if (type === 'error') els.toastBanner.classList.add('bg-rose-50', 'border-rose-200', 'text-rose-800');
+        else if (type === 'info') els.toastBanner.classList.add('bg-slate-800', 'border-slate-700', 'text-white');
+        else els.toastBanner.classList.add('bg-emerald-50', 'border-emerald-200', 'text-emerald-900');
         els.toastBanner.classList.remove('hidden');
-        toastTimeout = setTimeout(() => {
-          els.toastBanner.classList.add('hidden');
-        }, 3500);
+        toastTimeout = setTimeout(() => els.toastBanner.classList.add('hidden'), 3500);
       }
 
       function copyTextToClipboard(text) {
@@ -1094,9 +1307,9 @@
           temp.select();
           document.execCommand('copy');
           document.body.removeChild(temp);
-          showToast(`Copied serial: ${text}`, 'info');
-        } catch (err) {
-          showToast('Unable to copy serial number.', 'error');
+          showToast(`Copied: ${text}`, 'info');
+        } catch (_) {
+          showToast('Unable to copy.', 'error');
         }
       }
 
@@ -1110,7 +1323,7 @@
       }
 
       // =========================================================================
-      // 3. INSTANT LOCAL STORAGE ENGINE & CONFIG HELPERS
+      // 3. LOCAL STORAGE & FIREBASE CLOUD SYNC
       // =========================================================================
       function getSavedFirebaseConfig() {
         if (typeof __firebase_config !== 'undefined' && __firebase_config) {
@@ -1126,75 +1339,18 @@
             if (parsed && parsed.apiKey && parsed.projectId) return parsed;
           }
         } catch (_) {}
-        if (
-          DEFAULT_FIREBASE_CONFIG &&
-          DEFAULT_FIREBASE_CONFIG.apiKey &&
-          !DEFAULT_FIREBASE_CONFIG.apiKey.startsWith("AIzaSy...") &&
-          DEFAULT_FIREBASE_CONFIG.projectId &&
-          DEFAULT_FIREBASE_CONFIG.projectId !== "your-project"
-        ) {
+        if (DEFAULT_FIREBASE_CONFIG && DEFAULT_FIREBASE_CONFIG.apiKey && DEFAULT_FIREBASE_CONFIG.projectId) {
           return DEFAULT_FIREBASE_CONFIG;
         }
         return null;
       }
 
-      function getStarterSampleRecords() {
-        return [
-          {
-            id: 'sample_1',
-            serialNumber: 'E21MH21092931521',
-            brand: 'RATIONAL',
-            model: 'iCombi Pro 10-1/1',
-            installDate: offsetDateString(-5, -10),
-            warrantyMonths: 12,
-            siteName: 'Grand Marina Hotel — Main Kitchen',
-            location: 'Sharjah Al Majaz',
-            technicianName: 'Kasun Perera',
-            notes: '3-phase power checked, water softener & filtration commissioned.',
-            nameplatePhoto: '',
-            machinePhoto: '',
-            createdAt: Date.now() - 86400000 * 2,
-            updatedAt: Date.now() - 86400000 * 2
-          },
-          {
-            id: 'sample_2',
-            serialNumber: 'HB8847201944',
-            brand: 'Hobart',
-            model: 'UXL-11A Dishwasher',
-            installDate: offsetDateString(-14, 0),
-            warrantyMonths: 12,
-            siteName: 'Al Noor Grill & Bistro',
-            location: 'Dubai Marina',
-            technicianName: 'Nimal Silva',
-            notes: 'Standard 12-month warranty completed.',
-            nameplatePhoto: '',
-            machinePhoto: '',
-            createdAt: Date.now() - 86400000,
-            updatedAt: Date.now() - 86400000
-          }
-        ];
-      }
-
       function loadLocalRecords() {
         try {
           const raw = localStorage.getItem(LOCAL_RECORDS_KEY);
-          if (raw) {
-            const parsed = JSON.parse(raw);
-            if (Array.isArray(parsed)) {
-              records = parsed;
-              return;
-            }
-          }
-          const alreadySeeded = localStorage.getItem(LOCAL_SEEDED_KEY);
-          if (!alreadySeeded) {
-            records = getStarterSampleRecords();
-            localStorage.setItem(LOCAL_RECORDS_KEY, JSON.stringify(records));
-            localStorage.setItem(LOCAL_SEEDED_KEY, '1');
-          } else {
-            records = [];
-          }
-        } catch (err) {
-          console.error('Local storage load error:', err);
+          records = raw ? (JSON.parse(raw) || []) : [];
+          if (!Array.isArray(records)) records = [];
+        } catch (_) {
           records = [];
         }
       }
@@ -1202,57 +1358,45 @@
       function saveLocalRecords() {
         try {
           localStorage.setItem(LOCAL_RECORDS_KEY, JSON.stringify(records));
-        } catch (err) {
-          console.error('Local storage save error:', err);
-          showToast('Device storage is full. Try removing old photos.', 'error');
+        } catch (_) {
+          showToast('Storage full. Remove old photos.', 'error');
         }
       }
 
-      function setSyncModeUI(mode, detailText = '') {
+      function setSyncModeUI(mode) {
         if (mode === 'live') {
           isCloudConnected = true;
           els.openCloudSetupBtn.className = 'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-400/40 transition cursor-pointer';
           els.syncStatusDot.className = 'w-2 h-2 rounded-full bg-emerald-400';
           els.syncStatusText.textContent = 'Live Sync';
           els.localModeBanner.classList.add('hidden');
-          els.modalSubtitle.textContent = 'Syncs immediately with all technicians & office staff';
-          els.cloudModalStatusLabel.textContent = 'Live Cloud Sync Connected (Shared Team Database)';
+          els.cloudModalStatusLabel.textContent = 'Live Cloud Sync Connected';
           els.cloudModalStatusLabel.className = 'font-bold text-emerald-700';
         } else {
           isCloudConnected = false;
           els.openCloudSetupBtn.className = 'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-400/40 transition cursor-pointer';
           els.syncStatusDot.className = 'w-2 h-2 rounded-full bg-amber-400';
-          els.syncStatusText.textContent = detailText || 'Local Mode';
+          els.syncStatusText.textContent = 'Local Mode';
           els.localModeBanner.classList.remove('hidden');
-          els.modalSubtitle.textContent = 'Saves immediately to this device (Local Mode)';
           els.cloudModalStatusLabel.textContent = 'Local Mode (Device Storage Only)';
           els.cloudModalStatusLabel.className = 'font-bold text-amber-700';
         }
       }
 
-      // =========================================================================
-      // 4. NON-BLOCKING OPTIONAL FIREBASE CLOUD SYNC
-      // =========================================================================
       function parseUserFirebaseConfigInput(rawInput) {
         const trimmed = (rawInput || '').trim();
-        if (!trimmed) throw new Error('Please paste your Firebase configuration JSON.');
-
+        if (!trimmed) throw new Error('Please paste Firebase configuration JSON.');
         const firstBrace = trimmed.indexOf('{');
         const lastBrace = trimmed.lastIndexOf('}');
         if (firstBrace === -1 || lastBrace === -1 || lastBrace <= firstBrace) {
-          throw new Error('Could not find a valid { ... } configuration object.');
+          throw new Error('Invalid { ... } object.');
         }
-
-        let objText = trimmed.slice(firstBrace, lastBrace + 1);
-        objText = objText
+        let objText = trimmed.slice(firstBrace, lastBrace + 1)
           .replace(/([{,]\s*)([a-zA-Z0-9_]+)\s*:/g, '$1"$2":')
           .replace(/'/g, '"')
           .replace(/,\s*}/g, '}');
-
         const parsed = JSON.parse(objText);
-        if (!parsed.apiKey || !parsed.projectId) {
-          throw new Error('Config must include at least "apiKey" and "projectId".');
-        }
+        if (!parsed.apiKey || !parsed.projectId) throw new Error('Missing apiKey or projectId.');
         return parsed;
       }
 
@@ -1261,14 +1405,11 @@
           setSyncModeUI('local');
           return false;
         }
-
-        if (unsubscribeFirestore) {
-          unsubscribeFirestore();
-          unsubscribeFirestore = null;
-        }
+        if (unsubscribeRecords) { unsubscribeRecords(); unsubscribeRecords = null; }
+        if (unsubscribeUsers) { unsubscribeUsers(); unsubscribeUsers = null; }
 
         const timeoutPromise = new Promise((_, reject) =>
-          setTimeout(() => reject(new Error('Connection timed out. Using Local Mode.')), 4500)
+          setTimeout(() => reject(new Error('Cloud sync timeout. Using Local Mode.')), 4500)
         );
 
         const connectTask = (async () => {
@@ -1279,48 +1420,46 @@
           ]);
 
           const appName = `kitchen_tracker_${configObj.projectId}`;
-          const existingApps = appMod.getApps();
-          const fbApp = existingApps.find((a) => a.name === appName) || appMod.initializeApp(configObj, appName);
+          const fbApp = appMod.getApps().find((a) => a.name === appName) || appMod.initializeApp(configObj, appName);
           const fbAuth = authMod.getAuth(fbApp);
           const fbDb = fsMod.getFirestore(fbApp);
 
-          if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-            await authMod.signInWithCustomToken(fbAuth, __initial_auth_token);
-          } else if (!fbAuth.currentUser) {
+          if (!fbAuth.currentUser) {
             await authMod.signInAnonymously(fbAuth);
           }
 
           firestoreDb = fbDb;
           firestoreModule = fsMod;
 
-          const colRef = fsMod.collection(fbDb, 'artifacts', APP_COLLECTION_ID, 'public', 'data', 'equipment_records');
+          const recordsCol = fsMod.collection(fbDb, 'artifacts', APP_COLLECTION_ID, 'public', 'data', 'equipment_records');
+          const usersCol = fsMod.collection(fbDb, 'artifacts', APP_COLLECTION_ID, 'public', 'data', 'team_users');
+
+          unsubscribeUsers = fsMod.onSnapshot(usersCol, (snap) => {
+            const list = [];
+            snap.forEach((docSnap) => list.push({ id: docSnap.id, ...docSnap.data() }));
+            teamUsers = list;
+            saveTeamUsersToLocal();
+            renderTeamUsersList();
+            restoreSession();
+            applyRoleAndAuthUI();
+          });
 
           return new Promise((resolve, reject) => {
-            let firstSnapshotHandled = false;
-            unsubscribeFirestore = fsMod.onSnapshot(
-              colRef,
+            let firstHandled = false;
+            unsubscribeRecords = fsMod.onSnapshot(
+              recordsCol,
               (snapshot) => {
                 const cloudItems = [];
-                snapshot.forEach((docSnap) => {
-                  cloudItems.push({ id: docSnap.id, ...docSnap.data() });
-                });
+                snapshot.forEach((docSnap) => cloudItems.push({ id: docSnap.id, ...docSnap.data() }));
                 records = cloudItems;
                 saveLocalRecords();
                 setSyncModeUI('live');
                 renderApp();
-
-                if (!firstSnapshotHandled) {
-                  firstSnapshotHandled = true;
-                  resolve(true);
-                }
+                if (!firstHandled) { firstHandled = true; resolve(true); }
               },
               (err) => {
-                console.error('Firestore listener error:', err);
                 setSyncModeUI('local');
-                if (!firstSnapshotHandled) {
-                  firstSnapshotHandled = true;
-                  reject(err);
-                }
+                if (!firstHandled) { firstHandled = true; reject(err); }
               }
             );
           });
@@ -1328,24 +1467,103 @@
 
         try {
           await Promise.race([connectTask, timeoutPromise]);
-          if (isManualTest) {
-            showToast('Connected to shared Firebase Cloud Sync!', 'success');
-          }
+          if (isManualTest) showToast('Connected to Firebase Cloud Sync!', 'success');
           return true;
         } catch (err) {
-          console.warn('Cloud sync fallback to Local Mode:', err.message);
           setSyncModeUI('local');
-          if (isManualTest) {
-            throw err;
-          }
+          if (isManualTest) throw err;
           return false;
         }
       }
 
       // =========================================================================
-      // 5. CRUD OPERATIONS
+      // 4. TEAM USERS & RECORD LOCKED CRUD
       // =========================================================================
+      async function addTeamMember(name, role, pin) {
+        const entry = {
+          name: name.trim(),
+          role: role.trim(),
+          pin: pin.trim(),
+          active: true,
+          createdAt: Date.now()
+        };
+        if (isCloudConnected && firestoreDb && firestoreModule) {
+          const usersCol = firestoreModule.collection(firestoreDb, 'artifacts', APP_COLLECTION_ID, 'public', 'data', 'team_users');
+          await firestoreModule.addDoc(usersCol, entry);
+        } else {
+          teamUsers.push({ id: `usr_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`, ...entry });
+          saveTeamUsersToLocal();
+          renderTeamUsersList();
+        }
+        showToast(`Access granted to ${entry.name} (${entry.role}).`, 'success');
+      }
+
+      async function toggleTeamUserAccess(userId, nextActive) {
+        if (isCloudConnected && firestoreDb && firestoreModule) {
+          const docRef = firestoreModule.doc(firestoreDb, 'artifacts', APP_COLLECTION_ID, 'public', 'data', 'team_users', userId);
+          await firestoreModule.updateDoc(docRef, { active: Boolean(nextActive) });
+        } else {
+          const target = teamUsers.find((u) => u.id === userId);
+          if (target) {
+            target.active = Boolean(nextActive);
+            saveTeamUsersToLocal();
+            renderTeamUsersList();
+          }
+        }
+        showToast(nextActive ? 'User access enabled.' : 'User access revoked.', 'info');
+      }
+
+      function renderTeamUsersList() {
+        els.teamUsersCountBadge.textContent = `${teamUsers.length} ${teamUsers.length === 1 ? 'user' : 'users'}`;
+        if (!teamUsers.length) {
+          els.teamUsersListContainer.innerHTML = `
+            <div class="text-xs text-slate-500 bg-slate-50 border border-dashed border-slate-200 rounded-xl p-4 text-center">
+              No team members/drivers added yet. Add staff above with a PIN/Access Key.
+            </div>
+          `;
+          return;
+        }
+
+        els.teamUsersListContainer.innerHTML = teamUsers
+          .map((u) => {
+            const isActive = u.active !== false;
+            return `
+              <div class="flex items-center justify-between gap-3 bg-white border border-slate-200 rounded-xl p-3">
+                <div class="min-w-0">
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs sm:text-sm font-bold text-slate-900 truncate">${escapeHtml(u.name)}</span>
+                    <span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-100 text-slate-700">${escapeHtml(u.role)}</span>
+                    <span class="px-2 py-0.5 rounded-md text-[10px] font-bold ${isActive ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}">
+                      ${isActive ? 'ACTIVE' : 'REVOKED'}
+                    </span>
+                  </div>
+                  <div class="text-[11px] font-mono text-slate-500 mt-0.5">PIN: ${escapeHtml(u.pin)}</div>
+                </div>
+                <button
+                  type="button"
+                  data-user-action="toggle"
+                  data-user-id="${escapeHtml(u.id)}"
+                  data-next-active="${isActive ? 'false' : 'true'}"
+                  class="px-3 py-1.5 rounded-lg text-xs font-bold shrink-0 transition cursor-pointer ${
+                    isActive
+                      ? 'bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200'
+                      : 'bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200'
+                  }"
+                >
+                  ${isActive ? 'Revoke Access' : 'Grant Access'}
+                </button>
+              </div>
+            `;
+          })
+          .join('');
+      }
+
       async function saveEquipmentRecord(payload, existingId = null) {
+        if (existingId && !isAdminUser()) {
+          showToast('Locked! Only Admin can edit saved records.', 'error');
+          return;
+        }
+
         els.saveRecordBtn.disabled = true;
         els.saveRecordBtn.textContent = 'Saving...';
 
@@ -1356,43 +1574,41 @@
             if (existingId) {
               const docRef = firestoreModule.doc(firestoreDb, 'artifacts', APP_COLLECTION_ID, 'public', 'data', 'equipment_records', existingId);
               await firestoreModule.updateDoc(docRef, { ...payload, updatedAt: now });
-              showToast(`Updated ${payload.serialNumber} across team.`, 'success');
+              showToast(`Updated ${payload.serialNumber}.`, 'success');
             } else {
               await firestoreModule.addDoc(colRef, { ...payload, createdAt: now, updatedAt: now });
-              showToast(`Registered ${payload.serialNumber} across team!`, 'success');
+              showToast(`Saved & Locked ${payload.serialNumber}!`, 'success');
             }
           } else {
             if (existingId) {
               const idx = records.findIndex((r) => r.id === existingId);
-              if (idx !== -1) {
-                records[idx] = { ...records[idx], ...payload, updatedAt: now };
-              }
-              showToast(`Updated ${payload.serialNumber} (Local Mode).`, 'success');
+              if (idx !== -1) records[idx] = { ...records[idx], ...payload, updatedAt: now };
             } else {
-              const newRec = {
+              records.unshift({
                 id: `equip_${now}_${Math.random().toString(36).slice(2, 7)}`,
                 ...payload,
                 createdAt: now,
                 updatedAt: now
-              };
-              records.unshift(newRec);
-              showToast(`Registered ${payload.serialNumber} (Local Mode)!`, 'success');
+              });
             }
             saveLocalRecords();
             renderApp();
+            showToast(`Saved & Locked ${payload.serialNumber}!`, 'success');
           }
-
           closeEquipmentModal();
         } catch (err) {
-          console.error('Save error:', err);
-          showToast('Failed to save record. Check photo size or connection.', 'error');
+          showToast('Failed to save record.', 'error');
         } finally {
           els.saveRecordBtn.disabled = false;
-          els.saveRecordBtn.textContent = existingId ? 'Update Equipment' : 'Save Installation';
+          els.saveRecordBtn.textContent = existingId ? 'Update Entry' : 'Save Entry';
         }
       }
 
       async function deleteEquipmentRecord(recordId) {
+        if (!isAdminUser()) {
+          showToast('Locked! Only Admin can delete records.', 'error');
+          return;
+        }
         const target = records.find((r) => r.id === recordId);
         const serialLabel = target ? target.serialNumber : 'record';
 
@@ -1406,64 +1622,46 @@
             renderApp();
           }
           showToast(`Deleted ${serialLabel}.`, 'info');
-        } catch (err) {
-          console.error('Delete error:', err);
+        } catch (_) {
           showToast('Failed to delete record.', 'error');
         }
       }
 
       // =========================================================================
-      // 6. CLIENT-SIDE IMAGE COMPRESSION & LIGHTBOX VIEWER
+      // 5. IMAGE COMPRESSION & LIGHTBOX
       // =========================================================================
       function estimateBase64Kb(dataUrl) {
         if (!dataUrl) return 0;
         const base64Part = dataUrl.split(',')[1] || '';
-        const bytes = Math.round((base64Part.length * 3) / 4);
-        return Math.max(1, Math.round(bytes / 1024));
+        return Math.max(1, Math.round((Math.round((base64Part.length * 3) / 4)) / 1024));
       }
 
       function compressImageFile(file, maxDimension = 850, quality = 0.72) {
         return new Promise((resolve, reject) => {
           if (!file || !file.type.startsWith('image/')) {
-            reject(new Error('Please select a valid image file.'));
+            reject(new Error('Select a valid image file.'));
             return;
           }
-
           const reader = new FileReader();
-          reader.onerror = () => reject(new Error('Failed to read image file.'));
-          reader.onload = (event) => {
+          reader.onerror = () => reject(new Error('Failed to read image.'));
+          reader.onload = (ev) => {
             const img = new Image();
-            img.onerror = () => reject(new Error('Invalid or corrupted image.'));
+            img.onerror = () => reject(new Error('Invalid image.'));
             img.onload = () => {
-              let width = img.width;
-              let height = img.height;
-
-              if (width > maxDimension || height > maxDimension) {
-                if (width > height) {
-                  height = Math.round((height * maxDimension) / width);
-                  width = maxDimension;
-                } else {
-                  width = Math.round((width * maxDimension) / height);
-                  height = maxDimension;
-                }
+              let w = img.width, h = img.height;
+              if (w > maxDimension || h > maxDimension) {
+                if (w > h) { h = Math.round((h * maxDimension) / w); w = maxDimension; }
+                else { w = Math.round((w * maxDimension) / h); h = maxDimension; }
               }
-
               const canvas = document.createElement('canvas');
-              canvas.width = width;
-              canvas.height = height;
+              canvas.width = w; canvas.height = h;
               const ctx = canvas.getContext('2d');
-              if (!ctx) {
-                reject(new Error('Canvas context unavailable.'));
-                return;
-              }
-
               ctx.fillStyle = '#ffffff';
-              ctx.fillRect(0, 0, width, height);
-              ctx.drawImage(img, 0, 0, width, height);
-
+              ctx.fillRect(0, 0, w, h);
+              ctx.drawImage(img, 0, 0, w, h);
               resolve(canvas.toDataURL('image/jpeg', quality));
             };
-            img.src = event.target.result;
+            img.src = ev.target.result;
           };
           reader.readAsDataURL(file);
         });
@@ -1476,11 +1674,8 @@
         const placeholder = isNameplate ? els.nameplatePlaceholder : els.machinePlaceholder;
         const badge = isNameplate ? els.nameplateSizeBadge : els.machineSizeBadge;
 
-        if (isNameplate) {
-          currentNameplateDataUrl = dataUrl || '';
-        } else {
-          currentMachineDataUrl = dataUrl || '';
-        }
+        if (isNameplate) currentNameplateDataUrl = dataUrl || '';
+        else currentMachineDataUrl = dataUrl || '';
 
         if (dataUrl) {
           imgEl.src = dataUrl;
@@ -1500,17 +1695,13 @@
       async function handlePhotoInputChange(slot, fileInput) {
         const file = fileInput.files && fileInput.files[0];
         if (!file) return;
-
         try {
           let compressed = await compressImageFile(file, 850, 0.72);
-          if (estimateBase64Kb(compressed) > 320) {
-            compressed = await compressImageFile(file, 720, 0.58);
-          }
+          if (estimateBase64Kb(compressed) > 320) compressed = await compressImageFile(file, 720, 0.58);
           setPhotoPreviewUI(slot, compressed);
-          const finalKb = estimateBase64Kb(slot === 'nameplate' ? currentNameplateDataUrl : currentMachineDataUrl);
-          showToast(`${slot === 'nameplate' ? 'Nameplate' : 'Machine'} photo ready (${finalKb} KB).`, 'success');
+          showToast(`Photo ready (${estimateBase64Kb(compressed)} KB).`, 'success');
         } catch (err) {
-          showToast(err.message || 'Could not process image.', 'error');
+          showToast(err.message || 'Image error.', 'error');
         } finally {
           fileInput.value = '';
         }
@@ -1534,11 +1725,8 @@
         if (!target) return;
         const src = photoType === 'nameplate' ? target.nameplatePhoto : target.machinePhoto;
         if (!src) return;
-
-        els.lightboxTitle.textContent = photoType === 'nameplate'
-          ? `Machine Nameplate — ${target.brand} ${target.model}`
-          : `Full Machine Photo — ${target.brand} ${target.model}`;
-        els.lightboxSubtitle.textContent = `S/N: ${target.serialNumber} • ${target.siteName}`;
+        els.lightboxTitle.textContent = `${target.brand} ${target.model}`;
+        els.lightboxSubtitle.textContent = `${target.company || ''} • S/N: ${target.serialNumber}`;
         els.lightboxImage.src = src;
         setLightboxZoom(false);
         els.photoLightboxModal.classList.remove('hidden');
@@ -1551,10 +1739,21 @@
       }
 
       // =========================================================================
-      // 7. RENDERING CARDS, STATS & EXACT-MATCH SPOTLIGHT
+      // 6. RENDERING CARDS & STATS
       // =========================================================================
+      function buildWorkingConditionsBadges(wc = {}) {
+        const tags = [];
+        if (wc.installation) tags.push('<span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-blue-100 text-blue-800">INSTALLATION</span>');
+        if (wc.deliveryOnly) tags.push('<span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-purple-100 text-purple-800">DELIVERY ONLY</span>');
+        if (wc.plugInMachine) tags.push('<span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-amber-100 text-amber-900">PLUG-IN MACHINE</span>');
+        if (wc.goodsConditionGood) tags.push('<span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-emerald-100 text-emerald-800">GOODS CONDITION GOOD</span>');
+        if (!tags.length) return '';
+        return `<div class="mt-3 flex flex-wrap gap-1.5">${tags.join('')}</div>`;
+      }
+
       function buildEquipmentCardHtml(record, isSpotlight = false) {
         const w = evaluateWarranty(record.installDate, record.warrantyMonths);
+        const canModify = isAdminUser();
 
         const borderClass = isSpotlight
           ? 'border-2 border-amber-500 ring-4 ring-amber-500/15'
@@ -1574,133 +1773,102 @@
           statusBannerClass = 'bg-emerald-50 border-emerald-200 text-emerald-900';
         }
 
-        const spotlightHeader = isSpotlight
-          ? `<div class="bg-amber-500 text-slate-950 px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider flex items-center justify-between">
-               <span>★ Exact Serial Number Match</span>
-               <span>Verified Unit</span>
-             </div>`
-          : '';
-
         const hasNameplate = Boolean(record.nameplatePhoto);
         const hasMachine = Boolean(record.machinePhoto);
         const photosBlock = (hasNameplate || hasMachine)
           ? `<div class="mt-3.5 pt-3 border-t border-slate-100">
-               <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">
-                 Attached Photos (Tap to Zoom)
-               </div>
+               <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">Attached Photos (Tap to Zoom)</div>
                <div class="grid grid-cols-2 gap-2.5">
                  ${hasNameplate ? `
-                   <button
-                     type="button"
-                     data-action="view-photo"
-                     data-photo-type="nameplate"
-                     data-id="${escapeHtml(record.id)}"
-                     class="group relative rounded-xl overflow-hidden border border-slate-200 hover:border-slate-900 bg-slate-900 aspect-video text-left transition cursor-pointer"
-                   >
-                     <img src="${record.nameplatePhoto}" alt="Nameplate ${escapeHtml(record.serialNumber)}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200" loading="lazy" />
-                     <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/90 via-slate-950/50 to-transparent px-2.5 py-1.5 flex items-center justify-between">
+                   <button type="button" data-action="view-photo" data-photo-type="nameplate" data-id="${escapeHtml(record.id)}" class="group relative rounded-xl overflow-hidden border border-slate-200 bg-slate-900 aspect-video text-left cursor-pointer">
+                     <img src="${record.nameplatePhoto}" alt="Nameplate" class="w-full h-full object-cover" loading="lazy" />
+                     <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/90 to-transparent px-2.5 py-1.5 flex items-center justify-between">
                        <span class="text-[11px] font-bold text-white">Nameplate</span>
                        <span class="text-[10px] font-semibold text-amber-300">🔍 Zoom</span>
                      </div>
-                   </button>
-                 ` : ''}
+                   </button>` : ''}
                  ${hasMachine ? `
-                   <button
-                     type="button"
-                     data-action="view-photo"
-                     data-photo-type="machine"
-                     data-id="${escapeHtml(record.id)}"
-                     class="group relative rounded-xl overflow-hidden border border-slate-200 hover:border-slate-900 bg-slate-900 aspect-video text-left transition cursor-pointer"
-                   >
-                     <img src="${record.machinePhoto}" alt="Machine ${escapeHtml(record.serialNumber)}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200" loading="lazy" />
-                     <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/90 via-slate-950/50 to-transparent px-2.5 py-1.5 flex items-center justify-between">
-                       <span class="text-[11px] font-bold text-white">Full Machine</span>
+                   <button type="button" data-action="view-photo" data-photo-type="machine" data-id="${escapeHtml(record.id)}" class="group relative rounded-xl overflow-hidden border border-slate-200 bg-slate-900 aspect-video text-left cursor-pointer">
+                     <img src="${record.machinePhoto}" alt="Machine" class="w-full h-full object-cover" loading="lazy" />
+                     <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/90 to-transparent px-2.5 py-1.5 flex items-center justify-between">
+                       <span class="text-[11px] font-bold text-white">Full / Delivery</span>
                        <span class="text-[10px] font-semibold text-amber-300">🔍 Zoom</span>
                      </div>
-                   </button>
-                 ` : ''}
+                   </button>` : ''}
                </div>
              </div>`
           : '';
 
         const notesBlock = record.notes
-          ? `<div class="mt-3 pt-2.5 border-t border-slate-100 text-xs text-slate-600">
-               <span class="font-semibold text-slate-700">Remarks:</span> ${escapeHtml(record.notes)}
-             </div>`
+          ? `<div class="mt-3 pt-2.5 border-t border-slate-100 text-xs text-slate-600"><span class="font-semibold text-slate-700">Remarks:</span> ${escapeHtml(record.notes)}</div>`
           : '';
+
+        const footerActions = canModify
+          ? `<div class="px-4 sm:px-5 py-2.5 bg-slate-50 border-t border-slate-100 flex items-center justify-end gap-2">
+               <button type="button" data-action="edit" data-id="${escapeHtml(record.id)}" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 transition cursor-pointer">Edit Details</button>
+               <button type="button" data-action="delete" data-id="${escapeHtml(record.id)}" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-white hover:bg-rose-50 text-rose-600 border border-slate-200 hover:border-rose-200 transition cursor-pointer">Delete</button>
+             </div>`
+          : `<div class="px-4 sm:px-5 py-2 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-[11px] font-semibold text-slate-500">
+               <span>🔒 Record Locked (Admin Only Edit/Delete)</span>
+             </div>`;
 
         return `
           <article class="bg-white rounded-2xl ${borderClass} shadow-sm overflow-hidden flex flex-col justify-between animate-card">
             <div>
-              ${spotlightHeader}
+              ${isSpotlight ? '<div class="bg-amber-500 text-slate-950 px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider">★ Exact Match</div>' : ''}
               <div class="p-4 sm:p-5 pb-3">
+                <div class="text-[11px] font-extrabold uppercase tracking-wider text-indigo-700 mb-1">
+                  ${escapeHtml(record.company || 'SMART KITCHENS FZE')}
+                </div>
+
                 <div class="flex items-start justify-between gap-2">
                   <div class="min-w-0">
-                    <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Serial Number</div>
+                    <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Serial / Item ID</div>
                     <div class="flex items-center gap-2 mt-0.5">
-                      <h3 class="font-mono text-base sm:text-lg font-extrabold text-slate-900 tracking-wide break-all">
-                        ${escapeHtml(record.serialNumber)}
-                      </h3>
-                      <button
-                        type="button"
-                        data-action="copy-serial"
-                        data-serial="${escapeHtml(record.serialNumber)}"
-                        title="Copy Serial Number"
-                        class="px-2 py-1 rounded-md text-[11px] font-semibold bg-slate-100 hover:bg-slate-200 text-slate-600 shrink-0 transition cursor-pointer"
-                      >
-                        Copy
-                      </button>
+                      <h3 class="font-mono text-base sm:text-lg font-extrabold text-slate-900 tracking-wide break-all">${escapeHtml(record.serialNumber)}</h3>
+                      <button type="button" data-action="copy-serial" data-serial="${escapeHtml(record.serialNumber)}" class="px-2 py-1 rounded-md text-[11px] font-semibold bg-slate-100 hover:bg-slate-200 text-slate-600 shrink-0 cursor-pointer">Copy</button>
                     </div>
                   </div>
 
-                  <span class="px-2.5 py-1 rounded-lg text-[11px] font-extrabold tracking-wide shrink-0 ${statusBadgeClass}">
-                    ${statusLabel}
-                  </span>
+                  <span class="px-2.5 py-1 rounded-lg text-[11px] font-extrabold tracking-wide shrink-0 ${statusBadgeClass}">${statusLabel}</span>
                 </div>
 
-                <div class="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1">
+                <div class="mt-2.5 flex flex-wrap items-center gap-x-2 gap-y-1">
                   <span class="text-sm sm:text-base font-bold text-slate-900">${escapeHtml(record.brand)}</span>
                   <span class="text-slate-300">•</span>
                   <span class="text-sm font-semibold text-slate-700">${escapeHtml(record.model)}</span>
                 </div>
+
+                ${buildWorkingConditionsBadges(record.workingConditions)}
 
                 <div class="mt-3 rounded-xl border p-3 ${statusBannerClass}">
                   <div class="flex items-center justify-between gap-2 text-xs font-bold">
                     <span>${w.isActive ? 'Remaining Coverage' : 'Coverage Status'}</span>
                     <span class="tabular-nums">Expires: ${escapeHtml(w.expiryFormatted)}</span>
                   </div>
-                  <div class="text-sm font-extrabold mt-1 tabular-nums">
-                    ${escapeHtml(w.remainingText)}
-                  </div>
+                  <div class="text-sm font-extrabold mt-1 tabular-nums">${escapeHtml(w.remainingText)}</div>
                 </div>
 
                 <dl class="mt-3.5 grid grid-cols-2 gap-x-3 gap-y-2.5 text-xs">
                   <div class="bg-slate-50 rounded-xl p-2.5 border border-slate-100">
-                    <dt class="text-[11px] font-medium text-slate-500">Installation Date</dt>
+                    <dt class="text-[11px] font-medium text-slate-500">Date</dt>
                     <dd class="font-bold text-slate-900 mt-0.5 tabular-nums">${escapeHtml(w.installFormatted)}</dd>
                   </div>
-
                   <div class="bg-slate-50 rounded-xl p-2.5 border border-slate-100">
-                    <dt class="text-[11px] font-medium text-slate-500">Warranty Term</dt>
+                    <dt class="text-[11px] font-medium text-slate-500">Warranty</dt>
                     <dd class="font-bold text-slate-900 mt-0.5 tabular-nums">${escapeHtml(record.warrantyMonths)} Months</dd>
                   </div>
-
-                  <div class="bg-slate-50 rounded-xl p-2.5 border border-slate-100 col-span-2 sm:col-span-1">
-                    <dt class="text-[11px] font-medium text-slate-500">Site Name</dt>
+                  <div class="bg-slate-50 rounded-xl p-2.5 border border-slate-100">
+                    <dt class="text-[11px] font-medium text-slate-500">Site / Customer</dt>
                     <dd class="font-bold text-slate-900 mt-0.5 break-words">${escapeHtml(record.siteName)}</dd>
                   </div>
-
-                  <div class="bg-slate-50 rounded-xl p-2.5 border border-slate-100 col-span-2 sm:col-span-1">
-                    <dt class="text-[11px] font-medium text-slate-500">Install Location</dt>
+                  <div class="bg-slate-50 rounded-xl p-2.5 border border-slate-100">
+                    <dt class="text-[11px] font-medium text-slate-500">Location</dt>
                     <dd class="font-bold text-slate-900 mt-0.5 break-words">${escapeHtml(record.location)}</dd>
                   </div>
-
                   <div class="bg-slate-50 rounded-xl p-2.5 border border-slate-100 col-span-2">
-                    <dt class="text-[11px] font-medium text-slate-500">Installed Technician</dt>
-                    <dd class="font-bold text-slate-900 mt-0.5 flex items-center gap-1.5">
-                      <span class="w-2 h-2 rounded-full bg-amber-500"></span>
-                      <span>${escapeHtml(record.technicianName)}</span>
-                    </dd>
+                    <dt class="text-[11px] font-medium text-slate-500">Technician / Driver</dt>
+                    <dd class="font-bold text-slate-900 mt-0.5">${escapeHtml(record.technicianName)}</dd>
                   </div>
                 </dl>
 
@@ -1708,34 +1876,13 @@
                 ${notesBlock}
               </div>
             </div>
-
-            <div class="px-4 sm:px-5 py-2.5 bg-slate-50 border-t border-slate-100 flex items-center justify-end gap-2">
-              <button
-                type="button"
-                data-action="edit"
-                data-id="${escapeHtml(record.id)}"
-                class="px-3 py-1.5 rounded-lg text-xs font-bold bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 transition cursor-pointer"
-              >
-                Edit Details
-              </button>
-              <button
-                type="button"
-                data-action="delete"
-                data-id="${escapeHtml(record.id)}"
-                class="px-3 py-1.5 rounded-lg text-xs font-bold bg-white hover:bg-rose-50 text-rose-600 border border-slate-200 hover:border-rose-200 transition cursor-pointer"
-              >
-                Delete
-              </button>
-            </div>
+            ${footerActions}
           </article>
         `;
       }
 
       function renderApp() {
-        let activeCount = 0;
-        let expiringSoonCount = 0;
-        let expiredCount = 0;
-
+        let activeCount = 0, expiringSoonCount = 0, expiredCount = 0;
         records.forEach((rec) => {
           const w = evaluateWarranty(rec.installDate, rec.warrantyMonths);
           if (w.isActive) {
@@ -1768,78 +1915,64 @@
 
         const filtered = records
           .filter((rec) => {
+            if (companyFilter !== 'all' && (rec.company || 'SMART KITCHENS FZE') !== companyFilter) return false;
             const w = evaluateWarranty(rec.installDate, rec.warrantyMonths);
             if (statusFilter === 'active' && !w.isActive) return false;
             if (statusFilter === 'expiring' && !w.isExpiringSoon) return false;
             if (statusFilter === 'expired' && w.isActive) return false;
-
             if (!q) return true;
 
+            const wcText = rec.workingConditions
+              ? Object.entries(rec.workingConditions).filter(([, v]) => v).map(([k]) => k).join(' ')
+              : '';
+
             const haystack = [
-              rec.serialNumber,
-              rec.brand,
-              rec.model,
-              rec.siteName,
-              rec.location,
-              rec.technicianName,
-              rec.notes
-            ]
-              .map((v) => String(v || '').toUpperCase())
-              .join(' | ');
+              rec.company, rec.serialNumber, rec.brand, rec.model,
+              rec.siteName, rec.location, rec.technicianName, rec.notes, wcText
+            ].map((v) => String(v || '').toUpperCase()).join(' | ');
 
             return haystack.includes(q);
           })
           .sort((a, b) => {
-            const dateCmp = String(b.installDate || '').localeCompare(String(a.installDate || ''));
-            if (dateCmp !== 0) return dateCmp;
+            const dCmp = String(b.installDate || '').localeCompare(String(a.installDate || ''));
+            if (dCmp !== 0) return dCmp;
             return (b.updatedAt || b.createdAt || 0) - (a.updatedAt || a.createdAt || 0);
           });
 
-        els.resultsCountLabel.textContent = `Showing ${filtered.length} of ${records.length} ${records.length === 1 ? 'unit' : 'units'}`;
+        els.resultsCountLabel.textContent = `Showing ${filtered.length} of ${records.length} units`;
 
         if (filtered.length === 0) {
           els.recordsContainer.innerHTML = '';
           els.emptyStateBox.classList.remove('hidden');
-          if (q || statusFilter !== 'all') {
-            els.emptyStateTitle.textContent = 'No matching equipment found';
-            els.emptyStateSubtitle.textContent = `No equipment matched "${searchQuery.trim()}" under the selected filter.`;
-          } else {
-            els.emptyStateTitle.textContent = 'No equipment registered yet';
-            els.emptyStateSubtitle.textContent = 'Add your first commercial kitchen machine installation to start tracking warranties.';
-          }
+          els.emptyStateTitle.textContent = 'No matching records found';
+          els.emptyStateSubtitle.textContent = 'Register a new installation or driver plug-in delivery entry.';
           return;
         }
 
         els.emptyStateBox.classList.add('hidden');
-        els.recordsContainer.innerHTML = filtered
-          .map((rec) => buildEquipmentCardHtml(rec, false))
-          .join('');
+        els.recordsContainer.innerHTML = filtered.map((rec) => buildEquipmentCardHtml(rec, false)).join('');
       }
 
       // =========================================================================
-      // 8. MODAL CONTROLS & CSV EXPORT
+      // 7. MODALS & CSV EXPORT
       // =========================================================================
       function getSelectedWarrantyMonths() {
-        const val = els.warrantySelect.value;
-        if (val === 'custom') {
-          const custom = parseInt(els.customWarrantyMonthsInput.value, 10);
-          return Number.isFinite(custom) && custom > 0 ? custom : 12;
+        if (els.warrantySelect.value === 'custom') {
+          const c = parseInt(els.customWarrantyMonthsInput.value, 10);
+          return Number.isFinite(c) && c > 0 ? c : 12;
         }
-        return parseInt(val, 10) || 12;
+        return parseInt(els.warrantySelect.value, 10) || 12;
       }
 
       function updateModalWarrantyPreview() {
         const dateStr = els.installDateInput.value;
         const months = getSelectedWarrantyMonths();
         if (!dateStr) {
-          els.modalWarrantyPreviewText.textContent = 'Select installation date';
+          els.modalWarrantyPreviewText.textContent = 'Select date';
           return;
         }
         const w = evaluateWarranty(dateStr, months);
         els.modalWarrantyPreviewText.textContent = `${w.expiryFormatted} (${w.isActive ? 'Active' : 'Expired'})`;
-        els.modalWarrantyPreview.className = w.isActive
-          ? 'rounded-xl px-3.5 py-2.5 text-xs font-semibold bg-emerald-50 text-emerald-900 border border-emerald-200 flex items-center justify-between'
-          : 'rounded-xl px-3.5 py-2.5 text-xs font-semibold bg-rose-50 text-rose-900 border border-rose-200 flex items-center justify-between';
       }
 
       function checkDuplicateSerialWarning() {
@@ -1847,30 +1980,32 @@
         const editingId = els.recordIdInput.value;
         if (!serialVal) {
           els.duplicateSerialWarning.classList.add('hidden');
-          return false;
+          return;
         }
-        const duplicate = records.find(
-          (r) => (r.serialNumber || '').trim().toUpperCase() === serialVal && r.id !== editingId
-        );
-        els.duplicateSerialWarning.classList.toggle('hidden', !duplicate);
-        return Boolean(duplicate);
+        const dup = records.find((r) => (r.serialNumber || '').trim().toUpperCase() === serialVal && r.id !== editingId);
+        els.duplicateSerialWarning.classList.toggle('hidden', !dup);
       }
 
       function openAddModal(prefillSerial = '') {
         els.recordIdInput.value = '';
-        els.modalTitle.textContent = 'Register New Installation';
-        els.saveRecordBtn.textContent = 'Save Installation';
+        els.modalTitle.textContent = 'Register Installation / Delivery';
+        els.saveRecordBtn.textContent = 'Save Entry';
 
+        els.companySelectInput.value = companyFilter !== 'all' ? companyFilter : COMPANIES[0];
         els.serialNumberInput.value = prefillSerial ? prefillSerial.toUpperCase() : '';
         els.brandInput.value = '';
         els.modelInput.value = '';
+        els.wcInstallation.checked = true;
+        els.wcDeliveryOnly.checked = false;
+        els.wcPlugInMachine.checked = false;
+        els.wcGoodsConditionGood.checked = true;
         els.installDateInput.value = getTodayDateString();
         els.warrantySelect.value = '12';
         els.customWarrantyWrapper.classList.add('hidden');
         els.customWarrantyMonthsInput.value = '';
         els.siteNameInput.value = '';
         els.locationInput.value = '';
-        els.technicianInput.value = getSavedSessionUser() || '';
+        els.technicianInput.value = currentSession ? currentSession.name : '';
         els.notesInput.value = '';
         setPhotoPreviewUI('nameplate', '');
         setPhotoPreviewUI('machine', '');
@@ -1878,32 +2013,41 @@
         checkDuplicateSerialWarning();
         updateModalWarrantyPreview();
         els.equipmentModal.classList.remove('hidden');
-        setTimeout(() => els.serialNumberInput.focus(), 50);
       }
 
       function openEditModal(recordId) {
+        if (!isAdminUser()) {
+          showToast('Locked! Only Admin can edit saved records.', 'error');
+          return;
+        }
         const target = records.find((r) => r.id === recordId);
         if (!target) return;
 
         els.recordIdInput.value = target.id;
-        els.modalTitle.textContent = 'Edit Equipment Details';
-        els.saveRecordBtn.textContent = 'Update Equipment';
-
+        els.modalTitle.textContent = 'Edit Record (Admin)';
+        els.saveRecordBtn.textContent = 'Update Entry';
+        els.companySelectInput.value = target.company || COMPANIES[0];
         els.serialNumberInput.value = target.serialNumber || '';
         els.brandInput.value = target.brand || '';
         els.modelInput.value = target.model || '';
-        els.installDateInput.value = target.installDate || getTodayDateString();
 
-        const standardOptions = ['6', '12', '18', '24', '36'];
-        const monthsStr = String(target.warrantyMonths || 12);
-        if (standardOptions.includes(monthsStr)) {
-          els.warrantySelect.value = monthsStr;
+        const wc = target.workingConditions || {};
+        els.wcInstallation.checked = Boolean(wc.installation);
+        els.wcDeliveryOnly.checked = Boolean(wc.deliveryOnly);
+        els.wcPlugInMachine.checked = Boolean(wc.plugInMachine);
+        els.wcGoodsConditionGood.checked = Boolean(wc.goodsConditionGood);
+
+        els.installDateInput.value = target.installDate || getTodayDateString();
+        const std = ['6', '12', '18', '24', '36'];
+        const mStr = String(target.warrantyMonths || 12);
+        if (std.includes(mStr)) {
+          els.warrantySelect.value = mStr;
           els.customWarrantyWrapper.classList.add('hidden');
           els.customWarrantyMonthsInput.value = '';
         } else {
           els.warrantySelect.value = 'custom';
           els.customWarrantyWrapper.classList.remove('hidden');
-          els.customWarrantyMonthsInput.value = monthsStr;
+          els.customWarrantyMonthsInput.value = mStr;
         }
 
         els.siteNameInput.value = target.siteName || '';
@@ -1923,6 +2067,10 @@
       }
 
       function openDeleteModal(recordId) {
+        if (!isAdminUser()) {
+          showToast('Locked! Only Admin can delete saved records.', 'error');
+          return;
+        }
         const target = records.find((r) => r.id === recordId);
         if (!target) return;
         pendingDeleteRecord = target;
@@ -1930,12 +2078,21 @@
         els.deleteConfirmInput.value = '';
         els.confirmDeleteBtn.disabled = true;
         els.deleteConfirmModal.classList.remove('hidden');
-        setTimeout(() => els.deleteConfirmInput.focus(), 50);
       }
 
       function closeDeleteModal() {
         pendingDeleteRecord = null;
         els.deleteConfirmModal.classList.add('hidden');
+      }
+
+      function openAdminBoardModal() {
+        if (!isAdminUser()) return;
+        renderTeamUsersList();
+        els.adminBoardModal.classList.remove('hidden');
+      }
+
+      function closeAdminBoardModal() {
+        els.adminBoardModal.classList.add('hidden');
       }
 
       function openCloudSetupModal() {
@@ -1952,67 +2109,48 @@
       }
 
       function exportRecordsToCsv() {
-        if (records.length === 0) {
-          showToast('No records available to export.', 'info');
+        if (!records.length) {
+          showToast('No records to export.', 'info');
           return;
         }
-
         const headers = [
-          'Serial Number',
-          'Brand',
-          'Model',
-          'Installation Date',
-          'Warranty Months',
-          'Expiry Date',
-          'Warranty Status',
-          'Remaining Time',
-          'Site Name',
-          'Install Location',
-          'Installed Technician',
-          'Has Nameplate Photo',
-          'Has Machine Photo',
-          'Remarks'
+          'Company', 'Serial Number', 'Brand', 'Model', 'Working Conditions',
+          'Date', 'Warranty Months', 'Expiry Date', 'Status',
+          'Site / Customer', 'Location', 'Technician / Driver', 'Remarks'
         ];
-
-        const escapeCsvCell = (val) => `"${String(val ?? '').replace(/"/g, '""')}"`;
-
+        const esc = (v) => `"${String(v ?? '').replace(/"/g, '""')}"`;
         const rows = records.map((rec) => {
           const w = evaluateWarranty(rec.installDate, rec.warrantyMonths);
+          const wc = rec.workingConditions || {};
+          const condList = [
+            wc.installation ? 'INSTALLATION' : '',
+            wc.deliveryOnly ? 'DELIVERY ONLY' : '',
+            wc.plugInMachine ? 'PLUG-IN MACHINE' : '',
+            wc.goodsConditionGood ? 'GOODS CONDITION GOOD' : ''
+          ].filter(Boolean).join(' / ');
+
           return [
-            rec.serialNumber,
-            rec.brand,
-            rec.model,
-            rec.installDate,
-            rec.warrantyMonths,
-            w.expiryFormatted,
-            w.isActive ? 'ACTIVE' : 'EXPIRED',
-            w.remainingText,
-            rec.siteName,
-            rec.location,
-            rec.technicianName,
-            rec.nameplatePhoto ? 'Yes' : 'No',
-            rec.machinePhoto ? 'Yes' : 'No',
-            rec.notes || ''
-          ]
-            .map(escapeCsvCell)
-            .join(',');
+            rec.company || 'SMART KITCHENS FZE', rec.serialNumber, rec.brand, rec.model, condList,
+            rec.installDate, rec.warrantyMonths, w.expiryFormatted, w.isActive ? 'ACTIVE' : 'EXPIRED',
+            rec.siteName, rec.location, rec.technicianName, rec.notes || ''
+          ].map(esc).join(',');
         });
 
-        const csvContent = '\uFEFF' + [headers.map(escapeCsvCell).join(','), ...rows].join('\n');
-        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const csv = '\uFEFF' + [headers.map(esc).join(','), ...rows].join('\n');
+        const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
         const url = URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = `kitchen-equipment-warranty-${getTodayDateString()}.csv`;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `kitchen-registry-${getTodayDateString()}.csv`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
         URL.revokeObjectURL(url);
-        showToast(`Exported ${records.length} records to CSV.`, 'success');
+        showToast('Exported CSV.', 'success');
       }
 
       // =========================================================================
-      // 9. EVENT LISTENERS & INSTANT STARTUP
+      // 8. EVENT BINDINGS & INIT
       // =========================================================================
       function bindEvents() {
         window.addEventListener('beforeinstallprompt', (e) => {
@@ -2023,41 +2161,68 @@
         window.addEventListener('appinstalled', () => {
           deferredInstallPrompt = null;
           updateInstallButtonsVisibility();
-          showToast('KitchenEquip Tracker installed!', 'success');
+          showToast('App installed!', 'success');
         });
         els.installAppBtn.addEventListener('click', triggerInstallAppFlow);
         els.loginScreenInstallBtn.addEventListener('click', triggerInstallAppFlow);
 
         els.loginForm.addEventListener('submit', (e) => {
           e.preventDefault();
-          const enteredName = els.loginUserNameInput.value.trim();
-          const enteredPin = els.loginPinInput.value.trim();
-
-          if (!enteredName) return;
-
-          if (enteredPin !== TEAM_ACCESS_PIN) {
+          const auth = authenticateLogin(
+            els.loginUserNameInput.value,
+            els.loginPinInput.value,
+            els.keepMeLoggedInCheckbox.checked
+          );
+          if (!auth) {
             els.loginErrorBox.classList.remove('hidden');
             els.loginPinInput.focus();
             return;
           }
-
           els.loginErrorBox.classList.add('hidden');
-          try {
-            sessionStorage.setItem(SESSION_AUTH_KEY, JSON.stringify({ name: enteredName, at: Date.now() }));
-          } catch (_) {}
           els.loginPinInput.value = '';
-          applyAuthGateState();
-          showToast(`Welcome, ${enteredName}!`, 'success');
+          persistSession(auth);
+          applyRoleAndAuthUI();
+          showToast(`Welcome, ${auth.name}!`, 'success');
         });
 
         els.logoutBtn.addEventListener('click', () => {
           try {
             sessionStorage.removeItem(SESSION_AUTH_KEY);
+            localStorage.removeItem(PERSIST_ADMIN_AUTH_KEY);
           } catch (_) {}
-          applyAuthGateState();
+          currentSession = null;
+          applyRoleAndAuthUI();
+        });
+
+        els.openAdminBoardBtn.addEventListener('click', openAdminBoardModal);
+        els.closeAdminBoardBtn.addEventListener('click', closeAdminBoardModal);
+
+        els.addTeamUserForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          if (!isAdminUser()) return;
+          const name = els.newUserNameInput.value.trim();
+          const role = els.newUserRoleInput.value;
+          const pin = els.newUserPinInput.value.trim();
+          if (!name || !pin) return;
+          await addTeamMember(name, role, pin);
+          els.newUserNameInput.value = '';
+          els.newUserPinInput.value = '';
+        });
+
+        els.teamUsersListContainer.addEventListener('click', async (e) => {
+          const btn = e.target.closest('button[data-user-action="toggle"]');
+          if (!btn || !isAdminUser()) return;
+          const userId = btn.getAttribute('data-user-id');
+          const nextActive = btn.getAttribute('data-next-active') === 'true';
+          await toggleTeamUserAccess(userId, nextActive);
         });
 
         els.closeToastBtn.addEventListener('click', () => els.toastBanner.classList.add('hidden'));
+
+        els.companyFilterSelect.addEventListener('change', (e) => {
+          companyFilter = e.target.value;
+          renderApp();
+        });
 
         els.searchInput.addEventListener('input', (e) => {
           searchQuery = e.target.value;
@@ -2119,7 +2284,7 @@
 
         els.equipmentForm.addEventListener('submit', async (e) => {
           e.preventDefault();
-
+          const company = els.companySelectInput.value;
           const serialNumber = els.serialNumberInput.value.trim().toUpperCase();
           const brand = els.brandInput.value.trim();
           const model = els.modelInput.value.trim();
@@ -2130,38 +2295,38 @@
           const technicianName = els.technicianInput.value.trim();
           const notes = els.notesInput.value.trim();
           const existingId = els.recordIdInput.value.trim();
-          const nameplatePhoto = currentNameplateDataUrl || '';
-          const machinePhoto = currentMachineDataUrl || '';
 
-          if (!serialNumber || !brand || !model || !installDate || !siteName || !location || !technicianName) {
-            showToast('Please fill in all required fields.', 'error');
+          if (!company || !serialNumber || !brand || !model || !installDate || !siteName || !location || !technicianName) {
+            showToast('Please fill all required fields.', 'error');
             return;
           }
 
-          if (els.warrantySelect.value === 'custom' && (!Number.isFinite(warrantyMonths) || warrantyMonths < 1)) {
-            showToast('Please enter a valid number of warranty months.', 'error');
-            return;
-          }
-
-          const totalKb = estimateBase64Kb(nameplatePhoto) + estimateBase64Kb(machinePhoto);
+          const totalKb = estimateBase64Kb(currentNameplateDataUrl) + estimateBase64Kb(currentMachineDataUrl);
           if (totalKb > 850) {
-            showToast('Combined photo size is too large. Please remove one photo or retake.', 'error');
+            showToast('Photos too large. Remove one or retake.', 'error');
             return;
           }
 
           await saveEquipmentRecord(
             {
+              company,
               serialNumber,
               brand,
               model,
+              workingConditions: {
+                installation: els.wcInstallation.checked,
+                deliveryOnly: els.wcDeliveryOnly.checked,
+                plugInMachine: els.wcPlugInMachine.checked,
+                goodsConditionGood: els.wcGoodsConditionGood.checked
+              },
               installDate,
               warrantyMonths,
               siteName,
               location,
               technicianName,
               notes,
-              nameplatePhoto,
-              machinePhoto
+              nameplatePhoto: currentNameplateDataUrl || '',
+              machinePhoto: currentMachineDataUrl || ''
             },
             existingId || null
           );
@@ -2179,21 +2344,10 @@
           const btn = e.target.closest('button[data-action]');
           if (!btn) return;
           const action = btn.getAttribute('data-action');
-
-          if (action === 'copy-serial') {
-            const serial = btn.getAttribute('data-serial');
-            if (serial) copyTextToClipboard(serial);
-          } else if (action === 'view-photo') {
-            const id = btn.getAttribute('data-id');
-            const photoType = btn.getAttribute('data-photo-type');
-            if (id && photoType) openPhotoLightbox(id, photoType);
-          } else if (action === 'edit') {
-            const id = btn.getAttribute('data-id');
-            if (id) openEditModal(id);
-          } else if (action === 'delete') {
-            const id = btn.getAttribute('data-id');
-            if (id) openDeleteModal(id);
-          }
+          if (action === 'copy-serial') copyTextToClipboard(btn.getAttribute('data-serial'));
+          else if (action === 'view-photo') openPhotoLightbox(btn.getAttribute('data-id'), btn.getAttribute('data-photo-type'));
+          else if (action === 'edit') openEditModal(btn.getAttribute('data-id'));
+          else if (action === 'delete') openDeleteModal(btn.getAttribute('data-id'));
         };
 
         els.recordsContainer.addEventListener('click', handleCardActionClick);
@@ -2203,9 +2357,7 @@
         els.lightboxZoomToggleBtn.addEventListener('click', () => setLightboxZoom(!isLightboxZoomed));
         els.lightboxImage.addEventListener('click', () => setLightboxZoom(!isLightboxZoomed));
         els.photoLightboxModal.addEventListener('click', (e) => {
-          if (e.target === els.photoLightboxModal || e.target === els.lightboxScrollContainer) {
-            closePhotoLightbox();
-          }
+          if (e.target === els.photoLightboxModal || e.target === els.lightboxScrollContainer) closePhotoLightbox();
         });
 
         els.deleteConfirmInput.addEventListener('input', () => {
@@ -2223,14 +2375,13 @@
           els.cloudSetupErrorBox.classList.add('hidden');
           els.testAndSaveCloudBtn.disabled = true;
           els.testAndSaveCloudBtn.textContent = 'Connecting...';
-
           try {
             const parsedConfig = parseUserFirebaseConfigInput(els.firebaseConfigJsonInput.value);
             localStorage.setItem(FIREBASE_CONFIG_STORAGE_KEY, JSON.stringify(parsedConfig));
             await connectToFirebaseCloud(parsedConfig, true);
             closeCloudSetupModal();
           } catch (err) {
-            els.cloudSetupErrorBox.textContent = err.message || 'Could not connect to Firebase. Check your config and ensure Anonymous Auth + Firestore are enabled.';
+            els.cloudSetupErrorBox.textContent = err.message || 'Connection failed.';
             els.cloudSetupErrorBox.classList.remove('hidden');
           } finally {
             els.testAndSaveCloudBtn.disabled = false;
@@ -2240,30 +2391,26 @@
 
         els.resetLocalModeBtn.addEventListener('click', () => {
           localStorage.removeItem(FIREBASE_CONFIG_STORAGE_KEY);
-          if (unsubscribeFirestore) {
-            unsubscribeFirestore();
-            unsubscribeFirestore = null;
-          }
+          if (unsubscribeRecords) { unsubscribeRecords(); unsubscribeRecords = null; }
+          if (unsubscribeUsers) { unsubscribeUsers(); unsubscribeUsers = null; }
           firestoreDb = null;
           firestoreModule = null;
           loadLocalRecords();
           setSyncModeUI('local');
           renderApp();
           closeCloudSetupModal();
-          showToast('Switched back to Local Mode.', 'info');
+          showToast('Switched to Local Mode.', 'info');
         });
       }
 
-      // =========================================================================
-      // BOOTSTRAP APPLICATION IMMEDIATELY ON LOAD
-      // =========================================================================
       function init() {
         loadLocalRecords();
+        loadTeamUsersFromLocal();
         setSyncModeUI('local');
         updateInstallButtonsVisibility();
         bindEvents();
-        renderApp();
-        applyAuthGateState();
+        restoreSession();
+        applyRoleAndAuthUI();
 
         const savedConfig = getSavedFirebaseConfig();
         if (savedConfig) {
