@@ -1,0 +1,2088 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KitchenEquip Pro — Installation & Warranty Tracker</title>
+  <!-- Load Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Load Inter & JetBrains Mono Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-card {
+      animation: slideUp 0.2s ease-out forwards;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-slate-100 text-slate-900 pb-24 sm:pb-12">
+
+  <!-- Top Industrial Navy Header -->
+  <header class="bg-slate-900 text-white shadow-md sticky top-0 z-30 border-b border-slate-800">
+    <div class="max-w-5xl mx-auto px-4 py-3.5 sm:py-4 flex items-center justify-between gap-3">
+      <div class="flex items-center gap-3 min-w-0">
+        <div class="w-10 h-10 rounded-xl bg-amber-500 text-slate-950 flex items-center justify-center font-extrabold text-lg shrink-0 shadow-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+          </svg>
+        </div>
+        <div class="min-w-0">
+          <div class="flex flex-wrap items-center gap-2">
+            <h1 class="text-base sm:text-lg font-bold tracking-tight truncate">KitchenEquip Tracker</h1>
+            <!-- Clickable Sync Mode Status Pill -->
+            <button
+              type="button"
+              id="openCloudSetupBtn"
+              title="Click to configure shared Cloud Sync (Firebase)"
+              class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-400/40 transition cursor-pointer"
+            >
+              <span id="syncStatusDot" class="w-2 h-2 rounded-full bg-amber-400"></span>
+              <span id="syncStatusText">Local Mode</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 opacity-80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+              </svg>
+            </button>
+          </div>
+          <p class="text-xs text-slate-400 truncate">Field Service & Office Warranty Registry</p>
+        </div>
+      </div>
+
+      <!-- Desktop & Tablet Action Buttons -->
+      <div class="flex items-center gap-2 shrink-0">
+        <button
+          type="button"
+          id="exportCsvBtn"
+          title="Export all records to CSV"
+          class="inline-flex items-center gap-1.5 px-3 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition cursor-pointer"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-slate-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          <span class="hidden sm:inline">Export CSV</span>
+        </button>
+
+        <button
+          type="button"
+          id="openAddModalBtn"
+          class="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-amber-500 hover:bg-amber-400 active:scale-[0.99] text-slate-950 shadow-sm transition cursor-pointer"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+          <span>Add Equipment</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Workspace -->
+  <main class="max-w-5xl mx-auto px-4 pt-5 space-y-5">
+
+    <!-- Toast Notification Banner -->
+    <div id="toastBanner" class="hidden rounded-xl px-4 py-3 text-sm font-semibold border shadow-sm flex items-center justify-between gap-3" role="status" aria-live="polite">
+      <span id="toastMessage"></span>
+      <button type="button" id="closeToastBtn" class="px-2 py-1 rounded-lg text-xs opacity-75 hover:opacity-100 cursor-pointer">✕</button>
+    </div>
+
+    <!-- Local Mode Info Callout (Dismissible or clickable to setup shared cloud sync) -->
+    <div id="localModeBanner" class="bg-amber-50 border border-amber-200 rounded-2xl px-4 py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 text-xs sm:text-sm text-amber-950">
+      <div class="flex items-start sm:items-center gap-2.5">
+        <span class="text-base shrink-0">💾</span>
+        <div>
+          <span class="font-bold">Running in Instant Local Mode:</span>
+          <span class="text-amber-900">Records & photos save immediately on this device. Want live sync with office staff & other technicians?</span>
+        </div>
+      </div>
+      <button
+        type="button"
+        id="bannerConnectCloudBtn"
+        class="self-start sm:self-center shrink-0 px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-900 hover:bg-slate-800 text-amber-400 transition cursor-pointer"
+      >
+        Connect Cloud Sync
+      </button>
+    </div>
+
+    <!-- Summary Stats Bar -->
+    <section aria-label="Registry Statistics" class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4">
+      <div class="bg-white rounded-2xl p-3.5 sm:p-4 border border-slate-200/90 shadow-sm">
+        <div class="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-500">Total Units</div>
+        <div id="statTotalCount" class="text-xl sm:text-2xl font-extrabold text-slate-900 mt-1 tabular-nums">0</div>
+      </div>
+
+      <div class="bg-white rounded-2xl p-3.5 sm:p-4 border border-emerald-200/80 shadow-sm">
+        <div class="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-emerald-700">Warranty Active</div>
+        <div id="statActiveCount" class="text-xl sm:text-2xl font-extrabold text-emerald-600 mt-1 tabular-nums">0</div>
+      </div>
+
+      <div class="bg-white rounded-2xl p-3.5 sm:p-4 border border-amber-200/80 shadow-sm">
+        <div class="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-amber-700">Expiring ≤ 30d</div>
+        <div id="statExpiringSoonCount" class="text-xl sm:text-2xl font-extrabold text-amber-600 mt-1 tabular-nums">0</div>
+      </div>
+
+      <div class="bg-white rounded-2xl p-3.5 sm:p-4 border border-rose-200/80 shadow-sm">
+        <div class="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-rose-700">Expired</div>
+        <div id="statExpiredCount" class="text-xl sm:text-2xl font-extrabold text-rose-600 mt-1 tabular-nums">0</div>
+      </div>
+    </section>
+
+    <!-- Prominent Serial Number Search & Filter Bar -->
+    <section aria-label="Serial Number Lookup" class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-sm space-y-3.5">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <label for="searchInput" class="text-sm sm:text-base font-bold text-slate-900 flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-amber-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <span>Instant Serial Number Lookup</span>
+        </label>
+        <span class="text-xs text-slate-500">Type Serial No, Site Name, Brand, Model, or Location</span>
+      </div>
+
+      <div class="relative flex items-center">
+        <input
+          type="text"
+          id="searchInput"
+          autocomplete="off"
+          spellcheck="false"
+          placeholder="Enter Serial Number (e.g., E21MH21092931521)..."
+          class="w-full font-mono text-base sm:text-lg font-semibold uppercase tracking-wide bg-slate-50 border-2 border-slate-300 focus:border-slate-900 focus:bg-white rounded-xl pl-4 pr-20 py-3.5 text-slate-900 placeholder:font-sans placeholder:normal-case placeholder:font-normal placeholder:text-slate-400 focus:outline-none transition"
+        />
+        <button
+          type="button"
+          id="clearSearchBtn"
+          class="hidden absolute right-3 px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-200 hover:bg-slate-300 text-slate-700 transition cursor-pointer"
+        >
+          CLEAR
+        </button>
+      </div>
+
+      <!-- Status Filter Pills -->
+      <div class="flex flex-wrap items-center justify-between gap-2 pt-0.5">
+        <div class="flex flex-wrap items-center gap-1.5">
+          <button type="button" data-status-filter="all" class="status-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-900 text-white transition cursor-pointer">
+            All Units
+          </button>
+          <button type="button" data-status-filter="active" class="status-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 transition cursor-pointer">
+            Active Warranty
+          </button>
+          <button type="button" data-status-filter="expiring" class="status-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 transition cursor-pointer">
+            Expiring Soon
+          </button>
+          <button type="button" data-status-filter="expired" class="status-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 transition cursor-pointer">
+            Expired
+          </button>
+        </div>
+
+        <div id="resultsCountLabel" class="text-xs font-medium text-slate-500">
+          Showing 0 units
+        </div>
+      </div>
+    </section>
+
+    <!-- Exact Serial Number Match Spotlight Banner -->
+    <section id="exactMatchSpotlight" class="hidden" aria-label="Exact Serial Match"></section>
+
+    <!-- Equipment Records Grid / List -->
+    <section aria-label="Equipment Registry List" class="space-y-3">
+      <div id="recordsContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Equipment Cards rendered immediately -->
+      </div>
+
+      <!-- Empty State -->
+      <div id="emptyStateBox" class="hidden bg-white rounded-2xl p-10 border border-slate-200 text-center">
+        <div class="w-12 h-12 rounded-2xl bg-slate-100 text-slate-500 flex items-center justify-center mx-auto mb-3 text-xl">
+          🔍
+        </div>
+        <h3 id="emptyStateTitle" class="text-base font-bold text-slate-900">No equipment records found</h3>
+        <p id="emptyStateSubtitle" class="text-xs sm:text-sm text-slate-500 mt-1 max-w-md mx-auto">
+          Add your first installed commercial kitchen machine to start tracking warranties across the team.
+        </p>
+        <button
+          type="button"
+          id="emptyAddBtn"
+          class="mt-4 inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-slate-900 hover:bg-slate-800 text-white transition cursor-pointer"
+        >
+          <span>+ Register New Installation</span>
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Mobile Floating Bottom Action Button for Quick On-Site Entry -->
+  <div class="fixed bottom-4 right-4 sm:hidden z-20">
+    <button
+      type="button"
+      id="mobileFabAddBtn"
+      class="flex items-center gap-2 px-5 py-3.5 rounded-full bg-slate-900 text-amber-400 font-bold text-sm shadow-xl border border-slate-700 active:scale-95 transition cursor-pointer"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="12" y1="5" x2="12" y2="19"/>
+        <line x1="5" y1="12" x2="19" y2="12"/>
+      </svg>
+      <span>New Install</span>
+    </button>
+  </div>
+
+  <!-- Add / Edit Equipment Modal -->
+  <div id="equipmentModal" class="hidden fixed inset-0 z-40 bg-slate-950/60 backdrop-blur-xs flex items-end sm:items-center justify-center p-0 sm:p-4 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="bg-white w-full max-w-xl rounded-t-3xl sm:rounded-2xl shadow-2xl border border-slate-200 max-h-[92vh] flex flex-col overflow-hidden animate-card">
+      <!-- Modal Header -->
+      <div class="px-5 py-4 bg-slate-900 text-white flex items-center justify-between shrink-0">
+        <div>
+          <h2 id="modalTitle" class="text-base sm:text-lg font-bold">Register New Installation</h2>
+          <p id="modalSubtitle" class="text-xs text-slate-400">Saves immediately to your registry</p>
+        </div>
+        <button type="button" id="closeModalBtn" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center font-bold transition cursor-pointer" aria-label="Close modal">
+          ✕
+        </button>
+      </div>
+
+      <!-- Modal Form Body -->
+      <form id="equipmentForm" class="p-5 overflow-y-auto space-y-4">
+        <input type="hidden" id="recordIdInput" value="" />
+
+        <!-- Serial Number -->
+        <div>
+          <div class="flex items-center justify-between mb-1">
+            <label for="serialNumberInput" class="block text-xs font-bold uppercase tracking-wider text-slate-700">
+              Serial Number *
+            </label>
+            <span id="duplicateSerialWarning" class="hidden text-xs font-bold text-amber-700 bg-amber-100 px-2 py-0.5 rounded-md">
+              ⚠ Serial number already exists!
+            </span>
+          </div>
+          <input
+            type="text"
+            id="serialNumberInput"
+            required
+            autocomplete="off"
+            spellcheck="false"
+            placeholder="e.g. E21MH21092931521"
+            class="w-full font-mono text-base font-bold uppercase tracking-wider bg-slate-50 border-2 border-slate-300 focus:border-slate-900 focus:bg-white rounded-xl px-3.5 py-3 text-slate-900 focus:outline-none"
+          />
+        </div>
+
+        <!-- Brand & Quick Brand Chips -->
+        <div>
+          <label for="brandInput" class="block text-xs font-bold text-slate-700 mb-1">
+            Machine Brand *
+          </label>
+          <input
+            type="text"
+            id="brandInput"
+            required
+            placeholder="e.g. RATIONAL, Hobart, Winterhalter"
+            class="w-full bg-slate-50 border border-slate-300 focus:border-slate-900 focus:bg-white rounded-xl px-3.5 py-2.5 text-sm font-medium text-slate-900 focus:outline-none"
+          />
+          <div class="flex flex-wrap gap-1.5 mt-2" aria-label="Quick select brand">
+            <button type="button" data-quick-brand="RATIONAL" class="quick-brand-chip px-2.5 py-1 rounded-lg text-[11px] font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 transition cursor-pointer">RATIONAL</button>
+            <button type="button" data-quick-brand="Hobart" class="quick-brand-chip px-2.5 py-1 rounded-lg text-[11px] font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 transition cursor-pointer">Hobart</button>
+            <button type="button" data-quick-brand="Winterhalter" class="quick-brand-chip px-2.5 py-1 rounded-lg text-[11px] font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 transition cursor-pointer">Winterhalter</button>
+            <button type="button" data-quick-brand="Electrolux Professional" class="quick-brand-chip px-2.5 py-1 rounded-lg text-[11px] font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 transition cursor-pointer">Electrolux</button>
+            <button type="button" data-quick-brand="Hoshizaki" class="quick-brand-chip px-2.5 py-1 rounded-lg text-[11px] font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 transition cursor-pointer">Hoshizaki</button>
+            <button type="button" data-quick-brand="Lainox" class="quick-brand-chip px-2.5 py-1 rounded-lg text-[11px] font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 transition cursor-pointer">Lainox</button>
+            <button type="button" data-quick-brand="Fagor Professional" class="quick-brand-chip px-2.5 py-1 rounded-lg text-[11px] font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 transition cursor-pointer">Fagor</button>
+          </div>
+        </div>
+
+        <!-- Model -->
+        <div>
+          <label for="modelInput" class="block text-xs font-bold text-slate-700 mb-1">
+            Machine Model *
+          </label>
+          <input
+            type="text"
+            id="modelInput"
+            required
+            placeholder="e.g. iCombi Pro 10-1/1"
+            class="w-full bg-slate-50 border border-slate-300 focus:border-slate-900 focus:bg-white rounded-xl px-3.5 py-2.5 text-sm font-medium text-slate-900 focus:outline-none"
+          />
+        </div>
+
+        <!-- Installation Date & Warranty Period -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div>
+            <label for="installDateInput" class="block text-xs font-bold text-slate-700 mb-1">
+              Installation Date *
+            </label>
+            <input
+              type="date"
+              id="installDateInput"
+              required
+              class="w-full bg-slate-50 border border-slate-300 focus:border-slate-900 focus:bg-white rounded-xl px-3.5 py-2.5 text-sm font-medium text-slate-900 focus:outline-none"
+            />
+          </div>
+
+          <div>
+            <label for="warrantySelect" class="block text-xs font-bold text-slate-700 mb-1">
+              Warranty Period *
+            </label>
+            <select
+              id="warrantySelect"
+              class="w-full bg-slate-50 border border-slate-300 focus:border-slate-900 focus:bg-white rounded-xl px-3.5 py-2.5 text-sm font-medium text-slate-900 focus:outline-none"
+            >
+              <option value="12" selected>12 Months (1 Year - Standard)</option>
+              <option value="6">6 Months</option>
+              <option value="18">18 Months (1.5 Years)</option>
+              <option value="24">24 Months (2 Years)</option>
+              <option value="36">36 Months (3 Years)</option>
+              <option value="custom">Custom Months...</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Custom Warranty Months Field -->
+        <div id="customWarrantyWrapper" class="hidden bg-amber-50 border border-amber-200 rounded-xl p-3">
+          <label for="customWarrantyMonthsInput" class="block text-xs font-bold text-amber-900 mb-1">
+            Custom Warranty Duration (in Months) *
+          </label>
+          <input
+            type="number"
+            id="customWarrantyMonthsInput"
+            min="1"
+            max="120"
+            placeholder="e.g. 15"
+            class="w-full bg-white border border-amber-300 focus:border-slate-900 rounded-xl px-3.5 py-2 text-sm font-semibold text-slate-900 focus:outline-none tabular-nums"
+          />
+        </div>
+
+        <!-- Live Warranty Preview Banner inside Modal -->
+        <div id="modalWarrantyPreview" class="rounded-xl px-3.5 py-2.5 text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200 flex items-center justify-between">
+          <span>Calculated Warranty Expiry:</span>
+          <span id="modalWarrantyPreviewText" class="font-bold">—</span>
+        </div>
+
+        <!-- Site Name & Install Location -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div>
+            <label for="siteNameInput" class="block text-xs font-bold text-slate-700 mb-1">
+              Site Name (Hotel / Restaurant / Kitchen) *
+            </label>
+            <input
+              type="text"
+              id="siteNameInput"
+              required
+              placeholder="e.g. Grand Marina Hotel - Main Kitchen"
+              class="w-full bg-slate-50 border border-slate-300 focus:border-slate-900 focus:bg-white rounded-xl px-3.5 py-2.5 text-sm font-medium text-slate-900 focus:outline-none"
+            />
+          </div>
+
+          <div>
+            <label for="locationInput" class="block text-xs font-bold text-slate-700 mb-1">
+              Install Location / Area *
+            </label>
+            <input
+              type="text"
+              id="locationInput"
+              required
+              placeholder="e.g. Sharjah Al Majaz, Dubai Marina"
+              class="w-full bg-slate-50 border border-slate-300 focus:border-slate-900 focus:bg-white rounded-xl px-3.5 py-2.5 text-sm font-medium text-slate-900 focus:outline-none"
+            />
+          </div>
+        </div>
+
+        <!-- Installed Technician Name -->
+        <div>
+          <label for="technicianInput" class="block text-xs font-bold text-slate-700 mb-1">
+            Installed Technician Name *
+          </label>
+          <input
+            type="text"
+            id="technicianInput"
+            required
+            placeholder="e.g. Kasun Perera"
+            class="w-full bg-slate-50 border border-slate-300 focus:border-slate-900 focus:bg-white rounded-xl px-3.5 py-2.5 text-sm font-medium text-slate-900 focus:outline-none"
+          />
+        </div>
+
+        <!-- Equipment Photos (Nameplate & Full Machine) -->
+        <div class="pt-1">
+          <div class="flex items-center justify-between mb-2">
+            <span class="block text-xs font-bold uppercase tracking-wider text-slate-700">
+              Equipment Photos (Optional)
+            </span>
+            <span class="text-[11px] text-slate-500">Auto-compressed (~90 KB)</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            <!-- 1. Machine Nameplate Photo -->
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 flex flex-col justify-between">
+              <div class="flex items-center justify-between gap-1 mb-2">
+                <span class="text-xs font-bold text-slate-800">1. Machine Nameplate</span>
+                <span id="nameplateSizeBadge" class="hidden text-[10px] font-mono font-semibold px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800"></span>
+              </div>
+
+              <div id="nameplatePreviewWrapper" class="hidden relative mb-2.5 rounded-lg overflow-hidden border border-slate-300 bg-slate-900 aspect-video">
+                <img id="nameplatePreviewImg" src="" alt="Nameplate Preview" class="w-full h-full object-contain" />
+                <button
+                  type="button"
+                  id="removeNameplateBtn"
+                  class="absolute top-1.5 right-1.5 px-2 py-1 rounded-md text-[11px] font-bold bg-rose-600 hover:bg-rose-700 text-white shadow transition cursor-pointer"
+                >
+                  Remove
+                </button>
+              </div>
+
+              <div id="nameplatePlaceholder" class="mb-2.5 rounded-lg border-2 border-dashed border-slate-300 bg-white py-5 px-3 text-center">
+                <div class="text-slate-400 text-xs font-medium">Serial / Voltage Plate Photo</div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-1.5">
+                <label class="flex items-center justify-center gap-1 px-2.5 py-2.5 rounded-lg text-xs font-bold bg-slate-900 hover:bg-slate-800 text-white text-center transition cursor-pointer">
+                  <span>📷 Camera</span>
+                  <input type="file" id="nameplateCameraInput" accept="image/*" capture="environment" class="hidden" />
+                </label>
+                <label class="flex items-center justify-center gap-1 px-2.5 py-2.5 rounded-lg text-xs font-bold bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 text-center transition cursor-pointer">
+                  <span>🖼 Gallery</span>
+                  <input type="file" id="nameplateGalleryInput" accept="image/*" class="hidden" />
+                </label>
+              </div>
+            </div>
+
+            <!-- 2. Full Machine Photo -->
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 flex flex-col justify-between">
+              <div class="flex items-center justify-between gap-1 mb-2">
+                <span class="text-xs font-bold text-slate-800">2. Full Machine Photo</span>
+                <span id="machineSizeBadge" class="hidden text-[10px] font-mono font-semibold px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800"></span>
+              </div>
+
+              <div id="machinePreviewWrapper" class="hidden relative mb-2.5 rounded-lg overflow-hidden border border-slate-300 bg-slate-900 aspect-video">
+                <img id="machinePreviewImg" src="" alt="Full Machine Preview" class="w-full h-full object-contain" />
+                <button
+                  type="button"
+                  id="removeMachineBtn"
+                  class="absolute top-1.5 right-1.5 px-2 py-1 rounded-md text-[11px] font-bold bg-rose-600 hover:bg-rose-700 text-white shadow transition cursor-pointer"
+                >
+                  Remove
+                </button>
+              </div>
+
+              <div id="machinePlaceholder" class="mb-2.5 rounded-lg border-2 border-dashed border-slate-300 bg-white py-5 px-3 text-center">
+                <div class="text-slate-400 text-xs font-medium">Installed Unit Overview Photo</div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-1.5">
+                <label class="flex items-center justify-center gap-1 px-2.5 py-2.5 rounded-lg text-xs font-bold bg-slate-900 hover:bg-slate-800 text-white text-center transition cursor-pointer">
+                  <span>📷 Camera</span>
+                  <input type="file" id="machineCameraInput" accept="image/*" capture="environment" class="hidden" />
+                </label>
+                <label class="flex items-center justify-center gap-1 px-2.5 py-2.5 rounded-lg text-xs font-bold bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 text-center transition cursor-pointer">
+                  <span>🖼 Gallery</span>
+                  <input type="file" id="machineGalleryInput" accept="image/*" class="hidden" />
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Optional Notes / Remarks -->
+        <div>
+          <label for="notesInput" class="block text-xs font-bold text-slate-700 mb-1">
+            Notes / Remarks (Optional)
+          </label>
+          <textarea
+            id="notesInput"
+            rows="2"
+            maxlength="300"
+            placeholder="e.g. 3-phase power checked, water softener connected, commissioned OK"
+            class="w-full bg-slate-50 border border-slate-300 focus:border-slate-900 focus:bg-white rounded-xl px-3.5 py-2 text-sm text-slate-900 focus:outline-none"
+          ></textarea>
+        </div>
+
+        <!-- Modal Footer Actions -->
+        <div class="pt-2 flex items-center justify-end gap-2.5 border-t border-slate-100">
+          <button
+            type="button"
+            id="cancelModalBtn"
+            class="px-4 py-2.5 rounded-xl text-sm font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 transition cursor-pointer"
+          >
+            Cancel
+          </button>
+          <button
+            type="submit"
+            id="saveRecordBtn"
+            class="px-5 py-2.5 rounded-xl text-sm font-bold bg-slate-900 hover:bg-slate-800 text-white shadow-sm transition cursor-pointer"
+          >
+            Save Installation
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Cloud Sync / Firebase Setup Modal -->
+  <div id="cloudSetupModal" class="hidden fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="cloudSetupTitle">
+    <div class="bg-white w-full max-w-lg rounded-2xl shadow-2xl border border-slate-200 overflow-hidden animate-card">
+      <div class="px-5 py-4 bg-slate-900 text-white flex items-center justify-between">
+        <div>
+          <h3 id="cloudSetupTitle" class="text-base font-bold">Shared Office & Technician Sync</h3>
+          <p class="text-xs text-slate-400">Connect Firebase Firestore for real-time team sharing</p>
+        </div>
+        <button type="button" id="closeCloudSetupBtn" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center font-bold transition cursor-pointer">
+          ✕
+        </button>
+      </div>
+
+      <div class="p-5 space-y-4">
+        <div id="cloudCurrentStatusBox" class="rounded-xl p-3 text-xs bg-slate-50 border border-slate-200 text-slate-700">
+          Current Status: <span id="cloudModalStatusLabel" class="font-bold text-amber-700">Local Mode (Device Storage Only)</span>
+        </div>
+
+        <div>
+          <label for="firebaseConfigJsonInput" class="block text-xs font-bold text-slate-700 mb-1">
+            Paste Firebase Config JSON (from Firebase Console → Project Settings)
+          </label>
+          <textarea
+            id="firebaseConfigJsonInput"
+            rows="6"
+            spellcheck="false"
+            placeholder='{
+  "apiKey": "AIzaSy...",
+  "authDomain": "your-project.firebaseapp.com",
+  "projectId": "your-project",
+  "storageBucket": "your-project.appspot.com",
+  "messagingSenderId": "123456789",
+  "appId": "1:123456789:web:abcdef"
+}'
+            class="w-full font-mono text-xs bg-slate-50 border border-slate-300 focus:border-slate-900 focus:bg-white rounded-xl p-3 text-slate-900 focus:outline-none"
+          ></textarea>
+          <p class="text-[11px] text-slate-500 mt-1.5">
+            Tip: You can paste either the pure JSON object or the full <code class="bg-slate-100 px-1 rounded">const firebaseConfig = { ... };</code> snippet from Firebase. Enable <strong>Anonymous Auth</strong> and <strong>Firestore Database</strong> in your Firebase project.
+          </p>
+        </div>
+
+        <div id="cloudSetupErrorBox" class="hidden rounded-xl p-3 text-xs font-semibold bg-rose-50 border border-rose-200 text-rose-700"></div>
+
+        <div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-100">
+          <button
+            type="button"
+            id="resetLocalModeBtn"
+            class="px-3.5 py-2.5 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 transition cursor-pointer"
+          >
+            Reset to Local Mode
+          </button>
+
+          <button
+            type="button"
+            id="testAndSaveCloudBtn"
+            class="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm transition cursor-pointer"
+          >
+            Test & Save Connection
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom Delete Confirmation Modal -->
+  <div id="deleteConfirmModal" class="hidden fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-xs flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="deleteModalTitle">
+    <div class="bg-white w-full max-w-md rounded-2xl shadow-2xl border border-slate-200 p-5 space-y-4 animate-card">
+      <div class="flex items-start gap-3">
+        <div class="w-10 h-10 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center shrink-0 font-bold text-lg">
+          ⚠
+        </div>
+        <div>
+          <h3 id="deleteModalTitle" class="text-base font-bold text-slate-900">Delete Equipment Record?</h3>
+          <p class="text-xs sm:text-sm text-slate-600 mt-1">
+            Are you sure you want to remove serial <span id="deleteTargetSerial" class="font-mono font-bold text-slate-900"></span>?
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <label for="deleteConfirmInput" class="block text-xs font-semibold text-slate-600 mb-1">
+          Type <span class="font-mono font-bold text-rose-600">DELETE</span> to confirm:
+        </label>
+        <input
+          type="text"
+          id="deleteConfirmInput"
+          autocomplete="off"
+          placeholder="DELETE"
+          class="w-full font-mono text-sm uppercase bg-slate-50 border border-slate-300 focus:border-rose-600 rounded-xl px-3 py-2 text-slate-900 focus:outline-none"
+        />
+      </div>
+
+      <div class="flex items-center justify-end gap-2 pt-1">
+        <button type="button" id="cancelDeleteBtn" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 transition cursor-pointer">
+          Cancel
+        </button>
+        <button type="button" id="confirmDeleteBtn" disabled class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-rose-600 disabled:opacity-40 hover:bg-rose-700 text-white transition cursor-pointer">
+          Delete Permanently
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Full-Screen Photo Lightbox / Zoom Modal -->
+  <div id="photoLightboxModal" class="hidden fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-xs flex flex-col p-3 sm:p-6" role="dialog" aria-modal="true" aria-labelledby="lightboxTitle">
+    <div class="max-w-4xl w-full mx-auto flex items-center justify-between gap-3 pb-3 text-white shrink-0">
+      <div class="min-w-0">
+        <div id="lightboxTitle" class="text-sm sm:text-base font-bold truncate">Equipment Photo</div>
+        <div id="lightboxSubtitle" class="text-xs font-mono text-amber-400 truncate"></div>
+      </div>
+      <div class="flex items-center gap-2 shrink-0">
+        <button
+          type="button"
+          id="lightboxZoomToggleBtn"
+          class="px-3 py-2 rounded-xl text-xs font-bold bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 transition cursor-pointer"
+        >
+          Zoom In (2x)
+        </button>
+        <button
+          type="button"
+          id="closeLightboxBtn"
+          class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-slate-700 text-white flex items-center justify-center font-bold transition cursor-pointer"
+          aria-label="Close photo viewer"
+        >
+          ✕
+        </button>
+      </div>
+    </div>
+
+    <div id="lightboxScrollContainer" class="flex-1 overflow-auto flex items-center justify-center rounded-2xl bg-slate-900/60 border border-slate-800 p-2">
+      <img
+        id="lightboxImage"
+        src=""
+        alt="Zoomed equipment photo"
+        class="max-h-[78vh] max-w-full object-contain rounded-lg transition-transform duration-200 origin-center cursor-zoom-in"
+      />
+    </div>
+  </div>
+
+  <!-- Application Script (Immediate Local Load + Non-Blocking Dynamic Cloud Sync) -->
+  <script>
+    (function () {
+      const LOCAL_RECORDS_KEY = 'kitchen_tracker_records_v1';
+      const LOCAL_SEEDED_KEY = 'kitchen_tracker_seeded_v1';
+      const FIREBASE_CONFIG_STORAGE_KEY = 'kitchen_tracker_firebase_config';
+      const APP_COLLECTION_ID = typeof __app_id !== 'undefined' ? __app_id : 'kitchen-equip-tracker';
+
+      // Application State
+      let records = [];
+      let searchQuery = '';
+      let statusFilter = 'all'; // 'all' | 'active' | 'expiring' | 'expired'
+      let pendingDeleteRecord = null;
+      let toastTimeout = null;
+      let currentNameplateDataUrl = '';
+      let currentMachineDataUrl = '';
+      let isLightboxZoomed = false;
+
+      // Cloud Sync State
+      let isCloudConnected = false;
+      let firestoreDb = null;
+      let firestoreModule = null;
+      let unsubscribeFirestore = null;
+
+      // DOM References
+      const els = {
+        openCloudSetupBtn: document.getElementById('openCloudSetupBtn'),
+        syncStatusDot: document.getElementById('syncStatusDot'),
+        syncStatusText: document.getElementById('syncStatusText'),
+        localModeBanner: document.getElementById('localModeBanner'),
+        bannerConnectCloudBtn: document.getElementById('bannerConnectCloudBtn'),
+
+        toastBanner: document.getElementById('toastBanner'),
+        toastMessage: document.getElementById('toastMessage'),
+        closeToastBtn: document.getElementById('closeToastBtn'),
+
+        statTotalCount: document.getElementById('statTotalCount'),
+        statActiveCount: document.getElementById('statActiveCount'),
+        statExpiringSoonCount: document.getElementById('statExpiringSoonCount'),
+        statExpiredCount: document.getElementById('statExpiredCount'),
+
+        searchInput: document.getElementById('searchInput'),
+        clearSearchBtn: document.getElementById('clearSearchBtn'),
+        statusFilterBtns: document.querySelectorAll('.status-filter-btn'),
+        resultsCountLabel: document.getElementById('resultsCountLabel'),
+        exactMatchSpotlight: document.getElementById('exactMatchSpotlight'),
+        recordsContainer: document.getElementById('recordsContainer'),
+        emptyStateBox: document.getElementById('emptyStateBox'),
+        emptyStateTitle: document.getElementById('emptyStateTitle'),
+        emptyStateSubtitle: document.getElementById('emptyStateSubtitle'),
+        emptyAddBtn: document.getElementById('emptyAddBtn'),
+
+        openAddModalBtn: document.getElementById('openAddModalBtn'),
+        mobileFabAddBtn: document.getElementById('mobileFabAddBtn'),
+        exportCsvBtn: document.getElementById('exportCsvBtn'),
+
+        // Equipment Modal
+        equipmentModal: document.getElementById('equipmentModal'),
+        modalTitle: document.getElementById('modalTitle'),
+        modalSubtitle: document.getElementById('modalSubtitle'),
+        closeModalBtn: document.getElementById('closeModalBtn'),
+        cancelModalBtn: document.getElementById('cancelModalBtn'),
+        equipmentForm: document.getElementById('equipmentForm'),
+        recordIdInput: document.getElementById('recordIdInput'),
+        serialNumberInput: document.getElementById('serialNumberInput'),
+        duplicateSerialWarning: document.getElementById('duplicateSerialWarning'),
+        brandInput: document.getElementById('brandInput'),
+        modelInput: document.getElementById('modelInput'),
+        installDateInput: document.getElementById('installDateInput'),
+        warrantySelect: document.getElementById('warrantySelect'),
+        customWarrantyWrapper: document.getElementById('customWarrantyWrapper'),
+        customWarrantyMonthsInput: document.getElementById('customWarrantyMonthsInput'),
+        modalWarrantyPreview: document.getElementById('modalWarrantyPreview'),
+        modalWarrantyPreviewText: document.getElementById('modalWarrantyPreviewText'),
+        siteNameInput: document.getElementById('siteNameInput'),
+        locationInput: document.getElementById('locationInput'),
+        technicianInput: document.getElementById('technicianInput'),
+        notesInput: document.getElementById('notesInput'),
+        saveRecordBtn: document.getElementById('saveRecordBtn'),
+
+        // Photos
+        nameplateCameraInput: document.getElementById('nameplateCameraInput'),
+        nameplateGalleryInput: document.getElementById('nameplateGalleryInput'),
+        nameplatePreviewWrapper: document.getElementById('nameplatePreviewWrapper'),
+        nameplatePreviewImg: document.getElementById('nameplatePreviewImg'),
+        nameplatePlaceholder: document.getElementById('nameplatePlaceholder'),
+        nameplateSizeBadge: document.getElementById('nameplateSizeBadge'),
+        removeNameplateBtn: document.getElementById('removeNameplateBtn'),
+
+        machineCameraInput: document.getElementById('machineCameraInput'),
+        machineGalleryInput: document.getElementById('machineGalleryInput'),
+        machinePreviewWrapper: document.getElementById('machinePreviewWrapper'),
+        machinePreviewImg: document.getElementById('machinePreviewImg'),
+        machinePlaceholder: document.getElementById('machinePlaceholder'),
+        machineSizeBadge: document.getElementById('machineSizeBadge'),
+        removeMachineBtn: document.getElementById('removeMachineBtn'),
+
+        // Cloud Setup Modal
+        cloudSetupModal: document.getElementById('cloudSetupModal'),
+        closeCloudSetupBtn: document.getElementById('closeCloudSetupBtn'),
+        cloudModalStatusLabel: document.getElementById('cloudModalStatusLabel'),
+        firebaseConfigJsonInput: document.getElementById('firebaseConfigJsonInput'),
+        cloudSetupErrorBox: document.getElementById('cloudSetupErrorBox'),
+        resetLocalModeBtn: document.getElementById('resetLocalModeBtn'),
+        testAndSaveCloudBtn: document.getElementById('testAndSaveCloudBtn'),
+
+        // Delete Modal
+        deleteConfirmModal: document.getElementById('deleteConfirmModal'),
+        deleteTargetSerial: document.getElementById('deleteTargetSerial'),
+        deleteConfirmInput: document.getElementById('deleteConfirmInput'),
+        cancelDeleteBtn: document.getElementById('cancelDeleteBtn'),
+        confirmDeleteBtn: document.getElementById('confirmDeleteBtn'),
+
+        // Lightbox
+        photoLightboxModal: document.getElementById('photoLightboxModal'),
+        lightboxTitle: document.getElementById('lightboxTitle'),
+        lightboxSubtitle: document.getElementById('lightboxSubtitle'),
+        lightboxZoomToggleBtn: document.getElementById('lightboxZoomToggleBtn'),
+        closeLightboxBtn: document.getElementById('closeLightboxBtn'),
+        lightboxScrollContainer: document.getElementById('lightboxScrollContainer'),
+        lightboxImage: document.getElementById('lightboxImage')
+      };
+
+      // =========================================================================
+      // 1. DATE & WARRANTY CALCULATION HELPERS
+      // =========================================================================
+      function getTodayDateString() {
+        const now = new Date();
+        return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+      }
+
+      function offsetDateString(monthsDelta, daysDelta = 0) {
+        const d = new Date();
+        d.setMonth(d.getMonth() + monthsDelta);
+        d.setDate(d.getDate() + daysDelta);
+        return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+      }
+
+      function parseLocalYMD(ymd) {
+        if (!ymd || typeof ymd !== 'string') return null;
+        const parts = ymd.split('-').map(Number);
+        if (parts.length !== 3 || parts.some(isNaN)) return null;
+        return new Date(parts[0], parts[1] - 1, parts[2], 0, 0, 0, 0);
+      }
+
+      function formatDisplayDate(dateObj) {
+        if (!(dateObj instanceof Date) || isNaN(dateObj.getTime())) return 'N/A';
+        return dateObj.toLocaleDateString('en-GB', {
+          day: '2-digit',
+          month: 'short',
+          year: 'numeric'
+        });
+      }
+
+      function addMonthsClamped(dateObj, monthsToAdd) {
+        const year = dateObj.getFullYear();
+        const month = dateObj.getMonth();
+        const day = dateObj.getDate();
+
+        const targetMonthTotal = month + Number(monthsToAdd || 12);
+        const targetYear = year + Math.floor(targetMonthTotal / 12);
+        const targetMonth = ((targetMonthTotal % 12) + 12) % 12;
+
+        const lastDayOfTargetMonth = new Date(targetYear, targetMonth + 1, 0).getDate();
+        const clampedDay = Math.min(day, lastDayOfTargetMonth);
+        return new Date(targetYear, targetMonth, clampedDay, 23, 59, 59, 999);
+      }
+
+      function evaluateWarranty(installDateStr, warrantyMonths) {
+        const installDate = parseLocalYMD(installDateStr);
+        const months = Math.max(1, parseInt(warrantyMonths, 10) || 12);
+
+        if (!installDate) {
+          return {
+            isActive: false,
+            isExpiringSoon: false,
+            expiryDate: null,
+            expiryFormatted: 'Invalid Date',
+            installFormatted: installDateStr || 'N/A',
+            daysDiff: 0,
+            remainingText: 'Invalid installation date'
+          };
+        }
+
+        const expiryDate = addMonthsClamped(installDate, months);
+        const now = new Date();
+        const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0, 0);
+        const expiryStart = new Date(expiryDate.getFullYear(), expiryDate.getMonth(), expiryDate.getDate(), 0, 0, 0, 0);
+
+        const msPerDay = 1000 * 60 * 60 * 24;
+        const daysDiff = Math.round((expiryStart.getTime() - todayStart.getTime()) / msPerDay);
+        const isActive = daysDiff >= 0;
+        const isExpiringSoon = isActive && daysDiff <= 30;
+
+        let remainingText = '';
+        if (daysDiff === 0) {
+          remainingText = 'Expires Today (0 days left)';
+        } else if (daysDiff > 0) {
+          const approxMonths = Math.floor(daysDiff / 30);
+          const remDays = daysDiff % 30;
+          if (approxMonths >= 1) {
+            remainingText = `${approxMonths} mo, ${remDays} d remaining (${daysDiff} days)`;
+          } else {
+            remainingText = `${daysDiff} ${daysDiff === 1 ? 'day' : 'days'} remaining`;
+          }
+        } else {
+          const overdueDays = Math.abs(daysDiff);
+          const approxMonths = Math.floor(overdueDays / 30);
+          if (approxMonths >= 1) {
+            remainingText = `Expired ${approxMonths} mo, ${overdueDays % 30} d ago (${overdueDays} days)`;
+          } else {
+            remainingText = `Expired ${overdueDays} ${overdueDays === 1 ? 'day' : 'days'} ago`;
+          }
+        }
+
+        return {
+          isActive,
+          isExpiringSoon,
+          expiryDate,
+          expiryFormatted: formatDisplayDate(expiryDate),
+          installFormatted: formatDisplayDate(installDate),
+          daysDiff,
+          remainingText
+        };
+      }
+
+      // =========================================================================
+      // 2. UI NOTIFICATIONS, CLIPBOARD & SANITIZATION
+      // =========================================================================
+      function showToast(message, type = 'success') {
+        clearTimeout(toastTimeout);
+        els.toastMessage.textContent = message;
+        els.toastBanner.className = 'rounded-xl px-4 py-3 text-sm font-semibold border shadow-sm flex items-center justify-between gap-3';
+
+        if (type === 'error') {
+          els.toastBanner.classList.add('bg-rose-50', 'border-rose-200', 'text-rose-800');
+        } else if (type === 'info') {
+          els.toastBanner.classList.add('bg-slate-800', 'border-slate-700', 'text-white');
+        } else {
+          els.toastBanner.classList.add('bg-emerald-50', 'border-emerald-200', 'text-emerald-900');
+        }
+
+        els.toastBanner.classList.remove('hidden');
+        toastTimeout = setTimeout(() => {
+          els.toastBanner.classList.add('hidden');
+        }, 3500);
+      }
+
+      function copyTextToClipboard(text) {
+        try {
+          const temp = document.createElement('textarea');
+          temp.value = text;
+          temp.style.position = 'fixed';
+          temp.style.opacity = '0';
+          document.body.appendChild(temp);
+          temp.select();
+          document.execCommand('copy');
+          document.body.removeChild(temp);
+          showToast(`Copied serial: ${text}`, 'info');
+        } catch (err) {
+          showToast('Unable to copy serial number.', 'error');
+        }
+      }
+
+      function escapeHtml(val) {
+        return String(val ?? '')
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      }
+
+      // =========================================================================
+      // 3. LOCAL STORAGE ENGINE & SAMPLE SEEDING (INSTANT ZERO-BLOCK STARTUP)
+      // =========================================================================
+      function getInitialSampleRecords() {
+        return [
+          {
+            id: 'sample_rational_01',
+            serialNumber: 'E21MH2408159042',
+            brand: 'RATIONAL',
+            model: 'iCombi Pro 10-1/1 Electric',
+            installDate: offsetDateString(-4, -10), // Installed ~4 months ago -> Active
+            warrantyMonths: 12,
+            siteName: 'Al Majaz Waterfront Hotel - Main Kitchen',
+            location: 'Sharjah, Al Majaz',
+            technicianName: 'Kasun Perera',
+            notes: '3-phase 400V supply verified, water softener & drain connection tested OK.',
+            nameplatePhoto: '',
+            machinePhoto: '',
+            createdAt: Date.now() - 86400000 * 130,
+            updatedAt: Date.now() - 86400000 * 130
+          },
+          {
+            id: 'sample_hobart_02',
+            serialNumber: 'HB864209117',
+            brand: 'Hobart',
+            model: 'AMX-10A Hood Dishwasher',
+            installDate: offsetDateString(-14, -5), // Installed ~14 months ago -> Expired
+            warrantyMonths: 12,
+            siteName: 'Marina Bay Seafood Restaurant',
+            location: 'Dubai Marina',
+            technicianName: 'Nuwan Silva',
+            notes: 'Rinse aid & detergent dosing pumps calibrated during commissioning.',
+            nameplatePhoto: '',
+            machinePhoto: '',
+            createdAt: Date.now() - 86400000 * 425,
+            updatedAt: Date.now() - 86400000 * 425
+          }
+        ];
+      }
+
+      function loadLocalRecords() {
+        try {
+          const raw = localStorage.getItem(LOCAL_RECORDS_KEY);
+          if (raw) {
+            const parsed = JSON.parse(raw);
+            if (Array.isArray(parsed)) {
+              records = parsed;
+              return;
+            }
+          }
+          // First run: seed 2 realistic sample machines so user can test search & UI immediately
+          if (!localStorage.getItem(LOCAL_SEEDED_KEY)) {
+            records = getInitialSampleRecords();
+            saveLocalRecords();
+            localStorage.setItem(LOCAL_SEEDED_KEY, '1');
+          } else {
+            records = [];
+          }
+        } catch (err) {
+          console.error('Local storage load error:', err);
+          records = [];
+        }
+      }
+
+      function saveLocalRecords() {
+        try {
+          localStorage.setItem(LOCAL_RECORDS_KEY, JSON.stringify(records));
+        } catch (err) {
+          console.error('Local storage save error:', err);
+          showToast('Device storage is full. Try removing old photos.', 'error');
+        }
+      }
+
+      function setSyncModeUI(mode, detailText = '') {
+        if (mode === 'live') {
+          isCloudConnected = true;
+          els.openCloudSetupBtn.className = 'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-400/40 transition cursor-pointer';
+          els.syncStatusDot.className = 'w-2 h-2 rounded-full bg-emerald-400';
+          els.syncStatusText.textContent = 'Live Sync';
+          els.localModeBanner.classList.add('hidden');
+          els.modalSubtitle.textContent = 'Syncs immediately with all technicians & office staff';
+          els.cloudModalStatusLabel.textContent = 'Live Cloud Sync Connected (Shared Team Database)';
+          els.cloudModalStatusLabel.className = 'font-bold text-emerald-700';
+        } else {
+          isCloudConnected = false;
+          els.openCloudSetupBtn.className = 'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-400/40 transition cursor-pointer';
+          els.syncStatusDot.className = 'w-2 h-2 rounded-full bg-amber-400';
+          els.syncStatusText.textContent = detailText || 'Local Mode';
+          els.localModeBanner.classList.remove('hidden');
+          els.modalSubtitle.textContent = 'Saves immediately to this device (Local Mode)';
+          els.cloudModalStatusLabel.textContent = 'Local Mode (Device Storage Only)';
+          els.cloudModalStatusLabel.className = 'font-bold text-amber-700';
+        }
+      }
+
+      // =========================================================================
+      // 4. NON-BLOCKING OPTIONAL FIREBASE CLOUD SYNC (WITH 3-SECOND TIMEOUT)
+      // =========================================================================
+      function getSavedFirebaseConfig() {
+        if (typeof __firebase_config !== 'undefined' && __firebase_config) {
+          try {
+            const parsed = typeof __firebase_config === 'string' ? JSON.parse(__firebase_config) : __firebase_config;
+            if (parsed && parsed.apiKey && parsed.projectId) return parsed;
+          } catch (_) {}
+        }
+        try {
+          const saved = localStorage.getItem(FIREBASE_CONFIG_STORAGE_KEY);
+          if (saved) {
+            const parsed = JSON.parse(saved);
+            if (parsed && parsed.apiKey && parsed.projectId) return parsed;
+          }
+        } catch (_) {}
+        return null;
+      }
+
+      function parseUserFirebaseConfigInput(rawInput) {
+        const trimmed = (rawInput || '').trim();
+        if (!trimmed) throw new Error('Please paste your Firebase configuration JSON.');
+
+        // Extract object literal between first '{' and last '}'
+        const firstBrace = trimmed.indexOf('{');
+        const lastBrace = trimmed.lastIndexOf('}');
+        if (firstBrace === -1 || lastBrace === -1 || lastBrace <= firstBrace) {
+          throw new Error('Could not find a valid { ... } configuration object.');
+        }
+
+        let objText = trimmed.slice(firstBrace, lastBrace + 1);
+        // Convert JS object keys (apiKey: "...") into valid JSON keys ("apiKey": "...")
+        objText = objText
+          .replace(/([{,]\s*)([a-zA-Z0-9_]+)\s*:/g, '$1"$2":')
+          .replace(/'/g, '"')
+          .replace(/,\s*}/g, '}');
+
+        const parsed = JSON.parse(objText);
+        if (!parsed.apiKey || !parsed.projectId) {
+          throw new Error('Config must include at least "apiKey" and "projectId".');
+        }
+        return parsed;
+      }
+
+      async function connectToFirebaseCloud(configObj, isManualTest = false) {
+        if (!configObj || !configObj.apiKey || !configObj.projectId) {
+          setSyncModeUI('local');
+          return false;
+        }
+
+        if (unsubscribeFirestore) {
+          unsubscribeFirestore();
+          unsubscribeFirestore = null;
+        }
+
+        const timeoutPromise = new Promise((_, reject) =>
+          setTimeout(() => reject(new Error('Connection timed out (3s). Using Local Mode.')), 3500)
+        );
+
+        const connectTask = (async () => {
+          const [appMod, authMod, fsMod] = await Promise.all([
+            import('https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js'),
+            import('https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js'),
+            import('https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js')
+          ]);
+
+          const appName = `kitchen_tracker_${configObj.projectId}`;
+          const existingApps = appMod.getApps();
+          const fbApp = existingApps.find((a) => a.name === appName) || appMod.initializeApp(configObj, appName);
+          const fbAuth = authMod.getAuth(fbApp);
+          const fbDb = fsMod.getFirestore(fbApp);
+
+          if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+            await authMod.signInWithCustomToken(fbAuth, __initial_auth_token);
+          } else if (!fbAuth.currentUser) {
+            await authMod.signInAnonymously(fbAuth);
+          }
+
+          firestoreDb = fbDb;
+          firestoreModule = fsMod;
+
+          const colRef = fsMod.collection(fbDb, 'artifacts', APP_COLLECTION_ID, 'public', 'data', 'equipment_records');
+
+          return new Promise((resolve, reject) => {
+            let firstSnapshotHandled = false;
+            unsubscribeFirestore = fsMod.onSnapshot(
+              colRef,
+              (snapshot) => {
+                const cloudItems = [];
+                snapshot.forEach((docSnap) => {
+                  cloudItems.push({ id: docSnap.id, ...docSnap.data() });
+                });
+                records = cloudItems;
+                saveLocalRecords(); // Keep local cache updated too
+                setSyncModeUI('live');
+                renderApp();
+
+                if (!firstSnapshotHandled) {
+                  firstSnapshotHandled = true;
+                  resolve(true);
+                }
+              },
+              (err) => {
+                console.error('Firestore listener error:', err);
+                setSyncModeUI('local');
+                if (!firstSnapshotHandled) {
+                  firstSnapshotHandled = true;
+                  reject(err);
+                }
+              }
+            );
+          });
+        })();
+
+        try {
+          await Promise.race([connectTask, timeoutPromise]);
+          if (isManualTest) {
+            showToast('Connected to shared Firebase Cloud Sync!', 'success');
+          }
+          return true;
+        } catch (err) {
+          console.warn('Cloud sync fallback to Local Mode:', err.message);
+          setSyncModeUI('local');
+          if (isManualTest) {
+            throw err;
+          }
+          return false;
+        }
+      }
+
+      // =========================================================================
+      // 5. CRUD OPERATIONS (WORKS IN BOTH LOCAL MODE & CLOUD SYNC MODE)
+      // =========================================================================
+      async function saveEquipmentRecord(payload, existingId = null) {
+        els.saveRecordBtn.disabled = true;
+        els.saveRecordBtn.textContent = 'Saving...';
+
+        try {
+          const now = Date.now();
+          if (isCloudConnected && firestoreDb && firestoreModule) {
+            const colRef = firestoreModule.collection(firestoreDb, 'artifacts', APP_COLLECTION_ID, 'public', 'data', 'equipment_records');
+            if (existingId) {
+              const docRef = firestoreModule.doc(firestoreDb, 'artifacts', APP_COLLECTION_ID, 'public', 'data', 'equipment_records', existingId);
+              await firestoreModule.updateDoc(docRef, { ...payload, updatedAt: now });
+              showToast(`Updated ${payload.serialNumber} across team.`, 'success');
+            } else {
+              await firestoreModule.addDoc(colRef, { ...payload, createdAt: now, updatedAt: now });
+              showToast(`Registered ${payload.serialNumber} across team!`, 'success');
+            }
+          } else {
+            if (existingId) {
+              const idx = records.findIndex((r) => r.id === existingId);
+              if (idx !== -1) {
+                records[idx] = { ...records[idx], ...payload, updatedAt: now };
+              }
+              showToast(`Updated ${payload.serialNumber} (Local Mode).`, 'success');
+            } else {
+              const newRec = {
+                id: `equip_${now}_${Math.random().toString(36).slice(2, 7)}`,
+                ...payload,
+                createdAt: now,
+                updatedAt: now
+              };
+              records.unshift(newRec);
+              showToast(`Registered ${payload.serialNumber} (Local Mode)!`, 'success');
+            }
+            saveLocalRecords();
+            renderApp();
+          }
+
+          closeEquipmentModal();
+        } catch (err) {
+          console.error('Save error:', err);
+          showToast('Failed to save record. Check photo size or connection.', 'error');
+        } finally {
+          els.saveRecordBtn.disabled = false;
+          els.saveRecordBtn.textContent = existingId ? 'Update Equipment' : 'Save Installation';
+        }
+      }
+
+      async function deleteEquipmentRecord(recordId) {
+        const target = records.find((r) => r.id === recordId);
+        const serialLabel = target ? target.serialNumber : 'record';
+
+        try {
+          if (isCloudConnected && firestoreDb && firestoreModule) {
+            const docRef = firestoreModule.doc(firestoreDb, 'artifacts', APP_COLLECTION_ID, 'public', 'data', 'equipment_records', recordId);
+            await firestoreModule.deleteDoc(docRef);
+          } else {
+            records = records.filter((r) => r.id !== recordId);
+            saveLocalRecords();
+            renderApp();
+          }
+          showToast(`Deleted ${serialLabel}.`, 'info');
+        } catch (err) {
+          console.error('Delete error:', err);
+          showToast('Failed to delete record.', 'error');
+        }
+      }
+
+      // =========================================================================
+      // 6. CLIENT-SIDE IMAGE COMPRESSION & LIGHTBOX VIEWER
+      // =========================================================================
+      function estimateBase64Kb(dataUrl) {
+        if (!dataUrl) return 0;
+        const base64Part = dataUrl.split(',')[1] || '';
+        const bytes = Math.round((base64Part.length * 3) / 4);
+        return Math.max(1, Math.round(bytes / 1024));
+      }
+
+      function compressImageFile(file, maxDimension = 850, quality = 0.72) {
+        return new Promise((resolve, reject) => {
+          if (!file || !file.type.startsWith('image/')) {
+            reject(new Error('Please select a valid image file.'));
+            return;
+          }
+
+          const reader = new FileReader();
+          reader.onerror = () => reject(new Error('Failed to read image file.'));
+          reader.onload = (event) => {
+            const img = new Image();
+            img.onerror = () => reject(new Error('Invalid or corrupted image.'));
+            img.onload = () => {
+              let width = img.width;
+              let height = img.height;
+
+              if (width > maxDimension || height > maxDimension) {
+                if (width > height) {
+                  height = Math.round((height * maxDimension) / width);
+                  width = maxDimension;
+                } else {
+                  width = Math.round((width * maxDimension) / height);
+                  height = maxDimension;
+                }
+              }
+
+              const canvas = document.createElement('canvas');
+              canvas.width = width;
+              canvas.height = height;
+              const ctx = canvas.getContext('2d');
+              if (!ctx) {
+                reject(new Error('Canvas context unavailable.'));
+                return;
+              }
+
+              ctx.fillStyle = '#ffffff';
+              ctx.fillRect(0, 0, width, height);
+              ctx.drawImage(img, 0, 0, width, height);
+
+              resolve(canvas.toDataURL('image/jpeg', quality));
+            };
+            img.src = event.target.result;
+          };
+          reader.readAsDataURL(file);
+        });
+      }
+
+      function setPhotoPreviewUI(slot, dataUrl) {
+        const isNameplate = slot === 'nameplate';
+        const wrapper = isNameplate ? els.nameplatePreviewWrapper : els.machinePreviewWrapper;
+        const imgEl = isNameplate ? els.nameplatePreviewImg : els.machinePreviewImg;
+        const placeholder = isNameplate ? els.nameplatePlaceholder : els.machinePlaceholder;
+        const badge = isNameplate ? els.nameplateSizeBadge : els.machineSizeBadge;
+
+        if (isNameplate) {
+          currentNameplateDataUrl = dataUrl || '';
+        } else {
+          currentMachineDataUrl = dataUrl || '';
+        }
+
+        if (dataUrl) {
+          imgEl.src = dataUrl;
+          wrapper.classList.remove('hidden');
+          placeholder.classList.add('hidden');
+          badge.textContent = `${estimateBase64Kb(dataUrl)} KB`;
+          badge.classList.remove('hidden');
+        } else {
+          imgEl.src = '';
+          wrapper.classList.add('hidden');
+          placeholder.classList.remove('hidden');
+          badge.textContent = '';
+          badge.classList.add('hidden');
+        }
+      }
+
+      async function handlePhotoInputChange(slot, fileInput) {
+        const file = fileInput.files && fileInput.files[0];
+        if (!file) return;
+
+        try {
+          let compressed = await compressImageFile(file, 850, 0.72);
+          if (estimateBase64Kb(compressed) > 320) {
+            compressed = await compressImageFile(file, 720, 0.58);
+          }
+          setPhotoPreviewUI(slot, compressed);
+          const finalKb = estimateBase64Kb(slot === 'nameplate' ? currentNameplateDataUrl : currentMachineDataUrl);
+          showToast(`${slot === 'nameplate' ? 'Nameplate' : 'Machine'} photo ready (${finalKb} KB).`, 'success');
+        } catch (err) {
+          showToast(err.message || 'Could not process image.', 'error');
+        } finally {
+          fileInput.value = '';
+        }
+      }
+
+      function setLightboxZoom(zoomed) {
+        isLightboxZoomed = zoomed;
+        if (zoomed) {
+          els.lightboxImage.classList.remove('max-h-[78vh]', 'max-w-full', 'cursor-zoom-in');
+          els.lightboxImage.classList.add('w-[175%]', 'max-w-none', 'cursor-zoom-out');
+          els.lightboxZoomToggleBtn.textContent = 'Reset Zoom';
+        } else {
+          els.lightboxImage.classList.add('max-h-[78vh]', 'max-w-full', 'cursor-zoom-in');
+          els.lightboxImage.classList.remove('w-[175%]', 'max-w-none', 'cursor-zoom-out');
+          els.lightboxZoomToggleBtn.textContent = 'Zoom In (2x)';
+        }
+      }
+
+      function openPhotoLightbox(recordId, photoType) {
+        const target = records.find((r) => r.id === recordId);
+        if (!target) return;
+        const src = photoType === 'nameplate' ? target.nameplatePhoto : target.machinePhoto;
+        if (!src) return;
+
+        els.lightboxTitle.textContent = photoType === 'nameplate'
+          ? `Machine Nameplate — ${target.brand} ${target.model}`
+          : `Full Machine Photo — ${target.brand} ${target.model}`;
+        els.lightboxSubtitle.textContent = `S/N: ${target.serialNumber} • ${target.siteName}`;
+        els.lightboxImage.src = src;
+        setLightboxZoom(false);
+        els.photoLightboxModal.classList.remove('hidden');
+      }
+
+      function closePhotoLightbox() {
+        els.photoLightboxModal.classList.add('hidden');
+        els.lightboxImage.src = '';
+        setLightboxZoom(false);
+      }
+
+      // =========================================================================
+      // 7. RENDERING CARDS, STATS & EXACT-MATCH SPOTLIGHT
+      // =========================================================================
+      function buildEquipmentCardHtml(record, isSpotlight = false) {
+        const w = evaluateWarranty(record.installDate, record.warrantyMonths);
+
+        const borderClass = isSpotlight
+          ? 'border-2 border-amber-500 ring-4 ring-amber-500/15'
+          : 'border border-slate-200/90 hover:border-slate-300';
+
+        let statusBadgeClass = 'bg-rose-600 text-white';
+        let statusLabel = 'WARRANTY EXPIRED';
+        let statusBannerClass = 'bg-rose-50 border-rose-200 text-rose-900';
+
+        if (w.isExpiringSoon) {
+          statusBadgeClass = 'bg-amber-500 text-slate-950';
+          statusLabel = 'EXPIRING SOON';
+          statusBannerClass = 'bg-amber-50 border-amber-200 text-amber-950';
+        } else if (w.isActive) {
+          statusBadgeClass = 'bg-emerald-600 text-white';
+          statusLabel = 'WARRANTY ACTIVE';
+          statusBannerClass = 'bg-emerald-50 border-emerald-200 text-emerald-900';
+        }
+
+        const spotlightHeader = isSpotlight
+          ? `<div class="bg-amber-500 text-slate-950 px-4 py-1.5 text-xs font-extrabold uppercase tracking-wider flex items-center justify-between">
+               <span>★ Exact Serial Number Match</span>
+               <span>Verified Unit</span>
+             </div>`
+          : '';
+
+        const hasNameplate = Boolean(record.nameplatePhoto);
+        const hasMachine = Boolean(record.machinePhoto);
+        const photosBlock = (hasNameplate || hasMachine)
+          ? `<div class="mt-3.5 pt-3 border-t border-slate-100">
+               <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">
+                 Attached Photos (Tap to Zoom)
+               </div>
+               <div class="grid grid-cols-2 gap-2.5">
+                 ${hasNameplate ? `
+                   <button
+                     type="button"
+                     data-action="view-photo"
+                     data-photo-type="nameplate"
+                     data-id="${escapeHtml(record.id)}"
+                     class="group relative rounded-xl overflow-hidden border border-slate-200 hover:border-slate-900 bg-slate-900 aspect-video text-left transition cursor-pointer"
+                   >
+                     <img src="${record.nameplatePhoto}" alt="Nameplate ${escapeHtml(record.serialNumber)}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200" loading="lazy" />
+                     <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/90 via-slate-950/50 to-transparent px-2.5 py-1.5 flex items-center justify-between">
+                       <span class="text-[11px] font-bold text-white">Nameplate</span>
+                       <span class="text-[10px] font-semibold text-amber-300">🔍 Zoom</span>
+                     </div>
+                   </button>
+                 ` : ''}
+                 ${hasMachine ? `
+                   <button
+                     type="button"
+                     data-action="view-photo"
+                     data-photo-type="machine"
+                     data-id="${escapeHtml(record.id)}"
+                     class="group relative rounded-xl overflow-hidden border border-slate-200 hover:border-slate-900 bg-slate-900 aspect-video text-left transition cursor-pointer"
+                   >
+                     <img src="${record.machinePhoto}" alt="Machine ${escapeHtml(record.serialNumber)}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200" loading="lazy" />
+                     <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/90 via-slate-950/50 to-transparent px-2.5 py-1.5 flex items-center justify-between">
+                       <span class="text-[11px] font-bold text-white">Full Machine</span>
+                       <span class="text-[10px] font-semibold text-amber-300">🔍 Zoom</span>
+                     </div>
+                   </button>
+                 ` : ''}
+               </div>
+             </div>`
+          : '';
+
+        const notesBlock = record.notes
+          ? `<div class="mt-3 pt-2.5 border-t border-slate-100 text-xs text-slate-600">
+               <span class="font-semibold text-slate-700">Remarks:</span> ${escapeHtml(record.notes)}
+             </div>`
+          : '';
+
+        return `
+          <article class="bg-white rounded-2xl ${borderClass} shadow-sm overflow-hidden flex flex-col justify-between animate-card">
+            <div>
+              ${spotlightHeader}
+              <div class="p-4 sm:p-5 pb-3">
+                <div class="flex items-start justify-between gap-2">
+                  <div class="min-w-0">
+                    <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Serial Number</div>
+                    <div class="flex items-center gap-2 mt-0.5">
+                      <h3 class="font-mono text-base sm:text-lg font-extrabold text-slate-900 tracking-wide break-all">
+                        ${escapeHtml(record.serialNumber)}
+                      </h3>
+                      <button
+                        type="button"
+                        data-action="copy-serial"
+                        data-serial="${escapeHtml(record.serialNumber)}"
+                        title="Copy Serial Number"
+                        class="px-2 py-1 rounded-md text-[11px] font-semibold bg-slate-100 hover:bg-slate-200 text-slate-600 shrink-0 transition cursor-pointer"
+                      >
+                        Copy
+                      </button>
+                    </div>
+                  </div>
+
+                  <span class="px-2.5 py-1 rounded-lg text-[11px] font-extrabold tracking-wide shrink-0 ${statusBadgeClass}">
+                    ${statusLabel}
+                  </span>
+                </div>
+
+                <div class="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1">
+                  <span class="text-sm sm:text-base font-bold text-slate-900">${escapeHtml(record.brand)}</span>
+                  <span class="text-slate-300">•</span>
+                  <span class="text-sm font-semibold text-slate-700">${escapeHtml(record.model)}</span>
+                </div>
+
+                <div class="mt-3 rounded-xl border p-3 ${statusBannerClass}">
+                  <div class="flex items-center justify-between gap-2 text-xs font-bold">
+                    <span>${w.isActive ? 'Remaining Coverage' : 'Coverage Status'}</span>
+                    <span class="tabular-nums">Expires: ${escapeHtml(w.expiryFormatted)}</span>
+                  </div>
+                  <div class="text-sm font-extrabold mt-1 tabular-nums">
+                    ${escapeHtml(w.remainingText)}
+                  </div>
+                </div>
+
+                <dl class="mt-3.5 grid grid-cols-2 gap-x-3 gap-y-2.5 text-xs">
+                  <div class="bg-slate-50 rounded-xl p-2.5 border border-slate-100">
+                    <dt class="text-[11px] font-medium text-slate-500">Installation Date</dt>
+                    <dd class="font-bold text-slate-900 mt-0.5 tabular-nums">${escapeHtml(w.installFormatted)}</dd>
+                  </div>
+
+                  <div class="bg-slate-50 rounded-xl p-2.5 border border-slate-100">
+                    <dt class="text-[11px] font-medium text-slate-500">Warranty Term</dt>
+                    <dd class="font-bold text-slate-900 mt-0.5 tabular-nums">${escapeHtml(record.warrantyMonths)} Months</dd>
+                  </div>
+
+                  <div class="bg-slate-50 rounded-xl p-2.5 border border-slate-100 col-span-2 sm:col-span-1">
+                    <dt class="text-[11px] font-medium text-slate-500">Site Name</dt>
+                    <dd class="font-bold text-slate-900 mt-0.5 break-words">${escapeHtml(record.siteName)}</dd>
+                  </div>
+
+                  <div class="bg-slate-50 rounded-xl p-2.5 border border-slate-100 col-span-2 sm:col-span-1">
+                    <dt class="text-[11px] font-medium text-slate-500">Install Location</dt>
+                    <dd class="font-bold text-slate-900 mt-0.5 break-words">${escapeHtml(record.location)}</dd>
+                  </div>
+
+                  <div class="bg-slate-50 rounded-xl p-2.5 border border-slate-100 col-span-2">
+                    <dt class="text-[11px] font-medium text-slate-500">Installed Technician</dt>
+                    <dd class="font-bold text-slate-900 mt-0.5 flex items-center gap-1.5">
+                      <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                      <span>${escapeHtml(record.technicianName)}</span>
+                    </dd>
+                  </div>
+                </dl>
+
+                ${photosBlock}
+                ${notesBlock}
+              </div>
+            </div>
+
+            <div class="px-4 sm:px-5 py-2.5 bg-slate-50 border-t border-slate-100 flex items-center justify-end gap-2">
+              <button
+                type="button"
+                data-action="edit"
+                data-id="${escapeHtml(record.id)}"
+                class="px-3 py-1.5 rounded-lg text-xs font-bold bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 transition cursor-pointer"
+              >
+                Edit Details
+              </button>
+              <button
+                type="button"
+                data-action="delete"
+                data-id="${escapeHtml(record.id)}"
+                class="px-3 py-1.5 rounded-lg text-xs font-bold bg-white hover:bg-rose-50 text-rose-600 border border-slate-200 hover:border-rose-200 transition cursor-pointer"
+              >
+                Delete
+              </button>
+            </div>
+          </article>
+        `;
+      }
+
+      function renderApp() {
+        let activeCount = 0;
+        let expiringSoonCount = 0;
+        let expiredCount = 0;
+
+        records.forEach((rec) => {
+          const w = evaluateWarranty(rec.installDate, rec.warrantyMonths);
+          if (w.isActive) {
+            activeCount += 1;
+            if (w.isExpiringSoon) expiringSoonCount += 1;
+          } else {
+            expiredCount += 1;
+          }
+        });
+
+        els.statTotalCount.textContent = records.length;
+        els.statActiveCount.textContent = activeCount;
+        els.statExpiringSoonCount.textContent = expiringSoonCount;
+        els.statExpiredCount.textContent = expiredCount;
+
+        const q = searchQuery.trim().toUpperCase();
+        els.clearSearchBtn.classList.toggle('hidden', q.length === 0);
+
+        const exactMatch = q.length > 0
+          ? records.find((r) => (r.serialNumber || '').trim().toUpperCase() === q)
+          : null;
+
+        if (exactMatch) {
+          els.exactMatchSpotlight.innerHTML = buildEquipmentCardHtml(exactMatch, true);
+          els.exactMatchSpotlight.classList.remove('hidden');
+        } else {
+          els.exactMatchSpotlight.innerHTML = '';
+          els.exactMatchSpotlight.classList.add('hidden');
+        }
+
+        const filtered = records
+          .filter((rec) => {
+            const w = evaluateWarranty(rec.installDate, rec.warrantyMonths);
+            if (statusFilter === 'active' && !w.isActive) return false;
+            if (statusFilter === 'expiring' && !w.isExpiringSoon) return false;
+            if (statusFilter === 'expired' && w.isActive) return false;
+
+            if (!q) return true;
+
+            const haystack = [
+              rec.serialNumber,
+              rec.brand,
+              rec.model,
+              rec.siteName,
+              rec.location,
+              rec.technicianName,
+              rec.notes
+            ]
+              .map((v) => String(v || '').toUpperCase())
+              .join(' | ');
+
+            return haystack.includes(q);
+          })
+          .sort((a, b) => {
+            const dateCmp = String(b.installDate || '').localeCompare(String(a.installDate || ''));
+            if (dateCmp !== 0) return dateCmp;
+            return (b.updatedAt || b.createdAt || 0) - (a.updatedAt || a.createdAt || 0);
+          });
+
+        els.resultsCountLabel.textContent = `Showing ${filtered.length} of ${records.length} ${records.length === 1 ? 'unit' : 'units'}`;
+
+        if (filtered.length === 0) {
+          els.recordsContainer.innerHTML = '';
+          els.emptyStateBox.classList.remove('hidden');
+          if (q || statusFilter !== 'all') {
+            els.emptyStateTitle.textContent = 'No matching equipment found';
+            els.emptyStateSubtitle.textContent = `No equipment matched "${searchQuery.trim()}" under the selected filter.`;
+          } else {
+            els.emptyStateTitle.textContent = 'No equipment registered yet';
+            els.emptyStateSubtitle.textContent = 'Add your first commercial kitchen machine installation to start tracking warranties.';
+          }
+          return;
+        }
+
+        els.emptyStateBox.classList.add('hidden');
+        els.recordsContainer.innerHTML = filtered
+          .map((rec) => buildEquipmentCardHtml(rec, false))
+          .join('');
+      }
+
+      // =========================================================================
+      // 8. MODAL CONTROLS & CSV EXPORT
+      // =========================================================================
+      function getSelectedWarrantyMonths() {
+        const val = els.warrantySelect.value;
+        if (val === 'custom') {
+          const custom = parseInt(els.customWarrantyMonthsInput.value, 10);
+          return Number.isFinite(custom) && custom > 0 ? custom : 12;
+        }
+        return parseInt(val, 10) || 12;
+      }
+
+      function updateModalWarrantyPreview() {
+        const dateStr = els.installDateInput.value;
+        const months = getSelectedWarrantyMonths();
+        if (!dateStr) {
+          els.modalWarrantyPreviewText.textContent = 'Select installation date';
+          return;
+        }
+        const w = evaluateWarranty(dateStr, months);
+        els.modalWarrantyPreviewText.textContent = `${w.expiryFormatted} (${w.isActive ? 'Active' : 'Expired'})`;
+        els.modalWarrantyPreview.className = w.isActive
+          ? 'rounded-xl px-3.5 py-2.5 text-xs font-semibold bg-emerald-50 text-emerald-900 border border-emerald-200 flex items-center justify-between'
+          : 'rounded-xl px-3.5 py-2.5 text-xs font-semibold bg-rose-50 text-rose-900 border border-rose-200 flex items-center justify-between';
+      }
+
+      function checkDuplicateSerialWarning() {
+        const serialVal = els.serialNumberInput.value.trim().toUpperCase();
+        const editingId = els.recordIdInput.value;
+        if (!serialVal) {
+          els.duplicateSerialWarning.classList.add('hidden');
+          return false;
+        }
+        const duplicate = records.find(
+          (r) => (r.serialNumber || '').trim().toUpperCase() === serialVal && r.id !== editingId
+        );
+        els.duplicateSerialWarning.classList.toggle('hidden', !duplicate);
+        return Boolean(duplicate);
+      }
+
+      function openAddModal(prefillSerial = '') {
+        els.recordIdInput.value = '';
+        els.modalTitle.textContent = 'Register New Installation';
+        els.saveRecordBtn.textContent = 'Save Installation';
+
+        els.serialNumberInput.value = prefillSerial ? prefillSerial.toUpperCase() : '';
+        els.brandInput.value = '';
+        els.modelInput.value = '';
+        els.installDateInput.value = getTodayDateString();
+        els.warrantySelect.value = '12';
+        els.customWarrantyWrapper.classList.add('hidden');
+        els.customWarrantyMonthsInput.value = '';
+        els.siteNameInput.value = '';
+        els.locationInput.value = '';
+        els.technicianInput.value = '';
+        els.notesInput.value = '';
+        setPhotoPreviewUI('nameplate', '');
+        setPhotoPreviewUI('machine', '');
+
+        checkDuplicateSerialWarning();
+        updateModalWarrantyPreview();
+        els.equipmentModal.classList.remove('hidden');
+        setTimeout(() => els.serialNumberInput.focus(), 50);
+      }
+
+      function openEditModal(recordId) {
+        const target = records.find((r) => r.id === recordId);
+        if (!target) return;
+
+        els.recordIdInput.value = target.id;
+        els.modalTitle.textContent = 'Edit Equipment Details';
+        els.saveRecordBtn.textContent = 'Update Equipment';
+
+        els.serialNumberInput.value = target.serialNumber || '';
+        els.brandInput.value = target.brand || '';
+        els.modelInput.value = target.model || '';
+        els.installDateInput.value = target.installDate || getTodayDateString();
+
+        const standardOptions = ['6', '12', '18', '24', '36'];
+        const monthsStr = String(target.warrantyMonths || 12);
+        if (standardOptions.includes(monthsStr)) {
+          els.warrantySelect.value = monthsStr;
+          els.customWarrantyWrapper.classList.add('hidden');
+          els.customWarrantyMonthsInput.value = '';
+        } else {
+          els.warrantySelect.value = 'custom';
+          els.customWarrantyWrapper.classList.remove('hidden');
+          els.customWarrantyMonthsInput.value = monthsStr;
+        }
+
+        els.siteNameInput.value = target.siteName || '';
+        els.locationInput.value = target.location || '';
+        els.technicianInput.value = target.technicianName || '';
+        els.notesInput.value = target.notes || '';
+        setPhotoPreviewUI('nameplate', target.nameplatePhoto || '');
+        setPhotoPreviewUI('machine', target.machinePhoto || '');
+
+        checkDuplicateSerialWarning();
+        updateModalWarrantyPreview();
+        els.equipmentModal.classList.remove('hidden');
+      }
+
+      function closeEquipmentModal() {
+        els.equipmentModal.classList.add('hidden');
+      }
+
+      function openDeleteModal(recordId) {
+        const target = records.find((r) => r.id === recordId);
+        if (!target) return;
+        pendingDeleteRecord = target;
+        els.deleteTargetSerial.textContent = target.serialNumber;
+        els.deleteConfirmInput.value = '';
+        els.confirmDeleteBtn.disabled = true;
+        els.deleteConfirmModal.classList.remove('hidden');
+        setTimeout(() => els.deleteConfirmInput.focus(), 50);
+      }
+
+      function closeDeleteModal() {
+        pendingDeleteRecord = null;
+        els.deleteConfirmModal.classList.add('hidden');
+      }
+
+      function openCloudSetupModal() {
+        els.cloudSetupErrorBox.classList.add('hidden');
+        const saved = getSavedFirebaseConfig();
+        if (saved && !els.firebaseConfigJsonInput.value.trim()) {
+          els.firebaseConfigJsonInput.value = JSON.stringify(saved, null, 2);
+        }
+        els.cloudSetupModal.classList.remove('hidden');
+      }
+
+      function closeCloudSetupModal() {
+        els.cloudSetupModal.classList.add('hidden');
+      }
+
+      function exportRecordsToCsv() {
+        if (records.length === 0) {
+          showToast('No records available to export.', 'info');
+          return;
+        }
+
+        const headers = [
+          'Serial Number',
+          'Brand',
+          'Model',
+          'Installation Date',
+          'Warranty Months',
+          'Expiry Date',
+          'Warranty Status',
+          'Remaining Time',
+          'Site Name',
+          'Install Location',
+          'Installed Technician',
+          'Has Nameplate Photo',
+          'Has Machine Photo',
+          'Remarks'
+        ];
+
+        const escapeCsvCell = (val) => `"${String(val ?? '').replace(/"/g, '""')}"`;
+
+        const rows = records.map((rec) => {
+          const w = evaluateWarranty(rec.installDate, rec.warrantyMonths);
+          return [
+            rec.serialNumber,
+            rec.brand,
+            rec.model,
+            rec.installDate,
+            rec.warrantyMonths,
+            w.expiryFormatted,
+            w.isActive ? 'ACTIVE' : 'EXPIRED',
+            w.remainingText,
+            rec.siteName,
+            rec.location,
+            rec.technicianName,
+            rec.nameplatePhoto ? 'Yes' : 'No',
+            rec.machinePhoto ? 'Yes' : 'No',
+            rec.notes || ''
+          ]
+            .map(escapeCsvCell)
+            .join(',');
+        });
+
+        const csvContent = '\uFEFF' + [headers.map(escapeCsvCell).join(','), ...rows].join('\n');
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `kitchen-equipment-warranty-${getTodayDateString()}.csv`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+        showToast(`Exported ${records.length} records to CSV.`, 'success');
+      }
+
+      // =========================================================================
+      // 9. EVENT LISTENERS & INSTANT STARTUP
+      // =========================================================================
+      function bindEvents() {
+        els.closeToastBtn.addEventListener('click', () => els.toastBanner.classList.add('hidden'));
+
+        // Search input
+        els.searchInput.addEventListener('input', (e) => {
+          searchQuery = e.target.value;
+          renderApp();
+        });
+
+        els.clearSearchBtn.addEventListener('click', () => {
+          searchQuery = '';
+          els.searchInput.value = '';
+          els.searchInput.focus();
+          renderApp();
+        });
+
+        // Status filter buttons
+        els.statusFilterBtns.forEach((btn) => {
+          btn.addEventListener('click', () => {
+            statusFilter = btn.getAttribute('data-status-filter') || 'all';
+            els.statusFilterBtns.forEach((b) => {
+              const active = b.getAttribute('data-status-filter') === statusFilter;
+              b.className = active
+                ? 'status-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-900 text-white transition cursor-pointer'
+                : 'status-filter-btn px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 transition cursor-pointer';
+            });
+            renderApp();
+          });
+        });
+
+        // Add / Export / Cloud Setup buttons
+        els.openAddModalBtn.addEventListener('click', () => openAddModal(searchQuery.trim()));
+        els.mobileFabAddBtn.addEventListener('click', () => openAddModal(searchQuery.trim()));
+        els.emptyAddBtn.addEventListener('click', () => openAddModal(searchQuery.trim()));
+        els.exportCsvBtn.addEventListener('click', exportRecordsToCsv);
+
+        els.openCloudSetupBtn.addEventListener('click', openCloudSetupModal);
+        els.bannerConnectCloudBtn.addEventListener('click', openCloudSetupModal);
+        els.closeCloudSetupBtn.addEventListener('click', closeCloudSetupModal);
+
+        // Quick Brand Chips
+        document.querySelectorAll('.quick-brand-chip').forEach((chip) => {
+          chip.addEventListener('click', () => {
+            els.brandInput.value = chip.getAttribute('data-quick-brand') || '';
+            els.modelInput.focus();
+          });
+        });
+
+        // Equipment Modal controls
+        els.closeModalBtn.addEventListener('click', closeEquipmentModal);
+        els.cancelModalBtn.addEventListener('click', closeEquipmentModal);
+
+        els.serialNumberInput.addEventListener('input', () => {
+          els.serialNumberInput.value = els.serialNumberInput.value.toUpperCase();
+          checkDuplicateSerialWarning();
+        });
+
+        els.installDateInput.addEventListener('change', updateModalWarrantyPreview);
+        els.warrantySelect.addEventListener('change', () => {
+          const isCustom = els.warrantySelect.value === 'custom';
+          els.customWarrantyWrapper.classList.toggle('hidden', !isCustom);
+          if (isCustom) els.customWarrantyMonthsInput.focus();
+          updateModalWarrantyPreview();
+        });
+        els.customWarrantyMonthsInput.addEventListener('input', updateModalWarrantyPreview);
+
+        // Equipment Form Submit
+        els.equipmentForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+
+          const serialNumber = els.serialNumberInput.value.trim().toUpperCase();
+          const brand = els.brandInput.value.trim();
+          const model = els.modelInput.value.trim();
+          const installDate = els.installDateInput.value;
+          const warrantyMonths = getSelectedWarrantyMonths();
+          const siteName = els.siteNameInput.value.trim();
+          const location = els.locationInput.value.trim();
+          const technicianName = els.technicianInput.value.trim();
+          const notes = els.notesInput.value.trim();
+          const existingId = els.recordIdInput.value.trim();
+          const nameplatePhoto = currentNameplateDataUrl || '';
+          const machinePhoto = currentMachineDataUrl || '';
+
+          if (!serialNumber || !brand || !model || !installDate || !siteName || !location || !technicianName) {
+            showToast('Please fill in all required fields.', 'error');
+            return;
+          }
+
+          if (els.warrantySelect.value === 'custom' && (!Number.isFinite(warrantyMonths) || warrantyMonths < 1)) {
+            showToast('Please enter a valid number of warranty months.', 'error');
+            return;
+          }
+
+          const totalKb = estimateBase64Kb(nameplatePhoto) + estimateBase64Kb(machinePhoto);
+          if (totalKb > 850) {
+            showToast('Combined photo size is too large. Please remove one photo or retake.', 'error');
+            return;
+          }
+
+          await saveEquipmentRecord(
+            {
+              serialNumber,
+              brand,
+              model,
+              installDate,
+              warrantyMonths,
+              siteName,
+              location,
+              technicianName,
+              notes,
+              nameplatePhoto,
+              machinePhoto
+            },
+            existingId || null
+          );
+        });
+
+        // Photo Upload & Remove Listeners
+        els.nameplateCameraInput.addEventListener('change', () => handlePhotoInputChange('nameplate', els.nameplateCameraInput));
+        els.nameplateGalleryInput.addEventListener('change', () => handlePhotoInputChange('nameplate', els.nameplateGalleryInput));
+        els.removeNameplateBtn.addEventListener('click', () => setPhotoPreviewUI('nameplate', ''));
+
+        els.machineCameraInput.addEventListener('change', () => handlePhotoInputChange('machine', els.machineCameraInput));
+        els.machineGalleryInput.addEventListener('change', () => handlePhotoInputChange('machine', els.machineGalleryInput));
+        els.removeMachineBtn.addEventListener('click', () => setPhotoPreviewUI('machine', ''));
+
+        // Card Action Delegation
+        const handleCardActionClick = (e) => {
+          const btn = e.target.closest('button[data-action]');
+          if (!btn) return;
+          const action = btn.getAttribute('data-action');
+
+          if (action === 'copy-serial') {
+            const serial = btn.getAttribute('data-serial');
+            if (serial) copyTextToClipboard(serial);
+          } else if (action === 'view-photo') {
+            const id = btn.getAttribute('data-id');
+            const photoType = btn.getAttribute('data-photo-type');
+            if (id && photoType) openPhotoLightbox(id, photoType);
+          } else if (action === 'edit') {
+            const id = btn.getAttribute('data-id');
+            if (id) openEditModal(id);
+          } else if (action === 'delete') {
+            const id = btn.getAttribute('data-id');
+            if (id) openDeleteModal(id);
+          }
+        };
+
+        els.recordsContainer.addEventListener('click', handleCardActionClick);
+        els.exactMatchSpotlight.addEventListener('click', handleCardActionClick);
+
+        // Lightbox Controls
+        els.closeLightboxBtn.addEventListener('click', closePhotoLightbox);
+        els.lightboxZoomToggleBtn.addEventListener('click', () => setLightboxZoom(!isLightboxZoomed));
+        els.lightboxImage.addEventListener('click', () => setLightboxZoom(!isLightboxZoomed));
+        els.photoLightboxModal.addEventListener('click', (e) => {
+          if (e.target === els.photoLightboxModal || e.target === els.lightboxScrollContainer) {
+            closePhotoLightbox();
+          }
+        });
+
+        // Delete Modal Controls
+        els.deleteConfirmInput.addEventListener('input', () => {
+          els.confirmDeleteBtn.disabled = els.deleteConfirmInput.value.trim().toUpperCase() !== 'DELETE';
+        });
+        els.cancelDeleteBtn.addEventListener('click', closeDeleteModal);
+        els.confirmDeleteBtn.addEventListener('click', async () => {
+          if (!pendingDeleteRecord) return;
+          const idToDelete = pendingDeleteRecord.id;
+          closeDeleteModal();
+          await deleteEquipmentRecord(idToDelete);
+        });
+
+        // Cloud Setup Modal Actions
+        els.testAndSaveCloudBtn.addEventListener('click', async () => {
+          els.cloudSetupErrorBox.classList.add('hidden');
+          els.testAndSaveCloudBtn.disabled = true;
+          els.testAndSaveCloudBtn.textContent = 'Connecting...';
+
+          try {
+            const parsedConfig = parseUserFirebaseConfigInput(els.firebaseConfigJsonInput.value);
+            localStorage.setItem(FIREBASE_CONFIG_STORAGE_KEY, JSON.stringify(parsedConfig));
+            await connectToFirebaseCloud(parsedConfig, true);
+            closeCloudSetupModal();
+          } catch (err) {
+            els.cloudSetupErrorBox.textContent = err.message || 'Could not connect to Firebase. Check your config and ensure Anonymous Auth + Firestore are enabled.';
+            els.cloudSetupErrorBox.classList.remove('hidden');
+          } finally {
+            els.testAndSaveCloudBtn.disabled = false;
+            els.testAndSaveCloudBtn.textContent = 'Test & Save Connection';
+          }
+        });
+
+        els.resetLocalModeBtn.addEventListener('click', () => {
+          localStorage.removeItem(FIREBASE_CONFIG_STORAGE_KEY);
+          if (unsubscribeFirestore) {
+            unsubscribeFirestore();
+            unsubscribeFirestore = null;
+          }
+          firestoreDb = null;
+          firestoreModule = null;
+          loadLocalRecords();
+          setSyncModeUI('local');
+          renderApp();
+          closeCloudSetupModal();
+          showToast('Switched back to Local Mode.', 'info');
+        });
+      }
+
+      // =========================================================================
+      // BOOTSTRAP APPLICATION IMMEDIATELY ON LOAD
+      // =========================================================================
+      function init() {
+        // 1. Load local records & render UI in < 10ms with ZERO blocking spinner
+        loadLocalRecords();
+        setSyncModeUI('local');
+        bindEvents();
+        renderApp();
+
+        // 2. If a Firebase config exists, attempt non-blocking background sync
+        const savedConfig = getSavedFirebaseConfig();
+        if (savedConfig) {
+          connectToFirebaseCloud(savedConfig, false);
+        }
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+    })();
+  </script>
+</body>
+</html>
