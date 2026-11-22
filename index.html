@@ -79,14 +79,14 @@
 
         <div>
           <label for="loginPinInput" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">
-            Access PIN / Key *
+            Access PIN / Password *
           </label>
           <input
             type="password"
             id="loginPinInput"
             required
             autocomplete="current-password"
-            placeholder="Enter access PIN"
+            placeholder="Enter access PIN / password"
             class="w-full font-mono text-base tracking-widest bg-slate-800 border border-slate-700 focus:border-amber-400 rounded-xl px-4 py-3 text-white placeholder:text-slate-500 focus:outline-none"
           />
         </div>
@@ -113,7 +113,7 @@
       </form>
 
       <div class="mt-5 pt-4 border-t border-slate-800 flex items-center justify-between text-[11px] text-slate-400">
-        <span>Office & Field Role Control</span>
+        <span>Admin-Controlled Access</span>
         <button type="button" id="loginScreenInstallBtn" class="font-bold text-amber-400 hover:text-amber-300 underline cursor-pointer">
           Install App
         </button>
@@ -298,7 +298,7 @@
     </button>
   </div>
 
-  <!-- Add / Edit Modal (With Mandatory Edit Reason & Offset Approval Flow) -->
+  <!-- Add / Edit Equipment Modal -->
   <div id="equipmentModal" class="hidden fixed inset-0 z-40 bg-slate-950/60 backdrop-blur-xs flex items-end sm:items-center justify-center p-0 sm:p-4 overflow-y-auto" role="dialog" aria-modal="true">
     <div class="bg-white w-full max-w-xl rounded-t-3xl sm:rounded-2xl shadow-2xl border border-slate-200 max-h-[92vh] flex flex-col overflow-hidden animate-card">
       <div class="px-5 py-4 bg-slate-900 text-white flex items-center justify-between shrink-0">
@@ -312,7 +312,6 @@
       <form id="equipmentForm" class="p-5 overflow-y-auto space-y-4">
         <input type="hidden" id="recordIdInput" value="" />
 
-        <!-- Edit Reason Box (Visible when editing an existing record) -->
         <div id="editReasonWrapper" class="hidden bg-amber-50 border-2 border-amber-300 rounded-2xl p-3.5 space-y-1.5">
           <label for="editReasonInput" class="block text-xs font-extrabold uppercase tracking-wider text-amber-950">
             Reason for Edit * (Required)
@@ -364,7 +363,6 @@
           <input type="text" id="modelInput" required placeholder="e.g. iCombi Pro 10-1/1 or Plug-in Salamander" class="w-full bg-slate-50 border border-slate-300 focus:border-slate-900 focus:bg-white rounded-xl px-3.5 py-2.5 text-sm font-medium text-slate-900 focus:outline-none" />
         </div>
 
-        <!-- Working Conditions Checkboxes -->
         <div class="bg-slate-50 border border-slate-200 rounded-2xl p-3.5 space-y-2.5">
           <div class="text-xs font-bold uppercase tracking-wider text-slate-700">Working Conditions & Handover Checklist</div>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs font-bold text-slate-800">
@@ -431,7 +429,6 @@
           <input type="text" id="technicianInput" required placeholder="e.g. Kasun / Driver Sunil" class="w-full bg-slate-50 border border-slate-300 focus:border-slate-900 focus:bg-white rounded-xl px-3.5 py-2.5 text-sm font-medium text-slate-900 focus:outline-none" />
         </div>
 
-        <!-- Photos -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
           <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 flex flex-col justify-between">
             <div class="flex items-center justify-between mb-2">
@@ -491,20 +488,20 @@
     </div>
   </div>
 
-  <!-- Admin Control Board Modal (Office/Field Groups, Roles, Granular Permissions & Access Grant/Revoke) -->
+  <!-- Admin Control Board Modal -->
   <div id="adminBoardModal" class="hidden fixed inset-0 z-50 bg-slate-950/65 backdrop-blur-xs flex items-end sm:items-center justify-center p-0 sm:p-4 overflow-y-auto" role="dialog" aria-modal="true">
     <div class="bg-white w-full max-w-2xl rounded-t-3xl sm:rounded-2xl shadow-2xl border border-slate-200 max-h-[92vh] flex flex-col overflow-hidden animate-card">
       <div class="px-5 py-4 bg-slate-900 text-white flex items-center justify-between shrink-0">
         <div>
           <h3 class="text-base sm:text-lg font-bold">Admin Control Board</h3>
-          <p class="text-xs text-slate-400">Office & Field Staff Groups, Roles, Custom Permissions & Access Control</p>
+          <p class="text-xs text-slate-400">Add/Edit Staff Name & PIN, Grant/Revoke Permissions, View Registration Log</p>
         </div>
         <button type="button" id="closeAdminBoardBtn" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center font-bold cursor-pointer">✕</button>
       </div>
 
       <div class="p-5 overflow-y-auto space-y-5">
         <form id="addTeamUserForm" class="bg-slate-50 border border-slate-200 rounded-2xl p-4 space-y-3.5">
-          <div class="text-xs font-bold uppercase tracking-wider text-slate-800">Add Staff Member & Assign Group / Role / Powers</div>
+          <div class="text-xs font-bold uppercase tracking-wider text-slate-800">Register New Staff Member (Admin Only)</div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
@@ -512,7 +509,7 @@
               <input type="text" id="newUserNameInput" required placeholder="e.g. Nuwan / Driver Kamal" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs font-semibold text-slate-900" />
             </div>
             <div>
-              <label for="newUserPinInput" class="block text-[11px] font-bold text-slate-600 mb-1">Access PIN / Key *</label>
+              <label for="newUserPinInput" class="block text-[11px] font-bold text-slate-600 mb-1">PIN / Password *</label>
               <input type="text" id="newUserPinInput" required placeholder="e.g. 3001" class="w-full font-mono bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs font-bold text-slate-900" />
             </div>
           </div>
@@ -540,10 +537,9 @@
             </div>
           </div>
 
-          <!-- Granular Control Powers -->
           <div class="bg-white border border-slate-200 rounded-xl p-3 space-y-2">
-            <div class="text-[11px] font-bold uppercase tracking-wider text-slate-600">Control Powers (Assign as Needed)</div>
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs font-semibold text-slate-800">
+            <div class="text-[11px] font-bold uppercase tracking-wider text-slate-600">Permissions (Grant or Remove Anytime)</div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-semibold text-slate-800">
               <label class="flex items-center gap-2 cursor-pointer">
                 <input type="checkbox" id="permCanApproveOffset" class="w-4 h-4 accent-indigo-600 cursor-pointer" />
                 <span>Offset / Approve Edits</span>
@@ -552,28 +548,91 @@
                 <input type="checkbox" id="permCanDelete" class="w-4 h-4 accent-indigo-600 cursor-pointer" />
                 <span>Delete Records</span>
               </label>
-              <label class="flex items-center gap-2 cursor-pointer">
-                <input type="checkbox" id="permCanManageUsers" class="w-4 h-4 accent-indigo-600 cursor-pointer" />
-                <span>Manage Users</span>
-              </label>
             </div>
           </div>
 
           <div class="flex justify-end">
             <button type="submit" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 hover:bg-slate-800 text-white cursor-pointer">
-              + Grant Access
+              + Register User
             </button>
           </div>
         </form>
 
         <div class="space-y-2.5">
           <div class="flex items-center justify-between">
-            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-700">Assigned Staff & Access Status</h4>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-700">Registered Staff, Permissions & Audit Log</h4>
             <span id="teamUsersCountBadge" class="text-xs font-semibold text-slate-500">0 users</span>
           </div>
-          <div id="teamUsersListContainer" class="space-y-2"></div>
+          <div id="teamUsersListContainer" class="space-y-2.5"></div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- Edit User Modal (Change Name, PIN/Password, Group, Role & Permissions) -->
+  <div id="editUserModal" class="hidden fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto" role="dialog" aria-modal="true">
+    <div class="bg-white w-full max-w-md rounded-2xl shadow-2xl border border-slate-200 overflow-hidden animate-card">
+      <div class="px-5 py-4 bg-slate-900 text-white flex items-center justify-between">
+        <div>
+          <h3 class="text-base font-bold">Edit User & Permissions</h3>
+          <p class="text-xs text-slate-400">Update name, PIN/password, role, or remove permissions</p>
+        </div>
+        <button type="button" id="closeEditUserModalBtn" class="w-8 h-8 rounded-lg bg-slate-800 text-slate-300 font-bold cursor-pointer">✕</button>
+      </div>
+
+      <form id="editUserForm" class="p-5 space-y-3.5">
+        <input type="hidden" id="editUserIdInput" value="" />
+
+        <div>
+          <label for="editUserNameInput" class="block text-xs font-bold text-slate-700 mb-1">Staff Name *</label>
+          <input type="text" id="editUserNameInput" required class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-sm font-semibold text-slate-900" />
+        </div>
+
+        <div>
+          <label for="editUserPinInput" class="block text-xs font-bold text-slate-700 mb-1">Access PIN / Password *</label>
+          <input type="text" id="editUserPinInput" required class="w-full font-mono bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-2 text-sm font-bold text-slate-900" />
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label for="editUserGroupSelect" class="block text-xs font-bold text-slate-700 mb-1">Division</label>
+            <select id="editUserGroupSelect" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs font-bold text-slate-900">
+              <option value="Office Staff">Office Staff</option>
+              <option value="Field Staff">Field Staff</option>
+            </select>
+          </div>
+          <div>
+            <label for="editUserRoleSelect" class="block text-xs font-bold text-slate-700 mb-1">Responsibility</label>
+            <select id="editUserRoleSelect" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs font-bold text-slate-900">
+              <option value="Coordinator">Coordinator</option>
+              <option value="Sales Manager">Sales Manager</option>
+              <option value="Manager">Manager</option>
+              <option value="Supervisor">Supervisor</option>
+              <option value="Senior Technician">Senior Technician</option>
+              <option value="Technician">Technician</option>
+              <option value="Driver">Driver</option>
+              <option value="Helper">Helper</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 space-y-2">
+          <div class="text-[11px] font-bold uppercase tracking-wider text-slate-600">Permissions (Check to Grant / Uncheck to Remove)</div>
+          <label class="flex items-center gap-2 text-xs font-semibold text-slate-800 cursor-pointer">
+            <input type="checkbox" id="editPermCanApproveOffset" class="w-4 h-4 accent-indigo-600 cursor-pointer" />
+            <span>Offset / Approve Edits</span>
+          </label>
+          <label class="flex items-center gap-2 text-xs font-semibold text-slate-800 cursor-pointer">
+            <input type="checkbox" id="editPermCanDelete" class="w-4 h-4 accent-indigo-600 cursor-pointer" />
+            <span>Delete Records</span>
+          </label>
+        </div>
+
+        <div class="pt-2 flex items-center justify-end gap-2 border-t border-slate-100">
+          <button type="button" id="cancelEditUserBtn" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 cursor-pointer">Cancel</button>
+          <button type="submit" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 text-white cursor-pointer">Save Changes</button>
+        </div>
+      </form>
     </div>
   </div>
 
@@ -633,11 +692,11 @@
 
   <script>
     (function () {
-      const LOCAL_RECORDS_KEY = 'kitchen_tracker_records_v2';
-      const LOCAL_USERS_KEY = 'kitchen_tracker_team_users_v2';
+      const LOCAL_RECORDS_KEY = 'kitchen_tracker_records_v3';
+      const LOCAL_USERS_KEY = 'kitchen_tracker_team_users_v3';
       const FIREBASE_CONFIG_STORAGE_KEY = 'kitchen_tracker_firebase_config';
-      const SESSION_AUTH_KEY = 'kitchen_tracker_auth_session_v2';
-      const PERSIST_ADMIN_AUTH_KEY = 'kitchen_tracker_admin_persist_v2';
+      const SESSION_AUTH_KEY = 'kitchen_tracker_auth_session_v3';
+      const PERSIST_ADMIN_AUTH_KEY = 'kitchen_tracker_admin_persist_v3';
 
       // Temporary Admin PIN (Change later as required)
       const ADMIN_ACCESS_PIN = 'TECLEVEL';
@@ -775,9 +834,20 @@
         newUserRoleSelect: document.getElementById('newUserRoleSelect'),
         permCanApproveOffset: document.getElementById('permCanApproveOffset'),
         permCanDelete: document.getElementById('permCanDelete'),
-        permCanManageUsers: document.getElementById('permCanManageUsers'),
         teamUsersCountBadge: document.getElementById('teamUsersCountBadge'),
         teamUsersListContainer: document.getElementById('teamUsersListContainer'),
+
+        editUserModal: document.getElementById('editUserModal'),
+        closeEditUserModalBtn: document.getElementById('closeEditUserModalBtn'),
+        cancelEditUserBtn: document.getElementById('cancelEditUserBtn'),
+        editUserForm: document.getElementById('editUserForm'),
+        editUserIdInput: document.getElementById('editUserIdInput'),
+        editUserNameInput: document.getElementById('editUserNameInput'),
+        editUserPinInput: document.getElementById('editUserPinInput'),
+        editUserGroupSelect: document.getElementById('editUserGroupSelect'),
+        editUserRoleSelect: document.getElementById('editUserRoleSelect'),
+        editPermCanApproveOffset: document.getElementById('editPermCanApproveOffset'),
+        editPermCanDelete: document.getElementById('editPermCanDelete'),
 
         cloudSetupModal: document.getElementById('cloudSetupModal'),
         closeCloudSetupBtn: document.getElementById('closeCloudSetupBtn'),
@@ -803,26 +873,33 @@
       };
 
       // =========================================================================
-      // PERMISSIONS & ROLE HELPERS
+      // ADMIN AUTHORITY & PERMISSIONS
       // =========================================================================
+      function isAdminOnly() {
+        return Boolean(currentSession && currentSession.isAdmin);
+      }
+
+      function getLiveUserRecord(name) {
+        if (!name) return null;
+        return teamUsers.find((u) => String(u.name || '').toLowerCase() === String(name).toLowerCase()) || null;
+      }
+
       function canApproveOffset() {
         if (!currentSession) return false;
         if (currentSession.isAdmin) return true;
-        const r = String(currentSession.role || '').toLowerCase();
-        const defaultApprover = ['manager', 'sales manager', 'supervisor', 'coordinator', 'senior technician'].includes(r);
-        return Boolean(currentSession.permissions && currentSession.permissions.canApproveOffset) || defaultApprover;
+        const live = getLiveUserRecord(currentSession.name);
+        const perms = (live && live.permissions) || currentSession.permissions || {};
+        if (typeof perms.canApproveOffset === 'boolean') return perms.canApproveOffset;
+        const r = String((live && live.role) || currentSession.role || '').toLowerCase();
+        return ['manager', 'sales manager', 'supervisor', 'coordinator', 'senior technician'].includes(r);
       }
 
       function canDeleteRecords() {
         if (!currentSession) return false;
         if (currentSession.isAdmin) return true;
-        return Boolean(currentSession.permissions && currentSession.permissions.canDelete);
-      }
-
-      function canManageUsers() {
-        if (!currentSession) return false;
-        if (currentSession.isAdmin) return true;
-        return Boolean(currentSession.permissions && currentSession.permissions.canManageUsers);
+        const live = getLiveUserRecord(currentSession.name);
+        const perms = (live && live.permissions) || currentSession.permissions || {};
+        return Boolean(perms.canDelete);
       }
 
       function loadTeamUsersFromLocal() {
@@ -853,7 +930,7 @@
             role: 'Admin / Developer',
             isAdmin: true,
             keepLoggedIn: Boolean(keepLoggedIn),
-            permissions: { canApproveOffset: true, canDelete: true, canManageUsers: true }
+            permissions: { canApproveOffset: true, canDelete: true }
           };
         }
 
@@ -907,14 +984,16 @@
             const parsed = JSON.parse(raw);
             if (parsed && parsed.name) {
               if (!parsed.isAdmin) {
-                const stillActive = teamUsers.some(
-                  (u) => String(u.name || '').toLowerCase() === String(parsed.name).toLowerCase() && u.active !== false
-                );
-                if (!stillActive) {
+                const live = getLiveUserRecord(parsed.name);
+                if (!live || live.active === false) {
                   sessionStorage.removeItem(SESSION_AUTH_KEY);
                   currentSession = null;
                   return;
                 }
+                parsed.name = live.name;
+                parsed.group = live.group;
+                parsed.role = live.role;
+                parsed.permissions = live.permissions || {};
               }
               currentSession = parsed;
               return;
@@ -927,13 +1006,11 @@
       function applyRoleAndAuthUI() {
         if (currentSession) {
           els.loginGateScreen.classList.add('hidden');
-          const tag = currentSession.isAdmin
-            ? 'ADMIN'
-            : `${currentSession.group} • ${currentSession.role}`;
+          const tag = currentSession.isAdmin ? 'ADMIN' : `${currentSession.group} • ${currentSession.role}`;
           els.activeUserSubtitle.textContent = `${currentSession.name} (${tag})`;
-          const showAdminBtn = canManageUsers();
-          els.openAdminBoardBtn.classList.toggle('hidden', !showAdminBtn);
-          els.openAdminBoardBtn.classList.toggle('inline-flex', showAdminBtn);
+          const showAdmin = isAdminOnly();
+          els.openAdminBoardBtn.classList.toggle('hidden', !showAdmin);
+          els.openAdminBoardBtn.classList.toggle('inline-flex', showAdmin);
         } else {
           els.loginGateScreen.classList.remove('hidden');
           els.openAdminBoardBtn.classList.add('hidden');
@@ -945,11 +1022,17 @@
       }
 
       // =========================================================================
-      // DATE & WARRANTY HELPERS
+      // DATE, WARRANTY & UTILITIES
       // =========================================================================
       function getTodayDateString() {
         const now = new Date();
         return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+      }
+
+      function formatDateTime(ts) {
+        if (!ts) return 'N/A';
+        const d = new Date(ts);
+        return d.toLocaleString('en-GB', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
       }
 
       function parseLocalYMD(ymd) {
@@ -1044,7 +1127,7 @@
       }
 
       // =========================================================================
-      // STORAGE & CLOUD SYNC
+      // STORAGE & FIREBASE SYNC
       // =========================================================================
       function getSavedFirebaseConfig() {
         if (typeof __firebase_config !== 'undefined' && __firebase_config) {
@@ -1189,9 +1272,15 @@
       }
 
       // =========================================================================
-      // TEAM USERS, EDIT REASON & OFFSET APPROVAL
+      // ADMIN USER MANAGEMENT (ADD, EDIT NAME/PIN/PERMS, GRANT/REVOKE, AUDIT)
       // =========================================================================
       async function addTeamMember(name, group, role, pin, permissions) {
+        if (!isAdminOnly()) {
+          showToast('Only Admin can register users.', 'error');
+          return;
+        }
+        const now = Date.now();
+        const registrar = currentSession ? currentSession.name : 'Admin';
         const entry = {
           name: name.trim(),
           group,
@@ -1199,72 +1288,130 @@
           pin: pin.trim(),
           permissions,
           active: true,
-          createdAt: Date.now()
+          registeredBy: registrar,
+          registeredAt: now,
+          createdAt: now
         };
         if (isCloudConnected && firestoreDb && firestoreModule) {
           const col = firestoreModule.collection(firestoreDb, 'artifacts', APP_COLLECTION_ID, 'public', 'data', 'team_users');
           await firestoreModule.addDoc(col, entry);
         } else {
-          teamUsers.push({ id: `usr_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`, ...entry });
+          teamUsers.push({ id: `usr_${now}_${Math.random().toString(36).slice(2, 6)}`, ...entry });
           saveTeamUsersToLocal();
           renderTeamUsersList();
         }
-        showToast(`Added ${entry.name} (${entry.group} • ${entry.role}).`, 'success');
+        showToast(`Registered ${entry.name} (by ${registrar}).`, 'success');
+      }
+
+      async function updateTeamMember(userId, updates) {
+        if (!isAdminOnly()) {
+          showToast('Only Admin can edit users or permissions.', 'error');
+          return;
+        }
+        const patch = { ...updates, updatedAt: Date.now() };
+        if (isCloudConnected && firestoreDb && firestoreModule) {
+          const ref = firestoreModule.doc(firestoreDb, 'artifacts', APP_COLLECTION_ID, 'public', 'data', 'team_users', userId);
+          await firestoreModule.updateDoc(ref, patch);
+        } else {
+          const idx = teamUsers.findIndex((u) => u.id === userId);
+          if (idx !== -1) {
+            teamUsers[idx] = { ...teamUsers[idx], ...patch };
+            saveTeamUsersToLocal();
+            renderTeamUsersList();
+          }
+        }
+        showToast('User details & permissions updated.', 'success');
       }
 
       async function toggleTeamUserAccess(userId, nextActive) {
+        if (!isAdminOnly()) return;
         if (isCloudConnected && firestoreDb && firestoreModule) {
           const ref = firestoreModule.doc(firestoreDb, 'artifacts', APP_COLLECTION_ID, 'public', 'data', 'team_users', userId);
-          await firestoreModule.updateDoc(ref, { active: Boolean(nextActive) });
+          await firestoreModule.updateDoc(ref, { active: Boolean(nextActive), updatedAt: Date.now() });
         } else {
           const u = teamUsers.find((x) => x.id === userId);
           if (u) { u.active = Boolean(nextActive); saveTeamUsersToLocal(); renderTeamUsersList(); }
         }
-        showToast(nextActive ? 'Access granted.' : 'Access revoked.', 'info');
+        showToast(nextActive ? 'User access granted.' : 'User access revoked.', 'info');
+      }
+
+      function openEditUserModal(userId) {
+        if (!isAdminOnly()) return;
+        const u = teamUsers.find((x) => x.id === userId);
+        if (!u) return;
+        els.editUserIdInput.value = u.id;
+        els.editUserNameInput.value = u.name || '';
+        els.editUserPinInput.value = u.pin || '';
+        els.editUserGroupSelect.value = u.group || 'Field Staff';
+        els.editUserRoleSelect.value = u.role || 'Technician';
+        const perms = u.permissions || {};
+        els.editPermCanApproveOffset.checked = Boolean(perms.canApproveOffset);
+        els.editPermCanDelete.checked = Boolean(perms.canDelete);
+        els.editUserModal.classList.remove('hidden');
       }
 
       function renderTeamUsersList() {
         els.teamUsersCountBadge.textContent = `${teamUsers.length} users`;
         if (!teamUsers.length) {
-          els.teamUsersListContainer.innerHTML = `<div class="text-xs text-slate-500 bg-slate-50 border border-dashed border-slate-200 rounded-xl p-4 text-center">No staff members added yet.</div>`;
+          els.teamUsersListContainer.innerHTML = `<div class="text-xs text-slate-500 bg-slate-50 border border-dashed border-slate-200 rounded-xl p-4 text-center">No staff members registered yet.</div>`;
           return;
         }
         els.teamUsersListContainer.innerHTML = teamUsers.map((u) => {
           const isActive = u.active !== false;
           const perms = u.permissions || {};
-          const powerBadges = [
+          const powerText = [
             perms.canApproveOffset ? 'Offset/Approve' : '',
-            perms.canDelete ? 'Delete' : '',
-            perms.canManageUsers ? 'Users' : ''
-          ].filter(Boolean).join(', ') || 'Standard Entry + Reasoned Edit';
+            perms.canDelete ? 'Delete' : ''
+          ].filter(Boolean).join(', ') || 'None (Standard Entry + Reasoned Edit)';
+
+          const regInfo = u.registeredBy
+            ? `Registered by: ${escapeHtml(u.registeredBy)}${u.registeredAt ? ` • ${escapeHtml(formatDateTime(u.registeredAt))}` : ''}`
+            : 'Registered by Admin';
 
           return `
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 bg-white border border-slate-200 rounded-xl p-3">
-              <div class="min-w-0">
-                <div class="flex flex-wrap items-center gap-1.5">
-                  <span class="text-xs sm:text-sm font-bold text-slate-900">${escapeHtml(u.name)}</span>
-                  <span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-indigo-50 text-indigo-800">${escapeHtml(u.group || 'Field Staff')}</span>
-                  <span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-100 text-slate-800">${escapeHtml(u.role || 'Technician')}</span>
-                  <span class="px-2 py-0.5 rounded-md text-[10px] font-bold ${isActive ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}">${isActive ? 'ACTIVE' : 'REVOKED'}</span>
+            <div class="bg-white border border-slate-200 rounded-xl p-3.5 space-y-2">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div class="min-w-0">
+                  <div class="flex flex-wrap items-center gap-1.5">
+                    <span class="text-xs sm:text-sm font-extrabold text-slate-900">${escapeHtml(u.name)}</span>
+                    <span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-indigo-50 text-indigo-800">${escapeHtml(u.group || 'Field Staff')}</span>
+                    <span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-100 text-slate-800">${escapeHtml(u.role || 'Technician')}</span>
+                    <span class="px-2 py-0.5 rounded-md text-[10px] font-bold ${isActive ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}">${isActive ? 'ACTIVE' : 'REVOKED'}</span>
+                  </div>
+                  <div class="text-[11px] font-mono text-slate-600 mt-1">PIN/Pass: <span class="font-bold">${escapeHtml(u.pin)}</span> • Permissions: <span class="font-semibold">${escapeHtml(powerText)}</span></div>
+                  <div class="text-[11px] text-slate-400 mt-0.5">${regInfo}</div>
                 </div>
-                <div class="text-[11px] font-mono text-slate-500 mt-0.5">PIN: ${escapeHtml(u.pin)} • Powers: ${escapeHtml(powerBadges)}</div>
+
+                <div class="flex items-center gap-1.5 shrink-0">
+                  <button
+                    type="button"
+                    data-user-action="edit"
+                    data-user-id="${escapeHtml(u.id)}"
+                    class="px-2.5 py-1.5 rounded-lg text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-200 cursor-pointer"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    type="button"
+                    data-user-action="toggle"
+                    data-user-id="${escapeHtml(u.id)}"
+                    data-next-active="${isActive ? 'false' : 'true'}"
+                    class="px-2.5 py-1.5 rounded-lg text-xs font-bold cursor-pointer ${
+                      isActive ? 'bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200' : 'bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200'
+                    }"
+                  >
+                    ${isActive ? 'Revoke' : 'Grant'}
+                  </button>
+                </div>
               </div>
-              <button
-                type="button"
-                data-user-action="toggle"
-                data-user-id="${escapeHtml(u.id)}"
-                data-next-active="${isActive ? 'false' : 'true'}"
-                class="px-3 py-1.5 rounded-lg text-xs font-bold shrink-0 cursor-pointer ${
-                  isActive ? 'bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200' : 'bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200'
-                }"
-              >
-                ${isActive ? 'Revoke Access' : 'Grant Access'}
-              </button>
             </div>
           `;
         }).join('');
       }
 
+      // =========================================================================
+      // RECORDS, EDIT REASON & OFFSET APPROVAL
+      // =========================================================================
       async function saveEquipmentRecord(payload, existingId = null, editReason = '') {
         els.saveRecordBtn.disabled = true;
         els.saveRecordBtn.textContent = 'Saving...';
@@ -1272,33 +1419,15 @@
         try {
           const now = Date.now();
           const actorName = currentSession ? `${currentSession.name} (${currentSession.role})` : 'User';
-
           let finalData = { ...payload, updatedAt: now };
 
           if (existingId) {
             const prev = records.find((r) => r.id === existingId) || {};
-            const historyEntry = {
-              editedBy: actorName,
-              editedAt: now,
-              reason: editReason.trim(),
-              previousSnapshot: {
-                company: prev.company,
-                serialNumber: prev.serialNumber,
-                brand: prev.brand,
-                model: prev.model,
-                installDate: prev.installDate,
-                warrantyMonths: prev.warrantyMonths,
-                siteName: prev.siteName,
-                location: prev.location,
-                technicianName: prev.technicianName,
-                notes: prev.notes
-              }
-            };
             const existingHistory = Array.isArray(prev.editHistory) ? prev.editHistory : [];
             finalData.offsetStatus = 'pending_offset';
             finalData.lastEditReason = editReason.trim();
             finalData.lastEditedBy = actorName;
-            finalData.editHistory = [...existingHistory, historyEntry];
+            finalData.editHistory = [...existingHistory, { editedBy: actorName, editedAt: now, reason: editReason.trim() }];
           } else {
             finalData.offsetStatus = 'approved';
             finalData.createdBy = actorName;
@@ -1340,17 +1469,11 @@
 
       async function offsetApproveRecord(recordId) {
         if (!canApproveOffset()) {
-          showToast('Only Management / Supervisor / Coordinator / Admin can offset/approve edits.', 'error');
+          showToast('No permission to approve/offset edits.', 'error');
           return;
         }
         const approver = currentSession ? `${currentSession.name} (${currentSession.role})` : 'Approver';
-        const patch = {
-          offsetStatus: 'approved',
-          offsetApprovedBy: approver,
-          offsetApprovedAt: Date.now(),
-          updatedAt: Date.now()
-        };
-
+        const patch = { offsetStatus: 'approved', offsetApprovedBy: approver, offsetApprovedAt: Date.now(), updatedAt: Date.now() };
         if (isCloudConnected && firestoreDb && firestoreModule) {
           const ref = firestoreModule.doc(firestoreDb, 'artifacts', APP_COLLECTION_ID, 'public', 'data', 'equipment_records', recordId);
           await firestoreModule.updateDoc(ref, patch);
@@ -1365,12 +1488,11 @@
 
       async function deleteEquipmentRecord(recordId) {
         if (!canDeleteRecords()) {
-          showToast('You do not have permission to delete records.', 'error');
+          showToast('No permission to delete records.', 'error');
           return;
         }
         const target = records.find((r) => r.id === recordId);
         const label = target ? target.serialNumber : 'record';
-
         if (isCloudConnected && firestoreDb && firestoreModule) {
           const ref = firestoreModule.doc(firestoreDb, 'artifacts', APP_COLLECTION_ID, 'public', 'data', 'equipment_records', recordId);
           await firestoreModule.deleteDoc(ref);
@@ -1506,8 +1628,8 @@
         const allowApprove = canApproveOffset();
         const allowDelete = canDeleteRecords();
 
-        let statusBadgeClass = w.isActive ? 'bg-emerald-600 text-white' : 'bg-rose-600 text-white';
-        let statusLabel = w.isActive ? 'WARRANTY ACTIVE' : 'EXPIRED';
+        const statusBadgeClass = w.isActive ? 'bg-emerald-600 text-white' : 'bg-rose-600 text-white';
+        const statusLabel = w.isActive ? 'WARRANTY ACTIVE' : 'EXPIRED';
 
         const offsetBanner = isPendingOffset
           ? `<div class="mt-3 rounded-xl border border-amber-300 bg-amber-50 p-3 text-xs text-amber-950 space-y-1.5">
@@ -1794,7 +1916,7 @@
       }
 
       // =========================================================================
-      // EVENTS & BOOTSTRAP
+      // EVENTS & INIT
       // =========================================================================
       function bindEvents() {
         window.addEventListener('beforeinstallprompt', (e) => {
@@ -1837,7 +1959,7 @@
         });
 
         els.openAdminBoardBtn.addEventListener('click', () => {
-          if (!canManageUsers()) return;
+          if (!isAdminOnly()) return;
           renderTeamUsersList();
           els.adminBoardModal.classList.remove('hidden');
         });
@@ -1845,7 +1967,7 @@
 
         els.addTeamUserForm.addEventListener('submit', async (e) => {
           e.preventDefault();
-          if (!canManageUsers()) return;
+          if (!isAdminOnly()) return;
           const name = els.newUserNameInput.value.trim();
           const pin = els.newUserPinInput.value.trim();
           const group = els.newUserGroupSelect.value;
@@ -1854,21 +1976,49 @@
 
           await addTeamMember(name, group, role, pin, {
             canApproveOffset: els.permCanApproveOffset.checked,
-            canDelete: els.permCanDelete.checked,
-            canManageUsers: els.permCanManageUsers.checked
+            canDelete: els.permCanDelete.checked
           });
 
           els.newUserNameInput.value = '';
           els.newUserPinInput.value = '';
           els.permCanApproveOffset.checked = false;
           els.permCanDelete.checked = false;
-          els.permCanManageUsers.checked = false;
         });
 
         els.teamUsersListContainer.addEventListener('click', async (e) => {
-          const btn = e.target.closest('button[data-user-action="toggle"]');
-          if (!btn || !canManageUsers()) return;
-          await toggleTeamUserAccess(btn.getAttribute('data-user-id'), btn.getAttribute('data-next-active') === 'true');
+          const btn = e.target.closest('button[data-user-action]');
+          if (!btn || !isAdminOnly()) return;
+          const action = btn.getAttribute('data-user-action');
+          const userId = btn.getAttribute('data-user-id');
+          if (action === 'edit') {
+            openEditUserModal(userId);
+          } else if (action === 'toggle') {
+            await toggleTeamUserAccess(userId, btn.getAttribute('data-next-active') === 'true');
+          }
+        });
+
+        els.closeEditUserModalBtn.addEventListener('click', () => els.editUserModal.classList.add('hidden'));
+        els.cancelEditUserBtn.addEventListener('click', () => els.editUserModal.classList.add('hidden'));
+
+        els.editUserForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          if (!isAdminOnly()) return;
+          const userId = els.editUserIdInput.value.trim();
+          const name = els.editUserNameInput.value.trim();
+          const pin = els.editUserPinInput.value.trim();
+          if (!userId || !name || !pin) return;
+
+          await updateTeamMember(userId, {
+            name,
+            pin,
+            group: els.editUserGroupSelect.value,
+            role: els.editUserRoleSelect.value,
+            permissions: {
+              canApproveOffset: els.editPermCanApproveOffset.checked,
+              canDelete: els.editPermCanDelete.checked
+            }
+          });
+          els.editUserModal.classList.add('hidden');
         });
 
         els.closeToastBtn.addEventListener('click', () => els.toastBanner.classList.add('hidden'));
