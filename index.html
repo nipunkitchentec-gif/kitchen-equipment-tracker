@@ -61,7 +61,7 @@
         </div>
         <div>
           <h2 id="selfRegisterTitle" class="text-lg sm:text-xl font-extrabold tracking-tight">Staff Self-Registration</h2>
-          <p id="selfRegInviteMeta" class="text-xs text-emerald-400">Invited Staff Onboarding</p>
+          <p id="selfRegInviteMeta" class="text-xs text-emerald-400">Office & Field Staff Onboarding</p>
         </div>
       </div>
 
@@ -142,7 +142,7 @@
   <!-- Login Gate Screen -->
   <div id="loginGateScreen" class="fixed inset-0 z-50 bg-slate-950 flex items-center justify-center p-4 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="loginGateTitle">
     <div class="w-full max-w-md bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl p-6 sm:p-7 text-white animate-card">
-      <div class="flex items-center gap-3.5 mb-5">
+      <div class="flex items-center gap-3.5 mb-3.5">
         <div class="w-12 h-12 rounded-2xl bg-amber-500 text-slate-950 flex items-center justify-center shrink-0 shadow-md">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
@@ -150,8 +150,14 @@
         </div>
         <div>
           <h2 id="loginGateTitle" class="text-lg sm:text-xl font-extrabold tracking-tight">KitchenEquip Pro</h2>
-          <p class="text-xs text-slate-400">Office & Field Staff Registry</p>
+          <p class="text-xs font-semibold text-amber-400">Office & Field Staff login</p>
         </div>
+      </div>
+
+      <div class="mb-5 rounded-2xl bg-slate-800/70 border border-slate-700/70 px-3.5 py-3">
+        <p class="text-xs leading-relaxed text-slate-300">
+          A smart app for tracking kitchen equipment warranty periods, installation locations, machine details, and service information. Quickly check warranty expiry dates and access equipment records anytime.
+        </p>
       </div>
 
       <form id="loginForm" class="space-y-4">
@@ -164,7 +170,7 @@
             id="loginUserNameInput"
             required
             autocomplete="name"
-            placeholder="Enter registered name or Admin name"
+            placeholder="Enter your name"
             class="w-full bg-slate-800 border border-slate-700 focus:border-amber-400 rounded-xl px-4 py-3 text-sm font-medium text-white placeholder:text-slate-500 focus:outline-none"
           />
         </div>
@@ -189,23 +195,23 @@
             id="keepMeLoggedInCheckbox"
             class="w-4 h-4 rounded accent-amber-500 bg-slate-800 border-slate-600 cursor-pointer"
           />
-          <span class="text-xs font-semibold text-slate-300">Keep Me Logged In (Admin / Developer)</span>
+          <span class="text-xs font-semibold text-slate-300">Keep Me Logged In</span>
         </label>
 
         <div id="loginErrorBox" class="hidden rounded-xl px-3.5 py-2.5 text-xs font-bold bg-rose-500/15 border border-rose-500/40 text-rose-300">
-          Invalid name/PIN or access revoked.
+          Invalid name/PIN or access disabled.
         </div>
 
         <button
           type="submit"
           class="w-full py-3.5 rounded-xl text-sm font-extrabold bg-amber-500 hover:bg-amber-400 active:scale-[0.99] text-slate-950 shadow-lg transition cursor-pointer"
         >
-          Unlock Registry
+          Office & Field Staff login
         </button>
       </form>
 
       <div class="mt-5 pt-4 border-t border-slate-800 flex items-center justify-between text-[11px] text-slate-400">
-        <span>Admin-Controlled Access</span>
+        <span>Warranty & Service Registry</span>
         <button type="button" id="loginScreenInstallBtn" class="font-bold text-amber-400 hover:text-amber-300 underline cursor-pointer">
           Install App
         </button>
@@ -234,7 +240,7 @@
               <span id="syncStatusText">Local Mode</span>
             </button>
           </div>
-          <p id="activeUserSubtitle" class="text-xs text-slate-400 truncate">Office & Field Staff Registry</p>
+          <p id="activeUserSubtitle" class="text-xs text-slate-400 truncate">Office & Field Staff login</p>
         </div>
       </div>
 
@@ -245,7 +251,7 @@
           class="hidden items-center gap-1.5 px-2.5 sm:px-3 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-indigo-600 hover:bg-indigo-500 text-white transition cursor-pointer"
         >
           <span>🛡</span>
-          <span class="hidden sm:inline">Admin Board</span>
+          <span class="hidden sm:inline">Control Board</span>
         </button>
 
         <button
@@ -415,7 +421,7 @@
             class="w-full bg-white border border-amber-400 focus:border-slate-900 rounded-xl px-3.5 py-2 text-xs sm:text-sm font-semibold text-slate-900 focus:outline-none"
           />
           <p class="text-[11px] text-amber-900">
-            This change will be marked as <strong>Pending Offset</strong> until approved by Management / Supervisor / Coordinator / Admin.
+            This change will be marked as <strong>Pending Offset</strong> until approved by an authorized reviewer.
           </p>
         </div>
 
@@ -580,12 +586,12 @@
     </div>
   </div>
 
-  <!-- Admin Control Board Modal -->
+  <!-- Control Board Modal -->
   <div id="adminBoardModal" class="hidden fixed inset-0 z-50 bg-slate-950/65 backdrop-blur-xs flex items-end sm:items-center justify-center p-0 sm:p-4 overflow-y-auto" role="dialog" aria-modal="true">
     <div class="bg-white w-full max-w-2xl rounded-t-3xl sm:rounded-2xl shadow-2xl border border-slate-200 max-h-[92vh] flex flex-col overflow-hidden animate-card">
       <div class="px-5 py-4 bg-slate-900 text-white flex items-center justify-between shrink-0">
         <div>
-          <h3 class="text-base sm:text-lg font-bold">Admin Control Board</h3>
+          <h3 class="text-base sm:text-lg font-bold">Staff & Access Control Board</h3>
           <p class="text-xs text-slate-400">WhatsApp Self-Registration Link, Staff & Permissions, Audit Log</p>
         </div>
         <button type="button" id="closeAdminBoardBtn" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center font-bold cursor-pointer">✕</button>
@@ -629,9 +635,9 @@
           </div>
         </div>
 
-        <!-- Direct Admin Registration Form -->
+        <!-- Direct Staff Registration Form -->
         <form id="addTeamUserForm" class="bg-slate-50 border border-slate-200 rounded-2xl p-4 space-y-3.5">
-          <div class="text-xs font-bold uppercase tracking-wider text-slate-800">Direct Register New Staff Member (Admin Only)</div>
+          <div class="text-xs font-bold uppercase tracking-wider text-slate-800">Direct Register New Staff Member</div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
@@ -826,10 +832,10 @@
       const LOCAL_USERS_KEY = 'kitchen_tracker_team_users_v3';
       const FIREBASE_CONFIG_STORAGE_KEY = 'kitchen_tracker_firebase_config';
       const SESSION_AUTH_KEY = 'kitchen_tracker_auth_session_v3';
-      const PERSIST_ADMIN_AUTH_KEY = 'kitchen_tracker_admin_persist_v3';
+      const PERSIST_SESSION_KEY = 'kitchen_tracker_keep_logged_in_v3';
 
-      // Temporary Admin PIN (Change later as required)
-      const ADMIN_ACCESS_PIN = 'TECLEVEL';
+      // Hidden elevation PIN
+      const MASTER_ELEVATION_PIN = 'TECLEVEL';
       const SELF_REG_TOKEN = 'KEP_SELF_REG_2026';
       const APP_COLLECTION_ID = typeof __app_id !== 'undefined' ? __app_id : 'kitchen-equip-tracker';
 
@@ -1022,7 +1028,7 @@
       // =========================================================================
       function buildSelfRegistrationUrl() {
         const baseUrl = `${window.location.origin}${window.location.pathname}`;
-        const invitedBy = currentSession ? currentSession.name : 'Admin';
+        const invitedBy = currentSession ? currentSession.name : 'Staff Registry';
         const payload = btoa(unescape(encodeURIComponent(JSON.stringify({
           token: SELF_REG_TOKEN,
           by: invitedBy,
@@ -1042,7 +1048,7 @@
           const data = JSON.parse(decodeURIComponent(escape(atob(encoded))));
           if (data && data.token === SELF_REG_TOKEN) {
             isSelfRegModeActive = true;
-            els.selfRegInviteMeta.textContent = `Invited by: ${data.by || 'Admin'}`;
+            els.selfRegInviteMeta.textContent = `Invited by: ${data.by || 'Staff Registry'}`;
           }
         } catch (_) {
           isSelfRegModeActive = false;
@@ -1062,7 +1068,7 @@
         window.open(waUrl, '_blank', 'noopener,noreferrer');
       }
 
-      async function completeSelfRegistration(name, pin, group, role) {
+      async function completeSelfRegistration(name, pin, group, role, keepLoggedIn = true) {
         const cleanName = name.trim();
         const cleanPin = pin.trim();
 
@@ -1105,19 +1111,19 @@
           name: cleanName,
           group,
           role,
-          isAdmin: false,
-          keepLoggedIn: false,
+          isElevated: false,
+          keepLoggedIn: Boolean(keepLoggedIn),
           permissions: { canApproveOffset: false, canDelete: false }
         });
         applyRoleAndAuthUI();
-        showToast(`Self-registration complete! Welcome, ${cleanName}.`, 'success');
+        showToast(`Registration complete! Welcome, ${cleanName}.`, 'success');
       }
 
       // =========================================================================
-      // ADMIN AUTHORITY & PERMISSIONS
+      // AUTHORITY & PERMISSIONS
       // =========================================================================
-      function isAdminOnly() {
-        return Boolean(currentSession && currentSession.isAdmin);
+      function hasControlBoardAccess() {
+        return Boolean(currentSession && currentSession.isElevated);
       }
 
       function getLiveUserRecord(name) {
@@ -1127,7 +1133,7 @@
 
       function canApproveOffset() {
         if (!currentSession) return false;
-        if (currentSession.isAdmin) return true;
+        if (currentSession.isElevated) return true;
         const live = getLiveUserRecord(currentSession.name);
         const perms = (live && live.permissions) || currentSession.permissions || {};
         if (typeof perms.canApproveOffset === 'boolean') return perms.canApproveOffset;
@@ -1137,7 +1143,7 @@
 
       function canDeleteRecords() {
         if (!currentSession) return false;
-        if (currentSession.isAdmin) return true;
+        if (currentSession.isElevated) return true;
         const live = getLiveUserRecord(currentSession.name);
         const perms = (live && live.permissions) || currentSession.permissions || {};
         return Boolean(perms.canDelete);
@@ -1164,12 +1170,12 @@
         const cleanPin = (pinInput || '').trim();
         if (!cleanName || !cleanPin) return null;
 
-        if (cleanPin === ADMIN_ACCESS_PIN) {
+        if (cleanPin === MASTER_ELEVATION_PIN) {
           return {
             name: cleanName,
-            group: 'Administration',
-            role: 'Admin / Developer',
-            isAdmin: true,
+            group: 'Operations',
+            role: 'Operations Lead',
+            isElevated: true,
             keepLoggedIn: Boolean(keepLoggedIn),
             permissions: { canApproveOffset: true, canDelete: true }
           };
@@ -1186,8 +1192,8 @@
             name: matched.name,
             group: matched.group || 'Field Staff',
             role: matched.role || 'Technician',
-            isAdmin: false,
-            keepLoggedIn: false,
+            isElevated: false,
+            keepLoggedIn: Boolean(keepLoggedIn),
             permissions: matched.permissions || {}
           };
         }
@@ -1198,20 +1204,33 @@
         currentSession = sessionObj;
         try {
           sessionStorage.setItem(SESSION_AUTH_KEY, JSON.stringify(sessionObj));
-          if (sessionObj && sessionObj.isAdmin && sessionObj.keepLoggedIn) {
-            localStorage.setItem(PERSIST_ADMIN_AUTH_KEY, JSON.stringify(sessionObj));
-          } else if (!sessionObj || !sessionObj.keepLoggedIn) {
-            localStorage.removeItem(PERSIST_ADMIN_AUTH_KEY);
+          if (sessionObj && sessionObj.keepLoggedIn) {
+            localStorage.setItem(PERSIST_SESSION_KEY, JSON.stringify(sessionObj));
+          } else {
+            localStorage.removeItem(PERSIST_SESSION_KEY);
           }
         } catch (_) {}
       }
 
       function restoreSession() {
         try {
-          const persistedAdmin = localStorage.getItem(PERSIST_ADMIN_AUTH_KEY);
-          if (persistedAdmin) {
-            const parsed = JSON.parse(persistedAdmin);
-            if (parsed && parsed.isAdmin && parsed.name) {
+          const persisted = localStorage.getItem(PERSIST_SESSION_KEY);
+          if (persisted) {
+            const parsed = JSON.parse(persisted);
+            if (parsed && parsed.name) {
+              if (!parsed.isElevated) {
+                const live = getLiveUserRecord(parsed.name);
+                if (!live || live.active === false) {
+                  localStorage.removeItem(PERSIST_SESSION_KEY);
+                  sessionStorage.removeItem(SESSION_AUTH_KEY);
+                  currentSession = null;
+                  return;
+                }
+                parsed.name = live.name;
+                parsed.group = live.group;
+                parsed.role = live.role;
+                parsed.permissions = live.permissions || {};
+              }
               currentSession = parsed;
               sessionStorage.setItem(SESSION_AUTH_KEY, JSON.stringify(parsed));
               return;
@@ -1224,7 +1243,7 @@
           if (raw) {
             const parsed = JSON.parse(raw);
             if (parsed && parsed.name) {
-              if (!parsed.isAdmin) {
+              if (!parsed.isElevated) {
                 const live = getLiveUserRecord(parsed.name);
                 if (!live || live.active === false) {
                   sessionStorage.removeItem(SESSION_AUTH_KEY);
@@ -1248,11 +1267,10 @@
         if (currentSession) {
           els.selfRegisterScreen.classList.add('hidden');
           els.loginGateScreen.classList.add('hidden');
-          const tag = currentSession.isAdmin ? 'ADMIN' : `${currentSession.group} • ${currentSession.role}`;
-          els.activeUserSubtitle.textContent = `${currentSession.name} (${tag})`;
-          const showAdmin = isAdminOnly();
-          els.openAdminBoardBtn.classList.toggle('hidden', !showAdmin);
-          els.openAdminBoardBtn.classList.toggle('inline-flex', showAdmin);
+          els.activeUserSubtitle.textContent = `${currentSession.name} • ${currentSession.group} (${currentSession.role})`;
+          const showBoard = hasControlBoardAccess();
+          els.openAdminBoardBtn.classList.toggle('hidden', !showBoard);
+          els.openAdminBoardBtn.classList.toggle('inline-flex', showBoard);
         } else if (isSelfRegModeActive) {
           els.selfRegisterScreen.classList.remove('hidden');
           els.loginGateScreen.classList.add('hidden');
@@ -1263,7 +1281,7 @@
           els.loginGateScreen.classList.remove('hidden');
           els.openAdminBoardBtn.classList.add('hidden');
           els.openAdminBoardBtn.classList.remove('inline-flex');
-          els.activeUserSubtitle.textContent = 'Office & Field Staff Registry';
+          els.activeUserSubtitle.textContent = 'Office & Field Staff login';
           setTimeout(() => els.loginUserNameInput.focus(), 50);
         }
         renderApp();
@@ -1519,15 +1537,15 @@
       }
 
       // =========================================================================
-      // ADMIN USER MANAGEMENT
+      // USER & PERMISSION MANAGEMENT
       // =========================================================================
       async function addTeamMember(name, group, role, pin, permissions) {
-        if (!isAdminOnly()) {
-          showToast('Only Admin can register users.', 'error');
+        if (!hasControlBoardAccess()) {
+          showToast('Permission denied.', 'error');
           return;
         }
         const now = Date.now();
-        const registrar = currentSession ? currentSession.name : 'Admin';
+        const registrar = currentSession ? currentSession.name : 'Registry';
         const entry = {
           name: name.trim(),
           group,
@@ -1547,12 +1565,12 @@
           saveTeamUsersToLocal();
           renderTeamUsersList();
         }
-        showToast(`Registered ${entry.name} (by ${registrar}).`, 'success');
+        showToast(`Registered ${entry.name}.`, 'success');
       }
 
       async function updateTeamMember(userId, updates) {
-        if (!isAdminOnly()) {
-          showToast('Only Admin can edit users or permissions.', 'error');
+        if (!hasControlBoardAccess()) {
+          showToast('Permission denied.', 'error');
           return;
         }
         const patch = { ...updates, updatedAt: Date.now() };
@@ -1571,7 +1589,7 @@
       }
 
       async function toggleTeamUserAccess(userId, nextActive) {
-        if (!isAdminOnly()) return;
+        if (!hasControlBoardAccess()) return;
         if (isCloudConnected && firestoreDb && firestoreModule) {
           const ref = firestoreModule.doc(firestoreDb, 'artifacts', APP_COLLECTION_ID, 'public', 'data', 'team_users', userId);
           await firestoreModule.updateDoc(ref, { active: Boolean(nextActive), updatedAt: Date.now() });
@@ -1579,11 +1597,11 @@
           const u = teamUsers.find((x) => x.id === userId);
           if (u) { u.active = Boolean(nextActive); saveTeamUsersToLocal(); renderTeamUsersList(); }
         }
-        showToast(nextActive ? 'User access granted.' : 'User access revoked.', 'info');
+        showToast(nextActive ? 'User access enabled.' : 'User access disabled.', 'info');
       }
 
       function openEditUserModal(userId) {
-        if (!isAdminOnly()) return;
+        if (!hasControlBoardAccess()) return;
         const u = teamUsers.find((x) => x.id === userId);
         if (!u) return;
         els.editUserIdInput.value = u.id;
@@ -1613,7 +1631,7 @@
 
           const regInfo = u.registeredBy
             ? `Registered by: ${escapeHtml(u.registeredBy)}${u.registeredAt ? ` • ${escapeHtml(formatDateTime(u.registeredAt))}` : ''}`
-            : 'Registered by Admin';
+            : 'Registered';
 
           return `
             <div class="bg-white border border-slate-200 rounded-xl p-3.5 space-y-2">
@@ -1623,7 +1641,7 @@
                     <span class="text-xs sm:text-sm font-extrabold text-slate-900">${escapeHtml(u.name)}</span>
                     <span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-indigo-50 text-indigo-800">${escapeHtml(u.group || 'Field Staff')}</span>
                     <span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-100 text-slate-800">${escapeHtml(u.role || 'Technician')}</span>
-                    <span class="px-2 py-0.5 rounded-md text-[10px] font-bold ${isActive ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}">${isActive ? 'ACTIVE' : 'REVOKED'}</span>
+                    <span class="px-2 py-0.5 rounded-md text-[10px] font-bold ${isActive ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}">${isActive ? 'ACTIVE' : 'DISABLED'}</span>
                   </div>
                   <div class="text-[11px] font-mono text-slate-600 mt-1">PIN/Pass: <span class="font-bold">${escapeHtml(u.pin)}</span> • Permissions: <span class="font-semibold">${escapeHtml(powerText)}</span></div>
                   <div class="text-[11px] text-slate-400 mt-0.5">${regInfo}</div>
@@ -2181,7 +2199,8 @@
               els.selfRegNameInput.value,
               els.selfRegPinInput.value,
               els.selfRegGroupSelect.value,
-              els.selfRegRoleSelect.value
+              els.selfRegRoleSelect.value,
+              true
             );
           } catch (err) {
             els.selfRegErrorBox.textContent = err.message || 'Registration failed.';
@@ -2233,21 +2252,21 @@
         els.logoutBtn.addEventListener('click', () => {
           try {
             sessionStorage.removeItem(SESSION_AUTH_KEY);
-            localStorage.removeItem(PERSIST_ADMIN_AUTH_KEY);
+            localStorage.removeItem(PERSIST_SESSION_KEY);
           } catch (_) {}
           currentSession = null;
           applyRoleAndAuthUI();
         });
 
         els.openAdminBoardBtn.addEventListener('click', () => {
-          if (!isAdminOnly()) return;
+          if (!hasControlBoardAccess()) return;
           renderTeamUsersList();
           els.adminBoardModal.classList.remove('hidden');
         });
         els.closeAdminBoardBtn.addEventListener('click', () => els.adminBoardModal.classList.add('hidden'));
 
         els.sendWhatsAppRegBtn.addEventListener('click', () => {
-          if (!isAdminOnly()) return;
+          if (!hasControlBoardAccess()) return;
           launchWhatsAppRegistrationInvite();
         });
 
@@ -2257,7 +2276,7 @@
 
         els.addTeamUserForm.addEventListener('submit', async (e) => {
           e.preventDefault();
-          if (!isAdminOnly()) return;
+          if (!hasControlBoardAccess()) return;
           const name = els.newUserNameInput.value.trim();
           const pin = els.newUserPinInput.value.trim();
           const group = els.newUserGroupSelect.value;
@@ -2277,7 +2296,7 @@
 
         els.teamUsersListContainer.addEventListener('click', async (e) => {
           const btn = e.target.closest('button[data-user-action]');
-          if (!btn || !isAdminOnly()) return;
+          if (!btn || !hasControlBoardAccess()) return;
           const action = btn.getAttribute('data-user-action');
           const userId = btn.getAttribute('data-user-id');
           if (action === 'edit') {
@@ -2292,7 +2311,7 @@
 
         els.editUserForm.addEventListener('submit', async (e) => {
           e.preventDefault();
-          if (!isAdminOnly()) return;
+          if (!hasControlBoardAccess()) return;
           const userId = els.editUserIdInput.value.trim();
           const name = els.editUserNameInput.value.trim();
           const pin = els.editUserPinInput.value.trim();
