@@ -50,7 +50,50 @@
 </head>
 <body class="min-h-screen bg-slate-100 text-slate-900 pb-24 sm:pb-12">
 
-  <!-- Staff Self-Registration Screen (When opened via WhatsApp Registration Link) -->
+  <!-- VIP Executive Welcome Modal (Triggered when Kumar Govindaraj registers) -->
+  <div id="vipWelcomeModal" class="hidden fixed inset-0 z-[60] bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="vipWelcomeTitle">
+    <div class="w-full max-w-md bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 border-2 border-amber-400/70 rounded-3xl shadow-2xl p-6 sm:p-7 text-white text-center space-y-4 animate-card">
+      <div class="mx-auto w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-500 text-slate-950 flex items-center justify-center shadow-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+        </svg>
+      </div>
+
+      <div class="space-y-1">
+        <div class="inline-block px-3 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-widest bg-amber-400/20 text-amber-300 border border-amber-400/40">
+          Executive Access Activated
+        </div>
+        <h2 id="vipWelcomeTitle" class="text-xl sm:text-2xl font-extrabold tracking-tight text-white pt-1">
+          Welcome, Mr. Kumar Govindaraj!
+        </h2>
+        <p class="text-xs sm:text-sm font-bold text-amber-400">
+          Head — Al Fursan Kitchen Equip Ind LLC SP
+        </p>
+      </div>
+
+      <div class="rounded-2xl bg-slate-800/85 border border-slate-700/80 p-4 text-left space-y-2 text-xs text-slate-200">
+        <p class="leading-relaxed text-slate-300">
+          It is an honor to welcome you to <strong class="text-white">KitchenEquip Pro</strong>. Your leadership profile has been verified and granted <strong class="text-emerald-400">Full Management & Direct Edit Authority</strong> automatically.
+        </p>
+        <div class="pt-2 border-t border-slate-700/80 space-y-1 font-mono text-[11px] text-slate-300">
+          <div><span class="text-slate-400">Company:</span> <span class="text-white font-semibold">Al Fursan Kitchen Equip Ind LLC SP</span></div>
+          <div><span class="text-slate-400">Phone:</span> <span class="text-amber-300">+971 06 744 6287</span></div>
+          <div><span class="text-slate-400">Email:</span> <span class="text-amber-300">fursanke@eim.ae</span></div>
+          <div><span class="text-slate-400">Privileges:</span> <span class="text-emerald-400 font-bold">Direct Equipment Edit • Offset Approval • Full Registry</span></div>
+        </div>
+      </div>
+
+      <button
+        type="button"
+        id="closeVipWelcomeBtn"
+        class="w-full py-3.5 rounded-xl text-sm font-extrabold bg-amber-500 hover:bg-amber-400 text-slate-950 shadow-lg transition cursor-pointer"
+      >
+        Enter Executive Dashboard
+      </button>
+    </div>
+  </div>
+
+  <!-- Staff Self-Registration Screen -->
   <div id="selfRegisterScreen" class="hidden fixed inset-0 z-50 bg-slate-950 flex items-center justify-center p-4 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="selfRegisterTitle">
     <div class="w-full max-w-md bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl p-6 sm:p-7 text-white animate-card">
       <div class="flex items-center gap-3.5 mb-3.5">
@@ -81,9 +124,14 @@
             type="text"
             id="selfRegNameInput"
             required
-            placeholder="e.g. Kasun Perera / Driver Nimal"
+            placeholder="e.g. Kumar Govindaraj / Kasun Perera"
             class="w-full bg-slate-800 border border-slate-700 focus:border-emerald-400 rounded-xl px-4 py-2.5 text-sm font-medium text-white placeholder:text-slate-500 focus:outline-none"
           />
+        </div>
+
+        <div id="selfRegVipNotice" class="hidden rounded-xl bg-amber-500/15 border border-amber-400/40 px-3.5 py-2.5 text-xs text-amber-200">
+          <div class="font-extrabold text-amber-300">★ Head — Al Fursan Kitchen Equip Ind LLC SP</div>
+          <div class="text-[11px] mt-0.5">Full executive permissions & direct equipment edit rights will be granted automatically.</div>
         </div>
 
         <div>
@@ -190,7 +238,7 @@
             id="loginUserNameInput"
             required
             autocomplete="name"
-            placeholder="Enter your name (Admin: Developer)"
+            placeholder="Enter your name"
             class="w-full bg-slate-800 border border-slate-700 focus:border-amber-400 rounded-xl px-4 py-3 text-sm font-medium text-white placeholder:text-slate-500 focus:outline-none"
           />
         </div>
@@ -320,6 +368,7 @@
               <span id="drawerUserBadge" class="px-2 py-0.5 rounded-md text-[10px] font-extrabold uppercase bg-slate-700 text-slate-200 shrink-0">STAFF</span>
             </div>
             <div id="drawerUserMeta" class="text-xs text-slate-400 mt-1 truncate">Department & Role</div>
+            <div id="drawerUserContact" class="hidden text-[11px] font-mono text-amber-300/90 mt-1.5 pt-1.5 border-t border-slate-700/70 truncate"></div>
           </div>
         </div>
 
@@ -574,7 +623,7 @@
       <div class="px-5 py-4 bg-slate-900 text-white flex items-center justify-between shrink-0">
         <div>
           <h2 id="modalTitle" class="text-base sm:text-lg font-bold">Register Installation / Delivery</h2>
-          <p id="modalSubtitle" class="text-xs text-slate-400">Edits require a reason and go to Pending Offset approval</p>
+          <p id="modalSubtitle" class="text-xs text-slate-400">Update machine details, dates, and handover conditions</p>
         </div>
         <button type="button" id="closeModalBtn" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center font-bold cursor-pointer">✕</button>
       </div>
@@ -592,7 +641,7 @@
             placeholder="e.g. Updated serial number / Corrected delivery site / Driver handover note"
             class="w-full bg-white border border-amber-400 focus:border-slate-900 rounded-xl px-3.5 py-2 text-xs sm:text-sm font-semibold text-slate-900 focus:outline-none"
           />
-          <p class="text-[11px] text-amber-900">
+          <p id="editReasonSubtext" class="text-[11px] text-amber-900">
             This change will be marked as <strong>Pending Offset</strong> until approved by an authorized reviewer.
           </p>
         </div>
@@ -796,7 +845,7 @@
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div>
               <div class="text-xs font-extrabold uppercase tracking-wider text-emerald-950">WhatsApp Self-Registration Link</div>
-              <p class="text-[11px] text-emerald-900 mt-0.5">Share a direct link so new staff can register their name, department, role & PIN for KitchenEquip Pro.</p>
+              <p class="text-[11px] text-emerald-900 mt-0.5">Share a direct link so staff can register their name, department, role & PIN for KitchenEquip Pro.</p>
             </div>
             <button
               type="button"
@@ -833,7 +882,7 @@
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
               <label for="newUserNameInput" class="block text-[11px] font-bold text-slate-600 mb-1">Full Name *</label>
-              <input type="text" id="newUserNameInput" required placeholder="e.g. Nuwan / Driver Kamal" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs font-semibold text-slate-900" />
+              <input type="text" id="newUserNameInput" required placeholder="e.g. Kumar Govindaraj / Nuwan" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs font-semibold text-slate-900" />
             </div>
             <div>
               <label for="newUserPinInput" class="block text-[11px] font-bold text-slate-600 mb-1">PIN / Password *</label>
@@ -1037,6 +1086,16 @@
       const SELF_REG_TOKEN = 'KEP_SELF_REG_2026';
       const APP_COLLECTION_ID = typeof __app_id !== 'undefined' ? __app_id : 'kitchen-equip-tracker';
 
+      // VIP Executive Profile: Kumar Govindaraj (Head - Al Fursan Kitchen Equip Ind LLC SP)
+      const VIP_EXECUTIVE_PROFILE = {
+        fullName: 'Kumar Govindaraj',
+        phone: '+971 06 744 6287',
+        email: 'fursanke@eim.ae',
+        company: 'Al Fursan Kitchen Equip Ind LLC SP',
+        department: 'Office & Management',
+        role: 'Head — Al Fursan Kitchen Equip Ind LLC SP'
+      };
+
       const COMPANIES = [
         'SMART KITCHENS FZE',
         'Al Fursan Kitchen Equip Ind LLC SP',
@@ -1048,6 +1107,8 @@
 
       const ROLES_BY_DEPARTMENT = {
         [DEPT_OFFICE_MGMT]: [
+          'Head — Al Fursan Kitchen Equip Ind LLC SP',
+          'Managing Director / Head',
           'Manager',
           'Assistant Manager',
           'Office Administrator',
@@ -1111,10 +1172,14 @@
       let unsubscribeCatalog = null;
 
       const els = {
+        vipWelcomeModal: document.getElementById('vipWelcomeModal'),
+        closeVipWelcomeBtn: document.getElementById('closeVipWelcomeBtn'),
+
         selfRegisterScreen: document.getElementById('selfRegisterScreen'),
         selfRegInviteMeta: document.getElementById('selfRegInviteMeta'),
         selfRegisterForm: document.getElementById('selfRegisterForm'),
         selfRegNameInput: document.getElementById('selfRegNameInput'),
+        selfRegVipNotice: document.getElementById('selfRegVipNotice'),
         selfRegPinInput: document.getElementById('selfRegPinInput'),
         selfRegGroupSelect: document.getElementById('selfRegGroupSelect'),
         selfRegRoleSelect: document.getElementById('selfRegRoleSelect'),
@@ -1142,6 +1207,7 @@
         drawerUserName: document.getElementById('drawerUserName'),
         drawerUserBadge: document.getElementById('drawerUserBadge'),
         drawerUserMeta: document.getElementById('drawerUserMeta'),
+        drawerUserContact: document.getElementById('drawerUserContact'),
         drawerAdminSection: document.getElementById('drawerAdminSection'),
         drawerOpenControlBoardBtn: document.getElementById('drawerOpenControlBoardBtn'),
         drawerPendingPill: document.getElementById('drawerPendingPill'),
@@ -1193,12 +1259,14 @@
 
         equipmentModal: document.getElementById('equipmentModal'),
         modalTitle: document.getElementById('modalTitle'),
+        modalSubtitle: document.getElementById('modalSubtitle'),
         closeModalBtn: document.getElementById('closeModalBtn'),
         cancelModalBtn: document.getElementById('cancelModalBtn'),
         equipmentForm: document.getElementById('equipmentForm'),
         recordIdInput: document.getElementById('recordIdInput'),
         editReasonWrapper: document.getElementById('editReasonWrapper'),
         editReasonInput: document.getElementById('editReasonInput'),
+        editReasonSubtext: document.getElementById('editReasonSubtext'),
         companySelectInput: document.getElementById('companySelectInput'),
         serialNumberInput: document.getElementById('serialNumberInput'),
         duplicateSerialWarning: document.getElementById('duplicateSerialWarning'),
@@ -1298,6 +1366,33 @@
       };
 
       // =========================================================================
+      // VIP EXECUTIVE MATCHING (KUMAR GOVINDARAJ - HEAD AL FURSAN)
+      // =========================================================================
+      function isKumarGovindaraj(nameOrEmailOrPhone) {
+        const raw = String(nameOrEmailOrPhone || '').trim().toLowerCase();
+        if (!raw) return false;
+        const digits = raw.replace(/\D/g, '');
+        return (
+          raw.includes('kumar govindaraj') ||
+          raw === 'kumar' ||
+          raw === 'fursanke@eim.ae' ||
+          (digits.length >= 7 && digits.endsWith('7446287'))
+        );
+      }
+
+      function showVipWelcomeModal() {
+        if (els.vipWelcomeModal) {
+          els.vipWelcomeModal.classList.remove('hidden');
+        }
+      }
+
+      function closeVipWelcomeModal() {
+        if (els.vipWelcomeModal) {
+          els.vipWelcomeModal.classList.add('hidden');
+        }
+      }
+
+      // =========================================================================
       // DEPARTMENT-SPECIFIC ROLES & "Other" TYPING BOX
       // =========================================================================
       function normalizeDepartmentValue(deptVal) {
@@ -1395,20 +1490,36 @@
 
       function syncDrawerState() {
         const showAdmin = hasControlBoardAccess();
+        const isVip = currentSession && isKumarGovindaraj(currentSession.name);
         els.drawerAdminDot.classList.toggle('hidden', !showAdmin);
         els.drawerAdminSection.classList.toggle('hidden', !showAdmin);
 
         if (currentSession) {
           els.drawerUserName.textContent = currentSession.name || ADMIN_ACCOUNT_NAME;
-          els.drawerUserBadge.textContent = showAdmin ? 'ADMIN' : 'STAFF';
-          els.drawerUserBadge.className = showAdmin
-            ? 'px-2 py-0.5 rounded-md text-[10px] font-extrabold uppercase bg-indigo-500/25 text-indigo-300 border border-indigo-400/30 shrink-0'
-            : 'px-2 py-0.5 rounded-md text-[10px] font-extrabold uppercase bg-slate-700 text-slate-200 shrink-0';
+          if (isVip) {
+            els.drawerUserBadge.textContent = 'HEAD • AL FURSAN';
+            els.drawerUserBadge.className = 'px-2 py-0.5 rounded-md text-[10px] font-extrabold uppercase bg-amber-500/25 text-amber-300 border border-amber-400/40 shrink-0';
+          } else {
+            els.drawerUserBadge.textContent = showAdmin ? 'ADMIN' : 'STAFF';
+            els.drawerUserBadge.className = showAdmin
+              ? 'px-2 py-0.5 rounded-md text-[10px] font-extrabold uppercase bg-indigo-500/25 text-indigo-300 border border-indigo-400/30 shrink-0'
+              : 'px-2 py-0.5 rounded-md text-[10px] font-extrabold uppercase bg-slate-700 text-slate-200 shrink-0';
+          }
           els.drawerUserMeta.textContent = `${currentSession.group || 'Staff'} • ${currentSession.role || ''}`;
+
+          const phone = currentSession.phone || (isVip ? VIP_EXECUTIVE_PROFILE.phone : '');
+          const email = currentSession.email || (isVip ? VIP_EXECUTIVE_PROFILE.email : '');
+          if (phone || email) {
+            els.drawerUserContact.textContent = [phone, email].filter(Boolean).join(' • ');
+            els.drawerUserContact.classList.remove('hidden');
+          } else {
+            els.drawerUserContact.classList.add('hidden');
+          }
         } else {
           els.drawerUserName.textContent = 'Guest';
           els.drawerUserBadge.textContent = 'LOCKED';
           els.drawerUserMeta.textContent = 'Not signed in';
+          els.drawerUserContact.classList.add('hidden');
         }
 
         const pendingCount = records.filter((r) => r.offsetStatus === 'pending_offset').length;
@@ -1605,26 +1716,36 @@
       }
 
       async function completeSelfRegistration(name, pin, group, role, keepLoggedIn = true) {
-        const cleanName = name.trim();
+        const isVip = isKumarGovindaraj(name);
+        const cleanName = isVip ? VIP_EXECUTIVE_PROFILE.fullName : name.trim();
         const cleanPin = pin.trim();
+        const finalGroup = isVip ? VIP_EXECUTIVE_PROFILE.department : normalizeDepartmentValue(group);
+        const finalRole = isVip ? VIP_EXECUTIVE_PROFILE.role : role;
+        const finalPermissions = isVip
+          ? { canApproveOffset: true, canDelete: true }
+          : { canApproveOffset: false, canDelete: false };
 
         const duplicate = teamUsers.find(
           (u) => !u.leftCompany && String(u.name || '').trim().toLowerCase() === cleanName.toLowerCase()
         );
         if (duplicate) {
-          throw new Error('An active staff member with this name already exists.');
+          throw new Error('An active account with this name already exists.');
         }
 
         const now = Date.now();
         const entry = {
           name: cleanName,
-          group,
-          role,
+          group: finalGroup,
+          role: finalRole,
+          company: isVip ? VIP_EXECUTIVE_PROFILE.company : '',
+          phone: isVip ? VIP_EXECUTIVE_PROFILE.phone : '',
+          email: isVip ? VIP_EXECUTIVE_PROFILE.email : '',
+          isHeadAlFursan: isVip,
           pin: cleanPin,
-          permissions: { canApproveOffset: false, canDelete: false },
+          permissions: finalPermissions,
           active: true,
           leftCompany: false,
-          registeredBy: 'Self-Registration (WhatsApp Link)',
+          registeredBy: isVip ? 'Executive Self-Registration (Auto-Authorized)' : 'Self-Registration (WhatsApp Link)',
           registeredAt: now,
           createdAt: now
         };
@@ -1646,23 +1767,41 @@
         isSelfRegModeActive = false;
         persistSession({
           name: cleanName,
-          group,
-          role,
+          group: finalGroup,
+          role: finalRole,
+          company: entry.company,
+          phone: entry.phone,
+          email: entry.email,
+          isHeadAlFursan: isVip,
           isElevated: false,
           keepLoggedIn: Boolean(keepLoggedIn),
-          permissions: { canApproveOffset: false, canDelete: false }
+          permissions: finalPermissions
         });
         applyRoleAndAuthUI();
-        showToast(`Registration complete! Welcome to KitchenEquip Pro, ${cleanName}.`, 'success');
+
+        if (isVip) {
+          showVipWelcomeModal();
+        } else {
+          showToast(`Registration complete! Welcome to KitchenEquip Pro, ${cleanName}.`, 'success');
+        }
       }
 
       // =========================================================================
-      // AUTHORITY, ADMIN ("Developer") & PERMISSIONS
+      // AUTHORITY, ADMIN ("Developer"), KUMAR GOVINDARAJ & PERMISSIONS
       // =========================================================================
       function hasControlBoardAccess() {
         if (!currentSession) return false;
         const isDevName = String(currentSession.name || '').trim().toLowerCase() === ADMIN_ACCOUNT_NAME.toLowerCase();
         return Boolean(currentSession.isElevated || isDevName);
+      }
+
+      function isCurrentUserVipHead() {
+        if (!currentSession) return false;
+        return Boolean(currentSession.isHeadAlFursan || isKumarGovindaraj(currentSession.name));
+      }
+
+      function canDirectEditWithoutOffset() {
+        return hasControlBoardAccess() || isCurrentUserVipHead();
       }
 
       function getLiveUserRecord(name) {
@@ -1672,17 +1811,17 @@
 
       function canApproveOffset() {
         if (!currentSession) return false;
-        if (hasControlBoardAccess()) return true;
+        if (hasControlBoardAccess() || isCurrentUserVipHead()) return true;
         const live = getLiveUserRecord(currentSession.name);
         const perms = (live && live.permissions) || currentSession.permissions || {};
         if (typeof perms.canApproveOffset === 'boolean') return perms.canApproveOffset;
         const r = String((live && live.role) || currentSession.role || '').toLowerCase();
-        return ['manager', 'assistant manager', 'sales manager', 'service manager', 'technical manager', 'service supervisor', 'technical supervisor', 'team leader', 'service coordinator', 'senior technician'].includes(r);
+        return ['head — al fursan kitchen equip ind llc sp', 'managing director / head', 'manager', 'assistant manager', 'sales manager', 'service manager', 'technical manager', 'service supervisor', 'technical supervisor', 'team leader', 'service coordinator', 'senior technician'].includes(r);
       }
 
       function canDeleteRecords() {
         if (!currentSession) return false;
-        if (hasControlBoardAccess()) return true;
+        if (hasControlBoardAccess() || isCurrentUserVipHead()) return true;
         const live = getLiveUserRecord(currentSession.name);
         const perms = (live && live.permissions) || currentSession.permissions || {};
         return Boolean(perms.canDelete);
@@ -1725,17 +1864,27 @@
           (u) =>
             !u.leftCompany &&
             String(u.pin || '').trim() === cleanPin &&
-            String(u.name || '').trim().toLowerCase() === cleanName.toLowerCase()
+            (
+              String(u.name || '').trim().toLowerCase() === cleanName.toLowerCase() ||
+              (isKumarGovindaraj(cleanName) && isKumarGovindaraj(u.name))
+            )
         );
 
         if (matched && matched.active !== false) {
+          const isVip = Boolean(matched.isHeadAlFursan || isKumarGovindaraj(matched.name));
           return {
-            name: matched.name,
+            name: isVip ? VIP_EXECUTIVE_PROFILE.fullName : matched.name,
             group: normalizeDepartmentValue(matched.group),
-            role: matched.role || 'Technician',
+            role: isVip ? VIP_EXECUTIVE_PROFILE.role : (matched.role || 'Technician'),
+            company: isVip ? VIP_EXECUTIVE_PROFILE.company : (matched.company || ''),
+            phone: isVip ? VIP_EXECUTIVE_PROFILE.phone : (matched.phone || ''),
+            email: isVip ? VIP_EXECUTIVE_PROFILE.email : (matched.email || ''),
+            isHeadAlFursan: isVip,
             isElevated: false,
             keepLoggedIn: Boolean(keepLoggedIn),
-            permissions: matched.permissions || {}
+            permissions: isVip
+              ? { canApproveOffset: true, canDelete: true }
+              : (matched.permissions || {})
           };
         }
         return null;
@@ -1767,10 +1916,15 @@
                   currentSession = null;
                   return;
                 }
-                parsed.name = live.name;
+                const isVip = Boolean(live.isHeadAlFursan || isKumarGovindaraj(live.name));
+                parsed.name = isVip ? VIP_EXECUTIVE_PROFILE.fullName : live.name;
                 parsed.group = normalizeDepartmentValue(live.group);
-                parsed.role = live.role;
-                parsed.permissions = live.permissions || {};
+                parsed.role = isVip ? VIP_EXECUTIVE_PROFILE.role : live.role;
+                parsed.company = isVip ? VIP_EXECUTIVE_PROFILE.company : (live.company || '');
+                parsed.phone = isVip ? VIP_EXECUTIVE_PROFILE.phone : (live.phone || '');
+                parsed.email = isVip ? VIP_EXECUTIVE_PROFILE.email : (live.email || '');
+                parsed.isHeadAlFursan = isVip;
+                parsed.permissions = isVip ? { canApproveOffset: true, canDelete: true } : (live.permissions || {});
               }
               currentSession = parsed;
               sessionStorage.setItem(SESSION_AUTH_KEY, JSON.stringify(parsed));
@@ -1791,10 +1945,15 @@
                   currentSession = null;
                   return;
                 }
-                parsed.name = live.name;
+                const isVip = Boolean(live.isHeadAlFursan || isKumarGovindaraj(live.name));
+                parsed.name = isVip ? VIP_EXECUTIVE_PROFILE.fullName : live.name;
                 parsed.group = normalizeDepartmentValue(live.group);
-                parsed.role = live.role;
-                parsed.permissions = live.permissions || {};
+                parsed.role = isVip ? VIP_EXECUTIVE_PROFILE.role : live.role;
+                parsed.company = isVip ? VIP_EXECUTIVE_PROFILE.company : (live.company || '');
+                parsed.phone = isVip ? VIP_EXECUTIVE_PROFILE.phone : (live.phone || '');
+                parsed.email = isVip ? VIP_EXECUTIVE_PROFILE.email : (live.email || '');
+                parsed.isHeadAlFursan = isVip;
+                parsed.permissions = isVip ? { canApproveOffset: true, canDelete: true } : (live.permissions || {});
               }
               currentSession = parsed;
               return;
@@ -1808,7 +1967,7 @@
         if (currentSession) {
           els.selfRegisterScreen.classList.add('hidden');
           els.loginGateScreen.classList.add('hidden');
-          els.activeUserSubtitle.textContent = `${currentSession.name} • ${currentSession.group} (${currentSession.role})`;
+          els.activeUserSubtitle.textContent = `${currentSession.name} • ${currentSession.role}`;
         } else if (isSelfRegModeActive) {
           els.selfRegisterScreen.classList.remove('hidden');
           els.loginGateScreen.classList.add('hidden');
@@ -1900,7 +2059,7 @@
         else if (type === 'info') els.toastBanner.classList.add('bg-slate-800', 'border-slate-700', 'text-white');
         else els.toastBanner.classList.add('bg-emerald-50', 'border-emerald-200', 'text-emerald-900');
         els.toastBanner.classList.remove('hidden');
-        toastTimeout = setTimeout(() => els.toastBanner.classList.add('hidden'), 3500);
+        toastTimeout = setTimeout(() => els.toastBanner.classList.add('hidden'), 3800);
       }
 
       function copyTextToClipboard(text) {
@@ -2102,14 +2261,19 @@
           showToast('Permission denied.', 'error');
           return;
         }
+        const isVip = isKumarGovindaraj(name);
         const now = Date.now();
         const registrar = currentSession ? currentSession.name : ADMIN_ACCOUNT_NAME;
         const entry = {
-          name: name.trim(),
-          group: normalizeDepartmentValue(group),
-          role,
+          name: isVip ? VIP_EXECUTIVE_PROFILE.fullName : name.trim(),
+          group: isVip ? VIP_EXECUTIVE_PROFILE.department : normalizeDepartmentValue(group),
+          role: isVip ? VIP_EXECUTIVE_PROFILE.role : role,
+          company: isVip ? VIP_EXECUTIVE_PROFILE.company : '',
+          phone: isVip ? VIP_EXECUTIVE_PROFILE.phone : '',
+          email: isVip ? VIP_EXECUTIVE_PROFILE.email : '',
+          isHeadAlFursan: isVip,
           pin: pin.trim(),
-          permissions,
+          permissions: isVip ? { canApproveOffset: true, canDelete: true } : permissions,
           active: true,
           leftCompany: false,
           registeredBy: registrar,
@@ -2124,7 +2288,11 @@
           saveTeamUsersToLocal();
           renderTeamUsersList();
         }
-        showToast(`Registered ${entry.name}.`, 'success');
+        if (isVip) {
+          showVipWelcomeModal();
+        } else {
+          showToast(`Registered ${entry.name}.`, 'success');
+        }
       }
 
       async function updateTeamMember(userId, updates) {
@@ -2232,12 +2400,14 @@
         } else {
           els.teamUsersListContainer.innerHTML = currentStaff.map((u) => {
             const isActive = u.active !== false;
+            const isVip = Boolean(u.isHeadAlFursan || isKumarGovindaraj(u.name));
             const perms = u.permissions || {};
             const powerText = [
               perms.canApproveOffset ? 'Offset/Approve' : '',
               perms.canDelete ? 'Delete' : ''
             ].filter(Boolean).join(', ') || 'None (Standard Entry + Reasoned Edit)';
 
+            const contactSub = [u.phone, u.email].filter(Boolean).join(' • ');
             const regInfo = u.registeredBy
               ? `Registered by: ${escapeHtml(u.registeredBy)}${u.registeredAt ? ` • ${escapeHtml(formatDateTime(u.registeredAt))}` : ''}`
               : 'Registered';
@@ -2246,15 +2416,17 @@
             const pinDisplay = isRevealed ? escapeHtml(u.pin) : maskPasswordStars(u.pin);
 
             return `
-              <div class="bg-white border border-slate-200 rounded-xl p-3.5 space-y-2">
+              <div class="bg-white border ${isVip ? 'border-amber-300 ring-1 ring-amber-200' : 'border-slate-200'} rounded-xl p-3.5 space-y-2">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                   <div class="min-w-0">
                     <div class="flex flex-wrap items-center gap-1.5">
                       <span class="text-xs sm:text-sm font-extrabold text-slate-900">${escapeHtml(u.name)}</span>
+                      ${isVip ? '<span class="px-2 py-0.5 rounded-md text-[10px] font-extrabold bg-amber-100 text-amber-900 border border-amber-300">★ HEAD • AL FURSAN</span>' : ''}
                       <span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-indigo-50 text-indigo-800">${escapeHtml(normalizeDepartmentValue(u.group))}</span>
                       <span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-100 text-slate-800">${escapeHtml(u.role || 'Technician')}</span>
                       <span class="px-2 py-0.5 rounded-md text-[10px] font-bold ${isActive ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}">${isActive ? 'ACTIVE' : 'DISABLED'}</span>
                     </div>
+                    ${contactSub ? `<div class="text-[11px] font-mono text-amber-800 mt-0.5">${escapeHtml(contactSub)}</div>` : ''}
                     <div class="text-[11px] font-mono text-slate-600 mt-1 flex flex-wrap items-center gap-2">
                       <span>PIN/Pass: <span class="font-bold text-slate-900">${pinDisplay}</span></span>
                       ${isAdminViewer ? `
@@ -2350,14 +2522,19 @@
 
           const now = Date.now();
           const actorName = currentSession ? `${currentSession.name} (${currentSession.role})` : 'User';
+          const directApproval = canDirectEditWithoutOffset();
           let finalData = { ...payload, updatedAt: now };
 
           if (existingId) {
             const prev = records.find((r) => r.id === existingId) || {};
             const existingHistory = Array.isArray(prev.editHistory) ? prev.editHistory : [];
-            finalData.offsetStatus = 'pending_offset';
+            finalData.offsetStatus = directApproval ? 'approved' : 'pending_offset';
             finalData.lastEditReason = editReason.trim();
             finalData.lastEditedBy = actorName;
+            if (directApproval) {
+              finalData.offsetApprovedBy = actorName;
+              finalData.offsetApprovedAt = now;
+            }
             finalData.editHistory = [...existingHistory, { editedBy: actorName, editedAt: now, reason: editReason.trim() }];
           } else {
             finalData.offsetStatus = 'approved';
@@ -2371,7 +2548,7 @@
             if (existingId) {
               const ref = firestoreModule.doc(firestoreDb, 'artifacts', APP_COLLECTION_ID, 'public', 'data', 'equipment_records', existingId);
               await firestoreModule.updateDoc(ref, finalData);
-              showToast('Edit saved! Sent to Pending Offset approval.', 'info');
+              showToast(directApproval ? 'Equipment details updated directly!' : 'Edit saved! Sent to Pending Offset approval.', directApproval ? 'success' : 'info');
             } else {
               await firestoreModule.addDoc(col, finalData);
               showToast(`Saved ${payload.serialNumber}!`, 'success');
@@ -2380,7 +2557,7 @@
             if (existingId) {
               const idx = records.findIndex((r) => r.id === existingId);
               if (idx !== -1) records[idx] = { ...records[idx], ...finalData };
-              showToast('Edit saved! Sent to Pending Offset approval.', 'info');
+              showToast(directApproval ? 'Equipment details updated directly!' : 'Edit saved! Sent to Pending Offset approval.', directApproval ? 'success' : 'info');
             } else {
               records.unshift({ id: `rec_${now}_${Math.random().toString(36).slice(2, 6)}`, ...finalData });
               showToast(`Saved ${payload.serialNumber}!`, 'success');
@@ -2631,7 +2808,7 @@
                  </div>` : ''}
              </div>`
           : (record.offsetApprovedBy
-              ? `<div class="mt-2 text-[11px] font-semibold text-emerald-700">✓ Offset Approved by ${escapeHtml(record.offsetApprovedBy)}</div>`
+              ? `<div class="mt-2 text-[11px] font-semibold text-emerald-700">✓ Approved by ${escapeHtml(record.offsetApprovedBy)}</div>`
               : '');
 
         const hasNameplate = Boolean(record.nameplatePhoto);
@@ -2702,7 +2879,7 @@
 
             <div class="px-4 sm:px-5 py-2.5 bg-slate-50 border-t border-slate-100 flex items-center justify-end gap-2">
               <button type="button" data-action="edit" data-id="${escapeHtml(record.id)}" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-white hover:bg-slate-100 text-slate-800 border border-slate-200 cursor-pointer">
-                Edit (Reason Required)
+                ${canDirectEditWithoutOffset() ? 'Edit Equipment Details' : 'Edit (Reason Required)'}
               </button>
               ${allowDelete ? `<button type="button" data-action="delete" data-id="${escapeHtml(record.id)}" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-white hover:bg-rose-50 text-rose-600 border border-slate-200 cursor-pointer">Delete</button>` : ''}
             </div>
@@ -2809,7 +2986,14 @@
         els.modalTitle.textContent = 'Register Installation / Delivery';
         els.saveRecordBtn.textContent = 'Save Entry';
 
-        els.companySelectInput.value = companyFilter !== 'all' ? companyFilter : COMPANIES[0];
+        if (companyFilter !== 'all') {
+          els.companySelectInput.value = companyFilter;
+        } else if (isCurrentUserVipHead()) {
+          els.companySelectInput.value = VIP_EXECUTIVE_PROFILE.company;
+        } else {
+          els.companySelectInput.value = COMPANIES[0];
+        }
+
         els.serialNumberInput.value = prefillSerial ? prefillSerial.toUpperCase() : '';
         els.brandInput.value = brandFilter !== 'all' ? brandFilter : '';
         els.modelInput.value = '';
@@ -2839,12 +3023,22 @@
         const target = records.find((r) => r.id === recordId);
         if (!target) return;
 
+        const directApproval = canDirectEditWithoutOffset();
+
         els.recordIdInput.value = target.id;
         els.editReasonWrapper.classList.remove('hidden');
         els.editReasonInput.required = true;
         els.editReasonInput.value = '';
-        els.modalTitle.textContent = 'Edit Record (Reason & Offset Required)';
-        els.saveRecordBtn.textContent = 'Submit Edit for Offset';
+
+        if (directApproval) {
+          els.modalTitle.textContent = 'Edit Equipment Details (Direct Save)';
+          els.editReasonSubtext.innerHTML = 'Authorized Executive/Admin edit: changes will be <strong>saved and approved immediately</strong>.';
+          els.saveRecordBtn.textContent = 'Save & Apply Changes';
+        } else {
+          els.modalTitle.textContent = 'Edit Record (Reason & Offset Required)';
+          els.editReasonSubtext.innerHTML = 'This change will be marked as <strong>Pending Offset</strong> until approved by an authorized reviewer.';
+          els.saveRecordBtn.textContent = 'Submit Edit for Offset';
+        }
 
         els.companySelectInput.value = target.company || COMPANIES[0];
         els.serialNumberInput.value = target.serialNumber || '';
@@ -2924,6 +3118,43 @@
         window.addEventListener('hashchange', () => {
           checkSelfRegistrationHash();
           applyRoleAndAuthUI();
+        });
+
+        els.closeVipWelcomeBtn.addEventListener('click', closeVipWelcomeModal);
+        els.vipWelcomeModal.addEventListener('click', (e) => {
+          if (e.target === els.vipWelcomeModal) closeVipWelcomeModal();
+        });
+
+        // Auto-detect Kumar Govindaraj in Self-Registration
+        els.selfRegNameInput.addEventListener('input', () => {
+          const isVip = isKumarGovindaraj(els.selfRegNameInput.value);
+          els.selfRegVipNotice.classList.toggle('hidden', !isVip);
+          if (isVip) {
+            els.selfRegGroupSelect.value = VIP_EXECUTIVE_PROFILE.department;
+            populateRolesForDepartment(
+              VIP_EXECUTIVE_PROFILE.department,
+              els.selfRegRoleSelect,
+              els.selfRegCustomRoleWrapper,
+              els.selfRegCustomRoleInput,
+              VIP_EXECUTIVE_PROFILE.role
+            );
+          }
+        });
+
+        // Auto-detect Kumar Govindaraj in Direct Register
+        els.newUserNameInput.addEventListener('input', () => {
+          if (isKumarGovindaraj(els.newUserNameInput.value)) {
+            els.newUserGroupSelect.value = VIP_EXECUTIVE_PROFILE.department;
+            populateRolesForDepartment(
+              VIP_EXECUTIVE_PROFILE.department,
+              els.newUserRoleSelect,
+              els.newUserCustomRoleWrapper,
+              els.newUserCustomRoleInput,
+              VIP_EXECUTIVE_PROFILE.role
+            );
+            els.permCanApproveOffset.checked = true;
+            els.permCanDelete.checked = true;
+          }
         });
 
         // Department -> Role cascade + "Other" typing box
@@ -3044,7 +3275,11 @@
           els.loginPinInput.value = '';
           persistSession(auth);
           applyRoleAndAuthUI();
-          showToast(`Welcome, ${auth.name}!`, 'success');
+          if (auth.isHeadAlFursan) {
+            showToast(`Welcome back, Mr. ${auth.name} (Head — Al Fursan)!`, 'success');
+          } else {
+            showToast(`Welcome, ${auth.name}!`, 'success');
+          }
         });
 
         els.closeAdminBoardBtn.addEventListener('click', () => els.adminBoardModal.classList.add('hidden'));
