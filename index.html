@@ -43,6 +43,9 @@
     .animate-card {
       animation: slideUp 0.2s ease-out forwards;
     }
+    #sideDrawerPanel {
+      transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1);
+    }
   </style>
 </head>
 <body class="min-h-screen bg-slate-100 text-slate-900 pb-24 sm:pb-12">
@@ -110,17 +113,20 @@
             <label for="selfRegRoleSelect" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1">
               Responsibility *
             </label>
-            <select id="selfRegRoleSelect" class="w-full bg-slate-800 border border-slate-700 focus:border-emerald-400 rounded-xl px-3 py-2.5 text-xs font-bold text-white focus:outline-none">
-              <option value="Technician">Technician</option>
-              <option value="Senior Technician">Senior Technician</option>
-              <option value="Driver">Driver</option>
-              <option value="Helper">Helper</option>
-              <option value="Coordinator">Coordinator</option>
-              <option value="Sales Manager">Sales Manager</option>
-              <option value="Supervisor">Supervisor</option>
-              <option value="Manager">Manager</option>
-            </select>
+            <select id="selfRegRoleSelect" class="role-category-select w-full bg-slate-800 border border-slate-700 focus:border-emerald-400 rounded-xl px-3 py-2.5 text-xs font-bold text-white focus:outline-none"></select>
           </div>
+        </div>
+
+        <div id="selfRegCustomRoleWrapper" class="hidden">
+          <label for="selfRegCustomRoleInput" class="block text-xs font-bold uppercase tracking-wider text-amber-300 mb-1">
+            Specify Custom Role *
+          </label>
+          <input
+            type="text"
+            id="selfRegCustomRoleInput"
+            placeholder="Type your role title..."
+            class="w-full bg-slate-800 border border-amber-400/60 focus:border-amber-400 rounded-xl px-3.5 py-2 text-xs font-semibold text-white placeholder:text-slate-500 focus:outline-none"
+          />
         </div>
 
         <label class="flex items-center gap-2.5 select-none cursor-pointer pt-0.5">
@@ -233,24 +239,24 @@
     </div>
   </div>
 
-  <!-- Top Header -->
+  <!-- Top Header (Clean, Balanced & Enterprise-Ready) -->
   <header class="bg-slate-900 text-white shadow-md sticky top-0 z-30 border-b border-slate-800">
-    <div class="max-w-5xl mx-auto px-4 py-3.5 sm:py-4 flex items-center justify-between gap-2.5">
+    <div class="max-w-5xl mx-auto px-4 py-3 sm:py-3.5 flex items-center justify-between gap-3">
       <div class="flex items-center gap-3 min-w-0">
-        <div class="w-10 h-10 rounded-xl bg-amber-500 text-slate-950 flex items-center justify-center font-extrabold text-lg shrink-0 shadow-sm">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <div class="w-10 h-10 rounded-xl bg-amber-500 text-slate-950 flex items-center justify-center shrink-0 shadow-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
             <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
           </svg>
         </div>
         <div class="min-w-0">
-          <div class="flex flex-wrap items-center gap-2">
-            <h1 class="text-base sm:text-lg font-bold tracking-tight truncate">KitchenEquip Pro</h1>
+          <div class="flex items-center gap-2">
+            <h1 class="text-base sm:text-lg font-extrabold tracking-tight truncate">KitchenEquip Pro</h1>
             <button
               type="button"
               id="openCloudSetupBtn"
-              class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-400/40 transition cursor-pointer"
+              class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11px] font-bold bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-400/35 transition cursor-pointer shrink-0"
             >
-              <span id="syncStatusDot" class="w-2 h-2 rounded-full bg-amber-400"></span>
+              <span id="syncStatusDot" class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
               <span id="syncStatusText">Local Mode</span>
             </button>
           </div>
@@ -258,53 +264,158 @@
         </div>
       </div>
 
-      <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
-        <button
-          type="button"
-          id="openAdminBoardBtn"
-          class="hidden items-center gap-1.5 px-2.5 sm:px-3 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-indigo-600 hover:bg-indigo-500 text-white transition cursor-pointer"
-        >
-          <span>🛡</span>
-          <span class="hidden sm:inline">Control Board</span>
-        </button>
-
-        <button
-          type="button"
-          id="installAppBtn"
-          class="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-emerald-600 hover:bg-emerald-500 text-white transition cursor-pointer"
-        >
-          <span class="hidden md:inline">Install App</span>
-          <span class="md:hidden">⬇</span>
-        </button>
-
-        <button
-          type="button"
-          id="exportCsvBtn"
-          class="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition cursor-pointer"
-        >
-          <span class="hidden sm:inline">CSV</span>
-          <span class="sm:hidden">📄</span>
-        </button>
-
+      <div class="flex items-center gap-2 shrink-0">
         <button
           type="button"
           id="openAddModalBtn"
-          class="inline-flex items-center gap-1.5 px-3 sm:px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-amber-500 hover:bg-amber-400 text-slate-950 shadow-sm transition cursor-pointer"
+          class="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold bg-amber-500 hover:bg-amber-400 text-slate-950 shadow-sm transition cursor-pointer"
         >
-          <span>+ Entry</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          <span>Entry</span>
         </button>
 
         <button
           type="button"
-          id="logoutBtn"
-          class="inline-flex items-center justify-center w-9 h-10 sm:w-auto sm:px-3 rounded-xl text-xs font-bold bg-slate-800 hover:bg-rose-950 text-slate-300 hover:text-rose-300 border border-slate-700 transition cursor-pointer"
+          id="openSideDrawerBtn"
+          aria-label="Open Navigation & Admin Menu"
+          class="relative inline-flex items-center justify-center w-10 h-10 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-100 border border-slate-700 transition cursor-pointer"
         >
-          <span>🔒</span>
-          <span class="hidden lg:inline ml-1.5">Lock</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <span id="drawerAdminDot" class="hidden absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-indigo-400 ring-2 ring-slate-900"></span>
         </button>
       </div>
     </div>
   </header>
+
+  <!-- Professional Slide-Out Side Drawer -->
+  <div id="sideDrawerOverlay" class="hidden fixed inset-0 z-50 bg-slate-950/65 backdrop-blur-xs flex justify-end" role="dialog" aria-modal="true" aria-label="Workspace Menu">
+    <aside id="sideDrawerPanel" class="w-80 max-w-[86vw] h-full bg-slate-900 text-white border-l border-slate-800 shadow-2xl flex flex-col justify-between translate-x-full">
+      <div class="overflow-y-auto">
+        <div class="px-5 py-4 border-b border-slate-800 flex items-center justify-between">
+          <div>
+            <div class="text-[10px] font-extrabold uppercase tracking-widest text-amber-400">Navigation</div>
+            <h2 class="text-base font-extrabold tracking-tight text-white">Workspace Menu</h2>
+          </div>
+          <button
+            type="button"
+            id="closeSideDrawerBtn"
+            aria-label="Close Menu"
+            class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center font-bold transition cursor-pointer"
+          >
+            ✕
+          </button>
+        </div>
+
+        <div class="px-5 pt-4">
+          <div class="rounded-2xl bg-slate-800/80 border border-slate-700/70 p-3.5">
+            <div class="flex items-center justify-between gap-2">
+              <span id="drawerUserName" class="text-sm font-extrabold text-white truncate">Staff Member</span>
+              <span id="drawerUserBadge" class="px-2 py-0.5 rounded-md text-[10px] font-extrabold uppercase bg-slate-700 text-slate-200 shrink-0">STAFF</span>
+            </div>
+            <div id="drawerUserMeta" class="text-xs text-slate-400 mt-1 truncate">Division & Responsibility</div>
+          </div>
+        </div>
+
+        <div id="drawerAdminSection" class="hidden px-5 pt-5 space-y-2">
+          <div class="text-[10px] font-extrabold uppercase tracking-widest text-indigo-400 px-1">Administration</div>
+          <button
+            type="button"
+            id="drawerOpenControlBoardBtn"
+            class="w-full flex items-center justify-between gap-3 p-3.5 rounded-2xl bg-indigo-600/15 hover:bg-indigo-600/25 border border-indigo-500/40 text-left transition cursor-pointer"
+          >
+            <div class="flex items-center gap-3 min-w-0">
+              <div class="w-9 h-9 rounded-xl bg-indigo-600 text-white flex items-center justify-center shrink-0 shadow-xs">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+              </div>
+              <div class="min-w-0">
+                <div class="text-xs sm:text-sm font-extrabold text-white truncate">Control Board</div>
+                <div class="text-[11px] text-indigo-200/80 truncate">Staff, WhatsApp Invite & Roles</div>
+              </div>
+            </div>
+            <span id="drawerPendingPill" class="hidden px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-amber-400 text-slate-950 shrink-0">0</span>
+          </button>
+        </div>
+
+        <div class="px-5 pt-5 pb-4 space-y-1.5">
+          <div class="text-[10px] font-extrabold uppercase tracking-widest text-slate-400 px-1 mb-2">Tools & Sync</div>
+
+          <button
+            type="button"
+            id="drawerCloudSyncBtn"
+            class="w-full flex items-center gap-3 px-3.5 py-3 rounded-xl hover:bg-slate-800 text-left transition cursor-pointer"
+          >
+            <div class="w-8 h-8 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center text-amber-400 shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
+              </svg>
+            </div>
+            <div class="min-w-0 flex-1">
+              <div class="text-xs sm:text-sm font-bold text-slate-100">Cloud Sync Settings</div>
+              <div id="drawerCloudSubtext" class="text-[11px] text-slate-400">Firebase Firestore connection</div>
+            </div>
+          </button>
+
+          <button
+            type="button"
+            id="drawerExportCsvBtn"
+            class="w-full flex items-center gap-3 px-3.5 py-3 rounded-xl hover:bg-slate-800 text-left transition cursor-pointer"
+          >
+            <div class="w-8 h-8 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center text-sky-400 shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+            </div>
+            <div class="min-w-0 flex-1">
+              <div class="text-xs sm:text-sm font-bold text-slate-100">Export CSV Report</div>
+              <div class="text-[11px] text-slate-400">Download equipment spreadsheet</div>
+            </div>
+          </button>
+
+          <button
+            type="button"
+            id="drawerInstallAppBtn"
+            class="w-full flex items-center gap-3 px-3.5 py-3 rounded-xl hover:bg-slate-800 text-left transition cursor-pointer"
+          >
+            <div class="w-8 h-8 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center text-emerald-400 shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+              </svg>
+            </div>
+            <div class="min-w-0 flex-1">
+              <div class="text-xs sm:text-sm font-bold text-slate-100">Install App</div>
+              <div class="text-[11px] text-slate-400">Add to home screen (Offline PWA)</div>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <div class="p-4 border-t border-slate-800 bg-slate-900/95">
+        <button
+          type="button"
+          id="drawerLockSessionBtn"
+          class="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold bg-rose-500/15 hover:bg-rose-500/25 text-rose-300 border border-rose-500/30 transition cursor-pointer"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+          <span>Lock Session</span>
+        </button>
+      </div>
+    </aside>
+  </div>
 
   <main class="max-w-5xl mx-auto px-4 pt-5 space-y-5">
 
@@ -341,7 +452,6 @@
         </div>
       </div>
 
-      <!-- 4 KPI Stat Cards -->
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3.5">
         <button type="button" data-dash-status="all" class="dash-status-card text-left bg-slate-50 hover:bg-slate-100 rounded-2xl p-3.5 sm:p-4 border border-slate-200 transition cursor-pointer">
           <div class="text-[11px] font-bold uppercase tracking-wider text-slate-500">Total Units</div>
@@ -368,7 +478,6 @@
         </button>
       </div>
 
-      <!-- Two-Column Dashboard Breakdown: Company Distribution & Saved Brands -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1">
         <div class="bg-slate-50 rounded-2xl p-4 border border-slate-200/80 space-y-3">
           <div class="flex items-center justify-between">
@@ -505,7 +614,6 @@
           <input type="text" id="serialNumberInput" required autocomplete="off" spellcheck="false" placeholder="e.g. E21MH21092931521 or PLUG-0045" class="w-full font-mono text-base font-bold uppercase tracking-wider bg-slate-50 border-2 border-slate-300 focus:border-slate-900 focus:bg-white rounded-xl px-3.5 py-3 text-slate-900 focus:outline-none" />
         </div>
 
-        <!-- Saved Brands Quick Select + Input -->
         <div>
           <div class="flex items-center justify-between mb-1">
             <label for="brandInput" class="block text-xs font-bold text-slate-700">Machine Brand *</label>
@@ -516,7 +624,6 @@
           <div id="modalSavedBrandsChips" class="flex flex-wrap gap-1.5 mt-2"></div>
         </div>
 
-        <!-- Saved Models Quick Select + Input -->
         <div>
           <div class="flex items-center justify-between mb-1">
             <label for="modelInput" class="block text-xs font-bold text-slate-700">Machine Model / Plug-in Item *</label>
@@ -666,7 +773,6 @@
 
       <div class="p-5 overflow-y-auto space-y-5">
 
-        <!-- Control Board Summary Strip -->
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
           <div class="bg-slate-50 border border-slate-200 rounded-xl p-3">
             <div class="text-[10px] font-bold uppercase text-slate-500">Total Units</div>
@@ -686,7 +792,6 @@
           </div>
         </div>
 
-        <!-- WhatsApp Self-Registration Link Generator -->
         <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-4 space-y-3">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div>
@@ -722,7 +827,6 @@
           </div>
         </div>
 
-        <!-- Direct Staff Registration Form -->
         <form id="addTeamUserForm" class="bg-slate-50 border border-slate-200 rounded-2xl p-4 space-y-3.5">
           <div class="text-xs font-bold uppercase tracking-wider text-slate-800">Direct Register New Staff Member</div>
 
@@ -747,17 +851,13 @@
             </div>
             <div>
               <label for="newUserRoleSelect" class="block text-[11px] font-bold text-slate-600 mb-1">Responsibility / Designation *</label>
-              <select id="newUserRoleSelect" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs font-bold text-slate-900">
-                <option value="Coordinator">Coordinator</option>
-                <option value="Sales Manager">Sales Manager</option>
-                <option value="Manager">Manager</option>
-                <option value="Supervisor">Supervisor</option>
-                <option value="Senior Technician">Senior Technician</option>
-                <option value="Technician">Technician</option>
-                <option value="Driver">Driver</option>
-                <option value="Helper">Helper</option>
-              </select>
+              <select id="newUserRoleSelect" class="role-category-select w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs font-bold text-slate-900"></select>
             </div>
+          </div>
+
+          <div id="newUserCustomRoleWrapper" class="hidden">
+            <label for="newUserCustomRoleInput" class="block text-[11px] font-bold text-amber-800 mb-1">Custom Role Title *</label>
+            <input type="text" id="newUserCustomRoleInput" placeholder="Type role title..." class="w-full bg-white border border-amber-400 rounded-xl px-3 py-2 text-xs font-semibold text-slate-900" />
           </div>
 
           <div class="bg-white border border-slate-200 rounded-xl p-3 space-y-2">
@@ -820,23 +920,19 @@
           <div>
             <label for="editUserGroupSelect" class="block text-xs font-bold text-slate-700 mb-1">Division</label>
             <select id="editUserGroupSelect" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs font-bold text-slate-900">
-              <option value="Office Staff">Office Staff</option>
-              <option value="Field Staff">Field Staff</option>
+              <option value="Office Staff">Office Staff (ඔෆිස් ස්ටාෆ්)</option>
+              <option value="Field Staff">Field Staff (ෆීල්ඩ් ස්ටාෆ්)</option>
             </select>
           </div>
           <div>
             <label for="editUserRoleSelect" class="block text-xs font-bold text-slate-700 mb-1">Responsibility</label>
-            <select id="editUserRoleSelect" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs font-bold text-slate-900">
-              <option value="Coordinator">Coordinator</option>
-              <option value="Sales Manager">Sales Manager</option>
-              <option value="Manager">Manager</option>
-              <option value="Supervisor">Supervisor</option>
-              <option value="Senior Technician">Senior Technician</option>
-              <option value="Technician">Technician</option>
-              <option value="Driver">Driver</option>
-              <option value="Helper">Helper</option>
-            </select>
+            <select id="editUserRoleSelect" class="role-category-select w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs font-bold text-slate-900"></select>
           </div>
+        </div>
+
+        <div id="editUserCustomRoleWrapper" class="hidden">
+          <label for="editUserCustomRoleInput" class="block text-xs font-bold text-amber-800 mb-1">Custom Role Title *</label>
+          <input type="text" id="editUserCustomRoleInput" placeholder="Type role title..." class="w-full bg-amber-50 border border-amber-400 rounded-xl px-3 py-2 text-xs font-semibold text-slate-900" />
         </div>
 
         <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 space-y-2">
@@ -932,6 +1028,33 @@
         'Al Zahrah Kitchen Equip Tr LLC SP'
       ];
 
+      const OFFICE_MANAGEMENT_ROLES = [
+        'Manager',
+        'Assistant Manager',
+        'Office Administrator',
+        'HR Officer',
+        'Accountant',
+        'Sales Manager',
+        'Sales Executive',
+        'Purchase Officer',
+        'Storekeeper / Inventory Controller',
+        'Service Coordinator',
+        'Document Controller',
+        'Other'
+      ];
+
+      const TECHNICAL_SERVICE_ROLES = [
+        'Service Manager',
+        'Technical Manager',
+        'Service Supervisor',
+        'Technical Supervisor',
+        'Team Leader',
+        'Senior Technician',
+        'Technician',
+        'Helper',
+        'Driver'
+      ];
+
       const DEFAULT_FIREBASE_CONFIG = {
         apiKey: "AIzaSyDtiUkPqg4wUo1E-m4K1CgCLDFUDOQZQEg",
         authDomain: "kitchen-equipment-db.firebaseapp.com",
@@ -974,6 +1097,8 @@
         selfRegPinInput: document.getElementById('selfRegPinInput'),
         selfRegGroupSelect: document.getElementById('selfRegGroupSelect'),
         selfRegRoleSelect: document.getElementById('selfRegRoleSelect'),
+        selfRegCustomRoleWrapper: document.getElementById('selfRegCustomRoleWrapper'),
+        selfRegCustomRoleInput: document.getElementById('selfRegCustomRoleInput'),
         selfRegKeepLoggedInCheckbox: document.getElementById('selfRegKeepLoggedInCheckbox'),
         selfRegErrorBox: document.getElementById('selfRegErrorBox'),
         selfRegSubmitBtn: document.getElementById('selfRegSubmitBtn'),
@@ -987,9 +1112,23 @@
         loginErrorBox: document.getElementById('loginErrorBox'),
         loginScreenInstallBtn: document.getElementById('loginScreenInstallBtn'),
         activeUserSubtitle: document.getElementById('activeUserSubtitle'),
-        logoutBtn: document.getElementById('logoutBtn'),
-        openAdminBoardBtn: document.getElementById('openAdminBoardBtn'),
-        installAppBtn: document.getElementById('installAppBtn'),
+
+        openSideDrawerBtn: document.getElementById('openSideDrawerBtn'),
+        closeSideDrawerBtn: document.getElementById('closeSideDrawerBtn'),
+        sideDrawerOverlay: document.getElementById('sideDrawerOverlay'),
+        sideDrawerPanel: document.getElementById('sideDrawerPanel'),
+        drawerAdminDot: document.getElementById('drawerAdminDot'),
+        drawerUserName: document.getElementById('drawerUserName'),
+        drawerUserBadge: document.getElementById('drawerUserBadge'),
+        drawerUserMeta: document.getElementById('drawerUserMeta'),
+        drawerAdminSection: document.getElementById('drawerAdminSection'),
+        drawerOpenControlBoardBtn: document.getElementById('drawerOpenControlBoardBtn'),
+        drawerPendingPill: document.getElementById('drawerPendingPill'),
+        drawerCloudSyncBtn: document.getElementById('drawerCloudSyncBtn'),
+        drawerCloudSubtext: document.getElementById('drawerCloudSubtext'),
+        drawerExportCsvBtn: document.getElementById('drawerExportCsvBtn'),
+        drawerInstallAppBtn: document.getElementById('drawerInstallAppBtn'),
+        drawerLockSessionBtn: document.getElementById('drawerLockSessionBtn'),
 
         openCloudSetupBtn: document.getElementById('openCloudSetupBtn'),
         syncStatusDot: document.getElementById('syncStatusDot'),
@@ -1030,7 +1169,6 @@
 
         openAddModalBtn: document.getElementById('openAddModalBtn'),
         mobileFabAddBtn: document.getElementById('mobileFabAddBtn'),
-        exportCsvBtn: document.getElementById('exportCsvBtn'),
 
         equipmentModal: document.getElementById('equipmentModal'),
         modalTitle: document.getElementById('modalTitle'),
@@ -1092,6 +1230,8 @@
         newUserPinInput: document.getElementById('newUserPinInput'),
         newUserGroupSelect: document.getElementById('newUserGroupSelect'),
         newUserRoleSelect: document.getElementById('newUserRoleSelect'),
+        newUserCustomRoleWrapper: document.getElementById('newUserCustomRoleWrapper'),
+        newUserCustomRoleInput: document.getElementById('newUserCustomRoleInput'),
         permCanApproveOffset: document.getElementById('permCanApproveOffset'),
         permCanDelete: document.getElementById('permCanDelete'),
         teamUsersCountBadge: document.getElementById('teamUsersCountBadge'),
@@ -1106,6 +1246,8 @@
         editUserPinInput: document.getElementById('editUserPinInput'),
         editUserGroupSelect: document.getElementById('editUserGroupSelect'),
         editUserRoleSelect: document.getElementById('editUserRoleSelect'),
+        editUserCustomRoleWrapper: document.getElementById('editUserCustomRoleWrapper'),
+        editUserCustomRoleInput: document.getElementById('editUserCustomRoleInput'),
         editPermCanApproveOffset: document.getElementById('editPermCanApproveOffset'),
         editPermCanDelete: document.getElementById('editPermCanDelete'),
 
@@ -1131,6 +1273,104 @@
         lightboxScrollContainer: document.getElementById('lightboxScrollContainer'),
         lightboxImage: document.getElementById('lightboxImage')
       };
+
+      // =========================================================================
+      // ROLE OPTGROUPS & CUSTOM ROLE ("Other") HELPERS
+      // =========================================================================
+      function populateRoleSelectOptions(selectEl, selectedRole = '') {
+        if (!selectEl) return;
+        const officeHtml = `<optgroup label="Office & Management">${OFFICE_MANAGEMENT_ROLES.map((r) => `<option value="${escapeHtml(r)}">${escapeHtml(r)}</option>`).join('')}</optgroup>`;
+        const techHtml = `<optgroup label="Technical & Service Department">${TECHNICAL_SERVICE_ROLES.map((r) => `<option value="${escapeHtml(r)}">${escapeHtml(r)}</option>`).join('')}</optgroup>`;
+        selectEl.innerHTML = officeHtml + techHtml;
+
+        const allKnown = [...OFFICE_MANAGEMENT_ROLES, ...TECHNICAL_SERVICE_ROLES];
+        if (selectedRole) {
+          const matched = allKnown.find((r) => r.toLowerCase() === String(selectedRole).trim().toLowerCase());
+          if (matched) {
+            selectEl.value = matched;
+            return { isOther: matched === 'Other', customText: '' };
+          }
+          selectEl.value = 'Other';
+          return { isOther: true, customText: String(selectedRole).trim() };
+        }
+        selectEl.value = 'Technician';
+        return { isOther: false, customText: '' };
+      }
+
+      function syncRoleCustomInput(selectEl, wrapperEl, inputEl) {
+        if (!selectEl || !wrapperEl || !inputEl) return;
+        const isOther = selectEl.value === 'Other';
+        wrapperEl.classList.toggle('hidden', !isOther);
+        inputEl.required = isOther;
+        if (!isOther) inputEl.value = '';
+      }
+
+      function resolveRoleFromForm(selectEl, customInputEl) {
+        if (selectEl.value === 'Other') {
+          return (customInputEl.value || '').trim() || 'Other';
+        }
+        return selectEl.value;
+      }
+
+      function initAllRoleSelects() {
+        populateRoleSelectOptions(els.selfRegRoleSelect, 'Technician');
+        syncRoleCustomInput(els.selfRegRoleSelect, els.selfRegCustomRoleWrapper, els.selfRegCustomRoleInput);
+
+        populateRoleSelectOptions(els.newUserRoleSelect, 'Technician');
+        syncRoleCustomInput(els.newUserRoleSelect, els.newUserCustomRoleWrapper, els.newUserCustomRoleInput);
+
+        populateRoleSelectOptions(els.editUserRoleSelect, 'Technician');
+        syncRoleCustomInput(els.editUserRoleSelect, els.editUserCustomRoleWrapper, els.editUserCustomRoleInput);
+      }
+
+      // =========================================================================
+      // SIDE DRAWER CONTROLS
+      // =========================================================================
+      function openSideDrawer() {
+        syncDrawerState();
+        els.sideDrawerOverlay.classList.remove('hidden');
+        requestAnimationFrame(() => {
+          els.sideDrawerPanel.classList.remove('translate-x-full');
+        });
+      }
+
+      function closeSideDrawer() {
+        els.sideDrawerPanel.classList.add('translate-x-full');
+        setTimeout(() => {
+          els.sideDrawerOverlay.classList.add('hidden');
+        }, 220);
+      }
+
+      function syncDrawerState() {
+        const showAdmin = hasControlBoardAccess();
+        els.drawerAdminDot.classList.toggle('hidden', !showAdmin);
+        els.drawerAdminSection.classList.toggle('hidden', !showAdmin);
+
+        if (currentSession) {
+          els.drawerUserName.textContent = currentSession.name || 'Staff Member';
+          els.drawerUserBadge.textContent = showAdmin ? 'ADMIN' : 'STAFF';
+          els.drawerUserBadge.className = showAdmin
+            ? 'px-2 py-0.5 rounded-md text-[10px] font-extrabold uppercase bg-indigo-500/25 text-indigo-300 border border-indigo-400/30 shrink-0'
+            : 'px-2 py-0.5 rounded-md text-[10px] font-extrabold uppercase bg-slate-700 text-slate-200 shrink-0';
+          els.drawerUserMeta.textContent = `${currentSession.group || 'Staff'} • ${currentSession.role || ''}`;
+        } else {
+          els.drawerUserName.textContent = 'Guest';
+          els.drawerUserBadge.textContent = 'LOCKED';
+          els.drawerUserMeta.textContent = 'Not signed in';
+        }
+
+        const pendingCount = records.filter((r) => r.offsetStatus === 'pending_offset').length;
+        if (pendingCount > 0) {
+          els.drawerPendingPill.textContent = String(pendingCount);
+          els.drawerPendingPill.classList.remove('hidden');
+        } else {
+          els.drawerPendingPill.classList.add('hidden');
+        }
+
+        els.drawerCloudSubtext.textContent = isCloudConnected
+          ? 'Live Cloud Sync active'
+          : 'Local Mode • Tap to configure';
+      }
 
       // =========================================================================
       // SAVED BRANDS & MODELS CATALOG
@@ -1382,7 +1622,7 @@
         const perms = (live && live.permissions) || currentSession.permissions || {};
         if (typeof perms.canApproveOffset === 'boolean') return perms.canApproveOffset;
         const r = String((live && live.role) || currentSession.role || '').toLowerCase();
-        return ['manager', 'sales manager', 'supervisor', 'coordinator', 'senior technician'].includes(r);
+        return ['manager', 'assistant manager', 'sales manager', 'service manager', 'technical manager', 'service supervisor', 'technical supervisor', 'team leader', 'service coordinator', 'senior technician'].includes(r);
       }
 
       function canDeleteRecords() {
@@ -1512,22 +1752,16 @@
           els.selfRegisterScreen.classList.add('hidden');
           els.loginGateScreen.classList.add('hidden');
           els.activeUserSubtitle.textContent = `${currentSession.name} • ${currentSession.group} (${currentSession.role})`;
-          const showBoard = hasControlBoardAccess();
-          els.openAdminBoardBtn.classList.toggle('hidden', !showBoard);
-          els.openAdminBoardBtn.classList.toggle('inline-flex', showBoard);
         } else if (isSelfRegModeActive) {
           els.selfRegisterScreen.classList.remove('hidden');
           els.loginGateScreen.classList.add('hidden');
-          els.openAdminBoardBtn.classList.add('hidden');
-          els.openAdminBoardBtn.classList.remove('inline-flex');
         } else {
           els.selfRegisterScreen.classList.add('hidden');
           els.loginGateScreen.classList.remove('hidden');
-          els.openAdminBoardBtn.classList.add('hidden');
-          els.openAdminBoardBtn.classList.remove('inline-flex');
           els.activeUserSubtitle.textContent = 'Office & Field Staff login';
           setTimeout(() => els.loginUserNameInput.focus(), 50);
         }
+        syncDrawerState();
         renderApp();
       }
 
@@ -1674,21 +1908,22 @@
       function setSyncModeUI(mode) {
         if (mode === 'live') {
           isCloudConnected = true;
-          els.openCloudSetupBtn.className = 'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-400/40 transition cursor-pointer';
-          els.syncStatusDot.className = 'w-2 h-2 rounded-full bg-emerald-400';
+          els.openCloudSetupBtn.className = 'inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11px] font-bold bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-400/35 transition cursor-pointer shrink-0';
+          els.syncStatusDot.className = 'w-1.5 h-1.5 rounded-full bg-emerald-400';
           els.syncStatusText.textContent = 'Live Sync';
           els.localModeBanner.classList.add('hidden');
           els.cloudModalStatusLabel.textContent = 'Live Cloud Sync Connected';
           els.cloudModalStatusLabel.className = 'font-bold text-emerald-700';
         } else {
           isCloudConnected = false;
-          els.openCloudSetupBtn.className = 'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-400/40 transition cursor-pointer';
-          els.syncStatusDot.className = 'w-2 h-2 rounded-full bg-amber-400';
+          els.openCloudSetupBtn.className = 'inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11px] font-bold bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-400/35 transition cursor-pointer shrink-0';
+          els.syncStatusDot.className = 'w-1.5 h-1.5 rounded-full bg-amber-400';
           els.syncStatusText.textContent = 'Local Mode';
           els.localModeBanner.classList.remove('hidden');
           els.cloudModalStatusLabel.textContent = 'Local Mode';
           els.cloudModalStatusLabel.className = 'font-bold text-amber-700';
         }
+        syncDrawerState();
       }
 
       function parseUserFirebaseConfigInput(rawInput) {
@@ -1874,7 +2109,13 @@
         els.editUserNameInput.value = u.name || '';
         els.editUserPinInput.value = u.pin || '';
         els.editUserGroupSelect.value = u.group || 'Field Staff';
-        els.editUserRoleSelect.value = u.role || 'Technician';
+
+        const roleState = populateRoleSelectOptions(els.editUserRoleSelect, u.role || 'Technician');
+        syncRoleCustomInput(els.editUserRoleSelect, els.editUserCustomRoleWrapper, els.editUserCustomRoleInput);
+        if (roleState.isOther && roleState.customText) {
+          els.editUserCustomRoleInput.value = roleState.customText;
+        }
+
         const perms = u.permissions || {};
         els.editPermCanApproveOffset.checked = Boolean(perms.canApproveOffset);
         els.editPermCanDelete.checked = Boolean(perms.canDelete);
@@ -2335,6 +2576,7 @@
 
         renderDashboard();
         renderTeamUsersList();
+        syncDrawerState();
 
         const q = searchQuery.trim().toUpperCase();
         els.clearSearchBtn.classList.toggle('hidden', q.length === 0);
@@ -2534,17 +2776,78 @@
           applyRoleAndAuthUI();
         });
 
+        // Role select "Other" listeners
+        els.selfRegRoleSelect.addEventListener('change', () => {
+          syncRoleCustomInput(els.selfRegRoleSelect, els.selfRegCustomRoleWrapper, els.selfRegCustomRoleInput);
+        });
+        els.newUserRoleSelect.addEventListener('change', () => {
+          syncRoleCustomInput(els.newUserRoleSelect, els.newUserCustomRoleWrapper, els.newUserCustomRoleInput);
+        });
+        els.editUserRoleSelect.addEventListener('change', () => {
+          syncRoleCustomInput(els.editUserRoleSelect, els.editUserCustomRoleWrapper, els.editUserCustomRoleInput);
+        });
+
+        // Side Drawer Events
+        els.openSideDrawerBtn.addEventListener('click', openSideDrawer);
+        els.closeSideDrawerBtn.addEventListener('click', closeSideDrawer);
+        els.sideDrawerOverlay.addEventListener('click', (e) => {
+          if (e.target === els.sideDrawerOverlay) closeSideDrawer();
+        });
+
+        els.drawerOpenControlBoardBtn.addEventListener('click', () => {
+          closeSideDrawer();
+          if (!hasControlBoardAccess()) return;
+          renderTeamUsersList();
+          els.adminBoardModal.classList.remove('hidden');
+        });
+
+        els.drawerCloudSyncBtn.addEventListener('click', () => {
+          closeSideDrawer();
+          els.openCloudSetupBtn.click();
+        });
+
+        els.drawerExportCsvBtn.addEventListener('click', () => {
+          closeSideDrawer();
+          exportRecordsToCsv();
+        });
+
+        const onInstallClick = async () => {
+          if (deferredInstallPrompt) {
+            deferredInstallPrompt.prompt();
+            await deferredInstallPrompt.userChoice;
+            deferredInstallPrompt = null;
+          } else {
+            showToast('Use browser menu (⋮) → "Install app".', 'info');
+          }
+        };
+        els.drawerInstallAppBtn.addEventListener('click', async () => {
+          closeSideDrawer();
+          await onInstallClick();
+        });
+        els.loginScreenInstallBtn.addEventListener('click', onInstallClick);
+
+        els.drawerLockSessionBtn.addEventListener('click', () => {
+          closeSideDrawer();
+          try {
+            sessionStorage.removeItem(SESSION_AUTH_KEY);
+            localStorage.removeItem(PERSIST_SESSION_KEY);
+          } catch (_) {}
+          currentSession = null;
+          applyRoleAndAuthUI();
+        });
+
         els.selfRegisterForm.addEventListener('submit', async (e) => {
           e.preventDefault();
           els.selfRegErrorBox.classList.add('hidden');
           els.selfRegSubmitBtn.disabled = true;
           els.selfRegSubmitBtn.textContent = 'Registering...';
           try {
+            const finalRole = resolveRoleFromForm(els.selfRegRoleSelect, els.selfRegCustomRoleInput);
             await completeSelfRegistration(
               els.selfRegNameInput.value,
               els.selfRegPinInput.value,
               els.selfRegGroupSelect.value,
-              els.selfRegRoleSelect.value,
+              finalRole,
               els.selfRegKeepLoggedInCheckbox.checked
             );
           } catch (err) {
@@ -2568,17 +2871,6 @@
           e.preventDefault();
           deferredInstallPrompt = e;
         });
-        const onInstallClick = async () => {
-          if (deferredInstallPrompt) {
-            deferredInstallPrompt.prompt();
-            await deferredInstallPrompt.userChoice;
-            deferredInstallPrompt = null;
-          } else {
-            showToast('Use browser menu (⋮) → "Install app".', 'info');
-          }
-        };
-        els.installAppBtn.addEventListener('click', onInstallClick);
-        els.loginScreenInstallBtn.addEventListener('click', onInstallClick);
 
         els.loginForm.addEventListener('submit', (e) => {
           e.preventDefault();
@@ -2594,20 +2886,6 @@
           showToast(`Welcome, ${auth.name}!`, 'success');
         });
 
-        els.logoutBtn.addEventListener('click', () => {
-          try {
-            sessionStorage.removeItem(SESSION_AUTH_KEY);
-            localStorage.removeItem(PERSIST_SESSION_KEY);
-          } catch (_) {}
-          currentSession = null;
-          applyRoleAndAuthUI();
-        });
-
-        els.openAdminBoardBtn.addEventListener('click', () => {
-          if (!hasControlBoardAccess()) return;
-          renderTeamUsersList();
-          els.adminBoardModal.classList.remove('hidden');
-        });
         els.closeAdminBoardBtn.addEventListener('click', () => els.adminBoardModal.classList.add('hidden'));
 
         els.sendWhatsAppRegBtn.addEventListener('click', () => {
@@ -2625,7 +2903,7 @@
           const name = els.newUserNameInput.value.trim();
           const pin = els.newUserPinInput.value.trim();
           const group = els.newUserGroupSelect.value;
-          const role = els.newUserRoleSelect.value;
+          const role = resolveRoleFromForm(els.newUserRoleSelect, els.newUserCustomRoleInput);
           if (!name || !pin) return;
 
           await addTeamMember(name, group, role, pin, {
@@ -2635,6 +2913,8 @@
 
           els.newUserNameInput.value = '';
           els.newUserPinInput.value = '';
+          els.newUserCustomRoleInput.value = '';
+          syncRoleCustomInput(els.newUserRoleSelect, els.newUserCustomRoleWrapper, els.newUserCustomRoleInput);
           els.permCanApproveOffset.checked = false;
           els.permCanDelete.checked = false;
         });
@@ -2660,13 +2940,14 @@
           const userId = els.editUserIdInput.value.trim();
           const name = els.editUserNameInput.value.trim();
           const pin = els.editUserPinInput.value.trim();
+          const role = resolveRoleFromForm(els.editUserRoleSelect, els.editUserCustomRoleInput);
           if (!userId || !name || !pin) return;
 
           await updateTeamMember(userId, {
             name,
             pin,
             group: els.editUserGroupSelect.value,
-            role: els.editUserRoleSelect.value,
+            role,
             permissions: {
               canApproveOffset: els.editPermCanApproveOffset.checked,
               canDelete: els.editPermCanDelete.checked
@@ -2675,7 +2956,6 @@
           els.editUserModal.classList.add('hidden');
         });
 
-        // Dashboard Stat Card Filter Clicks
         document.querySelectorAll('.dash-status-card').forEach((card) => {
           card.addEventListener('click', () => {
             statusFilter = card.getAttribute('data-dash-status') || 'all';
@@ -2686,7 +2966,6 @@
 
         els.dashboardQuickAddBtn.addEventListener('click', () => openAddModal(searchQuery.trim()));
 
-        // Dashboard Brand Filter Chips
         els.dashboardSavedBrandsChips.addEventListener('click', (e) => {
           const btn = e.target.closest('button[data-dash-brand]');
           if (!btn) return;
@@ -2699,7 +2978,6 @@
           renderApp();
         });
 
-        // Modal Saved Brands & Models Chips
         els.brandInput.addEventListener('input', () => renderBrandAndModelSelectors());
         els.modalSavedBrandsChips.addEventListener('click', (e) => {
           const btn = e.target.closest('button[data-select-brand]');
@@ -2730,7 +3008,6 @@
         els.openAddModalBtn.addEventListener('click', () => openAddModal(searchQuery.trim()));
         els.mobileFabAddBtn.addEventListener('click', () => openAddModal(searchQuery.trim()));
         els.emptyAddBtn.addEventListener('click', () => openAddModal(searchQuery.trim()));
-        els.exportCsvBtn.addEventListener('click', exportRecordsToCsv);
 
         els.openCloudSetupBtn.addEventListener('click', () => {
           els.cloudSetupErrorBox.classList.add('hidden');
@@ -2879,6 +3156,7 @@
       }
 
       function init() {
+        initAllRoleSelects();
         loadLocalRecords();
         loadCatalogFromLocal();
         loadTeamUsersFromLocal();
