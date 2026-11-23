@@ -306,6 +306,7 @@
             >
               <span id="syncStatusDot" class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
               <span id="syncStatusText">Local Mode</span>
+              <span id="headerCloudLockIcon" class="text-[10px] opacity-80">🔒</span>
             </button>
           </div>
           <p id="activeUserSubtitle" class="text-xs text-slate-400 truncate">Office & Field Staff login</p>
@@ -408,7 +409,10 @@
               </svg>
             </div>
             <div class="min-w-0 flex-1">
-              <div class="text-xs sm:text-sm font-bold text-slate-100">Cloud Sync Settings</div>
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-xs sm:text-sm font-bold text-slate-100">Cloud Sync Settings</span>
+                <span id="drawerCloudLockBadge" class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-slate-800 text-amber-300 border border-slate-700">🔒 PIN</span>
+              </div>
               <div id="drawerCloudSubtext" class="text-[11px] text-slate-400">Firebase Firestore connection</div>
             </div>
           </button>
@@ -482,7 +486,7 @@
         </div>
       </div>
       <button type="button" id="bannerConnectCloudBtn" class="self-start sm:self-center shrink-0 px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-900 hover:bg-slate-800 text-amber-400 transition cursor-pointer">
-        Connect Cloud Sync
+        🔒 Connect Cloud Sync
       </button>
     </div>
 
@@ -1018,13 +1022,49 @@
     </div>
   </div>
 
+  <!-- Developer PIN Unlock Modal for Cloud Sync Settings -->
+  <div id="cloudPinModal" class="hidden fixed inset-0 z-50 bg-slate-950/75 backdrop-blur-xs flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="cloudPinModalTitle">
+    <div class="bg-white w-full max-w-sm rounded-2xl shadow-2xl border border-slate-200 overflow-hidden animate-card">
+      <div class="px-5 py-4 bg-slate-900 text-white flex items-center justify-between">
+        <div>
+          <div class="text-[10px] font-extrabold uppercase tracking-wider text-amber-400">Protected Settings</div>
+          <h3 id="cloudPinModalTitle" class="text-base font-bold">Developer PIN Required</h3>
+        </div>
+        <button type="button" id="closeCloudPinModalBtn" class="w-8 h-8 rounded-lg bg-slate-800 text-slate-300 font-bold cursor-pointer">✕</button>
+      </div>
+      <form id="cloudPinForm" class="p-5 space-y-4">
+        <p class="text-xs text-slate-600 leading-relaxed">
+          Cloud Sync Settings are locked to prevent accidental changes to the shared team database. Enter the <strong>Developer PIN / Password</strong> to continue.
+        </p>
+        <div>
+          <label for="cloudUnlockPinInput" class="block text-xs font-bold text-slate-700 mb-1">Developer PIN / Password *</label>
+          <input
+            type="password"
+            id="cloudUnlockPinInput"
+            required
+            autocomplete="off"
+            placeholder="Enter Developer PIN"
+            class="w-full font-mono text-sm tracking-widest bg-slate-50 border-2 border-slate-300 focus:border-slate-900 rounded-xl px-3.5 py-2.5 text-slate-900 focus:outline-none"
+          />
+        </div>
+        <div id="cloudPinErrorBox" class="hidden rounded-xl px-3 py-2 text-xs font-bold bg-rose-50 border border-rose-200 text-rose-700">
+          Incorrect Developer PIN / Password.
+        </div>
+        <div class="flex items-center justify-end gap-2 pt-1">
+          <button type="button" id="cancelCloudPinBtn" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 cursor-pointer">Cancel</button>
+          <button type="submit" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 hover:bg-slate-800 text-amber-400 cursor-pointer">Unlock Settings</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <!-- Cloud Setup Modal -->
   <div id="cloudSetupModal" class="hidden fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto" role="dialog" aria-modal="true">
     <div class="bg-white w-full max-w-lg rounded-2xl shadow-2xl border border-slate-200 overflow-hidden animate-card">
       <div class="px-5 py-4 bg-slate-900 text-white flex items-center justify-between">
         <div>
           <h3 class="text-base font-bold">Firebase Cloud Sync</h3>
-          <p class="text-xs text-slate-400">Real-Time Team Database</p>
+          <p class="text-xs text-slate-400">Real-Time Team Database • Developer Unlocked</p>
         </div>
         <button type="button" id="closeCloudSetupBtn" class="w-9 h-9 rounded-xl bg-slate-800 text-slate-300 font-bold cursor-pointer">✕</button>
       </div>
@@ -1212,6 +1252,7 @@
         drawerOpenControlBoardBtn: document.getElementById('drawerOpenControlBoardBtn'),
         drawerPendingPill: document.getElementById('drawerPendingPill'),
         drawerCloudSyncBtn: document.getElementById('drawerCloudSyncBtn'),
+        drawerCloudLockBadge: document.getElementById('drawerCloudLockBadge'),
         drawerCloudSubtext: document.getElementById('drawerCloudSubtext'),
         drawerExportCsvBtn: document.getElementById('drawerExportCsvBtn'),
         drawerInstallAppBtn: document.getElementById('drawerInstallAppBtn'),
@@ -1220,6 +1261,7 @@
         openCloudSetupBtn: document.getElementById('openCloudSetupBtn'),
         syncStatusDot: document.getElementById('syncStatusDot'),
         syncStatusText: document.getElementById('syncStatusText'),
+        headerCloudLockIcon: document.getElementById('headerCloudLockIcon'),
         localModeBanner: document.getElementById('localModeBanner'),
         bannerConnectCloudBtn: document.getElementById('bannerConnectCloudBtn'),
 
@@ -1341,6 +1383,13 @@
         editUserCustomRoleInput: document.getElementById('editUserCustomRoleInput'),
         editPermCanApproveOffset: document.getElementById('editPermCanApproveOffset'),
         editPermCanDelete: document.getElementById('editPermCanDelete'),
+
+        cloudPinModal: document.getElementById('cloudPinModal'),
+        closeCloudPinModalBtn: document.getElementById('closeCloudPinModalBtn'),
+        cancelCloudPinBtn: document.getElementById('cancelCloudPinBtn'),
+        cloudPinForm: document.getElementById('cloudPinForm'),
+        cloudUnlockPinInput: document.getElementById('cloudUnlockPinInput'),
+        cloudPinErrorBox: document.getElementById('cloudPinErrorBox'),
 
         cloudSetupModal: document.getElementById('cloudSetupModal'),
         closeCloudSetupBtn: document.getElementById('closeCloudSetupBtn'),
@@ -1494,6 +1543,13 @@
         els.drawerAdminDot.classList.toggle('hidden', !showAdmin);
         els.drawerAdminSection.classList.toggle('hidden', !showAdmin);
 
+        if (els.headerCloudLockIcon) {
+          els.headerCloudLockIcon.textContent = showAdmin ? '🔓' : '🔒';
+        }
+        if (els.drawerCloudLockBadge) {
+          els.drawerCloudLockBadge.textContent = showAdmin ? '🔓 DEV' : '🔒 PIN';
+        }
+
         if (currentSession) {
           els.drawerUserName.textContent = currentSession.name || ADMIN_ACCOUNT_NAME;
           if (isVip) {
@@ -1531,8 +1587,37 @@
         }
 
         els.drawerCloudSubtext.textContent = isCloudConnected
-          ? 'Live Cloud Sync active'
-          : 'Local Mode • Tap to configure';
+          ? 'Live Cloud Sync active (Developer PIN locked)'
+          : 'Local Mode • Developer PIN required';
+      }
+
+      // =========================================================================
+      // DEVELOPER PIN LOCK FOR CLOUD SYNC SETTINGS
+      // =========================================================================
+      function showCloudSetupModalDirect() {
+        els.cloudSetupErrorBox.classList.add('hidden');
+        const saved = getSavedFirebaseConfig();
+        if (saved && !els.firebaseConfigJsonInput.value.trim()) {
+          els.firebaseConfigJsonInput.value = JSON.stringify(saved, null, 2);
+        }
+        els.cloudSetupModal.classList.remove('hidden');
+      }
+
+      function requestCloudSyncAccess() {
+        if (hasControlBoardAccess()) {
+          showCloudSetupModalDirect();
+          return;
+        }
+        els.cloudPinErrorBox.classList.add('hidden');
+        els.cloudUnlockPinInput.value = '';
+        els.cloudPinModal.classList.remove('hidden');
+        setTimeout(() => els.cloudUnlockPinInput.focus(), 50);
+      }
+
+      function closeCloudPinModal() {
+        els.cloudPinModal.classList.add('hidden');
+        els.cloudUnlockPinInput.value = '';
+        els.cloudPinErrorBox.classList.add('hidden');
       }
 
       // =========================================================================
@@ -2276,7 +2361,7 @@
           permissions: isVip ? { canApproveOffset: true, canDelete: true } : permissions,
           active: true,
           leftCompany: false,
-          registeredBy: registrar,
+          registeredBy: isVip ? 'Executive Self-Registration (Auto-Authorized)' : registrar,
           registeredAt: now,
           createdAt: now
         };
@@ -3195,7 +3280,7 @@
 
         els.drawerCloudSyncBtn.addEventListener('click', () => {
           closeSideDrawer();
-          els.openCloudSetupBtn.click();
+          requestCloudSyncAccess();
         });
 
         els.drawerExportCsvBtn.addEventListener('click', () => {
@@ -3416,15 +3501,26 @@
         els.mobileFabAddBtn.addEventListener('click', () => openAddModal(searchQuery.trim()));
         els.emptyAddBtn.addEventListener('click', () => openAddModal(searchQuery.trim()));
 
-        els.openCloudSetupBtn.addEventListener('click', () => {
-          els.cloudSetupErrorBox.classList.add('hidden');
-          const saved = getSavedFirebaseConfig();
-          if (saved && !els.firebaseConfigJsonInput.value.trim()) {
-            els.firebaseConfigJsonInput.value = JSON.stringify(saved, null, 2);
-          }
-          els.cloudSetupModal.classList.remove('hidden');
+        // Developer PIN Lock for Cloud Sync Settings
+        els.openCloudSetupBtn.addEventListener('click', requestCloudSyncAccess);
+        els.bannerConnectCloudBtn.addEventListener('click', requestCloudSyncAccess);
+        els.closeCloudPinModalBtn.addEventListener('click', closeCloudPinModal);
+        els.cancelCloudPinBtn.addEventListener('click', closeCloudPinModal);
+        els.cloudPinModal.addEventListener('click', (e) => {
+          if (e.target === els.cloudPinModal) closeCloudPinModal();
         });
-        els.bannerConnectCloudBtn.addEventListener('click', () => els.openCloudSetupBtn.click());
+        els.cloudPinForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const enteredPin = els.cloudUnlockPinInput.value.trim();
+          if (enteredPin === MASTER_ELEVATION_PIN) {
+            closeCloudPinModal();
+            showCloudSetupModalDirect();
+          } else {
+            els.cloudPinErrorBox.classList.remove('hidden');
+            els.cloudUnlockPinInput.select();
+          }
+        });
+
         els.closeCloudSetupBtn.addEventListener('click', () => els.cloudSetupModal.classList.add('hidden'));
 
         els.closeModalBtn.addEventListener('click', closeEquipmentModal);
