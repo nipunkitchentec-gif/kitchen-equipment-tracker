@@ -67,16 +67,17 @@
           Welcome, Mr. Kumar Govindaraj!
         </h2>
         <p class="text-xs sm:text-sm font-bold text-amber-400">
-          Head — Al Fursan Kitchen Equip Ind LLC SP
+          Head of Al Fursan • Al Fursan Kitchen Equip Ind LLC SP
         </p>
       </div>
 
       <div class="rounded-2xl bg-slate-800/85 border border-slate-700/80 p-4 text-left space-y-2 text-xs text-slate-200">
         <p class="leading-relaxed text-slate-300">
-          It is an honor to welcome you to <strong class="text-white">KitchenEquip Pro</strong>. Your leadership profile has been verified and granted <strong class="text-emerald-400">Full Management & Direct Edit Authority</strong> automatically.
+          It is an honor to welcome you to <strong class="text-white">KitchenEquip Pro</strong>. Your leadership profile has been verified and granted <strong class="text-emerald-400">Full Management &amp; Direct Edit Authority</strong> automatically.
         </p>
         <div class="pt-2 border-t border-slate-700/80 space-y-1 font-mono text-[11px] text-slate-300">
           <div><span class="text-slate-400">Company:</span> <span class="text-white font-semibold">Al Fursan Kitchen Equip Ind LLC SP</span></div>
+          <div><span class="text-slate-400">Role:</span> <span class="text-amber-300 font-semibold">Head of Al Fursan</span></div>
           <div><span class="text-slate-400">Phone:</span> <span class="text-amber-300">+971 06 744 6287</span></div>
           <div><span class="text-slate-400">Email:</span> <span class="text-amber-300">fursanke@eim.ae</span></div>
           <div><span class="text-slate-400">Privileges:</span> <span class="text-emerald-400 font-bold">Direct Equipment Edit • Offset Approval • Full Registry</span></div>
@@ -130,8 +131,8 @@
         </div>
 
         <div id="selfRegVipNotice" class="hidden rounded-xl bg-amber-500/15 border border-amber-400/40 px-3.5 py-2.5 text-xs text-amber-200">
-          <div class="font-extrabold text-amber-300">★ Head — Al Fursan Kitchen Equip Ind LLC SP</div>
-          <div class="text-[11px] mt-0.5">Full executive permissions & direct equipment edit rights will be granted automatically.</div>
+          <div class="font-extrabold text-amber-300">★ Head of Al Fursan • Al Fursan Kitchen Equip Ind LLC SP</div>
+          <div class="text-[11px] mt-0.5">Full executive permissions &amp; direct equipment edit rights will be granted automatically.</div>
         </div>
 
         <div>
@@ -152,29 +153,19 @@
             <label for="selfRegGroupSelect" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1">
               Department / Division *
             </label>
-            <select id="selfRegGroupSelect" class="department-group-select w-full bg-slate-800 border border-slate-700 focus:border-emerald-400 rounded-xl px-3 py-2.5 text-xs font-bold text-white focus:outline-none">
-              <option value="Office & Management">Office & Management</option>
-              <option value="Technical & Service Department">Technical & Service Department</option>
+            <select id="selfRegGroupSelect" class="w-full bg-slate-800 border border-slate-700 focus:border-emerald-400 rounded-xl px-3 py-2.5 text-xs font-bold text-white focus:outline-none">
+              <option value="Office & Management">Office &amp; Management</option>
+              <option value="Technical & Service Department">Technical &amp; Service Department</option>
             </select>
           </div>
           <div>
-            <label for="selfRegRoleSelect" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1">
-              Role / Responsibility *
+            <label for="selfRegRoleSelect" class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">
+              Job Role (Auto)
             </label>
-            <select id="selfRegRoleSelect" class="w-full bg-slate-800 border border-slate-700 focus:border-emerald-400 rounded-xl px-3 py-2.5 text-xs font-bold text-white focus:outline-none"></select>
+            <select id="selfRegRoleSelect" disabled aria-disabled="true" class="w-full bg-slate-800/60 border border-slate-700/70 rounded-xl px-3 py-2.5 text-xs font-bold text-amber-300 opacity-85 cursor-not-allowed">
+              <option value="Head of Al Fursan">Head of Al Fursan</option>
+            </select>
           </div>
-        </div>
-
-        <div id="selfRegCustomRoleWrapper" class="hidden">
-          <label for="selfRegCustomRoleInput" class="block text-xs font-bold uppercase tracking-wider text-amber-300 mb-1">
-            Specify Custom Role *
-          </label>
-          <input
-            type="text"
-            id="selfRegCustomRoleInput"
-            placeholder="Type your role title..."
-            class="w-full bg-slate-800 border border-amber-400/60 focus:border-amber-400 rounded-xl px-3.5 py-2 text-xs font-semibold text-white placeholder:text-slate-500 focus:outline-none"
-          />
         </div>
 
         <label class="flex items-center gap-2.5 select-none cursor-pointer pt-0.5">
@@ -218,7 +209,7 @@
         </div>
         <div>
           <h2 id="loginGateTitle" class="text-lg sm:text-xl font-extrabold tracking-tight">KitchenEquip Pro</h2>
-          <p class="text-xs font-semibold text-amber-400">Office & Field Staff login</p>
+          <p class="text-xs font-semibold text-amber-400">Office &amp; Field Staff login</p>
         </div>
       </div>
 
@@ -274,12 +265,12 @@
           type="submit"
           class="w-full py-3.5 rounded-xl text-sm font-extrabold bg-amber-500 hover:bg-amber-400 active:scale-[0.99] text-slate-950 shadow-lg transition cursor-pointer"
         >
-          Office & Field Staff login
+          Office &amp; Field Staff login
         </button>
       </form>
 
       <div class="mt-5 pt-4 border-t border-slate-800 flex items-center justify-between text-[11px] text-slate-400">
-        <span>Warranty & Service Registry</span>
+        <span>Warranty &amp; Service Registry</span>
         <button type="button" id="loginScreenInstallBtn" class="font-bold text-amber-400 hover:text-amber-300 underline cursor-pointer">
           Install App
         </button>
@@ -309,7 +300,7 @@
               <span id="headerCloudLockIcon" class="text-[10px] opacity-80">🔒</span>
             </button>
           </div>
-          <p id="activeUserSubtitle" class="text-xs text-slate-400 truncate">Office & Field Staff login</p>
+          <p id="activeUserSubtitle" class="text-xs text-slate-400 truncate">Office &amp; Field Staff login</p>
         </div>
       </div>
 
@@ -329,7 +320,7 @@
         <button
           type="button"
           id="openSideDrawerBtn"
-          aria-label="Open Navigation & Admin Menu"
+          aria-label="Open Navigation &amp; Admin Menu"
           class="relative inline-flex items-center justify-center w-10 h-10 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-100 border border-slate-700 transition cursor-pointer"
         >
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -368,7 +359,7 @@
               <span id="drawerUserName" class="text-sm font-extrabold text-white truncate">Staff Member</span>
               <span id="drawerUserBadge" class="px-2 py-0.5 rounded-md text-[10px] font-extrabold uppercase bg-slate-700 text-slate-200 shrink-0">STAFF</span>
             </div>
-            <div id="drawerUserMeta" class="text-xs text-slate-400 mt-1 truncate">Department & Role</div>
+            <div id="drawerUserMeta" class="text-xs text-slate-400 mt-1 truncate">Department &amp; Role</div>
             <div id="drawerUserContact" class="hidden text-[11px] font-mono text-amber-300/90 mt-1.5 pt-1.5 border-t border-slate-700/70 truncate"></div>
           </div>
         </div>
@@ -388,7 +379,7 @@
               </div>
               <div class="min-w-0">
                 <div class="text-xs sm:text-sm font-extrabold text-white truncate">Control Board</div>
-                <div class="text-[11px] text-indigo-200/80 truncate">Staff, Former Staff & Roles</div>
+                <div class="text-[11px] text-indigo-200/80 truncate">Staff, Former Staff &amp; Roles</div>
               </div>
             </div>
             <span id="drawerPendingPill" class="hidden px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-amber-400 text-slate-950 shrink-0">0</span>
@@ -396,7 +387,7 @@
         </div>
 
         <div class="px-5 pt-5 pb-4 space-y-1.5">
-          <div class="text-[10px] font-extrabold uppercase tracking-widest text-slate-400 px-1 mb-2">Tools & Sync</div>
+          <div class="text-[10px] font-extrabold uppercase tracking-widest text-slate-400 px-1 mb-2">Tools &amp; Sync</div>
 
           <button
             type="button"
@@ -495,7 +486,7 @@
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
         <div>
           <div class="text-[11px] font-extrabold uppercase tracking-wider text-amber-600">Operations Overview</div>
-          <h2 class="text-base sm:text-lg font-extrabold text-slate-900">Equipment & Warranty Dashboard</h2>
+          <h2 class="text-base sm:text-lg font-extrabold text-slate-900">Equipment &amp; Warranty Dashboard</h2>
         </div>
         <div class="flex items-center gap-2">
           <span id="dashboardSavedBrandsCount" class="px-2.5 py-1 rounded-full text-[11px] font-bold bg-slate-100 text-slate-700">0 Saved Brands</span>
@@ -688,7 +679,7 @@
         </div>
 
         <div class="bg-slate-50 border border-slate-200 rounded-2xl p-3.5 space-y-2.5">
-          <div class="text-xs font-bold uppercase tracking-wider text-slate-700">Working Conditions & Handover Checklist</div>
+          <div class="text-xs font-bold uppercase tracking-wider text-slate-700">Working Conditions &amp; Handover Checklist</div>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs font-bold text-slate-800">
             <label class="flex items-center gap-2 bg-white border border-slate-200 rounded-xl px-3 py-2 cursor-pointer">
               <input type="checkbox" id="wcInstallation" class="w-4 h-4 accent-slate-900 cursor-pointer" />
@@ -818,8 +809,8 @@
       <div class="px-5 py-4 bg-slate-900 text-white flex items-center justify-between shrink-0">
         <div>
           <div class="text-[10px] font-extrabold uppercase tracking-wider text-amber-400">KitchenEquip Pro • Admin</div>
-          <h3 class="text-base sm:text-lg font-bold">Staff & Access Control Board</h3>
-          <p class="text-xs text-slate-400">Onboarding Link, Active Staff, Former Staff & Roles</p>
+          <h3 class="text-base sm:text-lg font-bold">Staff &amp; Access Control Board</h3>
+          <p class="text-xs text-slate-400">Onboarding Link, Active Staff, Former Staff &amp; Roles</p>
         </div>
         <button type="button" id="closeAdminBoardBtn" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center font-bold cursor-pointer">✕</button>
       </div>
@@ -849,7 +840,7 @@
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div>
               <div class="text-xs font-extrabold uppercase tracking-wider text-emerald-950">WhatsApp Self-Registration Link</div>
-              <p class="text-[11px] text-emerald-900 mt-0.5">Share a direct link so staff can register their name, department, role & PIN for KitchenEquip Pro.</p>
+              <p class="text-[11px] text-emerald-900 mt-0.5">Share a direct link so staff can register their name, department &amp; PIN for KitchenEquip Pro.</p>
             </div>
             <button
               type="button"
@@ -897,20 +888,17 @@
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
               <label for="newUserGroupSelect" class="block text-[11px] font-bold text-slate-600 mb-1">Department / Division *</label>
-              <select id="newUserGroupSelect" class="department-group-select w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs font-bold text-slate-900">
-                <option value="Office & Management">Office & Management</option>
-                <option value="Technical & Service Department">Technical & Service Department</option>
+              <select id="newUserGroupSelect" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs font-bold text-slate-900">
+                <option value="Office & Management">Office &amp; Management</option>
+                <option value="Technical & Service Department">Technical &amp; Service Department</option>
               </select>
             </div>
             <div>
-              <label for="newUserRoleSelect" class="block text-[11px] font-bold text-slate-600 mb-1">Role / Responsibility *</label>
-              <select id="newUserRoleSelect" class="w-full bg-white border border-slate-300 rounded-xl px-3 py-2 text-xs font-bold text-slate-900"></select>
+              <label for="newUserRoleSelect" class="block text-[11px] font-bold text-slate-500 mb-1">Job Role (Auto)</label>
+              <select id="newUserRoleSelect" disabled aria-disabled="true" class="w-full bg-slate-100 border border-slate-300 rounded-xl px-3 py-2 text-xs font-bold text-slate-700 opacity-85 cursor-not-allowed">
+                <option value="Head of Al Fursan">Head of Al Fursan</option>
+              </select>
             </div>
-          </div>
-
-          <div id="newUserCustomRoleWrapper" class="hidden">
-            <label for="newUserCustomRoleInput" class="block text-[11px] font-bold text-amber-800 mb-1">Custom Role Title *</label>
-            <input type="text" id="newUserCustomRoleInput" placeholder="Type role title..." class="w-full bg-white border border-amber-400 rounded-xl px-3 py-2 text-xs font-semibold text-slate-900" />
           </div>
 
           <div class="bg-white border border-slate-200 rounded-xl p-3 space-y-2">
@@ -937,7 +925,7 @@
         <!-- Current / Active Staff List -->
         <div class="space-y-2.5">
           <div class="flex items-center justify-between">
-            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-700">Current Staff & Permissions</h4>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-700">Current Staff &amp; Permissions</h4>
             <span id="teamUsersCountBadge" class="text-xs font-semibold text-slate-500">0 users</span>
           </div>
           <div id="teamUsersListContainer" class="space-y-2.5"></div>
@@ -948,7 +936,7 @@
           <div class="flex items-center justify-between">
             <div>
               <h4 class="text-xs font-bold uppercase tracking-wider text-slate-600">Former / Left Staff Archive</h4>
-              <p class="text-[11px] text-slate-400">Removed from active staff list; their past equipment entries & names remain intact.</p>
+              <p class="text-[11px] text-slate-400">Removed from active staff list; their past equipment entries &amp; names remain intact.</p>
             </div>
             <span id="formerUsersCountBadge" class="text-xs font-semibold text-slate-500">0 former</span>
           </div>
@@ -964,8 +952,8 @@
     <div class="bg-white w-full max-w-md rounded-2xl shadow-2xl border border-slate-200 overflow-hidden animate-card">
       <div class="px-5 py-4 bg-slate-900 text-white flex items-center justify-between">
         <div>
-          <h3 class="text-base font-bold">Edit User & Permissions</h3>
-          <p class="text-xs text-slate-400">Update name, PIN/password, department, role, or permissions</p>
+          <h3 class="text-base font-bold">Edit User &amp; Permissions</h3>
+          <p class="text-xs text-slate-400">Update name, PIN/password, department, or permissions</p>
         </div>
         <button type="button" id="closeEditUserModalBtn" class="w-8 h-8 rounded-lg bg-slate-800 text-slate-300 font-bold cursor-pointer">✕</button>
       </div>
@@ -986,20 +974,17 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div>
             <label for="editUserGroupSelect" class="block text-xs font-bold text-slate-700 mb-1">Department / Division</label>
-            <select id="editUserGroupSelect" class="department-group-select w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs font-bold text-slate-900">
-              <option value="Office & Management">Office & Management</option>
-              <option value="Technical & Service Department">Technical & Service Department</option>
+            <select id="editUserGroupSelect" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs font-bold text-slate-900">
+              <option value="Office & Management">Office &amp; Management</option>
+              <option value="Technical & Service Department">Technical &amp; Service Department</option>
             </select>
           </div>
           <div>
-            <label for="editUserRoleSelect" class="block text-xs font-bold text-slate-700 mb-1">Role / Responsibility</label>
-            <select id="editUserRoleSelect" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3 py-2 text-xs font-bold text-slate-900"></select>
+            <label for="editUserRoleSelect" class="block text-xs font-bold text-slate-500 mb-1">Job Role (Auto)</label>
+            <select id="editUserRoleSelect" disabled aria-disabled="true" class="w-full bg-slate-100 border border-slate-300 rounded-xl px-3 py-2 text-xs font-bold text-slate-700 opacity-85 cursor-not-allowed">
+              <option value="Head of Al Fursan">Head of Al Fursan</option>
+            </select>
           </div>
-        </div>
-
-        <div id="editUserCustomRoleWrapper" class="hidden">
-          <label for="editUserCustomRoleInput" class="block text-xs font-bold text-amber-800 mb-1">Custom Role Title *</label>
-          <input type="text" id="editUserCustomRoleInput" placeholder="Type role title..." class="w-full bg-amber-50 border border-amber-400 rounded-xl px-3 py-2 text-xs font-semibold text-slate-900" />
         </div>
 
         <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 space-y-2">
@@ -1076,7 +1061,7 @@
         <div id="cloudSetupErrorBox" class="hidden rounded-xl p-3 text-xs font-semibold bg-rose-50 border border-rose-200 text-rose-700"></div>
         <div class="flex items-center justify-between gap-2 pt-2 border-t border-slate-100">
           <button type="button" id="resetLocalModeBtn" class="px-3.5 py-2.5 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 cursor-pointer">Reset Local</button>
-          <button type="button" id="testAndSaveCloudBtn" class="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-emerald-600 text-white cursor-pointer">Test & Save</button>
+          <button type="button" id="testAndSaveCloudBtn" class="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-emerald-600 text-white cursor-pointer">Test &amp; Save</button>
         </div>
       </div>
     </div>
@@ -1126,15 +1111,17 @@
       const SELF_REG_TOKEN = 'KEP_SELF_REG_2026';
       const APP_COLLECTION_ID = typeof __app_id !== 'undefined' ? __app_id : 'kitchen-equip-tracker';
 
-      // VIP Executive Profile: Kumar Govindaraj (Head - Al Fursan Kitchen Equip Ind LLC SP)
+      // VIP Executive Profile: Kumar Govindaraj (Head of Al Fursan)
       const VIP_EXECUTIVE_PROFILE = {
         fullName: 'Kumar Govindaraj',
         phone: '+971 06 744 6287',
         email: 'fursanke@eim.ae',
         company: 'Al Fursan Kitchen Equip Ind LLC SP',
         department: 'Office & Management',
-        role: 'Head — Al Fursan Kitchen Equip Ind LLC SP'
+        role: 'Head of Al Fursan'
       };
+
+      const AUTO_LOCKED_ROLE = 'Head of Al Fursan';
 
       const COMPANIES = [
         'SMART KITCHENS FZE',
@@ -1144,37 +1131,6 @@
 
       const DEPT_OFFICE_MGMT = 'Office & Management';
       const DEPT_TECH_SERVICE = 'Technical & Service Department';
-
-      const ROLES_BY_DEPARTMENT = {
-        [DEPT_OFFICE_MGMT]: [
-          'Head — Al Fursan Kitchen Equip Ind LLC SP',
-          'Managing Director / Head',
-          'Manager',
-          'Assistant Manager',
-          'Office Administrator',
-          'HR Officer',
-          'Accountant',
-          'Sales Manager',
-          'Sales Executive',
-          'Purchase Officer',
-          'Storekeeper / Inventory Controller',
-          'Service Coordinator',
-          'Document Controller',
-          'Other'
-        ],
-        [DEPT_TECH_SERVICE]: [
-          'Service Manager',
-          'Technical Manager',
-          'Service Supervisor',
-          'Technical Supervisor',
-          'Team Leader',
-          'Senior Technician',
-          'Technician',
-          'Helper',
-          'Driver',
-          'Other'
-        ]
-      };
 
       const DEFAULT_FIREBASE_CONFIG = {
         apiKey: "AIzaSyDtiUkPqg4wUo1E-m4K1CgCLDFUDOQZQEg",
@@ -1223,8 +1179,6 @@
         selfRegPinInput: document.getElementById('selfRegPinInput'),
         selfRegGroupSelect: document.getElementById('selfRegGroupSelect'),
         selfRegRoleSelect: document.getElementById('selfRegRoleSelect'),
-        selfRegCustomRoleWrapper: document.getElementById('selfRegCustomRoleWrapper'),
-        selfRegCustomRoleInput: document.getElementById('selfRegCustomRoleInput'),
         selfRegKeepLoggedInCheckbox: document.getElementById('selfRegKeepLoggedInCheckbox'),
         selfRegErrorBox: document.getElementById('selfRegErrorBox'),
         selfRegSubmitBtn: document.getElementById('selfRegSubmitBtn'),
@@ -1361,8 +1315,6 @@
         newUserPinInput: document.getElementById('newUserPinInput'),
         newUserGroupSelect: document.getElementById('newUserGroupSelect'),
         newUserRoleSelect: document.getElementById('newUserRoleSelect'),
-        newUserCustomRoleWrapper: document.getElementById('newUserCustomRoleWrapper'),
-        newUserCustomRoleInput: document.getElementById('newUserCustomRoleInput'),
         permCanApproveOffset: document.getElementById('permCanApproveOffset'),
         permCanDelete: document.getElementById('permCanDelete'),
         teamUsersCountBadge: document.getElementById('teamUsersCountBadge'),
@@ -1379,8 +1331,6 @@
         editUserPinInput: document.getElementById('editUserPinInput'),
         editUserGroupSelect: document.getElementById('editUserGroupSelect'),
         editUserRoleSelect: document.getElementById('editUserRoleSelect'),
-        editUserCustomRoleWrapper: document.getElementById('editUserCustomRoleWrapper'),
-        editUserCustomRoleInput: document.getElementById('editUserCustomRoleInput'),
         editPermCanApproveOffset: document.getElementById('editPermCanApproveOffset'),
         editPermCanDelete: document.getElementById('editPermCanDelete'),
 
@@ -1415,7 +1365,7 @@
       };
 
       // =========================================================================
-      // VIP EXECUTIVE MATCHING (KUMAR GOVINDARAJ - HEAD AL FURSAN)
+      // VIP EXECUTIVE MATCHING (KUMAR GOVINDARAJ - HEAD OF AL FURSAN)
       // =========================================================================
       function isKumarGovindaraj(nameOrEmailOrPhone) {
         const raw = String(nameOrEmailOrPhone || '').trim().toLowerCase();
@@ -1442,7 +1392,7 @@
       }
 
       // =========================================================================
-      // DEPARTMENT-SPECIFIC ROLES & "Other" TYPING BOX
+      // AUTO-LOCKED JOB ROLE ("Head of Al Fursan" — UNSELECTABLE IN UI)
       // =========================================================================
       function normalizeDepartmentValue(deptVal) {
         const s = String(deptVal || '').trim();
@@ -1452,71 +1402,19 @@
         return DEPT_OFFICE_MGMT;
       }
 
-      function populateRolesForDepartment(departmentVal, roleSelectEl, customWrapperEl, customInputEl, preferredRole = '') {
+      function applyLockedRoleToSelect(roleSelectEl, roleVal = AUTO_LOCKED_ROLE) {
         if (!roleSelectEl) return;
-        const dept = normalizeDepartmentValue(departmentVal);
-        const roleList = ROLES_BY_DEPARTMENT[dept] || ROLES_BY_DEPARTMENT[DEPT_OFFICE_MGMT];
-
-        roleSelectEl.innerHTML = roleList
-          .map((r) => `<option value="${escapeHtml(r)}">${escapeHtml(r)}</option>`)
-          .join('');
-
-        let matchedCustomText = '';
-        if (preferredRole) {
-          const exactMatch = roleList.find((r) => r.toLowerCase() === String(preferredRole).trim().toLowerCase());
-          if (exactMatch) {
-            roleSelectEl.value = exactMatch;
-          } else {
-            roleSelectEl.value = 'Other';
-            matchedCustomText = String(preferredRole).trim();
-          }
-        } else {
-          roleSelectEl.value = dept === DEPT_TECH_SERVICE ? 'Technician' : 'Manager';
-        }
-
-        const isOther = roleSelectEl.value === 'Other';
-        if (customWrapperEl) customWrapperEl.classList.toggle('hidden', !isOther);
-        if (customInputEl) {
-          customInputEl.required = isOther;
-          customInputEl.value = isOther ? matchedCustomText : '';
-        }
+        const label = String(roleVal || AUTO_LOCKED_ROLE).trim() || AUTO_LOCKED_ROLE;
+        roleSelectEl.innerHTML = `<option value="${escapeHtml(label)}">${escapeHtml(label)}</option>`;
+        roleSelectEl.value = label;
+        roleSelectEl.disabled = true;
+        roleSelectEl.setAttribute('aria-disabled', 'true');
       }
 
-      function syncCustomRoleBox(roleSelectEl, customWrapperEl, customInputEl) {
-        if (!roleSelectEl || !customWrapperEl || !customInputEl) return;
-        const isOther = roleSelectEl.value === 'Other';
-        customWrapperEl.classList.toggle('hidden', !isOther);
-        customInputEl.required = isOther;
-        if (!isOther) customInputEl.value = '';
-      }
-
-      function resolveRoleValue(roleSelectEl, customInputEl) {
-        if (!roleSelectEl) return 'Technician';
-        if (roleSelectEl.value === 'Other') {
-          return (customInputEl && customInputEl.value ? customInputEl.value.trim() : '') || 'Other';
-        }
-        return roleSelectEl.value;
-      }
-
-      function initDepartmentRoleBindings() {
-        populateRolesForDepartment(
-          els.selfRegGroupSelect.value,
-          els.selfRegRoleSelect,
-          els.selfRegCustomRoleWrapper,
-          els.selfRegCustomRoleInput
-        );
-        populateRolesForDepartment(
-          els.newUserGroupSelect.value,
-          els.newUserRoleSelect,
-          els.newUserCustomRoleWrapper,
-          els.newUserCustomRoleInput
-        );
-        populateRolesForDepartment(
-          els.editUserGroupSelect.value,
-          els.editUserRoleSelect,
-          els.editUserCustomRoleWrapper,
-          els.editUserCustomRoleInput
-        );
+      function initLockedRoleFields() {
+        applyLockedRoleToSelect(els.selfRegRoleSelect, AUTO_LOCKED_ROLE);
+        applyLockedRoleToSelect(els.newUserRoleSelect, AUTO_LOCKED_ROLE);
+        applyLockedRoleToSelect(els.editUserRoleSelect, AUTO_LOCKED_ROLE);
       }
 
       // =========================================================================
@@ -1553,7 +1451,7 @@
         if (currentSession) {
           els.drawerUserName.textContent = currentSession.name || ADMIN_ACCOUNT_NAME;
           if (isVip) {
-            els.drawerUserBadge.textContent = 'HEAD • AL FURSAN';
+            els.drawerUserBadge.textContent = 'HEAD OF AL FURSAN';
             els.drawerUserBadge.className = 'px-2 py-0.5 rounded-md text-[10px] font-extrabold uppercase bg-amber-500/25 text-amber-300 border border-amber-400/40 shrink-0';
           } else {
             els.drawerUserBadge.textContent = showAdmin ? 'ADMIN' : 'STAFF';
@@ -1561,7 +1459,7 @@
               ? 'px-2 py-0.5 rounded-md text-[10px] font-extrabold uppercase bg-indigo-500/25 text-indigo-300 border border-indigo-400/30 shrink-0'
               : 'px-2 py-0.5 rounded-md text-[10px] font-extrabold uppercase bg-slate-700 text-slate-200 shrink-0';
           }
-          els.drawerUserMeta.textContent = `${currentSession.group || 'Staff'} • ${currentSession.role || ''}`;
+          els.drawerUserMeta.textContent = `${currentSession.group || 'Staff'} • ${currentSession.role || AUTO_LOCKED_ROLE}`;
 
           const phone = currentSession.phone || (isVip ? VIP_EXECUTIVE_PROFILE.phone : '');
           const email = currentSession.email || (isVip ? VIP_EXECUTIVE_PROFILE.email : '');
@@ -1805,7 +1703,7 @@
         const cleanName = isVip ? VIP_EXECUTIVE_PROFILE.fullName : name.trim();
         const cleanPin = pin.trim();
         const finalGroup = isVip ? VIP_EXECUTIVE_PROFILE.department : normalizeDepartmentValue(group);
-        const finalRole = isVip ? VIP_EXECUTIVE_PROFILE.role : role;
+        const finalRole = AUTO_LOCKED_ROLE;
         const finalPermissions = isVip
           ? { canApproveOffset: true, canDelete: true }
           : { canApproveOffset: false, canDelete: false };
@@ -1900,8 +1798,7 @@
         const live = getLiveUserRecord(currentSession.name);
         const perms = (live && live.permissions) || currentSession.permissions || {};
         if (typeof perms.canApproveOffset === 'boolean') return perms.canApproveOffset;
-        const r = String((live && live.role) || currentSession.role || '').toLowerCase();
-        return ['head — al fursan kitchen equip ind llc sp', 'managing director / head', 'manager', 'assistant manager', 'sales manager', 'service manager', 'technical manager', 'service supervisor', 'technical supervisor', 'team leader', 'service coordinator', 'senior technician'].includes(r);
+        return false;
       }
 
       function canDeleteRecords() {
@@ -1960,7 +1857,7 @@
           return {
             name: isVip ? VIP_EXECUTIVE_PROFILE.fullName : matched.name,
             group: normalizeDepartmentValue(matched.group),
-            role: isVip ? VIP_EXECUTIVE_PROFILE.role : (matched.role || 'Technician'),
+            role: AUTO_LOCKED_ROLE,
             company: isVip ? VIP_EXECUTIVE_PROFILE.company : (matched.company || ''),
             phone: isVip ? VIP_EXECUTIVE_PROFILE.phone : (matched.phone || ''),
             email: isVip ? VIP_EXECUTIVE_PROFILE.email : (matched.email || ''),
@@ -2004,7 +1901,7 @@
                 const isVip = Boolean(live.isHeadAlFursan || isKumarGovindaraj(live.name));
                 parsed.name = isVip ? VIP_EXECUTIVE_PROFILE.fullName : live.name;
                 parsed.group = normalizeDepartmentValue(live.group);
-                parsed.role = isVip ? VIP_EXECUTIVE_PROFILE.role : live.role;
+                parsed.role = AUTO_LOCKED_ROLE;
                 parsed.company = isVip ? VIP_EXECUTIVE_PROFILE.company : (live.company || '');
                 parsed.phone = isVip ? VIP_EXECUTIVE_PROFILE.phone : (live.phone || '');
                 parsed.email = isVip ? VIP_EXECUTIVE_PROFILE.email : (live.email || '');
@@ -2033,7 +1930,7 @@
                 const isVip = Boolean(live.isHeadAlFursan || isKumarGovindaraj(live.name));
                 parsed.name = isVip ? VIP_EXECUTIVE_PROFILE.fullName : live.name;
                 parsed.group = normalizeDepartmentValue(live.group);
-                parsed.role = isVip ? VIP_EXECUTIVE_PROFILE.role : live.role;
+                parsed.role = AUTO_LOCKED_ROLE;
                 parsed.company = isVip ? VIP_EXECUTIVE_PROFILE.company : (live.company || '');
                 parsed.phone = isVip ? VIP_EXECUTIVE_PROFILE.phone : (live.phone || '');
                 parsed.email = isVip ? VIP_EXECUTIVE_PROFILE.email : (live.email || '');
@@ -2352,7 +2249,7 @@
         const entry = {
           name: isVip ? VIP_EXECUTIVE_PROFILE.fullName : name.trim(),
           group: isVip ? VIP_EXECUTIVE_PROFILE.department : normalizeDepartmentValue(group),
-          role: isVip ? VIP_EXECUTIVE_PROFILE.role : role,
+          role: AUTO_LOCKED_ROLE,
           company: isVip ? VIP_EXECUTIVE_PROFILE.company : '',
           phone: isVip ? VIP_EXECUTIVE_PROFILE.phone : '',
           email: isVip ? VIP_EXECUTIVE_PROFILE.email : '',
@@ -2385,7 +2282,7 @@
           showToast('Permission denied.', 'error');
           return;
         }
-        const patch = { ...updates, updatedAt: Date.now() };
+        const patch = { ...updates, role: AUTO_LOCKED_ROLE, updatedAt: Date.now() };
         if (isCloudConnected && firestoreDb && firestoreModule) {
           const ref = firestoreModule.doc(firestoreDb, 'artifacts', APP_COLLECTION_ID, 'public', 'data', 'team_users', userId);
           await firestoreModule.updateDoc(ref, patch);
@@ -2447,15 +2344,8 @@
         els.editUserIdInput.value = u.id;
         els.editUserNameInput.value = u.name || '';
         els.editUserPinInput.value = u.pin || '';
-        const dept = normalizeDepartmentValue(u.group);
-        els.editUserGroupSelect.value = dept;
-        populateRolesForDepartment(
-          dept,
-          els.editUserRoleSelect,
-          els.editUserCustomRoleWrapper,
-          els.editUserCustomRoleInput,
-          u.role || 'Technician'
-        );
+        els.editUserGroupSelect.value = normalizeDepartmentValue(u.group);
+        applyLockedRoleToSelect(els.editUserRoleSelect, AUTO_LOCKED_ROLE);
 
         const perms = u.permissions || {};
         els.editPermCanApproveOffset.checked = Boolean(perms.canApproveOffset);
@@ -2506,9 +2396,9 @@
                   <div class="min-w-0">
                     <div class="flex flex-wrap items-center gap-1.5">
                       <span class="text-xs sm:text-sm font-extrabold text-slate-900">${escapeHtml(u.name)}</span>
-                      ${isVip ? '<span class="px-2 py-0.5 rounded-md text-[10px] font-extrabold bg-amber-100 text-amber-900 border border-amber-300">★ HEAD • AL FURSAN</span>' : ''}
+                      ${isVip ? '<span class="px-2 py-0.5 rounded-md text-[10px] font-extrabold bg-amber-100 text-amber-900 border border-amber-300">★ HEAD OF AL FURSAN</span>' : ''}
                       <span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-indigo-50 text-indigo-800">${escapeHtml(normalizeDepartmentValue(u.group))}</span>
-                      <span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-100 text-slate-800">${escapeHtml(u.role || 'Technician')}</span>
+                      <span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-100 text-slate-800">${escapeHtml(AUTO_LOCKED_ROLE)}</span>
                       <span class="px-2 py-0.5 rounded-md text-[10px] font-bold ${isActive ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}">${isActive ? 'ACTIVE' : 'DISABLED'}</span>
                     </div>
                     ${contactSub ? `<div class="text-[11px] font-mono text-amber-800 mt-0.5">${escapeHtml(contactSub)}</div>` : ''}
@@ -2576,7 +2466,7 @@
                   <div class="flex flex-wrap items-center gap-1.5">
                     <span class="text-xs font-extrabold text-slate-700">${escapeHtml(u.name)}</span>
                     <span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-200 text-slate-700">${escapeHtml(normalizeDepartmentValue(u.group))}</span>
-                    <span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-white text-slate-700 border border-slate-200">${escapeHtml(u.role || 'Technician')}</span>
+                    <span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-white text-slate-700 border border-slate-200">${escapeHtml(AUTO_LOCKED_ROLE)}</span>
                     <span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-rose-100 text-rose-800">LEFT</span>
                   </div>
                   <div class="text-[11px] text-slate-500 mt-0.5">Equipment records by ${escapeHtml(u.name)} remain preserved${leftDate}.</div>
@@ -3216,52 +3106,29 @@
           els.selfRegVipNotice.classList.toggle('hidden', !isVip);
           if (isVip) {
             els.selfRegGroupSelect.value = VIP_EXECUTIVE_PROFILE.department;
-            populateRolesForDepartment(
-              VIP_EXECUTIVE_PROFILE.department,
-              els.selfRegRoleSelect,
-              els.selfRegCustomRoleWrapper,
-              els.selfRegCustomRoleInput,
-              VIP_EXECUTIVE_PROFILE.role
-            );
           }
+          applyLockedRoleToSelect(els.selfRegRoleSelect, AUTO_LOCKED_ROLE);
         });
 
         // Auto-detect Kumar Govindaraj in Direct Register
         els.newUserNameInput.addEventListener('input', () => {
           if (isKumarGovindaraj(els.newUserNameInput.value)) {
             els.newUserGroupSelect.value = VIP_EXECUTIVE_PROFILE.department;
-            populateRolesForDepartment(
-              VIP_EXECUTIVE_PROFILE.department,
-              els.newUserRoleSelect,
-              els.newUserCustomRoleWrapper,
-              els.newUserCustomRoleInput,
-              VIP_EXECUTIVE_PROFILE.role
-            );
             els.permCanApproveOffset.checked = true;
             els.permCanDelete.checked = true;
           }
+          applyLockedRoleToSelect(els.newUserRoleSelect, AUTO_LOCKED_ROLE);
         });
 
-        // Department -> Role cascade + "Other" typing box
+        // Keep Job Role auto-locked when department changes
         els.selfRegGroupSelect.addEventListener('change', () => {
-          populateRolesForDepartment(els.selfRegGroupSelect.value, els.selfRegRoleSelect, els.selfRegCustomRoleWrapper, els.selfRegCustomRoleInput);
+          applyLockedRoleToSelect(els.selfRegRoleSelect, AUTO_LOCKED_ROLE);
         });
-        els.selfRegRoleSelect.addEventListener('change', () => {
-          syncCustomRoleBox(els.selfRegRoleSelect, els.selfRegCustomRoleWrapper, els.selfRegCustomRoleInput);
-        });
-
         els.newUserGroupSelect.addEventListener('change', () => {
-          populateRolesForDepartment(els.newUserGroupSelect.value, els.newUserRoleSelect, els.newUserCustomRoleWrapper, els.newUserCustomRoleInput);
+          applyLockedRoleToSelect(els.newUserRoleSelect, AUTO_LOCKED_ROLE);
         });
-        els.newUserRoleSelect.addEventListener('change', () => {
-          syncCustomRoleBox(els.newUserRoleSelect, els.newUserCustomRoleWrapper, els.newUserCustomRoleInput);
-        });
-
         els.editUserGroupSelect.addEventListener('change', () => {
-          populateRolesForDepartment(els.editUserGroupSelect.value, els.editUserRoleSelect, els.editUserCustomRoleWrapper, els.editUserCustomRoleInput);
-        });
-        els.editUserRoleSelect.addEventListener('change', () => {
-          syncCustomRoleBox(els.editUserRoleSelect, els.editUserCustomRoleWrapper, els.editUserCustomRoleInput);
+          applyLockedRoleToSelect(els.editUserRoleSelect, AUTO_LOCKED_ROLE);
         });
 
         // Side Drawer Events
@@ -3319,12 +3186,11 @@
           els.selfRegSubmitBtn.disabled = true;
           els.selfRegSubmitBtn.textContent = 'Registering...';
           try {
-            const finalRole = resolveRoleValue(els.selfRegRoleSelect, els.selfRegCustomRoleInput);
             await completeSelfRegistration(
               els.selfRegNameInput.value,
               els.selfRegPinInput.value,
               els.selfRegGroupSelect.value,
-              finalRole,
+              AUTO_LOCKED_ROLE,
               els.selfRegKeepLoggedInCheckbox.checked
             );
           } catch (err) {
@@ -3361,7 +3227,7 @@
           persistSession(auth);
           applyRoleAndAuthUI();
           if (auth.isHeadAlFursan) {
-            showToast(`Welcome back, Mr. ${auth.name} (Head — Al Fursan)!`, 'success');
+            showToast(`Welcome back, Mr. ${auth.name} (${AUTO_LOCKED_ROLE})!`, 'success');
           } else {
             showToast(`Welcome, ${auth.name}!`, 'success');
           }
@@ -3384,20 +3250,18 @@
           const name = els.newUserNameInput.value.trim();
           const pin = els.newUserPinInput.value.trim();
           const group = els.newUserGroupSelect.value;
-          const role = resolveRoleValue(els.newUserRoleSelect, els.newUserCustomRoleInput);
           if (!name || !pin) return;
 
-          await addTeamMember(name, group, role, pin, {
+          await addTeamMember(name, group, AUTO_LOCKED_ROLE, pin, {
             canApproveOffset: els.permCanApproveOffset.checked,
             canDelete: els.permCanDelete.checked
           });
 
           els.newUserNameInput.value = '';
           els.newUserPinInput.value = '';
-          els.newUserCustomRoleInput.value = '';
-          syncCustomRoleBox(els.newUserRoleSelect, els.newUserCustomRoleWrapper, els.newUserCustomRoleInput);
           els.permCanApproveOffset.checked = false;
           els.permCanDelete.checked = false;
+          applyLockedRoleToSelect(els.newUserRoleSelect, AUTO_LOCKED_ROLE);
         });
 
         const handleStaffListAction = async (e) => {
@@ -3432,14 +3296,13 @@
           const userId = els.editUserIdInput.value.trim();
           const name = els.editUserNameInput.value.trim();
           const pin = els.editUserPinInput.value.trim();
-          const role = resolveRoleValue(els.editUserRoleSelect, els.editUserCustomRoleInput);
           if (!userId || !name || !pin) return;
 
           await updateTeamMember(userId, {
             name,
             pin,
             group: els.editUserGroupSelect.value,
-            role,
+            role: AUTO_LOCKED_ROLE,
             permissions: {
               canApproveOffset: els.editPermCanApproveOffset.checked,
               canDelete: els.editPermCanDelete.checked
@@ -3659,7 +3522,7 @@
       }
 
       function init() {
-        initDepartmentRoleBindings();
+        initLockedRoleFields();
         loadLocalRecords();
         loadCatalogFromLocal();
         loadTeamUsersFromLocal();
