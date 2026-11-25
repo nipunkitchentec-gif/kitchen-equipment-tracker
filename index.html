@@ -162,8 +162,8 @@
             <label for="selfRegRoleSelect" class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">
               Job Role (Auto)
             </label>
-            <select id="selfRegRoleSelect" disabled aria-disabled="true" class="w-full bg-slate-800/60 border border-slate-700/70 rounded-xl px-3 py-2.5 text-xs font-bold text-amber-300 opacity-85 cursor-not-allowed">
-              <option value="Head of Al Fursan">Head of Al Fursan</option>
+            <select id="selfRegRoleSelect" disabled aria-disabled="true" class="w-full bg-slate-800/60 border border-slate-700/70 rounded-xl px-3 py-2.5 text-xs font-bold text-slate-300 opacity-85 cursor-not-allowed">
+              <option value="">—</option>
             </select>
           </div>
         </div>
@@ -359,7 +359,7 @@
               <span id="drawerUserName" class="text-sm font-extrabold text-white truncate">Staff Member</span>
               <span id="drawerUserBadge" class="px-2 py-0.5 rounded-md text-[10px] font-extrabold uppercase bg-slate-700 text-slate-200 shrink-0">STAFF</span>
             </div>
-            <div id="drawerUserMeta" class="text-xs text-slate-400 mt-1 truncate">Department &amp; Role</div>
+            <div id="drawerUserMeta" class="text-xs text-slate-400 mt-1 truncate">Department</div>
             <div id="drawerUserContact" class="hidden text-[11px] font-mono text-amber-300/90 mt-1.5 pt-1.5 border-t border-slate-700/70 truncate"></div>
           </div>
         </div>
@@ -379,7 +379,7 @@
               </div>
               <div class="min-w-0">
                 <div class="text-xs sm:text-sm font-extrabold text-white truncate">Control Board</div>
-                <div class="text-[11px] text-indigo-200/80 truncate">Staff, Former Staff &amp; Roles</div>
+                <div class="text-[11px] text-indigo-200/80 truncate">Staff, Former Staff &amp; Access</div>
               </div>
             </div>
             <span id="drawerPendingPill" class="hidden px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-amber-400 text-slate-950 shrink-0">0</span>
@@ -810,7 +810,7 @@
         <div>
           <div class="text-[10px] font-extrabold uppercase tracking-wider text-amber-400">KitchenEquip Pro • Admin</div>
           <h3 class="text-base sm:text-lg font-bold">Staff &amp; Access Control Board</h3>
-          <p class="text-xs text-slate-400">Onboarding Link, Active Staff, Former Staff &amp; Roles</p>
+          <p class="text-xs text-slate-400">Onboarding Link, Active Staff, Former Staff &amp; Account Management</p>
         </div>
         <button type="button" id="closeAdminBoardBtn" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center font-bold cursor-pointer">✕</button>
       </div>
@@ -896,7 +896,7 @@
             <div>
               <label for="newUserRoleSelect" class="block text-[11px] font-bold text-slate-500 mb-1">Job Role (Auto)</label>
               <select id="newUserRoleSelect" disabled aria-disabled="true" class="w-full bg-slate-100 border border-slate-300 rounded-xl px-3 py-2 text-xs font-bold text-slate-700 opacity-85 cursor-not-allowed">
-                <option value="Head of Al Fursan">Head of Al Fursan</option>
+                <option value="">—</option>
               </select>
             </div>
           </div>
@@ -982,7 +982,7 @@
           <div>
             <label for="editUserRoleSelect" class="block text-xs font-bold text-slate-500 mb-1">Job Role (Auto)</label>
             <select id="editUserRoleSelect" disabled aria-disabled="true" class="w-full bg-slate-100 border border-slate-300 rounded-xl px-3 py-2 text-xs font-bold text-slate-700 opacity-85 cursor-not-allowed">
-              <option value="Head of Al Fursan">Head of Al Fursan</option>
+              <option value="">—</option>
             </select>
           </div>
         </div>
@@ -1004,6 +1004,23 @@
           <button type="submit" class="px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 text-white cursor-pointer">Save Changes</button>
         </div>
       </form>
+    </div>
+  </div>
+
+  <!-- Delete User Account Confirm Modal -->
+  <div id="deleteUserConfirmModal" class="hidden fixed inset-0 z-[60] bg-slate-950/75 backdrop-blur-xs flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="deleteUserModalTitle">
+    <div class="bg-white w-full max-w-md rounded-2xl shadow-2xl border border-slate-200 p-5 space-y-4 animate-card">
+      <div>
+        <div class="text-[10px] font-extrabold uppercase tracking-wider text-rose-600">Permanent Account Deletion</div>
+        <h3 id="deleteUserModalTitle" class="text-base font-bold text-slate-900 mt-0.5">Delete User Account?</h3>
+      </div>
+      <p class="text-xs sm:text-sm text-slate-600">
+        Are you sure you want to permanently delete the account for <strong id="deleteTargetUserName" class="text-slate-900"></strong>? This removes the user login account from the registry.
+      </p>
+      <div class="flex items-center justify-end gap-2 pt-1">
+        <button type="button" id="cancelDeleteUserBtn" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 cursor-pointer">Cancel</button>
+        <button type="button" id="confirmDeleteUserBtn" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-rose-600 hover:bg-rose-700 text-white cursor-pointer">Delete Account</button>
+      </div>
     </div>
   </div>
 
@@ -1067,7 +1084,7 @@
     </div>
   </div>
 
-  <!-- Delete Modal -->
+  <!-- Delete Record Modal -->
   <div id="deleteConfirmModal" class="hidden fixed inset-0 z-50 bg-slate-950/60 backdrop-blur-xs flex items-center justify-center p-4" role="dialog" aria-modal="true">
     <div class="bg-white w-full max-w-md rounded-2xl shadow-2xl border border-slate-200 p-5 space-y-4 animate-card">
       <h3 class="text-base font-bold text-slate-900">Delete Record Permanently?</h3>
@@ -1111,7 +1128,7 @@
       const SELF_REG_TOKEN = 'KEP_SELF_REG_2026';
       const APP_COLLECTION_ID = typeof __app_id !== 'undefined' ? __app_id : 'kitchen-equip-tracker';
 
-      // VIP Executive Profile: Kumar Govindaraj (Head of Al Fursan)
+      // VIP Executive Profile: Kumar Govindaraj -> ONLY account with "Head of Al Fursan"
       const VIP_EXECUTIVE_PROFILE = {
         fullName: 'Kumar Govindaraj',
         phone: '+971 06 744 6287',
@@ -1121,7 +1138,7 @@
         role: 'Head of Al Fursan'
       };
 
-      const AUTO_LOCKED_ROLE = 'Head of Al Fursan';
+      const HEAD_OF_AL_FURSAN_ROLE = 'Head of Al Fursan';
 
       const COMPANIES = [
         'SMART KITCHENS FZE',
@@ -1154,6 +1171,7 @@
       let brandFilter = 'all';
       let statusFilter = 'all';
       let pendingDeleteRecord = null;
+      let pendingDeleteUser = null;
       let toastTimeout = null;
       let currentNameplateDataUrl = '';
       let currentMachineDataUrl = '';
@@ -1334,6 +1352,11 @@
         editPermCanApproveOffset: document.getElementById('editPermCanApproveOffset'),
         editPermCanDelete: document.getElementById('editPermCanDelete'),
 
+        deleteUserConfirmModal: document.getElementById('deleteUserConfirmModal'),
+        deleteTargetUserName: document.getElementById('deleteTargetUserName'),
+        cancelDeleteUserBtn: document.getElementById('cancelDeleteUserBtn'),
+        confirmDeleteUserBtn: document.getElementById('confirmDeleteUserBtn'),
+
         cloudPinModal: document.getElementById('cloudPinModal'),
         closeCloudPinModalBtn: document.getElementById('closeCloudPinModalBtn'),
         cancelCloudPinBtn: document.getElementById('cancelCloudPinBtn'),
@@ -1365,7 +1388,7 @@
       };
 
       // =========================================================================
-      // VIP EXECUTIVE MATCHING (KUMAR GOVINDARAJ - HEAD OF AL FURSAN)
+      // VIP EXECUTIVE MATCHING (KUMAR GOVINDARAJ -> ONLY "Head of Al Fursan")
       // =========================================================================
       function isKumarGovindaraj(nameOrEmailOrPhone) {
         const raw = String(nameOrEmailOrPhone || '').trim().toLowerCase();
@@ -1377,6 +1400,34 @@
           raw === 'fursanke@eim.ae' ||
           (digits.length >= 7 && digits.endsWith('7446287'))
         );
+      }
+
+      // Only Kumar Govindaraj receives "Head of Al Fursan"; all other users have no job role ("")
+      function resolveJobRoleForName(nameVal) {
+        return isKumarGovindaraj(nameVal) ? HEAD_OF_AL_FURSAN_ROLE : '';
+      }
+
+      function syncLockedRoleSelectForName(roleSelectEl, nameVal) {
+        if (!roleSelectEl) return;
+        const resolvedRole = resolveJobRoleForName(nameVal);
+        const displayLabel = resolvedRole || '—';
+        roleSelectEl.innerHTML = `<option value="${escapeHtml(resolvedRole)}">${escapeHtml(displayLabel)}</option>`;
+        roleSelectEl.value = resolvedRole;
+        roleSelectEl.disabled = true;
+        roleSelectEl.setAttribute('aria-disabled', 'true');
+        if (resolvedRole === HEAD_OF_AL_FURSAN_ROLE) {
+          roleSelectEl.classList.add('text-amber-300');
+          roleSelectEl.classList.remove('text-slate-400');
+        } else {
+          roleSelectEl.classList.add('text-slate-400');
+          roleSelectEl.classList.remove('text-amber-300');
+        }
+      }
+
+      function refreshAllLockedRoleSelects() {
+        syncLockedRoleSelectForName(els.selfRegRoleSelect, els.selfRegNameInput.value);
+        syncLockedRoleSelectForName(els.newUserRoleSelect, els.newUserNameInput.value);
+        syncLockedRoleSelectForName(els.editUserRoleSelect, els.editUserNameInput.value);
       }
 
       function showVipWelcomeModal() {
@@ -1391,30 +1442,12 @@
         }
       }
 
-      // =========================================================================
-      // AUTO-LOCKED JOB ROLE ("Head of Al Fursan" — UNSELECTABLE IN UI)
-      // =========================================================================
       function normalizeDepartmentValue(deptVal) {
         const s = String(deptVal || '').trim();
         if (s === DEPT_TECH_SERVICE || s.toLowerCase().includes('field') || s.toLowerCase().includes('tech') || s.toLowerCase().includes('service')) {
           return DEPT_TECH_SERVICE;
         }
         return DEPT_OFFICE_MGMT;
-      }
-
-      function applyLockedRoleToSelect(roleSelectEl, roleVal = AUTO_LOCKED_ROLE) {
-        if (!roleSelectEl) return;
-        const label = String(roleVal || AUTO_LOCKED_ROLE).trim() || AUTO_LOCKED_ROLE;
-        roleSelectEl.innerHTML = `<option value="${escapeHtml(label)}">${escapeHtml(label)}</option>`;
-        roleSelectEl.value = label;
-        roleSelectEl.disabled = true;
-        roleSelectEl.setAttribute('aria-disabled', 'true');
-      }
-
-      function initLockedRoleFields() {
-        applyLockedRoleToSelect(els.selfRegRoleSelect, AUTO_LOCKED_ROLE);
-        applyLockedRoleToSelect(els.newUserRoleSelect, AUTO_LOCKED_ROLE);
-        applyLockedRoleToSelect(els.editUserRoleSelect, AUTO_LOCKED_ROLE);
       }
 
       // =========================================================================
@@ -1459,7 +1492,8 @@
               ? 'px-2 py-0.5 rounded-md text-[10px] font-extrabold uppercase bg-indigo-500/25 text-indigo-300 border border-indigo-400/30 shrink-0'
               : 'px-2 py-0.5 rounded-md text-[10px] font-extrabold uppercase bg-slate-700 text-slate-200 shrink-0';
           }
-          els.drawerUserMeta.textContent = `${currentSession.group || 'Staff'} • ${currentSession.role || AUTO_LOCKED_ROLE}`;
+          const rolePart = currentSession.role ? ` • ${currentSession.role}` : '';
+          els.drawerUserMeta.textContent = `${currentSession.group || 'Staff'}${rolePart}`;
 
           const phone = currentSession.phone || (isVip ? VIP_EXECUTIVE_PROFILE.phone : '');
           const email = currentSession.email || (isVip ? VIP_EXECUTIVE_PROFILE.email : '');
@@ -1698,12 +1732,12 @@
         window.open(waUrl, '_blank', 'noopener,noreferrer');
       }
 
-      async function completeSelfRegistration(name, pin, group, role, keepLoggedIn = true) {
+      async function completeSelfRegistration(name, pin, group, _roleIgnored, keepLoggedIn = true) {
         const isVip = isKumarGovindaraj(name);
         const cleanName = isVip ? VIP_EXECUTIVE_PROFILE.fullName : name.trim();
         const cleanPin = pin.trim();
         const finalGroup = isVip ? VIP_EXECUTIVE_PROFILE.department : normalizeDepartmentValue(group);
-        const finalRole = AUTO_LOCKED_ROLE;
+        const finalRole = isVip ? HEAD_OF_AL_FURSAN_ROLE : '';
         const finalPermissions = isVip
           ? { canApproveOffset: true, canDelete: true }
           : { canApproveOffset: false, canDelete: false };
@@ -1832,10 +1866,12 @@
 
         if (cleanPin === MASTER_ELEVATION_PIN) {
           const resolvedName = cleanName || ADMIN_ACCOUNT_NAME;
+          const isVipDev = isKumarGovindaraj(resolvedName);
           return {
-            name: resolvedName,
+            name: isVipDev ? VIP_EXECUTIVE_PROFILE.fullName : resolvedName,
             group: DEPT_OFFICE_MGMT,
-            role: ADMIN_ACCOUNT_NAME,
+            role: isVipDev ? HEAD_OF_AL_FURSAN_ROLE : ADMIN_ACCOUNT_NAME,
+            isHeadAlFursan: isVipDev,
             isElevated: true,
             keepLoggedIn: Boolean(keepLoggedIn),
             permissions: { canApproveOffset: true, canDelete: true }
@@ -1857,7 +1893,7 @@
           return {
             name: isVip ? VIP_EXECUTIVE_PROFILE.fullName : matched.name,
             group: normalizeDepartmentValue(matched.group),
-            role: AUTO_LOCKED_ROLE,
+            role: isVip ? HEAD_OF_AL_FURSAN_ROLE : '',
             company: isVip ? VIP_EXECUTIVE_PROFILE.company : (matched.company || ''),
             phone: isVip ? VIP_EXECUTIVE_PROFILE.phone : (matched.phone || ''),
             email: isVip ? VIP_EXECUTIVE_PROFILE.email : (matched.email || ''),
@@ -1901,7 +1937,7 @@
                 const isVip = Boolean(live.isHeadAlFursan || isKumarGovindaraj(live.name));
                 parsed.name = isVip ? VIP_EXECUTIVE_PROFILE.fullName : live.name;
                 parsed.group = normalizeDepartmentValue(live.group);
-                parsed.role = AUTO_LOCKED_ROLE;
+                parsed.role = isVip ? HEAD_OF_AL_FURSAN_ROLE : '';
                 parsed.company = isVip ? VIP_EXECUTIVE_PROFILE.company : (live.company || '');
                 parsed.phone = isVip ? VIP_EXECUTIVE_PROFILE.phone : (live.phone || '');
                 parsed.email = isVip ? VIP_EXECUTIVE_PROFILE.email : (live.email || '');
@@ -1930,7 +1966,7 @@
                 const isVip = Boolean(live.isHeadAlFursan || isKumarGovindaraj(live.name));
                 parsed.name = isVip ? VIP_EXECUTIVE_PROFILE.fullName : live.name;
                 parsed.group = normalizeDepartmentValue(live.group);
-                parsed.role = AUTO_LOCKED_ROLE;
+                parsed.role = isVip ? HEAD_OF_AL_FURSAN_ROLE : '';
                 parsed.company = isVip ? VIP_EXECUTIVE_PROFILE.company : (live.company || '');
                 parsed.phone = isVip ? VIP_EXECUTIVE_PROFILE.phone : (live.phone || '');
                 parsed.email = isVip ? VIP_EXECUTIVE_PROFILE.email : (live.email || '');
@@ -1949,7 +1985,8 @@
         if (currentSession) {
           els.selfRegisterScreen.classList.add('hidden');
           els.loginGateScreen.classList.add('hidden');
-          els.activeUserSubtitle.textContent = `${currentSession.name} • ${currentSession.role}`;
+          const roleSuffix = currentSession.role ? ` • ${currentSession.role}` : '';
+          els.activeUserSubtitle.textContent = `${currentSession.name}${roleSuffix}`;
         } else if (isSelfRegModeActive) {
           els.selfRegisterScreen.classList.remove('hidden');
           els.loginGateScreen.classList.add('hidden');
@@ -2236,9 +2273,9 @@
       }
 
       // =========================================================================
-      // USER, FORMER STAFF ARCHIVE & PASSWORD VISIBILITY
+      // USER, FORMER STAFF ARCHIVE, PERMANENT DELETE & PASSWORD VISIBILITY
       // =========================================================================
-      async function addTeamMember(name, group, role, pin, permissions) {
+      async function addTeamMember(name, group, _roleIgnored, pin, permissions) {
         if (!hasControlBoardAccess()) {
           showToast('Permission denied.', 'error');
           return;
@@ -2249,7 +2286,7 @@
         const entry = {
           name: isVip ? VIP_EXECUTIVE_PROFILE.fullName : name.trim(),
           group: isVip ? VIP_EXECUTIVE_PROFILE.department : normalizeDepartmentValue(group),
-          role: AUTO_LOCKED_ROLE,
+          role: isVip ? HEAD_OF_AL_FURSAN_ROLE : '',
           company: isVip ? VIP_EXECUTIVE_PROFILE.company : '',
           phone: isVip ? VIP_EXECUTIVE_PROFILE.phone : '',
           email: isVip ? VIP_EXECUTIVE_PROFILE.email : '',
@@ -2282,7 +2319,14 @@
           showToast('Permission denied.', 'error');
           return;
         }
-        const patch = { ...updates, role: AUTO_LOCKED_ROLE, updatedAt: Date.now() };
+        const targetName = updates.name || '';
+        const isVip = isKumarGovindaraj(targetName);
+        const patch = {
+          ...updates,
+          isHeadAlFursan: isVip,
+          role: isVip ? HEAD_OF_AL_FURSAN_ROLE : '',
+          updatedAt: Date.now()
+        };
         if (isCloudConnected && firestoreDb && firestoreModule) {
           const ref = firestoreModule.doc(firestoreDb, 'artifacts', APP_COLLECTION_ID, 'public', 'data', 'team_users', userId);
           await firestoreModule.updateDoc(ref, patch);
@@ -2295,6 +2339,35 @@
           }
         }
         showToast('User details & permissions updated.', 'success');
+      }
+
+      async function deleteTeamMemberAccount(userId) {
+        if (!hasControlBoardAccess()) {
+          showToast('Permission denied.', 'error');
+          return;
+        }
+        const target = teamUsers.find((u) => u.id === userId);
+        const label = target ? target.name : 'User';
+        revealedPinUserIds.delete(userId);
+
+        if (isCloudConnected && firestoreDb && firestoreModule) {
+          const ref = firestoreModule.doc(firestoreDb, 'artifacts', APP_COLLECTION_ID, 'public', 'data', 'team_users', userId);
+          await firestoreModule.deleteDoc(ref);
+        } else {
+          teamUsers = teamUsers.filter((u) => u.id !== userId);
+          saveTeamUsersToLocal();
+          renderTeamUsersList();
+        }
+        showToast(`Deleted user account: ${label}`, 'info');
+      }
+
+      function promptDeleteTeamMember(userId) {
+        if (!hasControlBoardAccess()) return;
+        const target = teamUsers.find((u) => u.id === userId);
+        if (!target) return;
+        pendingDeleteUser = target;
+        els.deleteTargetUserName.textContent = target.name || 'User';
+        els.deleteUserConfirmModal.classList.remove('hidden');
       }
 
       async function toggleTeamUserAccess(userId, nextActive) {
@@ -2345,7 +2418,7 @@
         els.editUserNameInput.value = u.name || '';
         els.editUserPinInput.value = u.pin || '';
         els.editUserGroupSelect.value = normalizeDepartmentValue(u.group);
-        applyLockedRoleToSelect(els.editUserRoleSelect, AUTO_LOCKED_ROLE);
+        syncLockedRoleSelectForName(els.editUserRoleSelect, u.name || '');
 
         const perms = u.permissions || {};
         els.editPermCanApproveOffset.checked = Boolean(perms.canApproveOffset);
@@ -2396,9 +2469,8 @@
                   <div class="min-w-0">
                     <div class="flex flex-wrap items-center gap-1.5">
                       <span class="text-xs sm:text-sm font-extrabold text-slate-900">${escapeHtml(u.name)}</span>
-                      ${isVip ? '<span class="px-2 py-0.5 rounded-md text-[10px] font-extrabold bg-amber-100 text-amber-900 border border-amber-300">★ HEAD OF AL FURSAN</span>' : ''}
+                      ${isVip ? `<span class="px-2 py-0.5 rounded-md text-[10px] font-extrabold bg-amber-100 text-amber-900 border border-amber-300">★ ${escapeHtml(HEAD_OF_AL_FURSAN_ROLE.toUpperCase())}</span>` : ''}
                       <span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-indigo-50 text-indigo-800">${escapeHtml(normalizeDepartmentValue(u.group))}</span>
-                      <span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-100 text-slate-800">${escapeHtml(AUTO_LOCKED_ROLE)}</span>
                       <span class="px-2 py-0.5 rounded-md text-[10px] font-bold ${isActive ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}">${isActive ? 'ACTIVE' : 'DISABLED'}</span>
                     </div>
                     ${contactSub ? `<div class="text-[11px] font-mono text-amber-800 mt-0.5">${escapeHtml(contactSub)}</div>` : ''}
@@ -2443,9 +2515,17 @@
                       type="button"
                       data-user-action="mark-left"
                       data-user-id="${escapeHtml(u.id)}"
+                      class="px-2.5 py-1.5 rounded-lg text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 cursor-pointer"
+                    >
+                      Left
+                    </button>
+                    <button
+                      type="button"
+                      data-user-action="delete-user"
+                      data-user-id="${escapeHtml(u.id)}"
                       class="px-2.5 py-1.5 rounded-lg text-xs font-bold bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 cursor-pointer"
                     >
-                      Left / Remove
+                      Delete
                     </button>
                   </div>
                 </div>
@@ -2459,26 +2539,37 @@
           els.formerUsersListContainer.innerHTML = `<div class="text-xs text-slate-400 bg-slate-50 border border-dashed border-slate-200 rounded-xl p-3 text-center">No former / left staff members.</div>`;
         } else {
           els.formerUsersListContainer.innerHTML = formerStaff.map((u) => {
+            const isVip = Boolean(u.isHeadAlFursan || isKumarGovindaraj(u.name));
             const leftDate = u.leftAt ? ` • Left: ${escapeHtml(formatDateTime(u.leftAt))}` : '';
             return `
               <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <div class="min-w-0">
                   <div class="flex flex-wrap items-center gap-1.5">
                     <span class="text-xs font-extrabold text-slate-700">${escapeHtml(u.name)}</span>
+                    ${isVip ? `<span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-amber-100 text-amber-900">${escapeHtml(HEAD_OF_AL_FURSAN_ROLE)}</span>` : ''}
                     <span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-200 text-slate-700">${escapeHtml(normalizeDepartmentValue(u.group))}</span>
-                    <span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-white text-slate-700 border border-slate-200">${escapeHtml(AUTO_LOCKED_ROLE)}</span>
                     <span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-rose-100 text-rose-800">LEFT</span>
                   </div>
                   <div class="text-[11px] text-slate-500 mt-0.5">Equipment records by ${escapeHtml(u.name)} remain preserved${leftDate}.</div>
                 </div>
-                <button
-                  type="button"
-                  data-user-action="restore"
-                  data-user-id="${escapeHtml(u.id)}"
-                  class="self-start sm:self-center px-2.5 py-1.5 rounded-lg text-xs font-bold bg-white hover:bg-emerald-50 text-emerald-700 border border-slate-300 cursor-pointer shrink-0"
-                >
-                  Rejoin
-                </button>
+                <div class="flex items-center gap-1.5 shrink-0">
+                  <button
+                    type="button"
+                    data-user-action="restore"
+                    data-user-id="${escapeHtml(u.id)}"
+                    class="px-2.5 py-1.5 rounded-lg text-xs font-bold bg-white hover:bg-emerald-50 text-emerald-700 border border-slate-300 cursor-pointer"
+                  >
+                    Rejoin
+                  </button>
+                  <button
+                    type="button"
+                    data-user-action="delete-user"
+                    data-user-id="${escapeHtml(u.id)}"
+                    class="px-2.5 py-1.5 rounded-lg text-xs font-bold bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 cursor-pointer"
+                  >
+                    Delete
+                  </button>
+                </div>
               </div>
             `;
           }).join('');
@@ -2496,7 +2587,8 @@
           await registerBrandAndModel(payload.brand, payload.model);
 
           const now = Date.now();
-          const actorName = currentSession ? `${currentSession.name} (${currentSession.role})` : 'User';
+          const rolePart = currentSession && currentSession.role ? ` (${currentSession.role})` : '';
+          const actorName = currentSession ? `${currentSession.name}${rolePart}` : 'User';
           const directApproval = canDirectEditWithoutOffset();
           let finalData = { ...payload, updatedAt: now };
 
@@ -2555,7 +2647,8 @@
           showToast('No permission to approve/offset edits.', 'error');
           return;
         }
-        const approver = currentSession ? `${currentSession.name} (${currentSession.role})` : 'Approver';
+        const rolePart = currentSession && currentSession.role ? ` (${currentSession.role})` : '';
+        const approver = currentSession ? `${currentSession.name}${rolePart}` : 'Approver';
         const patch = { offsetStatus: 'approved', offsetApprovedBy: approver, offsetApprovedAt: Date.now(), updatedAt: Date.now() };
         if (isCloudConnected && firestoreDb && firestoreModule) {
           const ref = firestoreModule.doc(firestoreDb, 'artifacts', APP_COLLECTION_ID, 'public', 'data', 'equipment_records', recordId);
@@ -3100,35 +3193,37 @@
           if (e.target === els.vipWelcomeModal) closeVipWelcomeModal();
         });
 
-        // Auto-detect Kumar Govindaraj in Self-Registration
+        // Only Kumar Govindaraj gets "Head of Al Fursan"; others get no job role ("—")
         els.selfRegNameInput.addEventListener('input', () => {
           const isVip = isKumarGovindaraj(els.selfRegNameInput.value);
           els.selfRegVipNotice.classList.toggle('hidden', !isVip);
           if (isVip) {
             els.selfRegGroupSelect.value = VIP_EXECUTIVE_PROFILE.department;
           }
-          applyLockedRoleToSelect(els.selfRegRoleSelect, AUTO_LOCKED_ROLE);
+          syncLockedRoleSelectForName(els.selfRegRoleSelect, els.selfRegNameInput.value);
         });
 
-        // Auto-detect Kumar Govindaraj in Direct Register
         els.newUserNameInput.addEventListener('input', () => {
           if (isKumarGovindaraj(els.newUserNameInput.value)) {
             els.newUserGroupSelect.value = VIP_EXECUTIVE_PROFILE.department;
             els.permCanApproveOffset.checked = true;
             els.permCanDelete.checked = true;
           }
-          applyLockedRoleToSelect(els.newUserRoleSelect, AUTO_LOCKED_ROLE);
+          syncLockedRoleSelectForName(els.newUserRoleSelect, els.newUserNameInput.value);
         });
 
-        // Keep Job Role auto-locked when department changes
+        els.editUserNameInput.addEventListener('input', () => {
+          syncLockedRoleSelectForName(els.editUserRoleSelect, els.editUserNameInput.value);
+        });
+
         els.selfRegGroupSelect.addEventListener('change', () => {
-          applyLockedRoleToSelect(els.selfRegRoleSelect, AUTO_LOCKED_ROLE);
+          syncLockedRoleSelectForName(els.selfRegRoleSelect, els.selfRegNameInput.value);
         });
         els.newUserGroupSelect.addEventListener('change', () => {
-          applyLockedRoleToSelect(els.newUserRoleSelect, AUTO_LOCKED_ROLE);
+          syncLockedRoleSelectForName(els.newUserRoleSelect, els.newUserNameInput.value);
         });
         els.editUserGroupSelect.addEventListener('change', () => {
-          applyLockedRoleToSelect(els.editUserRoleSelect, AUTO_LOCKED_ROLE);
+          syncLockedRoleSelectForName(els.editUserRoleSelect, els.editUserNameInput.value);
         });
 
         // Side Drawer Events
@@ -3190,7 +3285,7 @@
               els.selfRegNameInput.value,
               els.selfRegPinInput.value,
               els.selfRegGroupSelect.value,
-              AUTO_LOCKED_ROLE,
+              '',
               els.selfRegKeepLoggedInCheckbox.checked
             );
           } catch (err) {
@@ -3227,7 +3322,7 @@
           persistSession(auth);
           applyRoleAndAuthUI();
           if (auth.isHeadAlFursan) {
-            showToast(`Welcome back, Mr. ${auth.name} (${AUTO_LOCKED_ROLE})!`, 'success');
+            showToast(`Welcome back, Mr. ${auth.name} (${HEAD_OF_AL_FURSAN_ROLE})!`, 'success');
           } else {
             showToast(`Welcome, ${auth.name}!`, 'success');
           }
@@ -3252,7 +3347,7 @@
           const group = els.newUserGroupSelect.value;
           if (!name || !pin) return;
 
-          await addTeamMember(name, group, AUTO_LOCKED_ROLE, pin, {
+          await addTeamMember(name, group, '', pin, {
             canApproveOffset: els.permCanApproveOffset.checked,
             canDelete: els.permCanDelete.checked
           });
@@ -3261,7 +3356,7 @@
           els.newUserPinInput.value = '';
           els.permCanApproveOffset.checked = false;
           els.permCanDelete.checked = false;
-          applyLockedRoleToSelect(els.newUserRoleSelect, AUTO_LOCKED_ROLE);
+          syncLockedRoleSelectForName(els.newUserRoleSelect, '');
         });
 
         const handleStaffListAction = async (e) => {
@@ -3281,11 +3376,25 @@
             await markUserLeftCompany(userId, true);
           } else if (action === 'restore') {
             await markUserLeftCompany(userId, false);
+          } else if (action === 'delete-user') {
+            promptDeleteTeamMember(userId);
           }
         };
 
         els.teamUsersListContainer.addEventListener('click', handleStaffListAction);
         els.formerUsersListContainer.addEventListener('click', handleStaffListAction);
+
+        els.cancelDeleteUserBtn.addEventListener('click', () => {
+          pendingDeleteUser = null;
+          els.deleteUserConfirmModal.classList.add('hidden');
+        });
+        els.confirmDeleteUserBtn.addEventListener('click', async () => {
+          if (!pendingDeleteUser) return;
+          const id = pendingDeleteUser.id;
+          pendingDeleteUser = null;
+          els.deleteUserConfirmModal.classList.add('hidden');
+          await deleteTeamMemberAccount(id);
+        });
 
         els.closeEditUserModalBtn.addEventListener('click', () => els.editUserModal.classList.add('hidden'));
         els.cancelEditUserBtn.addEventListener('click', () => els.editUserModal.classList.add('hidden'));
@@ -3302,7 +3411,6 @@
             name,
             pin,
             group: els.editUserGroupSelect.value,
-            role: AUTO_LOCKED_ROLE,
             permissions: {
               canApproveOffset: els.editPermCanApproveOffset.checked,
               canDelete: els.editPermCanDelete.checked
@@ -3522,7 +3630,7 @@
       }
 
       function init() {
-        initLockedRoleFields();
+        refreshAllLockedRoleSelects();
         loadLocalRecords();
         loadCatalogFromLocal();
         loadTeamUsersFromLocal();
