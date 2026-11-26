@@ -3,88 +3,127 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ChatGPT Name Plate Scan</title>
+  <title>New Item Register</title>
   <style>
-    body { font-family: system-ui, sans-serif; max-width: 480px; margin: 16px auto; padding: 12px; background: #f5f5f5; }
-    .box { background: #fff; padding: 14px; border-radius: 10px; margin-bottom: 14px; border: 1px solid #ddd; }
-    .field { margin-bottom: 12px; }
-    label { display: block; font-weight: 600; margin-bottom: 4px; }
-    .hint { font-size: 12px; color: #666; font-weight: 400; }
-    input[type="text"], input[type="file"] { width: 100%; padding: 9px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; }
-    button { padding: 9px 14px; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; background: #10a37f; color: #fff; }
-    button:disabled { opacity: 0.6; cursor: not-allowed; }
-    button.gray { background: #5f6368; }
-    button.green { background: #188038; width: 100%; padding: 11px; }
-    .row { display: flex; gap: 8px; align-items: center; margin-top: 8px; }
-    #previewBox { display: none; margin-top: 10px; text-align: center; }
-    #previewImg { max-width: 220px; max-height: 220px; border-radius: 6px; border: 1px solid #ccc; transition: transform 0.2s; }
-    #status { font-size: 13px; color: #333; margin-top: 8px; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      max-width: 480px;
+      margin: 16px auto;
+      padding: 12px;
+      background: #f5f5f5;
+    }
+    .card {
+      background: #fff;
+      padding: 16px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+    .field {
+      margin-bottom: 14px;
+    }
+    label {
+      display: block;
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 5px;
+      color: #202124;
+    }
+    .hint {
+      font-size: 12px;
+      color: #5f6368;
+      font-weight: 400;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-sizing: border-box;
+      font-size: 15px;
+    }
+    button.save-btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #188038;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    button.save-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    #status {
+      margin-top: 12px;
+      font-size: 13px;
+      color: #202124;
+      min-height: 18px;
+    }
   </style>
 </head>
 <body>
 
-  <div class="box">
-    <label for="photoInput">Name Plate Photo (Camera හෝ Gallery)</label>
-    <input type="file" id="photoInput" accept="image/*" />
-
-    <div id="previewBox">
-      <img id="previewImg" alt="Preview" />
-      <div class="row" style="justify-content:center;">
-        <button type="button" class="gray" id="rotateBtn">Rotate 90°</button>
-        <span id="angleText">0°</span>
-      </div>
-    </div>
-
-    <div class="row">
-      <button type="button" id="scanBtn" style="width:100%;">ChatGPT Scan & Auto-Fill</button>
-    </div>
-    <div id="status"></div>
-  </div>
-
-  <form id="itemForm" class="box">
+  <form id="itemForm" class="card">
     <div class="field">
-      <label for="serialCode">Serial Number / Item Code *</label>
-      <input type="text" id="serialCode" required />
+      <label for="serialOrCode">Serial Number / Item Code *</label>
+      <input type="text" id="serialOrCode" required />
     </div>
 
     <div class="field">
-      <label for="brand">Machine Brand * <span class="hint">Auto-saves for next time</span></label>
-      <input type="text" id="brand" list="brandList" required />
+      <label for="machineBrand">
+        Machine Brand * <span class="hint">Auto-saves for next time</span>
+      </label>
+      <input type="text" id="machineBrand" list="brandList" required />
       <datalist id="brandList"></datalist>
     </div>
 
     <div class="field">
-      <label for="model">Machine Model / Plug-in Item * <span class="hint">Auto-saves per brand</span></label>
-      <input type="text" id="model" list="modelList" required />
+      <label for="machineModel">
+        Machine Model / Plug-in Item * <span class="hint">Auto-saves per brand</span>
+      </label>
+      <input type="text" id="machineModel" list="modelList" required />
       <datalist id="modelList"></datalist>
     </div>
 
-    <button type="submit" class="green">Save Item</button>
+    <button type="submit" class="save-btn" id="saveBtn">Save Item</button>
+    <div id="status"></div>
   </form>
 
-  <script>
-    const CHATGPT_SCAN_URL = "http://localhost:3000/api/chatgpt-scan";
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-    const photoInput = document.getElementById("photoInput");
-    const previewBox = document.getElementById("previewBox");
-    const previewImg = document.getElementById("previewImg");
-    const rotateBtn = document.getElementById("rotateBtn");
-    const angleText = document.getElementById("angleText");
-    const scanBtn = document.getElementById("scanBtn");
-    const statusEl = document.getElementById("status");
+    // ඔබේ kitchen-equipment-db Firebase Web Config එක මෙහි ඇතුළත් කරන්න
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT.appspot.com",
+      messagingSenderId: "YOUR_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
 
-    const serialEl = document.getElementById("serialCode");
-    const brandEl = document.getElementById("brand");
-    const modelEl = document.getElementById("model");
-    const brandList = document.getElementById("brandList");
-    const modelList = document.getElementById("modelList");
-    const form = document.getElementById("itemForm");
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
 
-    let file = null;
-    let angle = 0;
+    // Firestore path: /artifacts/kitchen-equip-tracker/SKFZE001
+    const itemsCollection = collection(db, "artifacts", "kitchen-equip-tracker", "SKFZE001");
 
     const BRANDS_KEY = "np_brands";
     const MODELS_KEY = "np_models_by_brand";
+
+    const form = document.getElementById("itemForm");
+    const serialInput = document.getElementById("serialOrCode");
+    const brandInput = document.getElementById("machineBrand");
+    const modelInput = document.getElementById("machineModel");
+    const brandList = document.getElementById("brandList");
+    const modelList = document.getElementById("modelList");
+    const saveBtn = document.getElementById("saveBtn");
+    const statusEl = document.getElementById("status");
 
     function getBrands() {
       return JSON.parse(localStorage.getItem(BRANDS_KEY) || "[]");
@@ -94,133 +133,79 @@
       return JSON.parse(localStorage.getItem(MODELS_KEY) || "{}");
     }
 
-    function loadLists() {
-      brandList.innerHTML = getBrands().map(b => `<option value="${b}"></option>`).join("");
-      const models = getModelsMap()[(brandEl.value || "").trim().toLowerCase()] || [];
+    function loadSuggestions() {
+      const brands = getBrands();
+      brandList.innerHTML = brands.map(b => `<option value="${b}"></option>`).join("");
+
+      const currentBrand = (brandInput.value || "").trim().toLowerCase();
+      const models = getModelsMap()[currentBrand] || [];
       modelList.innerHTML = models.map(m => `<option value="${m}"></option>`).join("");
     }
 
-    function saveLists(b, m) {
-      const brand = b.trim();
-      const model = m.trim();
-      if (brand) {
+    function saveSuggestions(brand, model) {
+      const b = brand.trim();
+      const m = model.trim();
+
+      if (b) {
         const brands = getBrands();
-        if (!brands.some(x => x.toLowerCase() === brand.toLowerCase())) {
-          brands.push(brand);
+        if (!brands.some(item => item.toLowerCase() === b.toLowerCase())) {
+          brands.push(b);
           localStorage.setItem(BRANDS_KEY, JSON.stringify(brands));
         }
       }
-      if (brand && model) {
+
+      if (b && m) {
         const map = getModelsMap();
-        const key = brand.toLowerCase();
+        const key = b.toLowerCase();
         map[key] = map[key] || [];
-        if (!map[key].some(x => x.toLowerCase() === model.toLowerCase())) {
-          map[key].push(model);
+        if (!map[key].some(item => item.toLowerCase() === m.toLowerCase())) {
+          map[key].push(m);
           localStorage.setItem(MODELS_KEY, JSON.stringify(map));
         }
       }
-      loadLists();
+
+      loadSuggestions();
     }
 
-    brandEl.addEventListener("input", loadLists);
+    brandInput.addEventListener("input", loadSuggestions);
 
-    function setAngle(deg) {
-      angle = ((deg % 360) + 360) % 360;
-      previewImg.style.transform = `rotate(${angle}deg)`;
-      angleText.textContent = `${angle}°`;
-    }
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-    photoInput.addEventListener("change", (e) => {
-      file = e.target.files[0] || null;
-      if (!file) return;
-      setAngle(0);
-      previewImg.src = URL.createObjectURL(file);
-      previewBox.style.display = "block";
-      statusEl.textContent = "Photo එක ready. ඇලවී ඇත්නම් Rotate 90° ඔබා Scan කරන්න.";
-    });
+      const serialOrCode = serialInput.value.trim();
+      const machineBrand = brandInput.value.trim();
+      const machineModel = modelInput.value.trim();
 
-    rotateBtn.addEventListener("click", () => {
-      if (file) setAngle(angle + 90);
-    });
-
-    function getRotatedCompressedBase64(imgFile, deg, maxWidth = 1280, quality = 0.8) {
-      return new Promise((resolve, reject) => {
-        const img = new Image();
-        const url = URL.createObjectURL(imgFile);
-        img.onload = () => {
-          URL.revokeObjectURL(url);
-          const swap = deg === 90 || deg === 270;
-          let w = swap ? img.height : img.width;
-          let h = swap ? img.width : img.height;
-          if (w > maxWidth) {
-            h = Math.round((h * maxWidth) / w);
-            w = maxWidth;
-          }
-          const canvas = document.createElement("canvas");
-          canvas.width = w;
-          canvas.height = h;
-          const ctx = canvas.getContext("2d");
-          ctx.translate(w / 2, h / 2);
-          ctx.rotate((deg * Math.PI) / 180);
-          const drawW = swap ? h : w;
-          const drawH = swap ? w : h;
-          ctx.drawImage(img, -drawW / 2, -drawH / 2, drawW, drawH);
-          const dataUrl = canvas.toDataURL("image/jpeg", quality);
-          resolve({ imageBase64: dataUrl.split(",")[1], mimeType: "image/jpeg" });
-        };
-        img.onerror = reject;
-        img.src = url;
-      });
-    }
-
-    scanBtn.addEventListener("click", async () => {
-      if (!file) {
-        statusEl.textContent = "මුලින් Camera හෝ Gallery එකෙන් photo එකක් තෝරන්න.";
+      if (!serialOrCode || !machineBrand || !machineModel) {
+        statusEl.textContent = "කරුණාකර අවශ්‍ය විස්තර සියල්ල පුරවන්න.";
         return;
       }
-      scanBtn.disabled = true;
-      statusEl.textContent = "ChatGPT මඟින් Name Plate එක කියවමින් පවතී...";
+
+      saveBtn.disabled = true;
+      statusEl.textContent = "Save කරමින් පවතී...";
+
       try {
-        const { imageBase64, mimeType } = await getRotatedCompressedBase64(file, angle);
-        const res = await fetch(CHATGPT_SCAN_URL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            imageBase64,
-            mimeType,
-            knownBrands: getBrands(),
-            knownModels: getModelsMap()
-          })
+        saveSuggestions(machineBrand, machineModel);
+
+        await addDoc(itemsCollection, {
+          serialOrCode,
+          machineBrand,
+          machineModel,
+          createdAt: serverTimestamp()
         });
-        if (!res.ok) throw new Error("API error");
-        const data = await res.json();
 
-        if (data.serialCode) serialEl.value = data.serialCode;
-        if (data.brand) {
-          brandEl.value = data.brand;
-          loadLists();
-        }
-        if (data.model) modelEl.value = data.model;
-
-        statusEl.textContent = "Auto-fill සම්පූර්ණයි. අවශ්‍ය නම් හදා Save Item ඔබන්න.";
+        form.reset();
+        loadSuggestions();
+        statusEl.textContent = `සාර්ථකව Save වුණා (${serialOrCode}).`;
       } catch (err) {
-        console.error(err);
-        statusEl.textContent = "ChatGPT scan එකට සම්බන්ධ වීමට නොහැකි වුණා. Server/URL පරීක්ෂා කරන්න.";
+        console.error("Firestore save error:", err);
+        statusEl.textContent = "Save කිරීමේදී දෝෂයක් ඇති වුණා. Firebase config හෝ Rules පරීක්ෂා කරන්න.";
       } finally {
-        scanBtn.disabled = false;
+        saveBtn.disabled = false;
       }
     });
 
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      saveLists(brandEl.value, modelEl.value);
-      statusEl.textContent = `Saved: ${serialEl.value} | ${brandEl.value} | ${modelEl.value}`;
-      form.reset();
-      previewBox.style.display = "none";
-      file = null;
-    });
-
-    loadLists();
+    loadSuggestions();
   </script>
 </body>
 </html>
